@@ -2,26 +2,54 @@
 
 Guidelines for AI agents working in this repository.
 
-## Debugging Agent
+## Core Principles
 
-When debugging issues:
-1. Identify the root cause before fixing
-2. Check error logs and stack traces
-3. Reproduce the issue first
-4. Verify the fix works
+- Follow **YAGNI**, **KISS**, **DRY** principles
+- Be honest, concise, and straight to the point
+- Verify before claiming success
+- No fixes without understanding root cause first
 
-## Code Review Agent
+## When Planning
 
-When reviewing code:
-1. Check for security vulnerabilities
-2. Verify error handling
-3. Assess performance impact
-4. Ensure code follows conventions
+- Research existing code before proposing solutions
+- Break complex tasks into smaller phases
+- Identify dependencies and risks upfront
+- Create clear, actionable task lists
+- Consider edge cases during planning
 
-## Planning Agent
+## When Implementing
 
-When planning implementations:
-1. Break down into small tasks
-2. Identify dependencies
-3. Consider edge cases
-4. Document the approach
+- Read the full scope before writing code
+- Follow existing patterns in the codebase
+- Mark tasks complete only when verified
+- Run type checking after changes
+- Keep changes focused and minimal
+
+## When Testing
+
+- Write tests covering:
+  - Happy path (expected behavior)
+  - Edge cases (boundary conditions)
+  - Error cases (failure handling)
+- All tests must pass before proceeding
+- No mocking to fake passing tests
+- No commenting out failing tests
+
+## When Reviewing
+
+- Check for security vulnerabilities (OWASP Top 10)
+- Verify error handling is complete
+- Ensure test coverage is adequate
+- Validate performance implications
+- Push back on suggestions that violate principles
+
+## When Debugging
+
+**NO FIXES WITHOUT ROOT CAUSE FIRST**
+
+1. Understand the expected vs actual behavior
+2. Reproduce the issue consistently
+3. Trace backward through the call stack
+4. Identify the root cause
+5. Fix the cause, not the symptom
+6. Verify with a fresh test run
