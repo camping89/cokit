@@ -1,0 +1,6 @@
+{
+  "github.copilot.chat.useAgentSkills": true,
+  "github.copilot.enable": {
+    "*": true
+  }
+}

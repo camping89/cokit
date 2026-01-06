@@ -1,6 +1,6 @@
 # Phase 1: CLI Tool (npm package)
 
-**Effort:** 4h | **Status:** Pending
+**Effort:** 4h | **Status:** DONE (2026-01-06)
 
 ## Objective
 
@@ -130,22 +130,22 @@ cokit/
 
 ## Tasks
 
-- [ ] 1.1 Initialize npm package with package.json
-- [ ] 1.2 Create bin/cokit.js entry point
-- [ ] 1.3 Implement `init` command with interactive prompts
-- [ ] 1.4 Implement `add` command for individual skills
-- [ ] 1.5 Implement `list` command
-- [ ] 1.6 Implement `doctor` command
-- [ ] 1.7 Add colorized output (chalk)
-- [ ] 1.8 Handle existing file conflicts (prompt user)
-- [ ] 1.9 Test on Windows + macOS + Linux
-- [ ] 1.10 Publish to npm
+- [x] 1.1 Initialize npm package with package.json
+- [x] 1.2 Create bin/cokit.js entry point
+- [x] 1.3 Implement `init` command with interactive prompts
+- [x] 1.4 Implement `add` command for individual skills
+- [x] 1.5 Implement `list` command
+- [x] 1.6 Implement `doctor` command
+- [x] 1.7 Add colorized output (chalk)
+- [x] 1.8 Handle existing file conflicts (prompt user)
+- [x] 1.9 Test on Windows + macOS + Linux
+- [x] 1.10 Publish to npm
 
 ## Validation
 
-- [ ] `npx cokit` shows help without error
-- [ ] `npx cokit init` creates .github/ structure
-- [ ] `npx cokit init --global` creates ~/.copilot/skills/
-- [ ] Interactive prompts work (not just flags)
-- [ ] Colors display correctly in terminal
-- [ ] Windows paths work correctly
+- [x] `npx cokit` shows help without error
+- [x] `npx cokit init` creates .github/ structure
+- [x] `npx cokit init --global` creates ~/.copilot/skills/
+- [x] Interactive prompts work (not just flags)
+- [x] Colors display correctly in terminal
+- [x] Windows paths work correctly

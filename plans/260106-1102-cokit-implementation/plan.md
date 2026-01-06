@@ -1,7 +1,7 @@
 ---
 title: "CoKit: Claude Code to GitHub Copilot Port"
 description: "Full port of Claude Code workflow patterns to GitHub Copilot with easy CLI"
-status: pending
+status: in_progress
 priority: P1
 effort: 16h
 branch: main
