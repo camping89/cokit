@@ -17,8 +17,8 @@
 - Project-specific context
 
 **Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
-- Pre-built prompts (`/fix`, `/plan`, `/review`)
-- Skills that teach Copilot best practices
+- 6 pre-built prompts (`/fix`, `/plan`, `/code`, `/test`, `/review`, `/docs`) using `mode: agent`
+- 5 skills teaching Copilot best practices (debugging, code-review, planning, docs-seeker, sequential-thinking)
 - Project templates for team consistency
 
 ---
@@ -70,12 +70,16 @@
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
-│   Step 4: Files created in user's project                      │
+│   Step 4: Files created in user's project (Phase 4)            │
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ ✓ .github/copilot-instructions.md                       │ │
 │   │ ✓ .github/AGENTS.md                                     │ │
 │   │ ✓ .github/prompts/fix.prompt.md                         │ │
 │   │ ✓ .github/prompts/plan.prompt.md                        │ │
+│   │ ✓ .github/prompts/code.prompt.md                        │ │
+│   │ ✓ .github/prompts/test.prompt.md                        │ │
+│   │ ✓ .github/prompts/review.prompt.md                      │ │
+│   │ ✓ .github/prompts/docs.prompt.md                        │ │
 │   │ ✓ .vscode/settings.json                                 │ │
 │   │                                                         │ │
 │   │ 🎉 Done! Try /fix in Copilot Chat.                      │ │

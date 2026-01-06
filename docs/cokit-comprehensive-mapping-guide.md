@@ -172,7 +172,15 @@ skills/debugging/
 **What:** Reusable task-specific prompts (equivalent to Claude Code commands).
 **Location:** `.github/prompts/{name}.prompt.md`
 **Purpose:** Standardized prompts for common tasks.
-**Format:** Markdown with optional YAML frontmatter.
+**Format:** Markdown with YAML frontmatter using `mode: agent` format.
+
+**Available Prompts (Phase 4):**
+- `fix.prompt.md` - Debug and fix code issues
+- `plan.prompt.md` - Create implementation plans
+- `code.prompt.md` - Implement from existing plans
+- `test.prompt.md` - Run tests and analyze results
+- `review.prompt.md` - Review code for quality issues
+- `docs.prompt.md` - Update project documentation
 
 **Example:**
 ```yaml
@@ -461,24 +469,29 @@ CoKit supports two installation levels. Users can choose one or both.
 - Team collaboration (everyone gets same config)
 - Version control of AI instructions
 
-**Structure:**
+**Structure (Phase 4):**
 ```
 your-project/
 ├── .github/
 │   ├── copilot-instructions.md    # Project instructions
-│   ├── agents.md                   # Agent guidelines
+│   ├── AGENTS.md                   # Agent guidelines
 │   ├── instructions/
 │   │   ├── frontend.instructions.md
 │   │   ├── backend.instructions.md
 │   │   └── testing.instructions.md
 │   ├── prompts/
-│   │   ├── fix.prompt.md
-│   │   ├── plan.prompt.md
-│   │   └── review.prompt.md
+│   │   ├── fix.prompt.md           # Debug and fix issues
+│   │   ├── plan.prompt.md          # Create implementation plans
+│   │   ├── code.prompt.md          # Implement from plans
+│   │   ├── test.prompt.md          # Run and analyze tests
+│   │   ├── review.prompt.md        # Code review
+│   │   └── docs.prompt.md          # Update documentation
 │   └── skills/
 │       ├── debugging/
 │       ├── code-review/
-│       └── planning/
+│       ├── planning/
+│       ├── docs-seeker/
+│       └── sequential-thinking/
 └── docs/
     ├── code-standards.md
     └── system-architecture.md
@@ -568,7 +581,8 @@ curl -fsSL https://raw.githubusercontent.com/camping89/cokit/main/install.sh | b
 | Version controlled | Yes | No (personal) |
 | Team sharing | Yes | No |
 | Portability | With project | With user |
-| Contains | Instructions, prompts, skills | 5 core skills (Phase 3) |
+| Contains | Instructions, 6 prompts (Phase 4), skills | 5 core skills (Phase 3) |
+| Prompts | fix, plan, code, test, review, docs (Phase 4) | Not included (repo-level only) |
 | Skills available | debugging, code-review, planning, docs-seeker, sequential-thinking | Same as repo level |
 | References | Each skill includes 2-3 reference docs | Each skill includes 2-3 reference docs |
 
@@ -722,18 +736,18 @@ Without hooks, manage context manually:
 
 ---
 
-### 5.6 Recommended Prompt Aliases
+### 5.6 Available Prompt Files (Phase 4)
 
-Create these prompt files for common workflows:
+6 prompt files for common workflows, all using `mode: agent` format:
 
-| Prompt | Purpose | When to Use |
-|--------|---------|-------------|
-| `/plan` | Create implementation plan | Starting new feature |
-| `/code` | Implement from plan | During development |
-| `/fix` | Debug and fix issues | When encountering bugs |
-| `/review` | Code review | Before committing |
-| `/test` | Write/run tests | After implementation |
-| `/docs` | Update documentation | After feature complete |
+| Prompt | Purpose | When to Use | File |
+|--------|---------|-------------|------|
+| `/plan` | Create implementation plan | Starting new feature | plan.prompt.md |
+| `/code` | Implement from plan | During development | code.prompt.md |
+| `/fix` | Debug and fix issues | When encountering bugs | fix.prompt.md |
+| `/review` | Code review | Before committing | review.prompt.md |
+| `/test` | Write/run tests | After implementation | test.prompt.md |
+| `/docs` | Update documentation | After feature complete | docs.prompt.md |
 
 ---
 
