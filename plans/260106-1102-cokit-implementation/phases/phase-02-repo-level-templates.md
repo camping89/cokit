@@ -1,6 +1,6 @@
 # Phase 2: Repo-Level Templates
 
-**Effort:** 3h | **Status:** Pending
+**Effort:** 3h | **Status:** DONE (2026-01-06)
 
 ## Objective
 
@@ -190,9 +190,9 @@ Full skills with scripts go to user-level only.
 
 ## Validation
 
-- [ ] copilot-instructions.md is <2000 tokens
-- [ ] AGENTS.md covers all merged agent behaviors
-- [ ] Instructions files have valid `applyTo` patterns
-- [ ] .cokit-version enables upgrade detection
-- [ ] No `$HOME` or `$ARGUMENTS` references
-- [ ] No Claude-specific tool references (Task, TodoWrite)
+- [x] copilot-instructions.md is <2000 tokens
+- [x] AGENTS.md covers all merged agent behaviors
+- [x] Instructions files have valid `applyTo` patterns
+- [x] .cokit-version enables upgrade detection
+- [x] No `$HOME` or `$ARGUMENTS` references
+- [x] No Claude-specific tool references (Task, TodoWrite)

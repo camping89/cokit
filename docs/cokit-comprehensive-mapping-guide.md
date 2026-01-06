@@ -501,6 +501,8 @@ curl -fsSL https://raw.githubusercontent.com/camping89/cokit/main/install.sh | b
 - Skills not project-specific
 - Share skills across multiple projects
 
+**Phase 3 Status:** All 5 core skills now available following Copilot Agent Skills format.
+
 **Structure:**
 ```
 ~/.copilot/
@@ -508,17 +510,31 @@ curl -fsSL https://raw.githubusercontent.com/camping89/cokit/main/install.sh | b
     ├── debugging/
     │   ├── SKILL.md
     │   ├── references/
+    │   │   ├── systematic-debugging.md
+    │   │   ├── root-cause-tracing.md
+    │   │   └── verification.md
     │   └── scripts/
     ├── code-review/
-    │   └── SKILL.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── code-review-reception.md
+    │       └── verification-before-completion.md
     ├── planning/
-    │   └── SKILL.md
-    ├── ai-multimodal/
-    │   └── SKILL.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── research-phase.md
+    │       ├── solution-design.md
+    │       └── plan-organization.md
     ├── docs-seeker/
-    │   └── SKILL.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── search-patterns.md
+    │       └── source-evaluation.md
     └── sequential-thinking/
-        └── SKILL.md
+        ├── SKILL.md
+        └── references/
+            ├── core-patterns.md
+            └── advanced-techniques.md
 ```
 
 **Installation:**
@@ -552,7 +568,9 @@ curl -fsSL https://raw.githubusercontent.com/camping89/cokit/main/install.sh | b
 | Version controlled | Yes | No (personal) |
 | Team sharing | Yes | No |
 | Portability | With project | With user |
-| Contains | Instructions, prompts, skills | Skills only |
+| Contains | Instructions, prompts, skills | 5 core skills (Phase 3) |
+| Skills available | debugging, code-review, planning, docs-seeker, sequential-thinking | Same as repo level |
+| References | Each skill includes 2-3 reference docs | Each skill includes 2-3 reference docs |
 
 ---
 

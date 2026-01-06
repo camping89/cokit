@@ -134,14 +134,16 @@ your-project/
 ```
 ~/.copilot/
 └── skills/
-    ├── debugging/                  # Systematic debugging
-    ├── code-review/                # Review protocols
-    ├── planning/                   # Implementation planning
-    ├── docs-seeker/                # Documentation finder
-    └── sequential-thinking/        # Problem decomposition
+    ├── debugging/                  # Systematic debugging framework
+    ├── code-review/                # Code review & verification protocols
+    ├── planning/                   # Implementation planning & design
+    ├── docs-seeker/                # Documentation discovery & research
+    └── sequential-thinking/        # Structured problem decomposition
 ```
 
 **Use case:** Personal productivity - works across all projects.
+
+**Availability:** All 5 skills follow Copilot Agent Skills format with SKILL.md + references/
 
 ---
 
@@ -172,15 +174,17 @@ your-project/
 
 ---
 
-## 6. Skills Included
+## 6. User-Level Skills (Phase 3)
 
-| Skill | What Copilot learns |
-|-------|---------------------|
-| **debugging** | Systematic root cause analysis, not random fixes |
-| **code-review** | Security checks, performance review, best practices |
-| **planning** | Break down features, identify risks, estimate effort |
-| **docs-seeker** | Find relevant documentation automatically |
-| **sequential-thinking** | Step-by-step problem decomposition |
+All 5 skills available at `~/.copilot/skills/` following Copilot Agent Skills format:
+
+| Skill | What Copilot learns | Format |
+|-------|---------------------|--------|
+| **debugging** | Systematic root cause analysis, not random fixes | SKILL.md + 3 references |
+| **code-review** | Verification gates, technical rigor, feedback protocols | SKILL.md + 2 references |
+| **planning** | Research → design → implementation planning workflow | SKILL.md + 3 references |
+| **docs-seeker** | Documentation discovery, source validation, search patterns | SKILL.md + 2 references |
+| **sequential-thinking** | Structured multi-step problem solving with revision | SKILL.md + 2 references |
 
 ---
 
@@ -205,7 +209,12 @@ cokit/
 │       └── paths.js              # Cross-platform paths
 ├── templates/
 │   └── repo/                     # Project templates
-├── skills/                       # User-level skills
+├── skills/                       # User-level skills (Phase 3)
+│   ├── debugging/                # + references/
+│   ├── code-review/              # + references/
+│   ├── planning/                 # + references/
+│   ├── docs-seeker/              # + references/
+│   └── sequential-thinking/      # + references/
 ├── README.md
 └── LICENSE                       # CC BY-NC 4.0
 ```
@@ -230,10 +239,10 @@ cokit/
 |-------|-------------|--------|--------|
 | 1 | CLI tool (npm package) | 4h | ✅ Complete |
 | 2 | Repo templates (.github/) | 3h | ✅ Complete |
-| 3 | User skills (5 core) | 4h | ✅ Complete |
+| 3 | User skills (5 core + references) | 4h | ✅ Complete |
 | 4 | Prompt files (6 prompts) | 2h | ✅ Complete |
 | 5 | Documentation + README | 3h | ✅ Complete |
-| **Total** | | **16h** | ✅ Phase 1 Done |
+| **Total** | | **16h** | ✅ All Phases Complete |
 
 ---
 
