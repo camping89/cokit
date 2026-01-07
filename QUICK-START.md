@@ -12,7 +12,7 @@ Open your project in VS Code.
 
 ## Step 3: Try It
 
-Type `/fix` in Copilot Chat.
+Type `/ck-fix` in Copilot Chat.
 
 ## Done!
 
@@ -24,9 +24,9 @@ You now have 6 prompts and 5 skills ready to use.
 
 Try these prompts in Copilot Chat:
 
-- `/fix` - Got a bug? Copilot will debug it
-- `/plan` - Need a feature? Copilot will plan it
-- `/review` - Ready to commit? Copilot will review it
+- `/ck-fix` - Got a bug? Copilot will debug it
+- `/ck-plan` - Need a feature? Copilot will plan it
+- `/ck-review` - Ready to commit? Copilot will review it
 
 ## Need Help?
 

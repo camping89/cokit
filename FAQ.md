@@ -28,7 +28,7 @@ Yes! Edit any `.prompt.md` file in `.github/prompts/`.
 
 Type the prompt name in Copilot Chat:
 ```
-/fix my login function throws an error
+/ck-fix my login function throws an error
 ```
 
 ### Why isn't Copilot responding to my prompts?
@@ -55,12 +55,12 @@ Your instructions here...
 **Repo-level (`.github/`):**
 - `copilot-instructions.md` - Project rules
 - `AGENTS.md` - Agent behavior
-- `prompts/*.prompt.md` - 6 prompt files
-- `skills/*/SKILL.md` - 2 skill files
-- `instructions/*.instructions.md` - 4 instruction files
+- `prompts/ck-*.prompt.md` - 6 prompt files (ck-fix, ck-plan, etc.)
+- `skills/ck-*/SKILL.md` - 2 skill files (ck-debugging, ck-code-review)
+- `instructions/ck-*.instructions.md` - 4 instruction files
 
 **User-level (`~/.copilot/skills/`):**
-- 5 skill directories with SKILL.md + references
+- 5 skill directories: ck-debugging, ck-code-review, ck-planning, ck-docs-seeker, ck-sequential-thinking
 
 ### Does CoKit modify my code?
 

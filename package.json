@@ -1,5 +1,5 @@
 {
-  "name": "cokit",
+  "name": "cokit-cli",
   "version": "1.0.0",
   "description": "Make GitHub Copilot smarter in 30 seconds",
   "main": "src/index.js",

@@ -6,12 +6,12 @@ This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
 
 | Feature | Claude Code | CoKit/Copilot |
 |---------|-------------|---------------|
-| Commands | `/fix:types`, `/plan:auto` | `/fix`, `/plan` |
+| Commands | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan` |
 | Arguments | `$ARGUMENTS` variable | User provides in chat |
 | Subagents | Task tool with agents | Single Copilot agent |
 | Hooks | Pre/post execution | Not supported |
-| Skills | `~/.claude/skills/` | `~/.copilot/skills/` |
-| Prompts | `~/.claude/commands/` | `.github/prompts/` |
+| Skills | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` |
+| Prompts | `~/.claude/commands/` | `.github/prompts/ck-*.prompt.md` |
 
 ## What's Different
 
@@ -25,8 +25,8 @@ This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
 
 **Copilot:**
 ```
-/fix the type errors in auth.ts
-/fix the failing tests in user.test.ts
+/ck-fix the type errors in auth.ts
+/ck-fix the failing tests in user.test.ts
 ```
 
 Provide context directly in your message.
@@ -78,11 +78,11 @@ After fixing:
 
 | Claude Skill | CoKit Skill | Notes |
 |--------------|-------------|-------|
-| debugging | debugging | Same methodology |
-| code-review | code-review | Same principles |
-| planning | planning | Simplified workflow |
-| docs-seeker | docs-seeker | Same search patterns |
-| sequential-thinking | sequential-thinking | Same approach |
+| debugging | ck-debugging | Same methodology |
+| code-review | ck-code-review | Same principles |
+| planning | ck-planning | Simplified workflow |
+| docs-seeker | ck-docs-seeker | Same search patterns |
+| sequential-thinking | ck-sequential-thinking | Same approach |
 
 ## What Works the Same
 
@@ -100,8 +100,8 @@ After fixing:
 
 2. Use prompts directly:
    ```
-   /fix (describe your issue)
-   /plan (describe your feature)
+   /ck-fix (describe your issue)
+   /ck-plan (describe your feature)
    ```
 
 3. Skills work automatically - no changes needed.

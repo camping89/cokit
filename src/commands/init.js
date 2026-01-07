@@ -88,7 +88,7 @@ export const initCommand = new Command('init')
 
       // Success message
       done('Done! Open VS Code and start using Copilot.');
-      hint('Try typing /fix in Copilot Chat.');
+      hint('Try typing /ck-fix in Copilot Chat.');
       console.log();
 
     } catch (err) {

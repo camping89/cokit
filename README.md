@@ -11,7 +11,7 @@ Make GitHub Copilot smarter in 30 seconds.
 npx cokit init
 ```
 
-That's it! Now open VS Code and try `/fix` in Copilot Chat.
+That's it! Now open VS Code and try `/ck-fix` in Copilot Chat.
 
 ## What You Get
 
@@ -19,12 +19,14 @@ That's it! Now open VS Code and try `/fix` in Copilot Chat.
 
 | Command | What it does |
 |---------|--------------|
-| `/fix` | Debug and fix code issues |
-| `/plan` | Create implementation plans |
-| `/review` | Review code before committing |
-| `/test` | Write tests for your code |
-| `/code` | Implement from a plan |
-| `/docs` | Update documentation |
+| `/ck-fix` | Debug and fix code issues |
+| `/ck-plan` | Create implementation plans |
+| `/ck-review` | Review code before committing |
+| `/ck-test` | Write tests for your code |
+| `/ck-code` | Implement from a plan |
+| `/ck-docs` | Update documentation |
+
+> **Why `ck-` prefix?** Prevents conflicts with other tools. Easy to identify CoKit prompts.
 
 ### Skills (automatic)
 
