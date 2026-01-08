@@ -1,6 +1,6 @@
 ---
-name: sequential-thinking
-description: Apply structured, reflective problem-solving for complex tasks requiring multi-step analysis, revision capability, and hypothesis verification.
+name: 'ck-sequential-thinking'
+description: 'Apply structured, reflective problem-solving for complex tasks requiring multi-step analysis, revision capability, and hypothesis verification. Use for complex problem decomposition, adaptive planning, analysis needing course correction, problems with unclear scope, multi-step solutions, and hypothesis-driven work.'
 ---
 
 # Sequential Thinking
@@ -73,8 +73,20 @@ Complete when:
 
 **Implicit**: Apply methodology internally for routine problem-solving where thinking aids accuracy without cluttering response.
 
+## Scripts (Optional)
+
+Optional scripts for deterministic validation/tracking:
+- `scripts/process-thought.js` - Validate & track thoughts with history
+- `scripts/format-thought.js` - Format for display (box/markdown/simple)
+
+See README.md for usage examples. Use when validation/persistence needed; otherwise apply methodology directly.
+
 ## References
 
 Load when deeper understanding needed:
 - `references/core-patterns.md` - Revision & branching patterns
+- `references/examples-api.md` - API design example
+- `references/examples-debug.md` - Debugging example
+- `references/examples-architecture.md` - Architecture decision example
 - `references/advanced-techniques.md` - Spiral refinement, hypothesis testing, convergence
+- `references/advanced-strategies.md` - Uncertainty, revision cascades, meta-thinking

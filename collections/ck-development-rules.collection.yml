@@ -1,0 +1,22 @@
+id: ck-development-rules
+name: CK Development Rules
+description: Essential development rules and best practices including YAGNI, KISS, DRY principles, file naming, code quality, and pre-commit guidelines.
+tags: [development, rules, best-practices, quality]
+items:
+  - path: agents/code-reviewer.agent.md
+    kind: agent
+  - path: agents/debugger.agent.md
+    kind: agent
+  - path: skills/ck-debugging/SKILL.md
+    kind: skill
+  - path: skills/ck-code-review/SKILL.md
+    kind: skill
+  - path: prompts/ck-code.prompt.md
+    kind: prompt
+  - path: prompts/ck-fix.prompt.md
+    kind: prompt
+  - path: prompts/ck-test.prompt.md
+    kind: prompt
+display:
+  ordering: alpha
+  show_badge: true

@@ -1,65 +1,63 @@
 # Solution Design
 
-How to design solutions before implementing.
+## Core Principles
 
-## Design Process
+Follow these fundamental principles:
+- **YAGNI** (You Aren't Gonna Need It) - Don't add functionality until necessary
+- **KISS** (Keep It Simple, Stupid) - Prefer simple solutions over complex ones
+- **DRY** (Don't Repeat Yourself) - Avoid code duplication
 
-### 1. Define Scope
+## Design Activities
 
-- What's included?
-- What's excluded?
-- What's the MVP?
-- What's future work?
+### Technical Trade-off Analysis
+- Evaluate multiple approaches for each requirement
+- Compare pros and cons of different solutions
+- Consider short-term vs long-term implications
+- Balance complexity with maintainability
+- Assess development effort vs benefit
+- Recommend optimal solution based on current best practices
 
-### 2. Architecture
+### Security Assessment
+- Identify potential vulnerabilities during design phase
+- Consider authentication and authorization requirements
+- Assess data protection needs
+- Evaluate input validation requirements
+- Plan for secure configuration management
+- Address OWASP Top 10 concerns
+- Consider API security (rate limiting, CORS, etc.)
 
-- High-level structure
-- Component breakdown
-- Data flow
-- Integration points
+### Performance & Scalability
+- Identify potential bottlenecks early
+- Consider database query optimization needs
+- Plan for caching strategies
+- Assess resource usage (memory, CPU, network)
+- Design for horizontal/vertical scaling
+- Plan for load distribution
+- Consider asynchronous processing where appropriate
 
-### 3. Consider Alternatives
+### Edge Cases & Failure Modes
+- Think through error scenarios
+- Plan for network failures
+- Consider partial failure handling
+- Design retry and fallback mechanisms
+- Plan for data consistency
+- Consider race conditions
+- Design for graceful degradation
 
-For each major decision:
-- Option A: [description]
-- Option B: [description]
-- Recommendation: [choice + reasoning]
+### Architecture Design
+- Create scalable system architectures
+- Design for maintainability
+- Plan component interactions
+- Design data flow
+- Consider microservices vs monolith trade-offs
+- Plan API contracts
+- Design state management
 
-### 4. Trade-offs
+## Best Practices
 
-Document trade-offs:
-- Performance vs simplicity
-- Flexibility vs complexity
-- Speed vs quality
-
-## Design Output
-
-### Architecture Document
-
-```markdown
-## Overview
-[1-2 sentences]
-
-## Components
-- Component A: [purpose]
-- Component B: [purpose]
-
-## Data Flow
-[diagram or description]
-
-## Key Decisions
-- Decision 1: [choice + why]
-- Decision 2: [choice + why]
-
-## Trade-offs
-- [trade-off 1]
-- [trade-off 2]
-```
-
-## Quality Checks
-
-- [ ] Scope clear?
-- [ ] Components defined?
-- [ ] Alternatives considered?
-- [ ] Trade-offs documented?
-- [ ] Fits existing patterns?
+- Document design decisions and rationale
+- Consider both technical and business requirements
+- Think through the entire user journey
+- Plan for monitoring and observability
+- Design with testing in mind
+- Consider deployment and rollback strategies

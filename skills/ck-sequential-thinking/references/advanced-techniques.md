@@ -71,18 +71,6 @@ Thought 9/9 [FINAL]: Integrated solution
 **Use for**: System design, architecture, integration problems.
 **Pattern**: Abstract → Components → Details → Interactions → Integration.
 
-## Uncertainty Management
+## Reference
 
-For high-uncertainty problems:
-- Acknowledge uncertainty explicitly in thought markers
-- Use confidence levels (high/medium/low)
-- Branch when confidence diverges significantly
-- Verify high-impact assumptions early
-
-## Meta-Thinking Calibration
-
-Periodically assess:
-- Are thoughts advancing toward solution?
-- Is scope expanding appropriately?
-- Should approach be revised?
-- Is current depth sufficient?
+See `advanced-strategies.md` for: Uncertainty Management, Revision Cascade Management, Meta-Thinking Calibration, Parallel Constraint Satisfaction.

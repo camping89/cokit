@@ -76,6 +76,14 @@ Thought 4/6: Root cause via Branch B
 
 **Contract when**: Key insight solves earlier, problem simpler, steps merge naturally.
 
+**Example**:
+```
+Thought 1/5: Initial
+Thought 3/7: Complexity (5→7)
+Thought 5/8: Another aspect (7→8)
+Thought 8/8 [FINAL]: Complete
+```
+
 ## Anti-Patterns
 
 **Premature Completion**: Rushing without verification → Add verification thoughts.

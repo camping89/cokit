@@ -8,7 +8,14 @@
   },
   "scripts": {
     "test": "node --test",
-    "lint": "echo 'No linter configured'"
+    "lint": "echo 'No linter configured'",
+    "build": "node eng/update-readme.mjs",
+    "convert:agents": "node eng/convert-agents.mjs",
+    "convert:commands": "node eng/convert-commands.mjs",
+    "convert:skills": "node eng/convert-skills.mjs",
+    "convert:all": "npm run convert:agents && npm run convert:commands && npm run convert:skills && npm run rewrite && npm run clean",
+    "rewrite": "node eng/rewrite-single-agent.mjs",
+    "clean": "node eng/clean-claude-references.mjs"
   },
   "keywords": [
     "copilot",

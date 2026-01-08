@@ -1,0 +1,18 @@
+id: ck-git-workflow
+name: CK Git Workflow
+description: Git workflow automation including commit, push, merge, and pull request management.
+tags: [git, workflow, commit, pr, version-control]
+items:
+  - path: agents/git-manager.agent.md
+    kind: agent
+  - path: prompts/ck-git-cm.prompt.md
+    kind: prompt
+  - path: prompts/ck-git-cp.prompt.md
+    kind: prompt
+  - path: prompts/ck-git-pr.prompt.md
+    kind: prompt
+  - path: prompts/ck-git-merge.prompt.md
+    kind: prompt
+display:
+  ordering: alpha
+  show_badge: true

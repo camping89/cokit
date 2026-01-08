@@ -2,15 +2,27 @@
 import { Command } from 'commander';
 import prompts from 'prompts';
 import { copyDir, pathExists } from '../utils/copy.js';
-import { getTemplatesDir, getSkillsSourceDir, getUserSkillsDir, getRepoGithubDir, getRepoVscodeDir } from '../utils/paths.js';
+import {
+  getTemplatesDir,
+  getSkillsSourceDir,
+  getAgentsSourceDir,
+  getPromptsSourceDir,
+  getInstructionsSourceDir,
+  getUserSkillsDir,
+  getUserAgentsDir,
+  getUserPromptsDir,
+  getUserInstructionsDir,
+  getRepoGithubDir,
+  getRepoVscodeDir
+} from '../utils/paths.js';
 import { success, error, done, info, hint, bold, cyan } from '../utils/colors.js';
 import { join } from 'path';
 import { mkdirSync, existsSync } from 'fs';
 
 export const initCommand = new Command('init')
   .description('Set up CoKit in your project or globally')
-  .option('-g, --global', 'Install personal skills to ~/.copilot/')
-  .option('-a, --all', 'Install both project templates and personal skills')
+  .option('-g, --global', 'Install all CoKit resources to ~/.copilot/')
+  .option('-a, --all', 'Install both project templates and global resources')
   .option('-y, --yes', 'Skip confirmation prompts')
   .option('--overwrite', 'Overwrite existing files without prompting')
   .action(async (options) => {
@@ -19,7 +31,6 @@ export const initCommand = new Command('init')
     console.log();
 
     try {
-      // Determine what to install
       let installProject = false;
       let installGlobal = false;
 
@@ -29,14 +40,13 @@ export const initCommand = new Command('init')
       } else if (options.global) {
         installGlobal = true;
       } else if (!options.global && !options.all) {
-        // Interactive mode - ask user
         const response = await prompts({
           type: 'select',
           name: 'mode',
           message: 'What do you want to set up?',
           choices: [
             { title: 'Project templates (.github/)', value: 'project', description: 'For this project only - share via git' },
-            { title: 'Personal skills (~/.copilot/)', value: 'global', description: 'Works in all projects' },
+            { title: 'Global resources (~/.copilot/)', value: 'global', description: 'Works in all projects' },
             { title: 'Both', value: 'both', description: 'Recommended for first-time setup' }
           ],
           initial: 0
@@ -51,11 +61,10 @@ export const initCommand = new Command('init')
         installGlobal = response.mode === 'global' || response.mode === 'both';
       }
 
-      // Confirm before proceeding
       if (!options.yes) {
         const targets = [];
         if (installProject) targets.push('.github/');
-        if (installGlobal) targets.push('~/.copilot/skills/');
+        if (installGlobal) targets.push('~/.copilot/');
 
         const confirm = await prompts({
           type: 'confirm',
@@ -72,21 +81,18 @@ export const initCommand = new Command('init')
 
       console.log();
 
-      // Install project templates
       if (installProject) {
         info('Setting up project templates...');
         await installProjectTemplates(options);
         console.log();
       }
 
-      // Install global skills
       if (installGlobal) {
-        info('Setting up personal skills...');
-        await installGlobalSkills(options);
+        info('Setting up global CoKit resources...');
+        await installGlobalResources(options);
         console.log();
       }
 
-      // Success message
       done('Done! Open VS Code and start using Copilot.');
       hint('Try typing /ck-fix in Copilot Chat.');
       console.log();
@@ -101,13 +107,11 @@ async function installProjectTemplates(options) {
   const templatesDir = getTemplatesDir();
   const cwd = process.cwd();
 
-  // Check if templates exist
   if (!pathExists(templatesDir)) {
     error('Templates not found. Package may be corrupted.');
     return;
   }
 
-  // Copy .github directory
   const githubSrc = join(templatesDir, '.github');
   const githubDest = getRepoGithubDir(cwd);
 
@@ -118,7 +122,6 @@ async function installProjectTemplates(options) {
     });
   }
 
-  // Copy .vscode directory
   const vscodeSrc = join(templatesDir, '.vscode');
   const vscodeDest = getRepoVscodeDir(cwd);
 
@@ -130,23 +133,51 @@ async function installProjectTemplates(options) {
   }
 }
 
-async function installGlobalSkills(options) {
-  const skillsSrc = getSkillsSourceDir();
-  const skillsDest = getUserSkillsDir();
-
-  // Check if skills source exists
-  if (!pathExists(skillsSrc)) {
-    error('Skills not found. Package may be corrupted.');
-    return;
-  }
-
-  // Ensure ~/.copilot/skills/ directory exists
-  if (!existsSync(skillsDest)) {
-    mkdirSync(skillsDest, { recursive: true });
-  }
-
-  await copyDir(skillsSrc, skillsDest, {
+async function installGlobalResources(options) {
+  const copyOptions = {
     overwrite: options.overwrite,
     prompt: !options.yes
-  });
+  };
+
+  // Install agents
+  const agentsSrc = getAgentsSourceDir();
+  const agentsDest = getUserAgentsDir();
+  if (pathExists(agentsSrc)) {
+    ensureDir(agentsDest);
+    await copyDir(agentsSrc, agentsDest, copyOptions);
+    success(`  ✓ Agents installed to ${agentsDest}`);
+  }
+
+  // Install prompts
+  const promptsSrc = getPromptsSourceDir();
+  const promptsDest = getUserPromptsDir();
+  if (pathExists(promptsSrc)) {
+    ensureDir(promptsDest);
+    await copyDir(promptsSrc, promptsDest, copyOptions);
+    success(`  ✓ Prompts installed to ${promptsDest}`);
+  }
+
+  // Install instructions
+  const instructionsSrc = getInstructionsSourceDir();
+  const instructionsDest = getUserInstructionsDir();
+  if (pathExists(instructionsSrc)) {
+    ensureDir(instructionsDest);
+    await copyDir(instructionsSrc, instructionsDest, copyOptions);
+    success(`  ✓ Instructions installed to ${instructionsDest}`);
+  }
+
+  // Install skills
+  const skillsSrc = getSkillsSourceDir();
+  const skillsDest = getUserSkillsDir();
+  if (pathExists(skillsSrc)) {
+    ensureDir(skillsDest);
+    await copyDir(skillsSrc, skillsDest, copyOptions);
+    success(`  ✓ Skills installed to ${skillsDest}`);
+  }
+}
+
+function ensureDir(dir) {
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true });
+  }
 }

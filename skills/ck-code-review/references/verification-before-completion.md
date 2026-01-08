@@ -1,86 +1,139 @@
+---
+name: verification-before-completion
+description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always
+---
+
 # Verification Before Completion
 
-Verification gates require evidence before any status claims.
+## Overview
+
+Claiming work is complete without verification is dishonesty, not efficiency.
+
+**Core principle:** Evidence before claims, always.
+
+**Violating the letter of this rule is violating the spirit of this rule.**
 
 ## The Iron Law
 
-**NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE**
-
-"Should work" is not evidence.
-Run it. Read it. Then claim it.
-
-## Gate Process
-
-1. **IDENTIFY** - What command verifies this claim?
-2. **RUN** - Execute the full command
-3. **READ** - Read the actual output
-4. **VERIFY** - Output confirms claim?
-5. **CLAIM** - Only then state completion
-
-## Common Claims & Verification
-
-### "Tests pass"
-```bash
-npm test
-# Read output - 0 failures?
+```
+NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 ```
 
-### "Build succeeds"
-```bash
-npm run build
-# Exit code 0?
+If you haven't run the verification command in this message, you cannot claim it passes.
+
+## The Gate Function
+
+```
+BEFORE claiming any status or expressing satisfaction:
+
+1. IDENTIFY: What command proves this claim?
+2. RUN: Execute the FULL command (fresh, complete)
+3. READ: Full output, check exit code, count failures
+4. VERIFY: Does output confirm the claim?
+   - If NO: State actual status with evidence
+   - If YES: State claim WITH evidence
+5. ONLY THEN: Make the claim
+
+Skip any step = lying, not verifying
 ```
 
-### "Bug is fixed"
-```bash
-# Run original failing test
-# Does it pass now?
+## Common Failures
+
+| Claim | Requires | Not Sufficient |
+|-------|----------|----------------|
+| Tests pass | Test command output: 0 failures | Previous run, "should pass" |
+| Linter clean | Linter output: 0 errors | Partial check, extrapolation |
+| Build succeeds | Build command: exit 0 | Linter passing, logs look good |
+| Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
+| Regression test works | Red-green cycle verified | Test passes once |
+| Agent completed | VCS diff shows changes | Agent reports "success" |
+| Requirements met | Line-by-line checklist | Tests passing |
+
+## Red Flags - STOP
+
+- Using "should", "probably", "seems to"
+- Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
+- About to commit/push/PR without verification
+- Trusting agent success reports
+- Relying on partial verification
+- Thinking "just this once"
+- Tired and wanting work over
+- **ANY wording implying success without having run verification**
+
+## Rationalization Prevention
+
+| Excuse | Reality |
+|--------|---------|
+| "Should work now" | RUN the verification |
+| "I'm confident" | Confidence ≠ evidence |
+| "Just this once" | No exceptions |
+| "Linter passed" | Linter ≠ compiler |
+| "Agent said success" | Verify independently |
+| "I'm tired" | Exhaustion ≠ excuse |
+| "Partial check is enough" | Partial proves nothing |
+| "Different words so rule doesn't apply" | Spirit over letter |
+
+## Key Patterns
+
+**Tests:**
+```
+✅ [Run test command] [See: 34/34 pass] "All tests pass"
+❌ "Should pass now" / "Looks correct"
 ```
 
-### "Linting clean"
-```bash
-npm run lint
-# No errors?
+**Regression tests (TDD Red-Green):**
+```
+✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+❌ "I've written a regression test" (without red-green verification)
 ```
 
-## Red Flags
+**Build:**
+```
+✅ [Run build] [See: exit 0] "Build passes"
+❌ "Linter passed" (linter doesn't check compilation)
+```
 
-Stop immediately if saying:
-- "should work now"
-- "seems to be fixed"
-- "probably passing"
-- "looks good"
-- "I think it's done"
+**Requirements:**
+```
+✅ Re-read plan → Create checklist → Verify each → Report gaps or completion
+❌ "Tests pass, phase complete"
+```
 
-These mean: **RUN VERIFICATION FIRST**
+**Agent delegation:**
+```
+✅ Agent reports success → Check VCS diff → Verify changes → Report actual state
+❌ Trust agent report
+```
 
-## Evidence Format
+## Why This Matters
 
-Bad:
-> "Tests pass"
+From 24 failure memories:
+- your human partner said "I don't believe you" - trust broken
+- Undefined functions shipped - would crash
+- Missing requirements shipped - incomplete features
+- Time wasted on false completion → redirect → rework
+- Violates: "Honesty is a core value. If you lie, you'll be replaced."
 
-Good:
-> "Tests pass - ran `npm test`, output shows 45/45 passing"
+## When To Apply
 
-## Before Claiming Complete
+**ALWAYS before:**
+- ANY variation of success/completion claims
+- ANY expression of satisfaction
+- ANY positive statement about work state
+- Committing, PR creation, task completion
+- Moving to next task
+- Delegating to agents
 
-Checklist:
-- [ ] Tests pass (fresh run, not cached)
-- [ ] No new warnings
-- [ ] Feature works manually
-- [ ] Edge cases handled
-- [ ] No regressions
+**Rule applies to:**
+- Exact phrases
+- Paraphrases and synonyms
+- Implications of success
+- ANY communication suggesting completion/correctness
 
-## Before Committing
+## The Bottom Line
 
-Checklist:
-- [ ] All above verified
-- [ ] No unrelated changes
-- [ ] Commit message accurate
-- [ ] Branch is correct
+**No shortcuts for verification.**
 
-## Bottom Line
+Run the command. Read the output. THEN claim the result.
 
-Verify. Then claim.
-Not: Claim. Then verify.
-Not: Claim. Assume verified.
+This is non-negotiable.

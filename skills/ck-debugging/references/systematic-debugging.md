@@ -1,74 +1,102 @@
 # Systematic Debugging
 
-Four-phase framework ensuring proper investigation before fixes.
+Four-phase debugging framework that ensures root cause investigation before attempting fixes.
 
-## Phase 1: Root Cause Investigation
+## The Iron Law
 
-Before ANY fix attempt:
+```
+NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
+```
 
-1. **Read the full error**
-   - Stack trace, line numbers, error type
-   - Don't skim - read word by word
+If haven't completed Phase 1, cannot propose fixes.
 
-2. **Reproduce consistently**
-   - Can you trigger it reliably?
-   - What are the exact steps?
+## The Four Phases
 
-3. **Check recent changes**
-   - What changed since it last worked?
-   - git diff, recent commits
+Must complete each phase before proceeding to next.
 
-4. **Gather evidence**
-   - Add logging if needed
-   - Check inputs and outputs
-   - Don't guess - observe
+### Phase 1: Root Cause Investigation
 
-## Phase 2: Pattern Analysis
+**BEFORE attempting ANY fix:**
 
-1. **Find working example**
-   - Similar code that works
-   - Previous version that worked
+1. **Read Error Messages Carefully** - Don't skip past errors/warnings, read stack traces completely
+2. **Reproduce Consistently** - Can trigger reliably? Exact steps? If not reproducible → gather more data
+3. **Check Recent Changes** - What changed? Git diff, recent commits, new dependencies, config changes
+4. **Gather Evidence in Multi-Component Systems**
+   - For EACH component boundary: log data entering/exiting, verify environment propagation
+   - Run once to gather evidence showing WHERE it breaks
+   - THEN analyze to identify failing component
+5. **Trace Data Flow** - Where does bad value originate? Trace up call stack until finding source (see root-cause-tracing.md)
 
-2. **Compare systematically**
-   - Line by line comparison
-   - What's different?
+### Phase 2: Pattern Analysis
 
-3. **Identify key difference**
-   - What's the minimal difference?
-   - What assumption changed?
+**Find pattern before fixing:**
 
-## Phase 3: Hypothesis and Testing
+1. **Find Working Examples** - Locate similar working code in same codebase
+2. **Compare Against References** - Read reference implementation COMPLETELY, understand fully before applying
+3. **Identify Differences** - List every difference however small, don't assume "that can't matter"
+4. **Understand Dependencies** - What other components, settings, config, environment needed?
 
-1. **Form specific theory**
-   - "The bug is caused by X because Y"
-   - Must be testable
+### Phase 3: Hypothesis and Testing
 
-2. **Test minimally**
-   - Smallest change to prove/disprove
-   - Don't fix yet - just test theory
+**Scientific method:**
 
-3. **Verify theory**
-   - Did prediction match result?
-   - If not, return to Phase 1
+1. **Form Single Hypothesis** - "I think X is root cause because Y", be specific not vague
+2. **Test Minimally** - SMALLEST possible change to test hypothesis, one variable at a time
+3. **Verify Before Continuing** - Worked? → Phase 4. Didn't work? → NEW hypothesis. DON'T add more fixes
+4. **When Don't Know** - Say "I don't understand X", don't pretend, ask for help
 
-## Phase 4: Implementation
+### Phase 4: Implementation
 
-1. **Write failing test first**
-   - Test should fail before fix
-   - Proves you understand bug
+**Fix root cause, not symptom:**
 
-2. **Make minimal fix**
-   - Fix at root cause
-   - Don't add workarounds
+1. **Create Failing Test Case** - Simplest reproduction, automated if possible, MUST have before fixing
+2. **Implement Single Fix** - Address root cause identified, ONE change, no "while I'm here" improvements
+3. **Verify Fix** - Test passes? No other tests broken? Issue actually resolved?
+4. **If Fix Doesn't Work**
+   - STOP. Count: How many fixes tried?
+   - If < 3: Return to Phase 1, re-analyze with new information
+   - **If ≥ 3: STOP and question architecture**
+5. **If 3+ Fixes Failed: Question Architecture**
+   - Pattern: Each fix reveals new shared state/coupling problem elsewhere
+   - STOP and question fundamentals: Is pattern sound? Wrong architecture?
+   - Discuss with human partner before more fixes
 
-3. **Verify fix works**
-   - Test passes now
-   - No regressions
-   - Fresh run, not cached
+## Red Flags - STOP and Follow Process
 
-## Key Rules
+If catch yourself thinking:
+- "Quick fix for now, investigate later"
+- "Just try changing X and see if it works"
+- "Add multiple changes, run tests"
+- "Skip the test, I'll manually verify"
+- "It's probably X, let me fix that"
+- "I don't fully understand but this might work"
+- "One more fix attempt" (when already tried 2+)
 
-- Complete each phase before proceeding
-- No fixes without Phase 1 evidence
-- Theory must be testable
-- Verify every claim
+**ALL mean:** STOP. Return to Phase 1.
+
+## Human Partner Signals You're Doing It Wrong
+
+- "Is that not happening?" - Assumed without verifying
+- "Will it show us...?" - Should have added evidence gathering
+- "Stop guessing" - Proposing fixes without understanding
+- "Ultrathink this" - Question fundamentals, not just symptoms
+- "We're stuck?" (frustrated) - Approach isn't working
+
+**When see these:** STOP. Return to Phase 1.
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Issue is simple, don't need process" | Simple issues have root causes too |
+| "Emergency, no time for process" | Systematic is FASTER than guess-and-check |
+| "Just try this first, then investigate" | First fix sets pattern. Do right from start |
+| "One more fix attempt" (after 2+ failures) | 3+ failures = architectural problem |
+
+## Real-World Impact
+
+From debugging sessions:
+- Systematic approach: 15-30 minutes to fix
+- Random fixes approach: 2-3 hours of thrashing
+- First-time fix rate: 95% vs 40%
+- New bugs introduced: Near zero vs common

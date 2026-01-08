@@ -14,14 +14,45 @@ export function getUserSkillsDir() {
   return join(homedir(), '.copilot', 'skills');
 }
 
-// Repo-level templates source
-export function getTemplatesDir() {
-  return join(PACKAGE_ROOT, 'templates', 'repo');
+// User-level agents directory (~/.copilot/agents/)
+export function getUserAgentsDir() {
+  return join(homedir(), '.copilot', 'agents');
 }
 
-// User-level skills source
+// User-level prompts directory (~/.copilot/prompts/)
+export function getUserPromptsDir() {
+  return join(homedir(), '.copilot', 'prompts');
+}
+
+// User-level instructions directory (~/.copilot/instructions/)
+export function getUserInstructionsDir() {
+  return join(homedir(), '.copilot', 'instructions');
+}
+
+// Source directories in package
+export function getAgentsSourceDir() {
+  return join(PACKAGE_ROOT, 'agents');
+}
+
+export function getPromptsSourceDir() {
+  return join(PACKAGE_ROOT, 'prompts');
+}
+
+export function getInstructionsSourceDir() {
+  return join(PACKAGE_ROOT, 'instructions');
+}
+
 export function getSkillsSourceDir() {
   return join(PACKAGE_ROOT, 'skills');
+}
+
+export function getCollectionsSourceDir() {
+  return join(PACKAGE_ROOT, 'collections');
+}
+
+// Repo-level templates source (legacy)
+export function getTemplatesDir() {
+  return join(PACKAGE_ROOT, 'templates', 'repo');
 }
 
 // Get .github directory in current project

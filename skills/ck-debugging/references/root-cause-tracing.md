@@ -1,65 +1,122 @@
 # Root Cause Tracing
 
-Technique for finding where bugs originate, not where they manifest.
+Systematically trace bugs backward through call stack to find original trigger.
 
-## Core Concept
+## Core Principle
 
-Bugs often appear deep in execution but originate elsewhere. Trace backward through the call stack to find the original source.
+**Trace backward through call chain until finding original trigger, then fix at source.**
 
-## The Backward Trace
+Bugs often manifest deep in call stack (git init in wrong directory, file created in wrong location). Instinct is to fix where error appears, but that's treating symptom.
 
-When you see an error:
+## When to Use
 
-1. **Note the error location**
-   - Where did it crash/fail?
-   - This is the symptom, not cause
+**Use when:**
+- Error happens deep in execution (not at entry point)
+- Stack trace shows long call chain
+- Unclear where invalid data originated
+- Need to find which test/code triggers problem
 
-2. **Ask: Where did this data come from?**
-   - What function called this?
-   - What set this variable?
+## The Tracing Process
 
-3. **Trace one level back**
-   - Check the caller
-   - Verify data at that point
-
-4. **Repeat until source found**
-   - Keep asking "where from?"
-   - Stop when you find invalid data entry point
-
-## Example
-
+### 1. Observe the Symptom
 ```
-Error: Cannot read property 'name' of undefined
-  at renderUser (line 50)
-  at processUsers (line 30)
-  at handleResponse (line 15)
-  at fetchUsers (line 5)
+Error: git init failed in /Users/jesse/project/packages/core
 ```
 
-**Bad approach:** Fix at line 50 with null check
-**Good approach:** Trace back - why is user undefined at line 30? Where did it come from?
+### 2. Find Immediate Cause
+What code directly causes this?
+```typescript
+await execFileAsync('git', ['init'], { cwd: projectDir });
+```
 
-## Questions to Ask
+### 3. Ask: What Called This?
+```typescript
+WorktreeManager.createSessionWorktree(projectDir, sessionId)
+  → called by Session.initializeWorkspace()
+  → called by Session.create()
+  → called by test at Project.create()
+```
 
-At each level:
-- What is the value here?
-- Is it what I expect?
-- Who set it / passed it?
-- Was it validated?
+### 4. Keep Tracing Up
+What value was passed?
+- `projectDir = ''` (empty string!)
+- Empty string as `cwd` resolves to `process.cwd()`
+- That's the source code directory!
 
-## Finding the Root
+### 5. Find Original Trigger
+Where did empty string come from?
+```typescript
+const context = setupCoreTest(); // Returns { tempDir: '' }
+Project.create('name', context.tempDir); // Accessed before beforeEach!
+```
 
-Root cause is found when:
-- You find where invalid data first entered
-- Or where a valid value became invalid
-- Or where an assumption was violated
+## Adding Stack Traces
 
-Fix at that point, not downstream.
+When can't trace manually, add instrumentation:
 
-## Common Root Causes
+```typescript
+async function gitInit(directory: string) {
+  const stack = new Error().stack;
+  console.error('DEBUG git init:', {
+    directory,
+    cwd: process.cwd(),
+    stack,
+  });
 
-- Missing input validation
-- Incorrect API response handling
-- Race condition
-- State mutation
-- Incorrect assumption about data shape
+  await execFileAsync('git', ['init'], { cwd: directory });
+}
+```
+
+**Critical:** Use `console.error()` in tests (not logger - may not show)
+
+**Run and capture:**
+```bash
+npm test 2>&1 | grep 'DEBUG git init'
+```
+
+**Analyze stack traces:**
+- Look for test file names
+- Find line number triggering call
+- Identify pattern (same test? same parameter?)
+
+## Finding Which Test Causes Pollution
+
+If something appears during tests but don't know which test:
+
+Use bisection script: `scripts/find-polluter.sh`
+
+```bash
+./scripts/find-polluter.sh '.git' 'src/**/*.test.ts'
+```
+
+Runs tests one-by-one, stops at first polluter.
+
+## Key Principle
+
+**NEVER fix just where error appears.** Trace back to find original trigger.
+
+When found immediate cause:
+- Can trace one level up? → Trace backwards
+- Is this the source? → Fix at source
+- Then add validation at each layer (see defense-in-depth.md)
+
+## Real Example
+
+**Symptom:** `.git` created in `packages/core/` (source code)
+
+**Trace chain:**
+1. `git init` runs in `process.cwd()` ← empty cwd parameter
+2. WorktreeManager called with empty projectDir
+3. Session.create() passed empty string
+4. Test accessed `context.tempDir` before beforeEach
+5. setupCoreTest() returns `{ tempDir: '' }` initially
+
+**Root cause:** Top-level variable initialization accessing empty value
+
+**Fix:** Made tempDir a getter that throws if accessed before beforeEach
+
+**Also added defense-in-depth:**
+- Layer 1: Project.create() validates directory
+- Layer 2: WorkspaceManager validates not empty
+- Layer 3: NODE_ENV guard refuses git init outside tmpdir
+- Layer 4: Stack trace logging before git init

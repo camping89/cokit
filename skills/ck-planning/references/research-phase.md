@@ -1,56 +1,49 @@
-# Research Phase
+# Research & Analysis Phase
 
-How to properly research before planning.
+**When to skip:** If provided with researcher reports, skip this phase.
 
-## Goals
+## Core Activities
 
-- Understand problem space
-- Find existing solutions
-- Identify constraints
-- Avoid reinventing wheels
+### Parallel Researcher Agents
+- Spawn multiple `researcher` agents in parallel to investigate different approaches
+- Wait for all researcher agents to report back before proceeding
+- Each researcher investigates a specific aspect or approach
 
-## Research Steps
+### Sequential Thinking
+- Use `sequential-thinking` skill for dynamic and reflective problem-solving
+- Structured thinking process for complex analysis
+- Enables multi-step reasoning with revision capability
 
-### 1. Understand Requirements
+### Documentation Research
+- Use `docs-seeker` skill to read and understand documentation
+- Research plugins, packages, and frameworks
+- Find latest technical documentation using llms.txt standard
 
-- What exactly needs to be built?
-- What's the success criteria?
-- What are the constraints?
-- Who are the stakeholders?
+### GitHub Analysis
+- Use `gh` command to read and analyze:
+  - GitHub Actions logs
+  - Pull requests
+  - Issues and discussions
+- Extract relevant technical context from GitHub resources
 
-### 2. Research Existing Solutions
+### Remote Repository Analysis
+When given GitHub repository URL, generate fresh codebase summary:
+```bash
+# usage: 
+repomix --remote <github-repo-url>
+# example: 
+repomix --remote https://github.com/mrgoonie/human-mcp
+```
 
-- How do others solve this?
-- What libraries/tools exist?
-- What patterns are common?
-- What pitfalls to avoid?
+### Debugger Delegation
+- Delegate to `debugger` agent for root cause analysis
+- Use when investigating complex issues or bugs
+- Debugger agent specializes in diagnostic tasks
 
-### 3. Analyze Codebase
+## Best Practices
 
-- What exists already?
-- What patterns are used?
-- What can be reused?
-- What needs to change?
-
-### 4. Identify Risks
-
-- What could go wrong?
-- What's uncertain?
-- What needs clarification?
-- What are blockers?
-
-## Research Output
-
-Document findings:
-- Problem summary
-- Existing solutions
-- Recommended approach
-- Risks and mitigations
-- Open questions
-
-## Quality Checks
-
-- [ ] Requirements clear?
-- [ ] Alternatives considered?
-- [ ] Risks identified?
-- [ ] Questions listed?
+- Research breadth before depth
+- Document findings for synthesis phase
+- Identify multiple approaches for comparison
+- Consider edge cases during research
+- Note security implications early
