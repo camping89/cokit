@@ -115,8 +115,9 @@ Mark Step 4 complete in TodoWrite, mark Step 5 in_progress.
 2. **ONBOARDING CHECK:** Detect onboarding requirements (API keys, env vars, config) + generate summary report with next steps.
 
 3. **AUTO-COMMIT (after steps 1 and 2 completes):**
-- Run only if: Steps 1 and 2 successful + User approved + Tests passed
-- Auto-stage, commit with message [phase - plan] and push
+- Run only if: Steps 1 and 2 successful + User approved
+- Auto-stage, commit with message [phase - plan] to LOCAL repository only
+- **IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.
 
 **Validation:** Steps 1 and 2 must complete successfully. Step 3 (auto-commit) runs only if conditions met.
 

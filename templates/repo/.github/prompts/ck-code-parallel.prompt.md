@@ -49,7 +49,8 @@ Follow :
 
 ### 7. Final Report
 - Summary, guide, next steps
-- Ask to commit (use `git-manager` if yes)
+- Ask to commit to LOCAL repository (use `git-manager` if yes)
+- **IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.
 
 **Examples:**
 - Parallel: "Phases 1-3 parallel, then 4" → Launch 3 agents → Wait → Launch 1 agent

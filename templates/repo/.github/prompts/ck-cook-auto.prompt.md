@@ -10,6 +10,8 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'web/githubRepo', 'rea
 **
 
 ## Workflow:
-1. 
-2. 
-3. Finally use `AskUserQuestion` tool to ask user if he wants to commit to git repository, if yes trigger `/git:cm`  to create a commit.
+1.
+2.
+3. Finally ask user if they want to commit to git repository, if yes trigger `/git:cm` to create a LOCAL commit only.
+
+**IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.

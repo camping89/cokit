@@ -114,12 +114,13 @@ Mark Step 4 complete in TodoWrite, mark Step 5 in_progress.
 - **Call** `docs-manager` sub-agent: "Update docs for plan phase [phase-name]. Changed files: [list]."
 
 2. **ONBOARDING CHECK:** Detect onboarding requirements (API keys, env vars, config) + generate summary report with next steps.
-- If this is the last phase: use `AskUserQuestion` tool to ask if user wants to set up onboarding requirements.
+- If this is the last phase: ask if user wants to set up onboarding requirements.
 
 3. **AUTO-COMMIT (after steps 1 and 2 completes):**
 - **Call**  to handle git operation.
 - Run only if: Steps 1 and 2 successful + Tests passed
-- Auto-stage, commit with message [phase - plan] and push
+- Auto-stage, commit with message [phase - plan] to LOCAL repository only
+- **IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.
 
 **Validation:** Steps 1 and 2 must complete successfully. Step 3 (auto-commit) runs only if conditions met.
 
@@ -128,11 +129,11 @@ Mark Step 5 complete in `TodoWrite`.
 **Important:**
 If $ALL_PHASES is `Yes`, proceed to the next phase automatically.
 If $ALL_PHASES is `No`, wait for user confirmation before proceeding to the next phase:
-- Use `AskUserQuestion` tool to ask if user wants to proceed to the next phase: "**Phase workflow finished. Ready for next plan phase.**"
+- Ask if user wants to proceed to the next phase: "**Phase workflow finished. Ready for next plan phase.**"
 
 ## Summary report
 If this is the last phase, generate a concise summary report.
-Use `AskUserQuestion` tool to ask these questions:
+Ask these questions:
 - If user wants to preview the report with `/preview` .
 - If user wants to archive the plan with :archive` .
 
