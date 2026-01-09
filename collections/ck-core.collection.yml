@@ -25,10 +25,6 @@ items:
     kind: prompt
   - path: prompts/ck-fix.prompt.md
     kind: prompt
-  - path: skills/ck-debugging/SKILL.md
-    kind: skill
-  - path: skills/ck-planning/SKILL.md
-    kind: skill
 display:
   ordering: alpha
   show_badge: true

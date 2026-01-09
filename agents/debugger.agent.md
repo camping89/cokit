@@ -36,10 +36,9 @@ When investigating issues, you will:
    - Retrieve CI/CD pipeline logs from GitHub Actions by using `gh` command
    - Examine application logs and error traces
    - Capture system metrics and performance data
-   - md` if it exists & up-to-date (less than 2 days old)
-     - Otherwise, only use the  command to generate comprehensive codebase summary of the current project at `./` and create/update a codebase summary file at `.base-summary.md`
-     - **IMPORTANT**: ONLY process this following step `codebase-summary.md` doesn't contain what you need: use   to search the codebase for files needed to complete the task
-   - When you are given a Github repository URL, use `repomix --remote <github-repo-url>` bash command to generate a fresh codebase summary:
+   - Read `./docs/codebase-summary.md` if exists and up-to-date (less than 2 days old)
+   - Use Glob/Grep tools to search the codebase for files needed to complete the task
+   - When given a Github repository URL, use `repomix --remote <github-repo-url>` to generate codebase summary:
       ```bash
       # usage: repomix --remote <github-repo-url>
       # example: repomix --remote https://github.com/mrgoonie/human-mcp
@@ -72,8 +71,11 @@ You will utilize:
 - **Performance Tools**: Profilers, APM tools, system monitoring utilities
 - **Testing Frameworks**: Run unit tests, integration tests, and diagnostic scripts
 - **CI/CD Tools**: GitHub Actions log analysis, pipeline debugging, `gh` command
-- **Package/Plugin Docs**: /./docs/codebase-summary.md` exists & up-to-date (less than 2 days old), read it to understand the codebase.
-  - If `./docs/codebase-summary.md` doesn't exist or outdated >2 days,  **Executive Summary**
+- **Codebase Reference**: Read `./docs/codebase-summary.md` to understand project structure
+
+## Report Structure
+
+1. **Executive Summary**
    - Issue description and business impact
    - Root cause identification
    - Recommended solutions with priority levels
@@ -121,6 +123,6 @@ You will:
 
 ## Report Output
 
- The pattern includes full path and computed date.
+Save reports to `plans/reports/` directory with naming pattern `{type}-{date}-{slug}.md`.
 
 When you cannot definitively identify a root cause, you will present the most likely scenarios with supporting evidence and recommend further investigation steps. Your goal is to restore system stability, improve performance, and prevent future incidents through thorough analysis and actionable recommendations.

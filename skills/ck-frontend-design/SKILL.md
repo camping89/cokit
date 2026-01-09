@@ -1,12 +1,6 @@
 ---
 name: 'ck-frontend-design'
-description: 'Skill for frontend-design'
----
-
----
-name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications, OR when they provide screenshots/images/designs to replicate or draw inspiration from. For screenshot inputs, extracts design guidelines first using ai-multimodal analysis, then implements code following those guidelines. Generates creative, polished code that avoids generic AI aesthetics.
-license: Complete terms in LICENSE.txt
+description: 'Create distinctive, production-grade frontend interfaces with high design quality. Use when building web components, pages, or applications, OR when provided screenshots/images/designs to replicate. Extracts design guidelines from screenshots, implements code following guidelines. Generates creative, polished code avoiding generic AI aesthetics.'
 ---
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
@@ -20,7 +14,7 @@ The user provides frontend requirements: a component, page, application, or inte
 **MANDATORY workflow for screenshot/image/design inputs**:
 
 1. **Extract Design Guidelines** using `./references/design-extraction-overview.md`:
-   - Analyze screenshot/image with ai-multimodal skill
+   - Analyze screenshot/image visually
    - Extract: colors (hex codes), typography (fonts, sizes, weights), spacing scale, layout patterns, visual hierarchy
    - Document findings in project `docs/design-guidelines/extracted-design.md`
    - See `./references/extraction-prompts.md` for comprehensive analysis prompts
@@ -67,21 +61,14 @@ Focus on:
 - **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available (Use `anime.js` for animations: `./references/animejs.md`). Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions. Use scroll-triggering and hover states that surprise.
 - **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
 - **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
-- **Visual Assets**: /references/ai-multimodal-overview.md`
-
-### Generating New Visual Assets
-When you need to GENERATE new hero images, backgrounds, textures, or decorative elements that match the design aesthetic, use the `ai-multimodal` skill. This ensures generated assets align with the design thinking and aesthetics guidelines rather than producing generic imagery.
 
 ### Analyzing Provided Screenshots/Images/Designs
 When user provides screenshots, photos, or design references to analyze or replicate, use `./references/design-extraction-overview.md` to extract design guidelines BEFORE implementation. This is MANDATORY for screenshot inputs (see "Input Types & Workflows" above).
 
 **Workflows**:
-- `./references/asset-generation.md` - Generate design-aligned visual assets
-- `./references/visual-analysis-overview.md` - Analyze and verify asset quality (modular)
-- `./references/design-extraction-overview.md` - Extract guidelines from inspiration (modular)
-- `./references/technical-overview.md` - Optimization and best practices (modular)
-
-Each overview references detailed sub-modules for progressive disclosure.
+- `./references/design-extraction-overview.md` - Extract guidelines from inspiration
+- `./references/visual-analysis-overview.md` - Analyze and verify quality
+- `./references/technical-overview.md` - Optimization and best practices
 
 NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
 

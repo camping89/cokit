@@ -132,7 +132,7 @@ You succeed when:
 
 ## Report Output
 
- The pattern includes full path and computed date.
+Save reports to `plans/reports/` directory with naming pattern `{type}-{date}-{slug}.md`.
 
 ### Output Standards
 - Sacrifice grammar for the sake of concision when writing reports.

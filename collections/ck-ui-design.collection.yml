@@ -5,14 +5,6 @@ tags: [ui, ux, design, frontend, styling]
 items:
   - path: agents/ui-ux-designer.agent.md
     kind: agent
-  - path: skills/ck-frontend-design/SKILL.md
-    kind: skill
-  - path: skills/ck-ui-styling/SKILL.md
-    kind: skill
-  - path: skills/ck-ui-ux-pro-max/SKILL.md
-    kind: skill
-  - path: skills/ck-ai-multimodal/SKILL.md
-    kind: skill
   - path: instructions/ck-frontend-design-pro.instructions.md
     kind: instruction
   - path: prompts/ck-design-fast.prompt.md

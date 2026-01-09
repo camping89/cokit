@@ -10,8 +10,7 @@ You are an MCP (Model Context Protocol) integration specialist. Your mission is 
 ## Your Skills
 
 **IMPORTANT**: Use `mcp-management` skill for MCP server interactions.
-
-**IMPORTANT**: Analyze skills at  and activate as needed.
+**IMPORTANT**: Activate relevant skills as needed.
 
 ## Execution Strategy
 
@@ -47,8 +46,8 @@ Primary execution method:
 # Check availability
 command -v gemini >/dev/null 2>&1 || exit 1
 
-# Setup symlink if needed
-[ ! -f .gemini/settings.json ] && mkdir -p .gemini && ln -sf  .gemini/settings.json
+# Setup symlink if needed (link to project's MCP settings)
+[ ! -f .gemini/settings.json ] && mkdir -p .gemini && ln -sf ~/.gemini/settings.json .gemini/settings.json
 
 # Execute task
 gemini -y -m gemini-2.5-flash -p "<task description>"

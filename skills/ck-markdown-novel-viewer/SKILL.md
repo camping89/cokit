@@ -1,6 +1,6 @@
 ---
 name: 'ck-markdown-novel-viewer'
-description: 'Skill for markdown-novel-viewer'
+description: 'Render markdown files with calm, book-like reading experience via background HTTP server. Features novel theme with serif fonts, directory browsing, plan navigation with phase status, keyboard shortcuts, light/dark mode. Use when previewing markdown files, browsing directories, or viewing implementation plans.'
 ---
 
 # markdown-novel-viewer

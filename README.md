@@ -2,7 +2,7 @@
 
 Make GitHub Copilot smarter in 30 seconds.
 
-CoKit provides 15 agents, 64 prompts, 4 instructions, 29 skills, and 6 collections to supercharge your Copilot experience.
+CoKit provides 15 agents, 64 prompts, 4 instructions, 27 skills, and 6 collections to supercharge your Copilot experience.
 
 ## Quick Start
 
@@ -125,19 +125,17 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 | Skill | Description |
 |-------|-------------|
 | [ck-ai-artist](skills/ck-ai-artist/SKILL.md) | Write and optimize prompts for AI-generated outcomes across text and image models. Use when crafting... |
-| [ck-ai-multimodal](skills/ck-ai-multimodal/SKILL.md) | Process and generate multimedia content using Google Gemini API for better vision capabilities. Capa... |
 | [ck-backend-development](skills/ck-backend-development/SKILL.md) | Build robust backend systems with modern technologies (Node.js, Python, Go, Rust), frameworks (NestJ... |
 | [ck-better-auth](skills/ck-better-auth/SKILL.md) | Implement authentication and authorization with Better Auth - a framework-agnostic TypeScript authen... |
 | [ck-chrome-devtools](skills/ck-chrome-devtools/SKILL.md) | Browser automation, debugging, and performance analysis using Puppeteer CLI scripts. Use for automat... |
-| [ck-claude-code](skills/ck-claude-code/SKILL.md) | Activate when users ask about Claude Code installation, slash commands (/cook, , /fix, /test, /docs,... |
 | [ck-code-review](skills/ck-code-review/SKILL.md) | Use when receiving code review feedback (especially if unclear or technically questionable), when co... |
 | [ck-databases](skills/ck-databases/SKILL.md) | Work with MongoDB (document database, BSON documents, aggregation pipelines, Atlas cloud) and Postgr... |
 | [ck-debugging](skills/ck-debugging/SKILL.md) | Systematic debugging framework ensuring root cause investigation before fixes. Includes four-phase d... |
 | [ck-devops](skills/ck-devops/SKILL.md) | Deploy and manage cloud infrastructure on Cloudflare (Workers, R2, D1, KV, Pages, Durable Objects, B... |
 | [ck-docs-seeker](skills/ck-docs-seeker/SKILL.md) | Search technical documentation using executable scripts to detect query type, fetch from llms.txt so... |
-| [ck-frontend-design](skills/ck-frontend-design/SKILL.md) | Skill for frontend-design |
+| [ck-frontend-design](skills/ck-frontend-design/SKILL.md) | Create distinctive, production-grade frontend interfaces with high design quality. Use when building... |
 | [ck-frontend-development](skills/ck-frontend-development/SKILL.md) | Frontend development guidelines for React/TypeScript applications. Modern patterns including Suspens... |
-| [ck-markdown-novel-viewer](skills/ck-markdown-novel-viewer/SKILL.md) | Skill for markdown-novel-viewer |
+| [ck-markdown-novel-viewer](skills/ck-markdown-novel-viewer/SKILL.md) | Render markdown files with calm, book-like reading experience via background HTTP server. Features n... |
 | [ck-mcp-builder](skills/ck-mcp-builder/SKILL.md) | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact wi... |
 | [ck-mcp-management](skills/ck-mcp-management/SKILL.md) | Manage Model Context Protocol (MCP) servers - discover, analyze, and execute tools/prompts/resources... |
 | [ck-media-processing](skills/ck-media-processing/SKILL.md) | Process multimedia files with FFmpeg (video/audio encoding, conversion, streaming, filtering, hardwa... |
@@ -151,7 +149,7 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 | [ck-skill-creator](skills/ck-skill-creator/SKILL.md) | Guide for creating effective skills, adding skill references, skill scripts or optimizing existing s... |
 | [ck-threejs](skills/ck-threejs/SKILL.md) | Build immersive 3D web experiences with Three.js - WebGL/WebGPU library for scenes, cameras, geometr... |
 | [ck-ui-styling](skills/ck-ui-styling/SKILL.md) | Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind... |
-| [ck-ui-ux-pro-max](skills/ck-ui-ux-pro-max/SKILL.md) | Skill for ui-ux-pro-max |
+| [ck-ui-ux-pro-max](skills/ck-ui-ux-pro-max/SKILL.md) | Frontend UI/UX design intelligence - activate FIRST when user requests beautiful, stunning, or aesth... |
 | [ck-web-frameworks](skills/ck-web-frameworks/SKILL.md) | Build modern full-stack web applications with Next.js (App Router, Server Components, RSC, PPR, SSR,... |
 
 ## Collections

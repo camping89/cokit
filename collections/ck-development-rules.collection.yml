@@ -7,10 +7,6 @@ items:
     kind: agent
   - path: agents/debugger.agent.md
     kind: agent
-  - path: skills/ck-debugging/SKILL.md
-    kind: skill
-  - path: skills/ck-code-review/SKILL.md
-    kind: skill
   - path: prompts/ck-code.prompt.md
     kind: prompt
   - path: prompts/ck-fix.prompt.md

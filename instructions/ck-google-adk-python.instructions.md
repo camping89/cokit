@@ -1,6 +1,6 @@
 ---
 description: 'Guidelines for google-adk-python'
-applyTo: '**/*'
+applyTo: '**/*.py'
 ---
 
 # Google ADK Python Skill
