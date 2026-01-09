@@ -21,7 +21,7 @@ node  info --json
 - `envFiles`: array of .env* files found
 - `dirtyState`: boolean
 
-### Step 2: Gather Info via AskUserQuestion
+### Step 2: Gather Info
 
 **Detect branch prefix from user's description:**
 - Keywords "fix", "bug", "error", "issue" → prefix = `fix`
@@ -32,10 +32,10 @@ node  info --json
 - Keywords "perf", "performance", "optimize" → prefix = `perf`
 - Everything else → prefix = `feat`
 
-**For MONOREPO:** Use AskUserQuestion if project not specified:
+**For MONOREPO:** Ask user if project not specified:
 ```javascript
 // If user said "/worktree add auth" but multiple projects exist
-AskUserQuestion({
+// Ask user with questions like:
   questions: [{
     header: "Project",
     question: "Which project should the worktree be created for?",
@@ -47,7 +47,7 @@ AskUserQuestion({
 
 **For env files:** Always ask which to copy:
 ```javascript
-AskUserQuestion({
+// Ask user with questions like:
   questions: [{
     header: "Env files",
     question: "Which environment files should be copied to the worktree?",
@@ -97,8 +97,8 @@ node  create "<SLUG>" --prefix <TYPE> --env "<FILES>"
 | `MISSING_ARGS` | Missing project/feature for monorepo | Ask for both |
 | `MISSING_FEATURE` | No feature name (standalone) | Ask for feature |
 | `PROJECT_NOT_FOUND` | Project not in .gitmodules | Show available projects |
-| `MULTIPLE_PROJECTS_MATCH` | Ambiguous project name | Use AskUserQuestion |
-| `MULTIPLE_WORKTREES_MATCH` | Ambiguous worktree for remove | Use AskUserQuestion |
+| `MULTIPLE_PROJECTS_MATCH` | Ambiguous project name | Ask user |
+| `MULTIPLE_WORKTREES_MATCH` | Ambiguous worktree for remove | Ask user |
 | `BRANCH_CHECKED_OUT` | Branch in use elsewhere | Suggest different name |
 | `WORKTREE_EXISTS` | Path already exists | Suggest use or remove |
 | `WORKTREE_CREATE_FAILED` | Git command failed | Show git error |
@@ -114,7 +114,7 @@ Claude: [Runs: node  info --json]
         [Detects prefix from "fix" keyword: fix]
         [Converts slug: "login-validation-bug"]
 
-Claude: [Uses AskUserQuestion for env files]
+Claude: [Asks user for env files]
         "Which environment files should be copied?"
         Options: .env.example
 

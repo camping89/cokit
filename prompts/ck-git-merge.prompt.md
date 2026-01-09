@@ -37,5 +37,5 @@ git push origin {TO_BRANCH}
 
 ## Notes
 - If `gh` command is not available, instruct the user to install and authorize GitHub CLI first.
-- If you need more clarifications, use `AskUserQuestion` tool to ask the user for more details.
+- If you need more clarifications, ask the user for more details.
 - Always fetch and pull latest remote state before merging to avoid stale conflicts.

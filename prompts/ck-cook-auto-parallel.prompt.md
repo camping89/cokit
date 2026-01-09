@@ -44,6 +44,7 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'web/githubRepo', 'rea
 ### 7. Final Report
 - Summary of all parallel phases
 - Guide to get started
-- Ask to commit (use `git-manager` if yes)
+- Ask to commit to LOCAL repository (use `git-manager` if yes)
+- **IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.
 
 **Example:** Phases 1-3 parallel → Launch 3 fullstack-developer agents → Wait → Phase 4 sequential

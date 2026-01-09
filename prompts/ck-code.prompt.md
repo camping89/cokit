@@ -131,7 +131,8 @@ Mark Step 5 complete in TodoWrite, mark Step 6 in_progress.
 
 3. **AUTO-COMMIT (after steps 1 and 2 completes):**
 - Run only if: Steps 1 and 2 successful + User approved + Tests passed
-- Auto-stage, commit with message [phase - plan] and push
+- Auto-stage, commit with message [phase - plan] to LOCAL repository only
+- **IMPORTANT:** Do NOT push to remote repository. Only commit locally. If user wants to push, suggest them to run `/commit` or `git push` manually.
 
 **Validation:** Steps 1 and 2 must complete successfully. Step 3 (auto-commit) runs only if conditions met.
 

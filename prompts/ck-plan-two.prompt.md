@@ -35,9 +35,45 @@ create 2 detailed implementation plans for this following task:
   ---
   ```
 
+## Clarification & Finalization Flow
+
+After creating the initial plans:
+
+1. **If questions exist** → List questions at the end of your response (max 3-5 questions)
+2. **After user chooses approach** → Update selected `plan.md` with clarified requirements
+3. **Finalize** → Confirm plan is complete and ready for implementation
+
+**Question format:**
+```
+## Questions before finalizing:
+1. Which approach do you prefer? (A or B)
+2. [Other questions]?
+...
+```
+
+## Next Steps Suggestion
+
+After plan is finalized, suggest the appropriate implementation command:
+
+| Task Type | Suggested Command |
+|-----------|-------------------|
+| Feature development | `/cook` or `/code` |
+| Bug fix | `/fix` |
+| Refactoring | `/refactor` |
+| Documentation | `/docs` |
+
+**Example output:**
+```
+✅ Plan finalized: {plan-dir}/plan.md (Approach A selected)
+
+Ready to implement? Run one of these:
+- `/cook` - Full-featured implementation with tests
+- `/code` - Quick implementation
+```
+
 ## Important Notes
-**IMPORTANT:** 
 **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
 **IMPORTANT:** Ensure token efficiency while maintaining high quality.
 **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
-**IMPORTANT**: **Do not** start implementing.
+**IMPORTANT:** **Do not** start implementing.
+**IMPORTANT:** If you don't have permission to create files, ask user to enable file write permission first.

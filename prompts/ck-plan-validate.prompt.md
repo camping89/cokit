@@ -75,7 +75,7 @@ Options:
 
 ### Step 4: Interview User
 
-Use `AskUserQuestion` tool to present questions.
+Present questions to user.
 
 **Rules:**
 - Use question count from `## Plan Context` → `Validation: mode=X, questions=MIN-MAX`

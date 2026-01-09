@@ -31,7 +31,7 @@ ${input}
 | `auto` | Automatically execute :validate {plan-path}` |
 | `off` | Skip validation step entirely |
 
-**If mode is `prompt`:** Use `AskUserQuestion` tool with options above.
+**If mode is `prompt`:** Ask user with options above.
 **If user chooses validation or mode is `auto`:** Execute :validate {plan-path}` SlashCommand.
 
 ## Special Requirements for Parallel Execution
@@ -117,10 +117,44 @@ Phase 04: Integration Tests (depends on 01, 02, 03)
 - Execution strategy (e.g., "Phases 1-3 parallel, then Phase 4")
 - File ownership matrix (which phase owns which files)
 
+## Clarification & Finalization Flow
+
+After creating the initial plan:
+
+1. **If questions exist** → List questions at the end of your response (max 3-5 questions)
+2. **After user answers** → Update `plan.md` with clarified requirements
+3. **Repeat** until no ambiguities remain
+4. **Finalize** → Confirm plan is complete and ready for implementation
+
+**Question format:**
+```
+## Questions before finalizing:
+1. [Question 1]?
+2. [Question 2]?
+...
+```
+
+## Next Steps Suggestion
+
+After plan is finalized, suggest the parallel execution command:
+
+**Example output:**
+```
+✅ Plan finalized: {plan-dir}/plan.md
+
+Parallel execution strategy:
+- Phases 1-3: Can run in parallel
+- Phase 4: Depends on 1-3
+
+Ready to implement? Run:
+- `/cook:parallel` - Execute phases in parallel
+- `/cook` - Execute phases sequentially
+```
+
 ## Important Notes
-**IMPORTANT:** 
 **IMPORTANT:** Ensure token efficiency while maintaining high quality.
 **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
 **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
 **IMPORTANT:** Do not start implementing.
 **IMPORTANT:** Each phase MUST have exclusive file ownership - no file can be modified by multiple phases.
+**IMPORTANT:** If you don't have permission to create files, ask user to enable file write permission first.

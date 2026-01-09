@@ -39,7 +39,7 @@ An output implementation plan must also follow the progressive disclosure struct
 - For each phase, add `phase-XX-phase-name.md` files containing sections (Context links, Overview with date/priority/statuses, Key Insights, Requirements, Architecture, Related code files, Implementation Steps, Todo list, Success Criteria, Risk Assessment, Security Considerations, Next steps).
 
 **IMPORTANT:**
-- Analyze the given task and use `AskUserQuestion` tool to ask for more details if needed.
+- Analyze the given task and ask for more details if needed.
 - Ensure token consumption efficiency while maintaining high quality.
 - Skills are not documentation, they are practical instructions for Claude Code to use the tools, packages, plugins or APIs to achieve the tasks.
 - Each skill teaches Claude how to perform a specific development task, not what a tool does.
