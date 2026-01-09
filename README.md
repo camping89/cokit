@@ -2,7 +2,7 @@
 
 Make GitHub Copilot smarter in 30 seconds.
 
-CoKit provides 15 agents, 64 prompts, 4 instructions, 27 skills, and 6 collections to supercharge your Copilot experience.
+CoKit provides 15 agents, 64 prompts, 7 instructions, 27 skills, and 6 collections to supercharge your Copilot experience.
 
 ## Quick Start
 
@@ -115,10 +115,13 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 
 | Instruction | ApplyTo | Description |
 |-------------|---------|-------------|
-| [ck-frontend-design-pro](instructions/ck-frontend-design-pro.instructions.md) | `**/*.tsx, **/*.jsx, **/*.css` | Creates jaw-dropping, production-ready frontend interfaces AND delivers perfectl... |
-| [ck-google-adk-python](instructions/ck-google-adk-python.instructions.md) | `**/*` | Guidelines for google-adk-python |
-| [ck-research](instructions/ck-research.instructions.md) | `*` |  |
-| [ck-template-skill](instructions/ck-template-skill.instructions.md) | `**/*` | Replace with description of the skill and when Claude should use it. |
+| [ck-backend](instructions/ck-backend.instructions.md) | `**/*.py, *.go, *.rs, *.java, *.cs, api/**` | Backend development rules |
+| [ck-development](instructions/ck-development.instructions.md) | `**/*` | YAGNI/KISS/DRY principles |
+| [ck-frontend](instructions/ck-frontend.instructions.md) | `**/*.tsx, *.jsx, *.vue, *.svelte, components/**` | Frontend component guidelines |
+| [ck-frontend-design-pro](instructions/ck-frontend-design-pro.instructions.md) | `**/*.tsx, *.jsx, *.css` | Production-ready frontend with perfect images |
+| [ck-google-adk-python](instructions/ck-google-adk-python.instructions.md) | `**/*` | Google ADK Python guidelines |
+| [ck-research](instructions/ck-research.instructions.md) | `*` | Research guidelines |
+| [ck-testing](instructions/ck-testing.instructions.md) | `**/*.test.*, *.spec.*, test_*.py, *_test.go` | Testing standards |
 
 ## Skills
 
