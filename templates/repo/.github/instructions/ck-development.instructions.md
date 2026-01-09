@@ -1,5 +1,6 @@
 ---
 applyTo: "**/*"
+description: "General development rules applied to all files"
 ---
 
 # Development Rules
@@ -23,3 +24,17 @@ applyTo: "**/*"
 - All tests must pass
 - No TODO/FIXME without tracking issues
 - Handle errors explicitly
+
+## Security
+
+- Never commit secrets, keys, or credentials
+- Use environment variables for configuration
+- Validate all user inputs
+- Escape outputs to prevent injection
+
+## Git Hygiene
+
+- Atomic commits (one logical change per commit)
+- Conventional commit messages
+- No large binary files in repo
+- Keep branches short-lived

@@ -1,31 +1,36 @@
 ---
-applyTo: "**/*.test.ts,**/*.spec.ts,**/*.test.js,**/*.spec.js"
+applyTo: "**/*.test.ts,**/*.spec.ts,**/*.test.js,**/*.spec.js,**/*.test.py,**/test_*.py,**/*_test.go"
+description: "Testing guidelines for test files across languages"
 ---
 
 # Testing Guidelines
 
 ## Test Structure
 
-- One concept per test
-- Use descriptive test names
-- Follow Arrange-Act-Assert pattern
+- One concept per test (single assertion focus)
+- Use descriptive test names that explain behavior
+- Follow Arrange-Act-Assert (AAA) pattern
+- Group related tests with describe/context blocks
 
 ## Coverage Requirements
 
 - Cover happy path (expected behavior)
-- Cover edge cases (boundaries)
-- Cover error cases (failures)
+- Cover edge cases (boundaries, empty, null)
+- Cover error cases (failures, exceptions)
+- Cover integration points with external systems
 
 ## Best Practices
 
-- Mock external dependencies only
-- No flaky tests allowed
-- Tests must be deterministic
-- Clean up test data after runs
+- Mock external dependencies only (DB, APIs, filesystem)
+- No flaky tests allowed - fix or delete
+- Tests must be deterministic and repeatable
+- Clean up test data after runs (teardown)
+- Use factories/fixtures for test data
 
 ## Forbidden
 
 - No commented-out tests
-- No skipped tests without issue
-- No mocking to fake passing
-- No changing assertions to pass
+- No skipped tests without linked issue
+- No mocking internals to fake passing
+- No changing assertions just to pass
+- No tests that depend on execution order
