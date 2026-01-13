@@ -51,8 +51,7 @@ After archiving the plans, provide summary:
 - Table of journal entries that are created (title, status, created date, LOC)
 
 ## Important Notes
-
-**IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
-**IMPORTANT:** In the last summary report, list any unresolved questions at the end, if any.
-**IMPORTANT:** Ensure token efficiency while maintaining high quality.
+- **IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
+- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
+- **IMPORTANT:** In the last summary report, list any unresolved questions at the end, if any.
+- **IMPORTANT:** Ensure token efficiency while maintaining high quality.

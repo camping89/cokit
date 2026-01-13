@@ -112,7 +112,6 @@ After validation completes, provide summary:
 - Recommendation: proceed to implementation or revise plan first
 
 ## Important Notes
-
-**IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
-**IMPORTANT:** If plan is simple with few decisions, it's okay to ask fewer than min questions.
-**IMPORTANT:** Prioritize questions that could change implementation significantly.
+- **IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
+- **IMPORTANT:** If plan is simple with few decisions, it's okay to ask fewer than min questions.
+- **IMPORTANT:** Prioritize questions that could change implementation significantly.

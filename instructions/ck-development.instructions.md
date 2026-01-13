@@ -38,3 +38,17 @@ description: "General development rules applied to all files"
 - Conventional commit messages
 - No large binary files in repo
 - Keep branches short-lived
+
+## Permission Check (MUST DO FIRST)
+
+Before creating/editing files, check if you have permission:
+1. **If permission denied:** Ask user to enable:
+   ```
+   ⚠️ I need Write/Edit permission to modify files.
+
+   Please enable it:
+   - VS Code: Click "Allow" when Copilot asks to create/edit files
+   - Ensure workspace is trusted: File → Trust Workspace
+   - Check Copilot Chat settings: Enable file creation/editing
+   ```
+2. **If permission granted:** Proceed with file operations

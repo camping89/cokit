@@ -29,6 +29,7 @@ read the github actions logs, analyze and find the root causes of the issues, th
 **Output:**
 Provide at least 2 implementation approaches with clear trade-offs, and explain the pros and cons of each approach, and provide a recommended approach.
 
-**IMPORTANT:** Ask the user for confirmation before implementing.
-**IMPORTANT:** 
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
+## Important Notes
+- **IMPORTANT:** Ask the user for confirmation before implementing.
+- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
+- **IMPORTANT:** **Do not** start implementing.
