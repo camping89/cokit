@@ -1,6 +1,6 @@
 {
   "name": "cokit-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Make GitHub Copilot smarter in 30 seconds",
   "main": "src/index.js",
   "bin": {
