@@ -1,0 +1,22 @@
+id: ck-orchestration
+name: CK Orchestration Protocol
+description: Workflow orchestration patterns for managing subagents, task delegation, and multi-phase implementations.
+tags: [orchestration, workflow, subagents, planning]
+items:
+  - path: agents/planner.agent.md
+    kind: agent
+  - path: agents/project-manager.agent.md
+    kind: agent
+  - path: agents/fullstack-developer.agent.md
+    kind: agent
+  - path: prompts/ck-plan.prompt.md
+    kind: prompt
+  - path: prompts/ck-plan-fast.prompt.md
+    kind: prompt
+  - path: prompts/ck-cook.prompt.md
+    kind: prompt
+  - path: prompts/ck-bootstrap.prompt.md
+    kind: prompt
+display:
+  ordering: alpha
+  show_badge: true

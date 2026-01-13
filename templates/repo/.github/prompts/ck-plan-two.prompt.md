@@ -72,8 +72,7 @@ Ready to implement? Run one of these:
 ```
 
 ## Important Notes
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
-**IMPORTANT:** Ensure token efficiency while maintaining high quality.
-**IMPORTANT:** In reports, list any unresolved questions at the end, if any.
-**IMPORTANT:** **Do not** start implementing.
-**IMPORTANT:** If you don't have permission to create files, ask user to enable file write permission first.
+- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
+- **IMPORTANT:** Ensure token efficiency while maintaining high quality.
+- **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
+- **IMPORTANT:** **Do not** start implementing.

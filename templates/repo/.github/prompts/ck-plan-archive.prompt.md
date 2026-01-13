@@ -20,7 +20,7 @@ Read the plan directory:
 - `phase-*.md` - 20 first lines of each phase file to understand the progress and status
 
 ### Step 2: Summarize the plans and document them with `/journal` 
-Use `AskUserQuestion` tool to ask if user wants to document journal entries or not.
+Ask if user wants to document journal entries or not.
 Skip this step if user selects "No".
 If user selects "Yes":
 - Analyze the information in previous steps.
@@ -29,8 +29,8 @@ If user selects "Yes":
 - Keep journal entries in the `./docs/journals/` directory.
 
 ### Step 3: Ask user to confirm the action before archiving these plans
-Use `AskUserQuestion` tool to ask if user wants to proceed with archiving these plans, select specific plans to archive or all completed plans only.
-Use `AskUserQuestion` tool to ask if user wants to delete permanently or move to the `.s/archive` directory.
+Ask if user wants to proceed with archiving these plans, select specific plans to archive or all completed plans only.
+Ask if user wants to delete permanently or move to the `.s/archive` directory.
 
 ### Step 4: Archive the plans
 Start archiving the plans based on the user's choice:
@@ -38,7 +38,7 @@ Start archiving the plans based on the user's choice:
 - Delete the plans permanently: `rm -rf .s/<plan-1> .s/<plan-2> ...`
 
 ### Step 5: Ask if user wants to commit the changes
-Use `AskUserQuestion` tool to ask if user wants to commit the changes with these options:
+Ask if user wants to commit the changes with these options:
 - Stage and commit the changes (Use `/git:cm` )
 - Commit and push the changes (Use `/git:cp` )
 - Nah, I'll do it later
@@ -51,8 +51,7 @@ After archiving the plans, provide summary:
 - Table of journal entries that are created (title, status, created date, LOC)
 
 ## Important Notes
-
-**IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
-**IMPORTANT:** In the last summary report, list any unresolved questions at the end, if any.
-**IMPORTANT:** Ensure token efficiency while maintaining high quality.
+- **IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
+- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
+- **IMPORTANT:** In the last summary report, list any unresolved questions at the end, if any.
+- **IMPORTANT:** Ensure token efficiency while maintaining high quality.

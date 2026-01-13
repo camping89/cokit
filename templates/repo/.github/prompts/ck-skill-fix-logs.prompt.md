@@ -5,7 +5,7 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'read/problems', 'read
 ---
 
 Think harder.
-Use `skill-creator` and `claude-code` skills.
+Use `skill-creator` skill.
 
 ## Your mission
 Fix the agent skill based on the current `logs.txt` file (in the project root directory).
@@ -15,7 +15,7 @@ Fix the agent skill based on the current `logs.txt` file (in the project root di
 
 ## Rules of Skill Fixing:
 Base on the requirements:
-- If you're given nothing, use `AskUserQuestion` tool for clarifications and  to research about the topic.
+- If you're given nothing, ask for clarifications and  to research about the topic.
 - If you're given an URL, it's documentation page, explore every internal link and .
 - If you receive a lot of URLs, use multiple s to explore them , .
 - If you receive a lot of files, use multiple s to explore them , .

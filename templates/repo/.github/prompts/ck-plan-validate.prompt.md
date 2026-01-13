@@ -75,7 +75,7 @@ Options:
 
 ### Step 4: Interview User
 
-Use `AskUserQuestion` tool to present questions.
+Present questions to user.
 
 **Rules:**
 - Use question count from `## Plan Context` → `Validation: mode=X, questions=MIN-MAX`
@@ -112,7 +112,6 @@ After validation completes, provide summary:
 - Recommendation: proceed to implementation or revise plan first
 
 ## Important Notes
-
-**IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
-**IMPORTANT:** If plan is simple with few decisions, it's okay to ask fewer than min questions.
-**IMPORTANT:** Prioritize questions that could change implementation significantly.
+- **IMPORTANT:** Only ask questions about genuine decision points - don't manufacture artificial choices.
+- **IMPORTANT:** If plan is simple with few decisions, it's okay to ask fewer than min questions.
+- **IMPORTANT:** Prioritize questions that could change implementation significantly.

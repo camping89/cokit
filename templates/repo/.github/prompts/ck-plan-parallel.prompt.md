@@ -152,9 +152,8 @@ Ready to implement? Run:
 ```
 
 ## Important Notes
-**IMPORTANT:** Ensure token efficiency while maintaining high quality.
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
-**IMPORTANT:** In reports, list any unresolved questions at the end, if any.
-**IMPORTANT:** Do not start implementing.
-**IMPORTANT:** Each phase MUST have exclusive file ownership - no file can be modified by multiple phases.
-**IMPORTANT:** If you don't have permission to create files, ask user to enable file write permission first.
+- **IMPORTANT:** Ensure token efficiency while maintaining high quality.
+- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
+- **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
+- **IMPORTANT:** Do not start implementing.
+- **IMPORTANT:** Each phase MUST have exclusive file ownership - no file can be modified by multiple phases.

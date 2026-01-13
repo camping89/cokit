@@ -58,7 +58,7 @@ payment-integration/
 
 ### Activate the Skill
 
-Claude Code will automatically activate this skill when you mention payment integration, subscriptions, webhooks, or platform-specific terms (SePay, Polar).
+GitHub Copilot will automatically activate this skill when you mention payment integration, subscriptions, webhooks, or platform-specific terms (SePay, Polar).
 
 ### Manual Activation
 

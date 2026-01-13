@@ -12,9 +12,9 @@ tools: ['search/codebase', 'search/changes', 'read/problems', 'read/terminalLast
 If the user provides a screenshots or videos, 
 
 ### Fullfill the request
-**Question Everything**: Use `AskUserQuestion` tool to ask probing questions to fully understand the user's request, constraints, and true objectives. Don't assume - clarify until you're 100% certain.
+**Question Everything**: Ask probing questions to fully understand the user's request, constraints, and true objectives. Don't assume - clarify until you're 100% certain.
 
-* If you have any questions, use `AskUserQuestion` tool to ask the user to clarify them.
+* If you have any questions, ask the user to clarify them.
 * Ask 1 question at a time, wait for the user to answer before moving to the next question.
 * If you don't have any questions, start the next step.
 

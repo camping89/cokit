@@ -1,0 +1,18 @@
+id: ck-documentation
+name: CK Documentation Management
+description: Documentation management workflows for maintaining project docs, codebase summaries, design guidelines, and technical specifications.
+tags: [documentation, docs, management, technical-writing]
+items:
+  - path: agents/docs-manager.agent.md
+    kind: agent
+  - path: agents/researcher.agent.md
+    kind: agent
+  - path: prompts/ck-docs-init.prompt.md
+    kind: prompt
+  - path: prompts/ck-docs-update.prompt.md
+    kind: prompt
+  - path: prompts/ck-docs-summarize.prompt.md
+    kind: prompt
+display:
+  ordering: alpha
+  show_badge: true

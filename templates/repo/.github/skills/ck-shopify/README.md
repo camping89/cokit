@@ -5,9 +5,9 @@ This directory contains comprehensive research and analysis of various APIs for 
 ## Contents
 
 ### Shopify GraphQL Admin API Analysis
-**File:** `shopify-graphql-admin-api-analysis.md`  
-**Date:** 2025-10-25  
-**Status:** Complete  
+**File:** `shopify-graphql-admin-api-analysis.md`
+**Date:** 2025-10-25
+**Status:** Complete
 **Thoroughness:** Very Thorough
 
 A comprehensive analysis of Shopify's GraphQL Admin API covering:
@@ -62,5 +62,5 @@ These documents are intended for:
 
 ---
 
-**Last Updated:** 2025-10-25  
-**Maintained By:** Claude Code Engineering Team
+**Last Updated:** 2025-10-25
+**Maintained By:** CoKit Contributors

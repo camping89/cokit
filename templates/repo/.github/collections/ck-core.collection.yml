@@ -1,0 +1,30 @@
+id: ck-core
+name: CK Core Workflows
+description: Core CoKit workflows combining all essential agents, prompts, and skills for full-stack development productivity.
+tags: [core, essential, workflow, productivity]
+items:
+  - path: agents/brainstormer.agent.md
+    kind: agent
+  - path: agents/planner.agent.md
+    kind: agent
+  - path: agents/fullstack-developer.agent.md
+    kind: agent
+  - path: agents/code-reviewer.agent.md
+    kind: agent
+  - path: agents/tester.agent.md
+    kind: agent
+  - path: agents/debugger.agent.md
+    kind: agent
+  - path: prompts/ck-brainstorm.prompt.md
+    kind: prompt
+  - path: prompts/ck-plan.prompt.md
+    kind: prompt
+  - path: prompts/ck-code.prompt.md
+    kind: prompt
+  - path: prompts/ck-test.prompt.md
+    kind: prompt
+  - path: prompts/ck-fix.prompt.md
+    kind: prompt
+display:
+  ordering: alpha
+  show_badge: true
