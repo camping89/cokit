@@ -289,7 +289,7 @@ async function main() {
   }
 
   // Background mode - spawn child and exit (legacy mode for manual runs)
-  // Skip if --foreground is set (for Claude Code background tasks)
+  // Skip if --foreground is set (for AI assistant background tasks)
   if (args.background && !args.foreground && !args.isChild) {
     const childArgs = ['--port', String(args.port), '--host', args.host, '--child'];
     if (resolved.type === 'file') {

@@ -5,7 +5,7 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'read/problems', 'read
 ---
 
 Think harder.
-Use `skill-creator` and `claude-code` skills.
+Use `skill-creator` skill.
 
 ## Your mission
 Fix the agent skill based on the current `logs.txt` file (in the project root directory).

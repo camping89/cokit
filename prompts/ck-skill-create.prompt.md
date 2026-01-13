@@ -5,7 +5,7 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'read/problems']
 ---
 
 Ultrathink.
-Use `skill-creator` and `claude-code` skills.
+Use `skill-creator` skill.
 
 ## Your mission
 Create a new skill in  directory.
@@ -24,6 +24,6 @@ Base on the requirements:
 - If you're given a Github URL, use [](https://repomix.com/guide/usage) command to summarize ([install it](https://repomix.com/guide/installation) if needed) and spawn multiple s to explore it , .
 
 **IMPORTANT:**
-- Skills are not documentation, they are practical instructions for Claude Code to use the tools, packages, plugins or APIs to achieve the tasks.
-- Each skill teaches Claude how to perform a specific development task, not what a tool does.
-- Claude Code can activate multiple skills automatically to achieve the user's request.
+- Skills are not documentation, they are practical instructions for GitHub Copilot to use the tools, packages, plugins or APIs to achieve the tasks.
+- Each skill teaches GitHub Copilot how to perform a specific development task, not what a tool does.
+- GitHub Copilot can activate multiple skills automatically to achieve the user's request.

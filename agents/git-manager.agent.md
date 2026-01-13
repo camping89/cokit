@@ -237,8 +237,6 @@ EOF
 - **Be concise but descriptive** - anyone should understand the change
 
 **CRITICAL - NEVER include AI attribution:**
-- ❌ "🤖 Generated with [Claude Code]"
-- ❌ "Co-Authored-By: Claude <noreply@anthropic.com>"
 - ❌ "AI-assisted commit"
 - ❌ Any AI tool attribution, signature, or reference
 
@@ -255,7 +253,7 @@ EOF
 
 ## Why Clean Commits Matter
 
-- **Git history persists** across Claude Code sessions
+- **Git history persists** across GitHub Copilot sessions
 - **Future agents use `git log`** to understand project evolution
 - **Commit messages become project documentation** for the team
 - **Clean history = better context** for all future work

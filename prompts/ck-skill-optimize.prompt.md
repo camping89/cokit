@@ -5,14 +5,14 @@ tools: ['search/codebase', 'search/changes', 'web/fetch', 'read/problems']
 ---
 
 Think harder.
-Use `skill-creator` and `claude-code` skills.
+Use `skill-creator` skill.
 
 ## Arguments
 SKILL: $1 (default: `*`)
 PROMPT: $2 (default: empty)
 
 ## Your mission
-Propose a plan to optimize an existing skill in  directory. 
+Propose a plan to optimize an existing skill in  directory.
 When you finish, ask user to review your plan:
 - If the user approve: Write down a plan follow "Output Requirements", then ask user if they want to start implementing.
 - If the user reject: Revise the plan or ask more questions to clarify more about the user's request (ask one question at the time), then repeat the review process.
@@ -29,6 +29,6 @@ An output implementation plan must also follow the progressive disclosure struct
 - For each phase, add `phase-XX-phase-name.md` files containing sections (Context links, Overview with date/priority/statuses, Key Insights, Requirements, Architecture, Related code files, Implementation Steps, Todo list, Success Criteria, Risk Assessment, Security Considerations, Next steps).
 
 **IMPORTANT:**
-- Skills are not documentation, they are practical instructions for Claude Code to use the tools, packages, plugins or APIs to achieve the tasks.
-- Each skill teaches Claude how to perform a specific development task, not what a tool does.
-- Claude Code can activate multiple skills automatically to achieve the user's request.
+- Skills are not documentation, they are practical instructions for GitHub Copilot to use the tools, packages, plugins or APIs to achieve the tasks.
+- Each skill teaches GitHub Copilot how to perform a specific development task, not what a tool does.
+- GitHub Copilot can activate multiple skills automatically to achieve the user's request.

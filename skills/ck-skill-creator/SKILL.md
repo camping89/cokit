@@ -15,9 +15,9 @@ domains or tasks—they transform Claude from a general-purpose agent into a spe
 equipped with procedural knowledge that no model can fully possess.
 
 **IMPORTANT:**
-- Skills are not documentation, they are practical instructions for Claude Code to use the tools, packages, plugins or APIs to achieve the tasks.
-- Each skill teaches Claude how to perform a specific development task, not what a tool does.
-- Claude Code can activate multiple skills automatically to achieve the user's request.
+- Skills are not documentation, they are practical instructions for GitHub Copilot to use the tools, packages, plugins or APIs to achieve the tasks.
+- Each skill teaches GitHub Copilot how to perform a specific development task, not what a tool does.
+- GitHub Copilot can activate multiple skills automatically to achieve the user's request.
 
 ### What Skills Provide
 
@@ -51,14 +51,14 @@ Every skill consists of a required SKILL.md file and optional bundled resources:
 - Skill should be combined into specific topics, for example: `cloudflare`, `cloudflare-r2`, `cloudflare-workers`, `docker`, `gcloud` should be combined into `devops`
 - `SKILL.md` should be **less than 100 lines** and include the references of related markdown files and scripts.
 - Each script or referenced markdown file should be also **less than 100 lines**, remember that you can always split them into multiple files (**progressive disclosure** principle).
-- Descriptions in metadata of `SKILL.md` files should be both concise and still contains enough usecases of the references and scripts, this will help skills can be activated automatically during the implementation process of Claude Code.
+- Descriptions in metadata of `SKILL.md` files should be both concise and still contains enough usecases of the references and scripts, this will help skills can be activated automatically during the implementation process of GitHub Copilot.
 - **Referenced markdowns**:
   - Sacrifice grammar for the sake of concision when writing these files.
   - Can reference other markdown files or scripts as well.
 - **Referenced scripts**:
   - Prefer nodejs or python scripts instead of bash script, because bash scripts are not well-supported on Windows.
   - If you're going to write python scripts, make sure you have `requirements.txt`
-  - Make sure scripts respect `.env` file follow this order: `process.env` >  >  >  
+  - Make sure scripts respect `.env` file follow this order: `process.env` >  >  >
   - Create `.env.example` files to show the required environment variables.
   - Always write tests for these scripts.
 
@@ -69,7 +69,7 @@ Every skill consists of a required SKILL.md file and optional bundled resources:
 - Referenced scripts: no limit on length, just make sure it works, no compile issues, no runtime issues, no dependencies issues, no environment issues, no platform issues.
 
 **Why?**
-Better **context engineering**: leverage **progressive disclosure** technique of Agent Skills, when agent skills are activated, Claude Code will consider to load only relevant files into the context, instead of reading all long `SKILL.md` as before.
+Better **context engineering**: leverage **progressive disclosure** technique of Agent Skills, when agent skills are activated, GitHub Copilot will consider to load only relevant files into the context, instead of reading all long `SKILL.md` as before.
 
 #### SKILL.md (required)
 
@@ -94,7 +94,7 @@ Executable code (Python/Bash/etc.) for tasks that require deterministic reliabil
 - Write tests for scripts.
 - Run tests and make sure it works, if tests fail, fix them and run tests again, repeat until tests pass.
 - Run scripts manually with some usecases to make sure it works.
-- Make sure scripts respect `.env` file follow this order: `process.env` >  >  > 
+- Make sure scripts respect `.env` file follow this order: `process.env` >  >  >
 
 ##### References (`references/`)
 
@@ -109,8 +109,8 @@ Documentation and reference material intended to be loaded as needed into contex
 
 **IMPORTANT:**
 - Referenced markdown files should be also **less than 100 lines**, remember that you can always split them into multiple files (**progressive disclosure** principle).
-- Referenced markdown files are practical instructions for Claude Code to use the tools, packages, plugins or APIs to achieve the tasks.
-- Each skill teaches Claude how to perform a specific development task, not what a tool does.
+- Referenced markdown files are practical instructions for GitHub Copilot to use the tools, packages, plugins or APIs to achieve the tasks.
+- Each skill teaches GitHub Copilot how to perform a specific development task, not what a tool does.
 
 ##### Assets (`assets/`)
 
@@ -176,7 +176,7 @@ Example: When building a `big-query` skill to handle queries like "How many user
 
 To establish the skill's contents, analyze each concrete example to create a list of the reusable resources to include: scripts, references, and assets.
 
-- Make sure scripts respect `.env` file follow this order: `process.env` >  >  > 
+- Make sure scripts respect `.env` file follow this order: `process.env` >  >  >
 - Make sure scripts have tests.
 
 ### Step 3: Initializing the Skill
@@ -259,7 +259,5 @@ After testing the skill, users may request improvements. Often this happens righ
 4. Implement changes and test again
 
 ## References
-- [Agent Skills](https://docs.claude.com/en/docs/claude-code/skills.md)
-- [Agent Skills Spec](
-- [Agent Skills Overview](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview.md)
-- [Best Practices](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices.md)
+- [Agent Skills Spec](https://github.com/anthropics/awesome-claude-prompts/blob/main/CONTRIBUTING.md)
+- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
