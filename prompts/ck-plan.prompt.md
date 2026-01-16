@@ -59,7 +59,7 @@ After plan is finalized, suggest the appropriate implementation command:
 
 | Task Type | Suggested Command |
 |-----------|-------------------|
-| Feature development | `/cook` or `/code` |
+| Feature development | `/ck-cook` or `/ck-code` |
 | Bug fix | `/fix` |
 | Refactoring | `/refactor` |
 | Documentation | `/docs` |
@@ -69,8 +69,8 @@ After plan is finalized, suggest the appropriate implementation command:
 ✅ Plan finalized: {plan-dir}/plan.md
 
 Ready to implement? Run one of these:
-- `/cook` - Full-featured implementation with tests
-- `/code` - Quick implementation
+- `/ck-cook` - Full-featured implementation with tests
+- `/ck-code` - Quick implementation
 ```
 
 ## Important Notes

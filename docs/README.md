@@ -2,7 +2,7 @@
 
 ## Overview
 
-CoKit converts ClaudeKit resources to Awesome Copilot format for GitHub Copilot.
+CoKit - A toolkit for GitHub Copilot in Awesome Copilot format.
 
 ## Resource Types
 
@@ -81,5 +81,5 @@ npx cokit-cli init
 
 ```bash
 npm run build           # Generate README.md
-npm run convert:all     # Convert all ClaudeKit resources
+npm run convert:all     # Convert all resources
 ```

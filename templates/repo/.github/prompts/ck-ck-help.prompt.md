@@ -1,11 +1,11 @@
 ---
 agent: 'agent'
-description: 'ClaudeKit usage guide - just type naturally'
+description: 'Cokit usage guide - just type naturally'
 tools: ['search/codebase']
 ---
 
 Think harder.
-All-in-one ClaudeKit guide. Run the script and present output based on type markers.
+All-in-one Cokit guide for GitHub Copilot. Run the script and present output based on type markers.
 
 ## Pre-Processing
 
@@ -17,9 +17,7 @@ The Python script only understands English keywords. If `${input}` is in another
 
 ## Execution
 
-```bash
-python ~/.claude/scripts/ck_help.py "${input}"
-```
+Search for CoKit resources in `.github/` directory and present them to user based on their query: `${input}`
 
 ## Output Type Detection
 

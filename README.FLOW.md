@@ -55,9 +55,9 @@ Visual diagrams showing how Copilot processes resources.
 │  ────────────────────────────────────────────────────────────────────────    │
 │  Agent/User activates skill when specialized knowledge needed:               │
 │                                                                              │
-│  Prompt: "Use frontend-design skill for UI"                                  │
+│  Prompt: "Use backend-development skill"                                     │
 │       ↓                                                                      │
-│  Load: skills/frontend-design/SKILL.md                                       │
+│  Load: skills/ck-backend-development/SKILL.md                                │
 │       ↓                                                                      │
 │  Inject specialized knowledge into agent context                             │
 │                                                                              │
@@ -186,18 +186,18 @@ Collection (Bundle)
 │  SKILL LOADING                                                          │
 │  ─────────────────────────────────────────────────────────────────────  │
 │                                                                         │
-│  Load: skills/frontend-design/                                          │
+│  Load: skills/ck-backend-development/                                   │
 │                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
 │  │  Skill Package Contents:                                        │    │
 │  │                                                                 │    │
-│  │  frontend-design/                                               │    │
+│  │  ck-backend-development/                                        │    │
 │  │  ├── SKILL.md           ← Main instructions (loaded)            │    │
-│  │  ├── templates/                                                 │    │
-│  │  │   ├── component.tsx  ← Code templates (available)            │    │
-│  │  │   └── styles.css                                             │    │
-│  │  └── examples/                                                  │    │
-│  │      └── hero-section/  ← Reference examples (available)        │    │
+│  │  ├── references/                                                │    │
+│  │  │   ├── backend-api-design.md                                  │    │
+│  │  │   ├── backend-testing.md                                     │    │
+│  │  │   └── backend-technologies.md                                │    │
+│  │  └── ...                                                        │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
 └────────────────────────────────┬────────────────────────────────────────┘
                                  │

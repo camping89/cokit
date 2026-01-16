@@ -9,7 +9,7 @@
 name: prompt-name                   # Optional, defaults to filename
 description: What this prompt does  # Optional but recommended
 agent: ask | edit | agent | custom  # Optional
-model: GPT-4o | Claude-Sonnet-4     # Optional
+model: GPT-4o | gpt-4.1 | o3        # Optional
 mode: edit                          # Optional
 tools: [tool1, tool2]               # Optional
 argument-hint: hint text            # Optional

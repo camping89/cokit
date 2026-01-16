@@ -23,6 +23,15 @@ Comprehensive testing approaches, frameworks, and quality assurance practices (2
 
 ### Frameworks by Language
 
+**C#/.NET:**
+- **xUnit** - Modern, extensible, recommended for new .NET projects
+- **NUnit** - Mature, feature-rich, widely adopted
+- **MSTest** - Microsoft's built-in framework
+- **Moq/NSubstitute** - Mocking frameworks
+- **FluentAssertions** - Readable assertion syntax
+- **Bogus** - Fake data generation
+- **WebApplicationFactory** - Integration testing for ASP.NET Core
+
 **TypeScript/JavaScript:**
 - **Vitest** - 50% faster than Jest in CI/CD, ESM native
 - **Jest** - Mature, large ecosystem, snapshot testing
@@ -81,6 +90,68 @@ it('should send welcome email after user creation', async () => {
 
   expect(emailService.sendWelcomeEmail).toHaveBeenCalledWith('test@example.com');
 });
+```
+
+### .NET Unit Test Example (xUnit + Moq + FluentAssertions)
+
+```csharp
+public class UserServiceTests
+{
+    private readonly Mock<IUserRepository> _userRepoMock;
+    private readonly Mock<IEmailService> _emailServiceMock;
+    private readonly UserService _sut;
+
+    public UserServiceTests()
+    {
+        _userRepoMock = new Mock<IUserRepository>();
+        _emailServiceMock = new Mock<IEmailService>();
+        _sut = new UserService(_userRepoMock.Object, _emailServiceMock.Object);
+    }
+
+    [Fact]
+    public async Task CreateUser_WithValidData_ReturnsCreatedUser()
+    {
+        // Arrange
+        var userData = new CreateUserDto { Email = "test@example.com", Name = "Test" };
+        _userRepoMock.Setup(x => x.CreateAsync(It.IsAny<User>()))
+            .ReturnsAsync(new User { Id = 1, Email = userData.Email, Name = userData.Name });
+
+        // Act
+        var result = await _sut.CreateUserAsync(userData);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Email.Should().Be("test@example.com");
+        result.Id.Should().BeGreaterThan(0);
+    }
+
+    [Fact]
+    public async Task CreateUser_WithDuplicateEmail_ThrowsException()
+    {
+        // Arrange
+        var userData = new CreateUserDto { Email = "existing@example.com" };
+        _userRepoMock.Setup(x => x.ExistsAsync(userData.Email)).ReturnsAsync(true);
+
+        // Act & Assert
+        await _sut.Invoking(x => x.CreateUserAsync(userData))
+            .Should().ThrowAsync<DuplicateEmailException>()
+            .WithMessage("*already exists*");
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("invalid-email")]
+    public async Task CreateUser_WithInvalidEmail_ThrowsValidationException(string email)
+    {
+        // Arrange
+        var userData = new CreateUserDto { Email = email };
+
+        // Act & Assert
+        await _sut.Invoking(x => x.CreateUserAsync(userData))
+            .Should().ThrowAsync<ValidationException>();
+    }
+}
 ```
 
 ## Integration Testing
@@ -159,6 +230,60 @@ beforeAll(async () => {
 afterAll(async () => {
   await container.stop();
 });
+```
+
+### .NET Integration Testing (WebApplicationFactory)
+
+```csharp
+public class UsersControllerTests : IClassFixture<WebApplicationFactory<Program>>
+{
+    private readonly HttpClient _client;
+    private readonly WebApplicationFactory<Program> _factory;
+
+    public UsersControllerTests(WebApplicationFactory<Program> factory)
+    {
+        _factory = factory.WithWebHostBuilder(builder =>
+        {
+            builder.ConfigureServices(services =>
+            {
+                // Replace real DB with in-memory for testing
+                services.RemoveAll<DbContextOptions<AppDbContext>>();
+                services.AddDbContext<AppDbContext>(options =>
+                    options.UseInMemoryDatabase("TestDb"));
+            });
+        });
+        _client = _factory.CreateClient();
+    }
+
+    [Fact]
+    public async Task CreateUser_ReturnsCreated()
+    {
+        // Arrange
+        var request = new { Email = "test@example.com", Name = "Test User" };
+
+        // Act
+        var response = await _client.PostAsJsonAsync("/api/users", request);
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.Created);
+        var user = await response.Content.ReadFromJsonAsync<UserDto>();
+        user.Should().NotBeNull();
+        user!.Email.Should().Be("test@example.com");
+    }
+
+    [Fact]
+    public async Task CreateUser_WithInvalidEmail_ReturnsBadRequest()
+    {
+        // Arrange
+        var request = new { Email = "invalid-email", Name = "Test" };
+
+        // Act
+        var response = await _client.PostAsJsonAsync("/api/users", request);
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+    }
+}
 ```
 
 ## Contract Testing (Microservices)
@@ -353,6 +478,10 @@ snyk monitor  # Continuous monitoring
 ### Implementation
 
 ```bash
+# .NET with coverage (Coverlet)
+dotnet test --collect:"XPlat Code Coverage"
+dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
 # Vitest with coverage
 vitest run --coverage
 
@@ -422,6 +551,9 @@ jobs:
 
 ## Resources
 
+- **xUnit:** https://xunit.net/
+- **NUnit:** https://nunit.org/
+- **FluentAssertions:** https://fluentassertions.com/
 - **Vitest:** https://vitest.dev/
 - **Playwright:** https://playwright.dev/
 - **k6:** https://k6.io/docs/

@@ -4,7 +4,7 @@ description: 'Bootstrap a new project step by step'
 tools: ['search/codebase', 'search/changes', 'web/fetch', 'web/githubRepo', 'read/terminalLastCommand']
 ---
 
-**Ultrathink** to plan & bootstrap a new project follow the Orchestration Protocol, Core Responsibilities, Subagents Team and Development Rules in your `CLAUDE.md` file:
+**Ultrathink** to plan & bootstrap a new project follow the Orchestration Protocol, Core Responsibilities, and Development Rules:
 
 ---
 

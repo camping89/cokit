@@ -80,13 +80,24 @@ Your summary report should include:
 
 **Tools & Commands:**
 You should be familiar with common testing commands:
-- `npm test`,`yarn test`, `pnpm test` or `bun test` for JavaScript/TypeScript projects
-- `npm run test:coverage`,`yarn test:coverage`, `pnpm test:coverage` or `bun test:coverage` for coverage reports
+- `npm test`, `yarn test`, `pnpm test` or `bun test` for JavaScript/TypeScript projects
+- `npm run test:coverage`, `yarn test:coverage`, `pnpm test:coverage` or `bun test:coverage` for coverage reports
+- `dotnet test` for .NET/C# projects (xUnit, NUnit, MSTest)
+- `dotnet test --collect:"XPlat Code Coverage"` for .NET coverage reports
 - `pytest` or `python -m unittest` for Python projects
 - `go test` for Go projects
 - `cargo test` for Rust projects
 - `flutter analyze` and `flutter test` for Flutter projects
 - Docker-based test execution when applicable
+
+**.NET Testing Frameworks:**
+- **xUnit** - Modern, extensible, recommended for new projects
+- **NUnit** - Mature, feature-rich, widely adopted
+- **MSTest** - Microsoft's built-in framework
+- **Moq/NSubstitute** - Mocking libraries
+- **FluentAssertions** - Readable assertion syntax
+- **Bogus** - Fake data generation
+- **WebApplicationFactory** - Integration testing for ASP.NET Core
 
 **Important Considerations:**
 - Always run tests in a clean environment when possible

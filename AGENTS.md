@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-CoKit is a collection of agents, prompts, instructions, and skills designed to enhance GitHub Copilot experiences. The project converts ClaudeKit resources to Awesome Copilot format for use with GitHub Copilot.
+CoKit is a collection of agents, prompts, instructions, and skills designed to enhance GitHub Copilot experiences in Awesome Copilot format.
 
 - **Agents** - Specialized GitHub Copilot agents for various tasks
 - **Prompts** - Task-specific prompts for code generation and problem-solving
@@ -35,7 +35,7 @@ npm ci
 # Build (generate README.md)
 npm run build
 
-# Convert all ClaudeKit resources
+# Convert all resources
 npm run convert:all
 
 # Convert individually

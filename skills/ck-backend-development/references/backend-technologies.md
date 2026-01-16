@@ -4,6 +4,36 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 
 ## Programming Languages
 
+### C#/.NET (Primary)
+**Market Position:** Enterprise standard, cross-platform with .NET 8+
+
+**Best For:**
+- Enterprise applications
+- Windows ecosystem integration
+- High-performance APIs (ASP.NET Core)
+- Real-time with SignalR
+- Full-stack with Blazor
+
+**Popular Frameworks:**
+- **ASP.NET Core** - High-performance, cross-platform, enterprise-grade
+- **Minimal APIs** - Lightweight, fast development, microservices
+- **Blazor** - Full-stack C# (WebAssembly or Server)
+- **gRPC** - Built-in support for high-performance services
+
+**ORMs & Data Access:**
+- **Entity Framework Core** - Full-featured ORM, migrations, LINQ
+- **Dapper** - Micro-ORM, raw SQL performance, lightweight
+
+**Testing Frameworks:**
+- **xUnit** - Modern, extensible, recommended for new projects
+- **NUnit** - Mature, feature-rich, widely adopted
+- **MSTest** - Microsoft's built-in framework
+- **Moq/NSubstitute** - Mocking frameworks
+- **FluentAssertions** - Readable assertion syntax
+- **Bogus** - Fake data generation
+
+**When to Choose:** Enterprise apps, Windows integration, team C# expertise, high-performance APIs, Azure ecosystem
+
 ### Node.js/TypeScript
 **Market Position:** TypeScript dominance in Node.js backend (industry standard)
 
@@ -216,24 +246,25 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 ## Technology Selection Flowchart
 
 ```
-Start → Need real-time features?
-       → Yes → Node.js + Socket.io
-       → No → Need ML/AI integration?
-              → Yes → Python + FastAPI
-              → No → Need maximum performance?
-                     → Yes → Rust + Axum
+Start → Enterprise/Windows ecosystem?
+       → Yes → C# + ASP.NET Core
+       → No → Need real-time features?
+              → Yes → Node.js + Socket.io (or C# + SignalR)
+              → No → Need ML/AI integration?
+                     → Yes → Python + FastAPI
                      → No → Need high concurrency?
                             → Yes → Go + Gin
-                            → No → Node.js + NestJS (safe default)
+                            → No → C# + ASP.NET Core (safe default)
 
 Database Selection:
-ACID needed? → Yes → PostgreSQL
+ACID needed? → Yes → SQL Server/PostgreSQL
             → No → Flexible schema? → Yes → MongoDB
                                    → No → PostgreSQL (default)
 
 Caching needed? → Always use Redis
 
 Message Queue:
+Azure ecosystem? → Yes → Azure Service Bus
 Millions msg/sec? → Yes → Kafka
                  → No → RabbitMQ
 ```
@@ -248,6 +279,9 @@ Millions msg/sec? → Yes → Kafka
 
 ## Resources
 
+- **ASP.NET Core:** https://learn.microsoft.com/aspnet/core
+- **Entity Framework Core:** https://learn.microsoft.com/ef/core
+- **xUnit:** https://xunit.net/
 - **NestJS:** https://nestjs.com
 - **FastAPI:** https://fastapi.tiangolo.com
 - **PostgreSQL:** https://www.postgresql.org/docs/

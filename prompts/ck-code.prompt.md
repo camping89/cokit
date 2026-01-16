@@ -4,7 +4,7 @@ description: 'Start coding & testing an existing plan'
 tools: ['search/codebase', 'search/changes', 'web/fetch', 'web/githubRepo', 'read/terminalLastCommand']
 ---
 
-**MUST READ** `CLAUDE.md` then **THINK HARDER** to start working on the following plan follow the Orchestration Protocol, Core Responsibilities, Subagents Team and Development Rules:
+**THINK HARDER** to start working on the following plan follow the Orchestration Protocol, Core Responsibilities, and Development Rules:
 <plan>${input}</plan>
 
 ---

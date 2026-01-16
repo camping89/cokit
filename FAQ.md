@@ -55,12 +55,11 @@ Your instructions here...
 **Repo-level (`.github/`):**
 - `copilot-instructions.md` - Project rules
 - `AGENTS.md` - Agent behavior
-- `prompts/ck-*.prompt.md` - 6 prompt files (ck-fix, ck-plan, etc.)
-- `skills/ck-*/SKILL.md` - 2 skill files (ck-debugging, ck-code-review)
-- `instructions/ck-*.instructions.md` - 4 instruction files
-
-**User-level (`~/.copilot/skills/`):**
-- 5 skill directories: ck-debugging, ck-code-review, ck-planning, ck-docs-seeker, ck-sequential-thinking
+- `agents/*.agent.md` - 9 agent files
+- `prompts/ck-*.prompt.md` - 14 prompt files
+- `skills/ck-*/SKILL.md` - 7 skill directories
+- `instructions/ck-*.instructions.md` - 5 instruction files
+- `collections/*.collection.yml` - 5 collection files
 
 ### Does CoKit modify my code?
 

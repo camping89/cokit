@@ -77,17 +77,17 @@ After brainstorming is finalized, suggest the appropriate next command:
 
 | Outcome | Suggested Command |
 |---------|-------------------|
-| Ready to plan | `/plan` or `/plan:hard` |
-| Need more research | `/research` |
-| Ready to implement | `/cook` or `/code` |
+| Ready to plan | `/ck-plan` |
+| Need more research | `/ck-scout` |
+| Ready to implement | `/ck-cook` or `/ck-code` |
 
 **Example output:**
 ```
 ✅ Brainstorm finalized: plans/reports/brainstorm-{date}-{slug}.md
 
 Ready for next step? Run one of these:
-- `/plan` - Create detailed implementation plan
-- `/plan:hard` - Create plan with deep research
+- `/ck-plan` - Create detailed implementation plan
+- `/ck-cook` - Full-featured implementation with tests
 ```
 
 ## Critical Constraints

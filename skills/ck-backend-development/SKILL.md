@@ -1,6 +1,6 @@
 ---
 name: 'ck-backend-development'
-description: 'Build robust backend systems with modern technologies (Node.js, Python, Go, Rust), frameworks (NestJS, FastAPI, Django), databases (PostgreSQL, MongoDB, Redis), APIs (REST, GraphQL, gRPC), authentication (OAuth 2.1, JWT), testing strategies, security best practices (OWASP Top 10), performance optimization, scalability patterns (microservices, caching, sharding), DevOps practices (Docker, Kubernetes, CI/CD), and monitoring. Use when designing APIs, implementing authentication, optimizing database queries, setting up CI/CD pipelines, handling security vulnerabilities, building microservices, or developing production-ready backend systems.'
+description: 'Build robust backend systems with modern technologies (.NET/C#, Node.js, Python, Go), frameworks (ASP.NET Core, NestJS, FastAPI), databases (PostgreSQL, MongoDB, Redis, SQL Server), APIs (REST, GraphQL, gRPC), authentication (OAuth 2.1, JWT, Identity), testing strategies (xUnit, NUnit), security best practices (OWASP Top 10), performance optimization, scalability patterns (microservices, caching), DevOps practices (Docker, Kubernetes, CI/CD), and monitoring. Use when designing APIs, implementing authentication, optimizing database queries, setting up CI/CD pipelines, handling security vulnerabilities, building microservices, or developing production-ready backend systems.'
 ---
 
 # Backend Development Skill
@@ -21,10 +21,11 @@ Production-ready backend development with modern technologies, best practices, a
 
 ## Technology Selection Guide
 
-**Languages:** Node.js/TypeScript (full-stack), Python (data/ML), Go (concurrency), Rust (performance)
-**Frameworks:** NestJS, FastAPI, Django, Express, Gin
-**Databases:** PostgreSQL (ACID), MongoDB (flexible schema), Redis (caching)
+**Languages:** C#/.NET (enterprise, full-stack), Node.js/TypeScript (real-time), Python (data/ML), Go (concurrency)
+**Frameworks:** ASP.NET Core (enterprise), NestJS, FastAPI, Minimal APIs
+**Databases:** SQL Server/PostgreSQL (ACID), MongoDB (flexible schema), Redis (caching)
 **APIs:** REST (simple), GraphQL (flexible), gRPC (performance)
+**ORMs:** Entity Framework Core, Dapper
 
 See: `references/backend-technologies.md` for detailed comparisons
 
@@ -63,16 +64,18 @@ See: `references/backend-technologies.md` for detailed comparisons
 
 | Need | Choose |
 |------|--------|
+| Enterprise/Full-stack | C# + ASP.NET Core |
 | Fast development | Node.js + NestJS |
 | Data/ML integration | Python + FastAPI |
 | High concurrency | Go + Gin |
-| Max performance | Rust + Axum |
-| ACID transactions | PostgreSQL |
+| ACID transactions | SQL Server/PostgreSQL |
 | Flexible schema | MongoDB |
 | Caching | Redis |
 | Internal services | gRPC |
 | Public APIs | GraphQL/REST |
-| Real-time events | Kafka |
+| Real-time events | Kafka/Azure Service Bus |
+| .NET ORM (full-featured) | Entity Framework Core |
+| .NET ORM (performance) | Dapper |
 
 ## Implementation Checklist
 
