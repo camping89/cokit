@@ -1,8 +1,9 @@
 # CoKit: Team Presentation
 
-**Date:** January 6, 2026
+**Date:** January 20, 2026 (Updated from cleanup phase)
 **Presenter:** [Your Name]
 **Repository:** https://github.com/camping89/cokit
+**Version:** 1.0.9
 
 ---
 
@@ -17,8 +18,11 @@
 - Project-specific context
 
 **Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
-- 6 pre-built prompts (`/fix`, `/plan`, `/code`, `/test`, `/review`, `/docs`) using `mode: agent`
-- 5 skills teaching Copilot best practices (debugging, code-review, planning, docs-seeker, sequential-thinking)
+- 14 prompts with `ck-` prefix (fix, plan, code, cook, test, review, docs, bootstrap, brainstorm, debug, scout, ask, git, etc.) using `mode: agent`
+- 7 skills teaching Copilot best practices (debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-development)
+- 9 specialized agents for different tasks
+- 5 instructions (backend, frontend, testing, development, research)
+- 5 collections bundling related resources
 - Project templates for team consistency
 
 ---
@@ -36,7 +40,7 @@
 │   ┌─────────┐                  ┌─────────────┐                │
 │   │ cokit/  │  npm publish     │             │                │
 │   │ repo    │ ───────────────► │  npmjs.com  │                │
-│   └─────────┘                  │  /cokit     │                │
+│   └─────────┘                  │  /cokit-cli │                │
 │                                └─────────────┘                │
 │                                                                │
 └────────────────────────────────────────────────────────────────┘
@@ -49,7 +53,7 @@
 │                                                                │
 │   Step 1: User runs command                                    │
 │   ┌─────────────────────────────────────────────────────────┐ │
-│   │ $ npx cokit init                                        │ │
+│   │ $ npx cokit-cli init                                    │ │
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
@@ -70,23 +74,20 @@
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
-│   Step 4: Files created in user's project (Phase 4)            │
+│   Step 4: Files created in user's project                      │
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ ✓ .github/copilot-instructions.md                       │ │
 │   │ ✓ .github/AGENTS.md                                     │ │
-│   │ ✓ .github/prompts/fix.prompt.md                         │ │
-│   │ ✓ .github/prompts/plan.prompt.md                        │ │
-│   │ ✓ .github/prompts/code.prompt.md                        │ │
-│   │ ✓ .github/prompts/test.prompt.md                        │ │
-│   │ ✓ .github/prompts/review.prompt.md                      │ │
-│   │ ✓ .github/prompts/docs.prompt.md                        │ │
+│   │ ✓ .github/prompts/ck-*.prompt.md (14 prompts)           │ │
+│   │ ✓ .github/instructions/ck-*.instructions.md (5 files)   │ │
+│   │ ✓ .github/collections/ck-*.collection.yml (5 bundles)   │ │
 │   │ ✓ .vscode/settings.json                                 │ │
 │   │                                                         │ │
-│   │ 🎉 Done! Try /fix in Copilot Chat.                      │ │
+│   │ 🎉 Done! Try /ck-fix in Copilot Chat.                   │ │
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
-│   Step 5: User opens VS Code, types /fix                       │
+│   Step 5: User opens VS Code, types /ck-fix or /ck-plan       │
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ Copilot Chat: "I'll help you debug systematically..."   │ │
 │   └─────────────────────────────────────────────────────────┘ │
@@ -155,44 +156,68 @@ your-project/
 
 | Command | Description |
 |---------|-------------|
-| `npx cokit init` | Interactive setup wizard |
-| `npx cokit init --global` | Install personal skills only |
-| `npx cokit init --all` | Both project + personal |
-| `npx cokit add <skill>` | Add specific skill |
-| `npx cokit list` | Show installed components |
-| `npx cokit doctor` | Diagnose setup issues |
-| `npx cokit update` | Update to latest version |
+| `npx cokit-cli init` | Interactive setup wizard |
+| `npx cokit-cli init -g` | Install personal skills only |
+| `npx cokit-cli init -a` | Both project + personal |
+| `npx cokit-cli add <skill>` | Add specific skill |
+| `npx cokit-cli list` | Show installed components |
+| `npx cokit-cli doctor` | Diagnose setup issues |
+| `npx cokit-cli update` | Update to latest version |
 
 ---
 
-## 5. Prompts Included
+## 5. Prompts Included (14 total)
 
 | Prompt | What it does | Example usage |
 |--------|--------------|---------------|
-| `/fix` | Debug and fix issues | "The login is broken" |
-| `/plan` | Create implementation plan | "Add user authentication" |
-| `/code` | Implement from plan | "Implement step 1 from plan.md" |
-| `/test` | Write/run tests | "Test the auth module" |
-| `/review` | Code review | "Review my changes" |
-| `/docs` | Update documentation | "Document the API" |
+| `/ck-fix` | Debug and fix issues | "The login is broken" |
+| `/ck-plan` | Create implementation plan | "Add user authentication" |
+| `/ck-code` | Implement from plan | "Implement step 1 from plan.md" |
+| `/ck-cook` | Feature implementation step by step | "Cook the auth feature" |
+| `/ck-test` | Write/run tests | "Test the auth module" |
+| `/ck-review-codebase` | Scan & analyze codebase | "Review the api folder" |
+| `/ck-docs` | Documentation management | "Document the API" |
+| `/ck-bootstrap` | Project bootstrap | "Bootstrap a new React app" |
+| `/ck-brainstorm` | Feature ideation | "Brainstorm payment features" |
+| `/ck-debug` | Debugging technical issues | "Debug the crash on startup" |
+| `/ck-scout` | Find files across codebase | "Scout for auth handlers" |
+| `/ck-ask` | Technical questions | "How does auth work?" |
+| `/ck-git` | Git workflow | "Create a commit" |
+| `/ck-ck-help` | CoKit usage guide | "How do I use CoKit?" |
 
 ---
 
-## 6. User-Level Skills (Phase 3)
+## 6. Specialized Skills & Agents
 
-All 5 skills available at `~/.copilot/skills/` following Copilot Agent Skills format:
+All 7 skills available at `~/.copilot/skills/ck-*/` with supporting resources:
 
-| Skill | What Copilot learns | Format |
-|-------|---------------------|--------|
-| **debugging** | Systematic root cause analysis, not random fixes | SKILL.md + 3 references |
-| **code-review** | Verification gates, technical rigor, feedback protocols | SKILL.md + 2 references |
-| **planning** | Research → design → implementation planning workflow | SKILL.md + 3 references |
-| **docs-seeker** | Documentation discovery, source validation, search patterns | SKILL.md + 2 references |
-| **sequential-thinking** | Structured multi-step problem solving with revision | SKILL.md + 2 references |
+| Skill | What Copilot learns |
+|-------|---------------------|
+| **ck-debugging** | Systematic root cause analysis, not random fixes |
+| **ck-code-review** | Verification gates, technical rigor, feedback protocols |
+| **ck-planning** | Research → design → implementation planning workflow |
+| **ck-problem-solving** | Complexity spirals, innovation blocks, systematic solutions |
+| **ck-sequential-thinking** | Structured multi-step problem solving with revision |
+| **ck-backend-development** | Node.js, Python, Go, Rust backend patterns |
+| **ck-frontend-development** | React, TypeScript, component patterns, performance |
+
+## 7. Specialized Agents (9 total)
+
+| Agent | Specialization |
+|-------|----------------|
+| **planner** | Implementation planning and design |
+| **code-reviewer** | Comprehensive code review and quality |
+| **debugger** | Issue investigation and root cause analysis |
+| **tester** | Test writing and validation |
+| **researcher** | Technology research and documentation discovery |
+| **scout** | Codebase navigation and file location |
+| **git-manager** | Commit management and git workflows |
+| **brainstormer** | Solution ideation and architecture discussion |
+| **docs-manager** | Documentation creation and maintenance |
 
 ---
 
-## 7. Technical Architecture
+## 8. Technical Architecture
 
 ```
 cokit/
@@ -211,14 +236,28 @@ cokit/
 │       ├── copy.js               # File operations
 │       ├── prompt.js             # Interactive prompts
 │       └── paths.js              # Cross-platform paths
+├── agents/                       # 9 specialized agents
+│   ├── planner.agent.md
+│   ├── code-reviewer.agent.md
+│   ├── tester.agent.md
+│   └── ...
+├── prompts/                      # 14 prompt templates
+│   ├── ck-fix.prompt.md
+│   ├── ck-plan.prompt.md
+│   └── ...
+├── instructions/                 # 5 coding standards
+│   ├── ck-backend.instructions.md
+│   ├── ck-frontend.instructions.md
+│   └── ...
+├── skills/                       # 7 capability packages
+│   ├── ck-debugging/
+│   ├── ck-code-review/
+│   └── ...
+├── collections/                  # 5 resource bundles
+│   ├── ck-core.collection.yml
+│   └── ...
 ├── templates/
 │   └── repo/                     # Project templates
-├── skills/                       # User-level skills (Phase 3)
-│   ├── debugging/                # + references/
-│   ├── code-review/              # + references/
-│   ├── planning/                 # + references/
-│   ├── docs-seeker/              # + references/
-│   └── sequential-thinking/      # + references/
 ├── README.md
 └── LICENSE                       # CC BY-NC 4.0
 ```
@@ -237,20 +276,21 @@ cokit/
 
 ---
 
-## 8. Implementation Plan
+## 9. Implementation Plan
 
 | Phase | Description | Effort | Status |
 |-------|-------------|--------|--------|
 | 1 | CLI tool (npm package) | 4h | ✅ Complete |
 | 2 | Repo templates (.github/) | 3h | ✅ Complete |
-| 3 | User skills (5 core + references) | 4h | ✅ Complete |
-| 4 | Prompt files (6 prompts) | 2h | ✅ Complete |
+| 3 | User skills (7 + agents, instructions, collections) | 6h | ✅ Complete |
+| 4 | Prompt files (14 prompts) | 3h | ✅ Complete |
 | 5 | Documentation + README | 3h | ✅ Complete |
-| **Total** | | **16h** | ✅ All Phases Complete |
+| 6 | Cleanup phase (remove non-coding resources) | 2h | ✅ Complete |
+| **Total** | | **21h** | ✅ All Phases Complete |
 
 ---
 
-## 9. Release Process
+## 10. Release Process
 
 ```bash
 # Development
@@ -259,21 +299,21 @@ cd cokit
 npm install
 
 # Testing locally
-npm link                    # Makes 'cokit' available locally
-cokit init                  # Test the CLI
+npm link                    # Makes 'cokit-cli' available locally
+cokit-cli init              # Test the CLI
 
 # Publishing
 npm login                   # One-time login
-npm version patch           # Bump version (1.0.0 → 1.0.1)
+npm version patch           # Bump version (1.0.8 → 1.0.9)
 npm publish                 # Push to npm registry
 
 # Users get it via
-npx cokit init              # Always fetches latest
+npx cokit-cli init          # Always fetches latest
 ```
 
 ---
 
-## 10. What's NOT Included (Limitations)
+## 11. What's NOT Included (Limitations)
 
 | Claude Code Feature | Status | Reason |
 |---------------------|--------|--------|
@@ -282,22 +322,23 @@ npx cokit init              # Always fetches latest
 | $ARGUMENTS variables | ❌ Skip | User provides context in chat |
 | Session state | ❌ Skip | Copilot is stateless |
 
-**Workaround:** Users manually chain prompts (`/plan` → `/code` → `/test` → `/review`)
+**Workaround:** Users manually chain prompts (`/ck-plan` → `/ck-code` → `/ck-test` → `/ck-review-codebase`)
 
 ---
 
-## 11. Success Metrics
+## 12. Success Metrics
 
-- [x] `npx cokit init` works without errors
+- [x] `npx cokit-cli init` works without errors
 - [x] Non-technical user can setup in < 2 minutes
-- [x] All 6 prompts functional in Copilot Chat
-- [x] Skills auto-activate based on context
+- [x] All 14 prompts functional in Copilot Chat
+- [x] All 7 skills auto-activate based on context
+- [x] All 9 agents available for delegation
 - [x] README understandable by beginners
-- [x] `cokit doctor` catches common issues
+- [x] `cokit-cli doctor` catches common issues
 
 ---
 
-## 12. License
+## 13. License
 
 **CC BY-NC 4.0** (Creative Commons Attribution-NonCommercial)
 
@@ -313,7 +354,25 @@ npx cokit init              # Always fetches latest
 
 ---
 
+## 14. Recent Updates
+
+**v1.0.9 (2026-01-20) - Documentation Update:**
+- Comprehensive documentation update (all 7 docs)
+- Fixed all broken links and references
+- Verified resource counts across all docs
+- Created changelogs folder structure
+
+**v1.0.8 (2026-01-20) - Cleanup Phase:**
+- Removed non-coding resources
+- Consolidated documentation
+- Updated all resource references
+- Enhanced agent capabilities
+- Added missing prompt and skill documentation
+
+---
+
 ## Questions?
 
 **Repository:** https://github.com/camping89/cokit
-**Plan details:** `plans/260106-1102-cokit-implementation/`
+**Documentation:** `docs/`
+**Installation:** `npx cokit-cli init`

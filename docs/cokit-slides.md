@@ -47,11 +47,12 @@ That's it. No install. No config. No account.
 ## Slide 5: How It Works
 
 ```
-You publish once    →    npm Registry    →    User runs npx
-     ↓                                              ↓
-npm publish                               Downloads automatically
+Developer publishes    →    npm Registry    →    User runs npx
+         ↓                                            ↓
+npm publish                               Downloads cokit-cli
                                                     ↓
                                           Creates files in project
+                                          (.github/, skills)
                                                     ↓
                                           Ready to use in VS Code
 ```
@@ -60,27 +61,40 @@ npm publish                               Downloads automatically
 
 ## Slide 6: What Users Get
 
-### 6 Prompts
+### 14 Prompts (with ck- prefix)
 | Command | Action |
 |---------|--------|
-| `/fix` | Debug issues |
-| `/plan` | Create plans |
-| `/code` | Implement |
-| `/test` | Write tests |
-| `/review` | Review code |
-| `/docs` | Update docs |
+| `/ck-fix` | Debug issues |
+| `/ck-plan` | Create plans |
+| `/ck-code` | Implement |
+| `/ck-cook` | Feature implementation |
+| `/ck-test` | Write tests |
+| `/ck-review-codebase` | Scan codebase |
+| `/ck-docs` | Update docs |
+| `/ck-bootstrap` | Project setup |
+| `/ck-brainstorm` | Feature ideation |
+| `/ck-debug` | Debug problems |
+| `/ck-scout` | Find files |
+| `/ck-ask` | Q&A |
+| `/ck-git` | Git workflows |
+| `/ck-ck-help` | Help & usage |
 
 ---
 
 ## Slide 7: What Users Get (cont.)
 
-### 5 Skills (Auto-Activate)
+### 7 Skills + 9 Agents (Auto-Activate)
 
-- **debugging** - Root cause analysis
-- **code-review** - Security + best practices
-- **planning** - Break down features
-- **docs-seeker** - Find documentation
-- **sequential-thinking** - Step-by-step logic
+**Skills:**
+- **ck-debugging** - Root cause analysis
+- **ck-code-review** - Security + best practices
+- **ck-planning** - Break down features
+- **ck-problem-solving** - Systematic solutions
+- **ck-sequential-thinking** - Step-by-step logic
+- **ck-backend-development** - Backend patterns
+- **ck-frontend-development** - Frontend patterns
+
+**Agents:** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
 
 ---
 
@@ -88,19 +102,19 @@ npm publish                               Downloads automatically
 
 | Option | Command | Location |
 |--------|---------|----------|
-| **Project** | `npx cokit init` | `.github/` |
-| **Personal** | `npx cokit init --global` | `~/.copilot/` |
-| **Both** | `npx cokit init --all` | Both |
+| **Project** | `npx cokit-cli init` | `.github/` |
+| **Personal** | `npx cokit-cli init -g` | `~/.copilot/` |
+| **Both** | `npx cokit-cli init -a` | Both |
 
 ---
 
 ## Slide 9: CLI Commands
 
 ```bash
-npx cokit init      # Setup wizard
-npx cokit doctor    # Troubleshoot
-npx cokit list      # Show installed
-npx cokit update    # Get latest
+npx cokit-cli init      # Setup wizard
+npx cokit-cli doctor    # Troubleshoot
+npx cokit-cli list      # Show installed
+npx cokit-cli update    # Get latest
 ```
 
 ---
@@ -108,20 +122,22 @@ npx cokit update    # Get latest
 ## Slide 10: User Experience
 
 ```
-$ npx cokit init
+$ npx cokit-cli init
 
-🚀 CoKit Setup
+🚀 CoKit Setup (v1.0.9)
 
 ? What do you want to set up?
-  › Project templates
-    Personal skills
+  › Project templates (.github/)
+    Personal skills (~/.copilot/)
     Both
 
 ✓ Created .github/copilot-instructions.md
-✓ Created .github/prompts/fix.prompt.md
-...
+✓ Created .github/AGENTS.md
+✓ Created .github/prompts/ (14 prompts)
+✓ Created .github/instructions/ (5 files)
+✓ Created .github/collections/ (5 bundles)
 
-🎉 Done! Try /fix in Copilot Chat.
+🎉 Done! Try /ck-fix in Copilot Chat.
 ```
 
 ---
@@ -132,10 +148,11 @@ $ npx cokit init
 |-------|------|------|
 | 1 | CLI tool | 4h |
 | 2 | Project templates | 3h |
-| 3 | Skills (5) | 4h |
-| 4 | Prompts (6) | 2h |
+| 3 | Skills (7), Agents (9), Instructions (5), Collections (5) | 6h |
+| 4 | Prompts (14) | 3h |
 | 5 | Documentation | 3h |
-| **Total** | | **16h** |
+| 6 | Cleanup phase | 2h |
+| **Total** | | **21h** |
 
 ---
 
@@ -156,10 +173,10 @@ Node.js CLI
 
 ```bash
 # We do once:
-npm publish
+npm publish (publishes cokit-cli to npmjs.com)
 
 # Users do:
-npx cokit init    # Always gets latest
+npx cokit-cli init    # Always gets latest version
 ```
 
 ---
@@ -189,9 +206,9 @@ npx cokit init    # Always gets latest
 ## Slide 16: Summary
 
 1. **Problem:** Copilot is inconsistent
-2. **Solution:** CoKit adds structure
-3. **Install:** `npx cokit init`
-4. **Timeline:** 16 hours
+2. **Solution:** CoKit adds structure (v1.0.9)
+3. **Install:** `npx cokit-cli init`
+4. **Resources:** 9 agents, 14 prompts, 7 skills, 5 instructions, 5 collections
 5. **Repo:** github.com/camping89/cokit
 
 ---
@@ -202,4 +219,4 @@ npx cokit init    # Always gets latest
 
 **Full docs:** `docs/cokit-team-presentation.md`
 
-**Plan:** `plans/260106-1102-cokit-implementation/`
+**Quick start:** `npx cokit-cli init -g`

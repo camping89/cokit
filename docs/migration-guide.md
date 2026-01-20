@@ -6,12 +6,14 @@ This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
 
 | Feature | Claude Code | CoKit/Copilot |
 |---------|-------------|---------------|
-| Commands | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan` |
+| Commands | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. |
 | Arguments | `$ARGUMENTS` variable | User provides in chat |
-| Subagents | Task tool with agents | Single Copilot agent |
+| Subagents | Task tool delegates to agents | Referenced in prompts |
 | Hooks | Pre/post execution | Not supported |
 | Skills | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` |
 | Prompts | `~/.claude/commands/` | `.github/prompts/ck-*.prompt.md` |
+| Instructions | `.claude/instructions/` | `.github/instructions/ck-*.instructions.md` |
+| Collections | Manual management | `.github/collections/ck-*.collection.yml` |
 
 ## What's Different
 
@@ -74,15 +76,20 @@ After fixing:
 2. Verify the fix works
 ```
 
-## Mapping Claude Skills to CoKit
+## Mapping Claude Skills & Agents to CoKit
 
-| Claude Skill | CoKit Skill | Notes |
-|--------------|-------------|-------|
-| debugging | ck-debugging | Same methodology |
-| code-review | ck-code-review | Same principles |
-| planning | ck-planning | Simplified workflow |
-| docs-seeker | ck-docs-seeker | Same search patterns |
-| sequential-thinking | ck-sequential-thinking | Same approach |
+| Claude Feature | CoKit Equivalent | Notes |
+|---|---|---|
+| debugging skill | ck-debugging + debugger agent | Same root cause methodology |
+| code-review skill | ck-code-review + code-reviewer agent | Same verification principles |
+| planning skill | ck-planning + planner agent | Structured workflow |
+| docs-seeker skill | researcher agent | Documentation discovery |
+| sequential-thinking skill | ck-sequential-thinking | Same step-by-step approach |
+| N/A | ck-backend-development | NEW: Backend patterns |
+| N/A | ck-frontend-development | NEW: Frontend patterns |
+| N/A | ck-problem-solving | NEW: Systematic solutions |
+| N/A | tester agent | NEW: Test validation |
+| N/A | scout agent | NEW: Codebase navigation |
 
 ## What Works the Same
 
@@ -95,26 +102,32 @@ After fixing:
 
 1. Install CoKit:
    ```bash
-   npx cokit init --all
+   npx cokit-cli init -a
    ```
 
 2. Use prompts directly:
    ```
    /ck-fix (describe your issue)
    /ck-plan (describe your feature)
+   /ck-cook (implement a feature)
+   /ck-bootstrap (setup new project)
    ```
 
-3. Skills work automatically - no changes needed.
+3. Skills and agents work automatically:
+   - Agents are referenced by prompts
+   - Skills auto-activate based on context
 
 ## Tips for Claude Users
 
 1. **Be descriptive** - Without $ARGUMENTS, include context in chat
-2. **One step at a time** - No multi-agent orchestration
+2. **Use specialized prompts** - `/ck-cook` for implementation, `/ck-bootstrap` for setup
 3. **Explicit instructions** - Put everything in the prompt
 4. **Manual verification** - No automatic hooks
+5. **Chain workflows** - Use `/ck-plan` → `/ck-code` → `/ck-test` → `/ck-review-codebase`
 
 ## Getting Help
 
-- [FAQ](../FAQ.md) - Common questions
 - [README](../README.md) - Full documentation
-- Run `npx cokit doctor` for setup issues
+- [Team Presentation](./cokit-team-presentation.md) - Detailed overview
+- Run `npx cokit-cli doctor` for setup issues
+- Check [Project Roadmap](./project-roadmap.md) for version history

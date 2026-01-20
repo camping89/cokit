@@ -1,18 +1,23 @@
 # CoKit Project Roadmap
 
 **Project:** CoKit - Claude Code to GitHub Copilot Port
+**Version:** 1.0.9
 **Start Date:** 2026-01-06
-**Current Phase:** 5 of 5 (COMPLETE)
+**Last Updated:** 2026-01-20 (Cleanup phase complete)
+**Current Phase:** 6 of 6 (COMPLETE)
 **Overall Progress:** 100%
 
 ## Project Overview
 
-CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit init`.
+CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
-### Key Features
-- 6 core prompt files (fix, plan, code, test, review, docs)
-- 5 user-level skills (debugging, code-review, planning, docs-seeker, sequential-thinking)
-- Repo-level templates (VS Code settings, agent instructions)
+### Key Features (Current)
+- 14 prompt files with `ck-` prefix (fix, plan, code, cook, test, review, docs, bootstrap, brainstorm, debug, scout, ask, git, ck-help)
+- 7 specialized skills (debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-development)
+- 9 expert agents (planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager)
+- 5 instructions (backend, frontend, testing, development, research)
+- 5 collections bundling resources by workflow
+- Repo-level templates (VS Code settings, agent instructions, prompts, collections)
 - Beginner-friendly CLI with zero configuration
 - Cross-platform support (VS Code + JetBrains)
 
@@ -38,37 +43,40 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - `.github/instructions/` directory
 - `.vscode/settings.json` template
 
-### Phase 3: User-Level Skills (DONE)
-**Status:** COMPLETE (2026-01-06)
-**Effort:** 4h
+### Phase 3: Skills, Agents, Instructions & Collections (DONE)
+**Status:** COMPLETE (2026-01-06, Enhanced 2026-01-20)
+**Effort:** 6h
 **Deliverables:**
-- 5 core skills ported
-- `debugging/` skill with systematic troubleshooting
-- `code-review/` skill with checklist patterns
-- `planning/` skill with structured thinking
-- `docs-seeker/` skill for documentation discovery
-- `sequential-thinking/` skill for complex reasoning
+- 7 specialized skills (ck-* prefix)
+  - `ck-debugging/` - systematic troubleshooting
+  - `ck-code-review/` - verification gates
+  - `ck-planning/` - research → design → implementation
+  - `ck-problem-solving/` - complexity spirals
+  - `ck-sequential-thinking/` - structured reasoning
+  - `ck-backend-development/` - Node.js, Python, Go, Rust patterns
+  - `ck-frontend-development/` - React, TypeScript patterns
+- 9 expert agents for specialized tasks
+- 5 coding instructions (backend, frontend, testing, development, research)
+- 5 resource collections (core, development-rules, documentation, git-workflow, orchestration)
 
 ### Phase 4: Prompt Files (DONE)
-**Status:** COMPLETE (2026-01-06)
-**Effort:** 2h
+**Status:** COMPLETE (2026-01-06, Enhanced 2026-01-20)
+**Effort:** 3h
 **Deliverables:**
-- 6 core prompt files created in `templates/repo/prompts/`
-- `fix.prompt.md` - Debug and fix code issues
-- `plan.prompt.md` - Create implementation plans
-- `code.prompt.md` - Implement from plan
-- `test.prompt.md` - Run tests and analyze
-- `review.prompt.md` - Code review with checklists
-- `docs.prompt.md` - Update documentation
+- 14 prompt files created with `ck-` prefix
+  - Core workflows: `/ck-fix`, `/ck-plan`, `/ck-code`, `/ck-cook`, `/ck-test`, `/ck-review-codebase`, `/ck-docs`
+  - Feature workflows: `/ck-bootstrap`, `/ck-brainstorm`, `/ck-debug`
+  - Utility workflows: `/ck-scout`, `/ck-ask`, `/ck-git`, `/ck-ck-help`
 - All prompts follow Copilot format with `mode: agent`
+- Real examples using actual agent names and workflows
 - 0 critical issues
 
 **Completion Details:**
 ```
-✓ All 6 prompt files created
+✓ All 14 prompt files created
 ✓ Frontmatter format: mode: agent
 ✓ No $ARGUMENTS references
-✓ No subagent delegation patterns
+✓ Real CoKit examples (agent names, skill activation)
 ✓ Clear step-by-step processes
 ✓ Validation passed
 ```
@@ -77,7 +85,22 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Status:** COMPLETE (2026-01-06)
 **Effort:** 3h
 **Deliverables:**
-- README.md with quick-start (30 seconds) - DONE
+- README.md with quick-start (30 seconds)
+- Comprehensive documentation in `docs/` directory
+- Team presentation slides and guides
+- Migration guide for Claude Code users
+
+### Phase 6: Cleanup & Consolidation (COMPLETE)
+**Status:** COMPLETE (2026-01-20)
+**Effort:** 2h
+**Deliverables:**
+- Removed non-coding resources
+- Consolidated documentation with updated counts
+- Updated all CLI references: `cokit` → `cokit-cli`, `--global` → `-g`, `--all` → `-a`
+- Updated version references to 1.0.8
+- Fixed broken links (README.FLOW.md, FAQ.md)
+- Added real CoKit examples throughout docs
+- Updated resource counts: 9 agents, 14 prompts, 5 instructions, 7 skills, 5 collections
 - QUICK-START.md one-pager - DONE
 - FAQ.md with troubleshooting - DONE
 - Migration guide for Claude Code users - DONE
