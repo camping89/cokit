@@ -9,14 +9,14 @@ Visual diagrams showing how Copilot processes resources.
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                           USER INPUT                                         │
-│                    "/ck-cook implement login"                                │
+│                    "/ck.fix implement login"                                 │
 └─────────────────────────────────┬────────────────────────────────────────────┘
                                   │
                                   ▼
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │  STEP 1: PROMPT LOADING                                                      │
 │  ────────────────────────────────────────────────────────────────────────    │
-│  Copilot finds file: prompts/ck-cook.prompt.md                               │
+│  Copilot finds file: prompts/ck-fix.prompt.md                                │
 │  Loads YAML front matter + body content                                      │
 │  ${input} = "implement login"                                                │
 └─────────────────────────────────┬────────────────────────────────────────────┘

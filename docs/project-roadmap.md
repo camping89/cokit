@@ -64,9 +64,9 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Effort:** 3h
 **Deliverables:**
 - 14 prompt files created with `ck-` prefix
-  - Core workflows: `/ck-fix`, `/ck-plan`, `/ck-code`, `/ck-cook`, `/ck-test`, `/ck-review-codebase`, `/ck-docs`
-  - Feature workflows: `/ck-bootstrap`, `/ck-brainstorm`, `/ck-debug`
-  - Utility workflows: `/ck-scout`, `/ck-ask`, `/ck-git`, `/ck-ck-help`
+  - Core workflows: `/ck.fix`, `/ck.plan`, `/ck.code`, `/ck.cook`, `/ck.test`, `/ck.review-codebase`, `/ck.docs`
+  - Feature workflows: `/ck.bootstrap`, `/ck.brainstorm`, `/ck.debug`
+  - Utility workflows: `/ck.scout`, `/ck.ask`, `/ck.git`, `/ck.help`
 - All prompts follow Copilot format with `mode: agent`
 - Real examples using actual agent names and workflows
 - 0 critical issues

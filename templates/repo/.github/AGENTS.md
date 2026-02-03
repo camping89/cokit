@@ -1,55 +1,103 @@
-# Agent Guidelines
+# AGENTS.md
 
-Guidelines for AI agents working in this repository.
+## Project Overview
 
-## Core Principles
+CoKit is a collection of agents, prompts, instructions, and skills designed to enhance GitHub Copilot experiences in Awesome Copilot format.
 
-- Follow **YAGNI**, **KISS**, **DRY** principles
-- Be honest, concise, and straight to the point
-- Verify before claiming success
-- No fixes without understanding root cause first
+- **Agents** - Specialized GitHub Copilot agents for various tasks
+- **Prompts** - Task-specific prompts for code generation and problem-solving
+- **Instructions** - Coding standards and best practices applied to specific file patterns
+- **Skills** - Self-contained folders with instructions and bundled resources
+- **Collections** - Curated collections organized around specific themes
 
-## When Planning
+## Repository Structure
 
-- Research existing code before proposing solutions
-- Break complex tasks into smaller phases
-- Identify dependencies and risks upfront
-- Create clear, actionable task lists
-- Consider edge cases during planning
+```
+.
+├── agents/           # Custom agent definitions (.agent.md files)
+├── prompts/          # Task-specific prompts (.prompt.md files)
+├── instructions/     # Coding standards (.instructions.md files)
+├── skills/           # Agent Skills folders (SKILL.md + bundled assets)
+├── collections/      # Curated collections (.collection.yml files)
+├── docs/             # Documentation
+├── eng/              # Build and conversion scripts
+├── src/              # CLI source code
+├── bin/              # CLI entry point
+└── templates/        # Project templates for init command
+```
 
-## When Implementing
+## Setup Commands
 
-- Read the full scope before writing code
-- Follow existing patterns in the codebase
-- Mark tasks complete only when verified
-- Run type checking after changes
-- Keep changes focused and minimal
+```bash
+# Install dependencies
+npm ci
 
-## When Testing
+# Build (generate README.md)
+npm run build
 
-- Write tests covering:
-  - Happy path (expected behavior)
-  - Edge cases (boundary conditions)
-  - Error cases (failure handling)
-- All tests must pass before proceeding
-- No mocking to fake passing tests
-- No commenting out failing tests
+# Convert all resources
+npm run convert:all
 
-## When Reviewing
+# Convert individually
+npm run convert:agents
+npm run convert:commands
+npm run convert:skills
+```
 
-- Check for security vulnerabilities (OWASP Top 10)
-- Verify error handling is complete
-- Ensure test coverage is adequate
-- Validate performance implications
-- Push back on suggestions that violate principles
+## Development Workflow
 
-## When Debugging
+### Working with Agents, Prompts, Instructions, and Skills
 
-**NO FIXES WITHOUT ROOT CAUSE FIRST**
+All files must include proper markdown front matter:
 
-1. Understand the expected vs actual behavior
-2. Reproduce the issue consistently
-3. Trace backward through the call stack
-4. Identify the root cause
-5. Fix the cause, not the symptom
-6. Verify with a fresh test run
+#### Agent Files (*.agent.md)
+- Must have `description` field (wrapped in single quotes)
+- File names should be lowercase with hyphens
+- Recommended to include `model` field
+
+#### Prompt Files (*.prompt.md)
+- Must have `agent` field (value: `'agent'`)
+- Must have `description` field (wrapped in single quotes)
+- File names should be lowercase with hyphens
+
+#### Instruction Files (*.instructions.md)
+- Must have `description` field (wrapped in single quotes)
+- Must have `applyTo` field specifying file patterns
+- File names should be lowercase with hyphens
+
+#### Agent Skills (skills/*/SKILL.md)
+- Each skill is a folder containing a `SKILL.md` file
+- Must have `name` field (lowercase with hyphens, max 64 chars)
+- Must have `description` field (wrapped in single quotes)
+- Can include bundled assets (scripts, templates, data files)
+
+### Adding New Resources
+
+1. Create the file with proper front matter
+2. Add to the appropriate directory
+3. Run `npm run build` to update README.md
+4. Verify the resource appears in the generated README
+
+## Code Style Guidelines
+
+### Markdown Files
+- Use proper front matter with required fields
+- Keep descriptions concise and informative
+- Wrap description values in single quotes
+- Use lowercase file names with hyphens
+
+### JavaScript/Node.js Scripts
+- Located in `eng/` and `src/` directories
+- Follow Node.js ES module conventions (.mjs extension)
+- Use clear, descriptive function and variable names
+
+## Pull Request Guidelines
+
+1. Run `npm run build` before committing
+2. Ensure all markdown files have required front matter
+3. Verify file names follow naming convention
+4. Provide clear description of what your contribution does
+
+## License
+
+CC BY-NC 4.0 - See [LICENSE](LICENSE) for details

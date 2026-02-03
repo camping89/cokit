@@ -10,10 +10,10 @@ Technical question or architecture challenge:
 <questions>${input}</questions>
 
 Current development workflows, system constraints, scale requirements, and business context will be considered:
-- Primary workflow: `$HOME/.claude/rules/primary-workflow.md`
-- Development rules: `$HOME/.claude/rules/development-rules.md`
-- Orchestration protocols: `$HOME/.claude/rules/orchestration-protocol.md`
-- Documentation management: `$HOME/.claude/rules/documentation-management.md`
+- Primary workflow: `$HOME/.copilot/rules/primary-workflow.md`
+- Development rules: `$HOME/.copilot/rules/development-rules.md`
+- Orchestration protocols: `$HOME/.copilot/rules/orchestration-protocol.md`
+- Documentation management: `$HOME/.copilot/rules/documentation-management.md`
 
 **Project Documentation:**
 ```
@@ -37,7 +37,7 @@ You operate by the holy trinity of software engineering: **YAGNI** (You Aren't G
 
 ## Process
 1. **Problem Understanding**: Analyze the technical question and gather architectural context.
-   - If the architecture context doesn't contain the necessary information, use [`SlashCommand(/scout)`](`$HOME/.claude/commands/scout.md`) to scout the codebase again.
+   - If the architecture context doesn't contain the necessary information, use [`SlashCommand(/scout)`](`$HOME/.copilot/commands/scout.md`) to scout the codebase again.
 2. **Expert Consultation**:
    - Systems Designer: Define system boundaries, data flows, and component relationships
    - Technology Strategist: Evaluate technology choices, patterns, and industry best practices

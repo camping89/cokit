@@ -23,7 +23,7 @@ Complete reference for CoKit GitHub Copilot resource toolkit.
 CoKit transforms GitHub Copilot from basic autocomplete to a structured AI development assistant with:
 
 - **9 Specialized Agents** - Planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
-- **14 Prompt Templates** - Reusable workflows with `ck-` prefix (`/ck-fix`, `/ck-plan`, `/ck-cook`, etc.)
+- **14 Prompt Templates** - Reusable workflows with `ck-` prefix (`/ck.fix`, `/ck.plan`, `/ck.cook`, etc.)
 - **7 Skill Packages** - Deep expertise in debugging, code-review, planning, problem-solving, sequential-thinking, backend, frontend
 - **5 Instructions** - Coding standards auto-applied by file pattern (backend, frontend, testing, development, research)
 - **5 Collections** - Bundled resource sets for specific workflows (core, development-rules, documentation, git-workflow, orchestration)
@@ -60,16 +60,16 @@ Step-by-step instructions...
 
 | Category | Prompts |
 |----------|---------|
-| Core Debugging | `/ck-fix` (debug & fix), `/ck-debug` (debug issues) |
-| Planning & Design | `/ck-plan` (create plans), `/ck-brainstorm` (ideate) |
-| Implementation | `/ck-code` (implement), `/ck-cook` (feature implementation) |
-| Project Setup | `/ck-bootstrap` (new project) |
-| Quality Assurance | `/ck-test` (write/run tests), `/ck-review-codebase` (code analysis) |
-| Utilities | `/ck-scout` (find files), `/ck-ask` (Q&A), `/ck-git` (git workflows), `/ck-docs` (docs), `/ck-ck-help` (help) |
+| Core Debugging | `/ck.fix` (debug & fix), `/ck.debug` (debug issues) |
+| Planning & Design | `/ck.plan` (create plans), `/ck.brainstorm` (ideate) |
+| Implementation | `/ck.code` (implement), `/ck.cook` (feature implementation) |
+| Project Setup | `/ck.bootstrap` (new project) |
+| Quality Assurance | `/ck.test` (write/run tests), `/ck.review-codebase` (code analysis) |
+| Utilities | `/ck.scout` (find files), `/ck.ask` (Q&A), `/ck.git` (git workflows), `/ck.docs` (docs), `/ck.help` (help) |
 
 **Usage Example:**
 ```
-User: /ck-fix The login endpoint returns 500 error
+User: /ck.fix The login endpoint returns 500 error
 
 Copilot uses: ck-fix.prompt.md → debugger.agent.md → ck-debugging skill
 Result: Systematic debugging plan and fix
@@ -83,15 +83,15 @@ Result: Systematic debugging plan and fix
 
 | Agent | Specialization | Used By |
 |-------|---|---|
-| **planner** | Creates implementation plans from requirements | /ck-plan, /ck-bootstrap |
-| **code-reviewer** | Comprehensive code review and quality gates | /ck-review-codebase |
-| **debugger** | Investigates issues, diagnoses root causes | /ck-fix, /ck-debug |
-| **tester** | Writes tests, validates implementation | /ck-test |
-| **researcher** | Technology research, finds documentation | /ck-ask, /ck-scout |
-| **scout** | Locates files in codebase by purpose | /ck-scout |
-| **git-manager** | Handles commits, pushes, merges, PRs | /ck-git |
-| **brainstormer** | Solution ideation, architecture discussion | /ck-brainstorm |
-| **docs-manager** | Creates and updates documentation | /ck-docs |
+| **planner** | Creates implementation plans from requirements | /ck.plan, /ck.bootstrap |
+| **code-reviewer** | Comprehensive code review and quality gates | /ck.review-codebase |
+| **debugger** | Investigates issues, diagnoses root causes | /ck.fix, /ck.debug |
+| **tester** | Writes tests, validates implementation | /ck.test |
+| **researcher** | Technology research, finds documentation | /ck.ask, /ck.scout |
+| **scout** | Locates files in codebase by purpose | /ck.scout |
+| **git-manager** | Handles commits, pushes, merges, PRs | /ck.git |
+| **brainstormer** | Solution ideation, architecture discussion | /ck.brainstorm |
+| **docs-manager** | Creates and updates documentation | /ck.docs |
 
 ### Instructions (`instructions/ck-*.instructions.md`)
 
@@ -228,7 +228,7 @@ You'll be prompted to choose:
 
 | Feature | Claude Code | CoKit/Copilot | Notes |
 |---------|-------------|---|---|
-| **Commands** | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. | 14 prompts vs sub-commands |
+| **Commands** | `/fix:types`, `/plan:auto` | `/ck.fix`, `/ck.plan`, `/ck.cook`, etc. | 14 prompts vs sub-commands |
 | **Skills** | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` | Identical structure |
 | **Instructions** | `.claude/instructions/` | `.github/instructions/ck-*.md` | Auto-applied by pattern |
 | **Agents** | Task delegation | Agent references in prompts | Different invocation model |
@@ -244,7 +244,7 @@ You'll be prompted to choose:
 ### Pattern 1: Fix & Debug Workflow
 
 ```
-User: /ck-fix The API timeout is too short
+User: /ck.fix The API timeout is too short
   ↓
 Prompt (ck-fix.prompt.md)
   ↓
@@ -258,7 +258,7 @@ Output: Root cause analysis + fix
 ### Pattern 2: Feature Implementation
 
 ```
-User: /ck-plan Build user authentication
+User: /ck.plan Build user authentication
   ↓
 Prompt (ck-plan.prompt.md) + Agent (planner.agent.md)
   ↓
@@ -266,7 +266,7 @@ Skills: ck-planning, ck-sequential-thinking
   ↓
 Output: Implementation plan
 
-User: /ck-code Implement step 1
+User: /ck.code Implement step 1
   ↓
 Prompt (ck-code.prompt.md) + Agent (code-reviewer monitors)
   ↓
@@ -274,7 +274,7 @@ Skills: ck-backend-development or ck-frontend-development
   ↓
 Output: Implemented code
 
-User: /ck-test Write tests
+User: /ck.test Write tests
   ↓
 Prompt (ck-test.prompt.md) + Agent (tester.agent.md)
   ↓
@@ -284,7 +284,7 @@ Output: Test coverage
 ### Pattern 3: Code Review
 
 ```
-User: /ck-review-codebase My auth changes
+User: /ck.review-codebase My auth changes
   ↓
 Prompt (ck-review-codebase.prompt.md)
   ↓
@@ -304,7 +304,7 @@ Output: Quality gates, security issues, improvements
 CoKit supports manual chaining (Copilot is stateless):
 
 ```
-/ck-plan feature  →  /ck-code step1  →  /ck-test  →  /ck-review-codebase
+/ck.plan feature  →  /ck.code step1  →  /ck.test  →  /ck.review-codebase
 ```
 
 ### 2. Context Management
@@ -313,10 +313,10 @@ Without `$ARGUMENTS`, provide context in chat:
 
 ```
 DON'T:
-/ck-fix $ARGUMENTS
+/ck.fix $ARGUMENTS
 
 DO:
-/ck-fix The login endpoint returns 401 for valid credentials in auth.ts
+/ck.fix The login endpoint returns 401 for valid credentials in auth.ts
 ```
 
 ### 3. Instructions Auto-Apply

@@ -64,20 +64,20 @@ npm publish                               Downloads cokit-cli
 ### 14 Prompts (with ck- prefix)
 | Command | Action |
 |---------|--------|
-| `/ck-fix` | Debug issues |
-| `/ck-plan` | Create plans |
-| `/ck-code` | Implement |
-| `/ck-cook` | Feature implementation |
-| `/ck-test` | Write tests |
-| `/ck-review-codebase` | Scan codebase |
-| `/ck-docs` | Update docs |
-| `/ck-bootstrap` | Project setup |
-| `/ck-brainstorm` | Feature ideation |
-| `/ck-debug` | Debug problems |
-| `/ck-scout` | Find files |
-| `/ck-ask` | Q&A |
-| `/ck-git` | Git workflows |
-| `/ck-ck-help` | Help & usage |
+| `/ck.fix` | Debug issues |
+| `/ck.plan` | Create plans |
+| `/ck.code` | Implement |
+| `/ck.cook` | Feature implementation |
+| `/ck.test` | Write tests |
+| `/ck.review-codebase` | Scan codebase |
+| `/ck.docs` | Update docs |
+| `/ck.bootstrap` | Project setup |
+| `/ck.brainstorm` | Feature ideation |
+| `/ck.debug` | Debug problems |
+| `/ck.scout` | Find files |
+| `/ck.ask` | Q&A |
+| `/ck.git` | Git workflows |
+| `/ck.help` | Help & usage |
 
 ---
 
@@ -137,7 +137,7 @@ $ npx cokit-cli init
 ✓ Created .github/instructions/ (5 files)
 ✓ Created .github/collections/ (5 bundles)
 
-🎉 Done! Try /ck-fix in Copilot Chat.
+🎉 Done! Try /ck.fix in Copilot Chat.
 ```
 
 ---

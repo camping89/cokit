@@ -83,11 +83,11 @@
 │   │ ✓ .github/collections/ck-*.collection.yml (5 bundles)   │ │
 │   │ ✓ .vscode/settings.json                                 │ │
 │   │                                                         │ │
-│   │ 🎉 Done! Try /ck-fix in Copilot Chat.                   │ │
+│   │ 🎉 Done! Try /ck.fix in Copilot Chat.                   │ │
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
-│   Step 5: User opens VS Code, types /ck-fix or /ck-plan       │
+│   Step 5: User opens VS Code, types /ck.fix or /ck.plan       │
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ Copilot Chat: "I'll help you debug systematically..."   │ │
 │   └─────────────────────────────────────────────────────────┘ │
@@ -170,20 +170,20 @@ your-project/
 
 | Prompt | What it does | Example usage |
 |--------|--------------|---------------|
-| `/ck-fix` | Debug and fix issues | "The login is broken" |
-| `/ck-plan` | Create implementation plan | "Add user authentication" |
-| `/ck-code` | Implement from plan | "Implement step 1 from plan.md" |
-| `/ck-cook` | Feature implementation step by step | "Cook the auth feature" |
-| `/ck-test` | Write/run tests | "Test the auth module" |
-| `/ck-review-codebase` | Scan & analyze codebase | "Review the api folder" |
-| `/ck-docs` | Documentation management | "Document the API" |
-| `/ck-bootstrap` | Project bootstrap | "Bootstrap a new React app" |
-| `/ck-brainstorm` | Feature ideation | "Brainstorm payment features" |
-| `/ck-debug` | Debugging technical issues | "Debug the crash on startup" |
-| `/ck-scout` | Find files across codebase | "Scout for auth handlers" |
-| `/ck-ask` | Technical questions | "How does auth work?" |
-| `/ck-git` | Git workflow | "Create a commit" |
-| `/ck-ck-help` | CoKit usage guide | "How do I use CoKit?" |
+| `/ck.fix` | Debug and fix issues | "The login is broken" |
+| `/ck.plan` | Create implementation plan | "Add user authentication" |
+| `/ck.code` | Implement from plan | "Implement step 1 from plan.md" |
+| `/ck.cook` | Feature implementation step by step | "Cook the auth feature" |
+| `/ck.test` | Write/run tests | "Test the auth module" |
+| `/ck.review-codebase` | Scan & analyze codebase | "Review the api folder" |
+| `/ck.docs` | Documentation management | "Document the API" |
+| `/ck.bootstrap` | Project bootstrap | "Bootstrap a new React app" |
+| `/ck.brainstorm` | Feature ideation | "Brainstorm payment features" |
+| `/ck.debug` | Debugging technical issues | "Debug the crash on startup" |
+| `/ck.scout` | Find files across codebase | "Scout for auth handlers" |
+| `/ck.ask` | Technical questions | "How does auth work?" |
+| `/ck.git` | Git workflow | "Create a commit" |
+| `/ck.help` | CoKit usage guide | "How do I use CoKit?" |
 
 ---
 
@@ -322,7 +322,7 @@ npx cokit-cli init          # Always fetches latest
 | $ARGUMENTS variables | ❌ Skip | User provides context in chat |
 | Session state | ❌ Skip | Copilot is stateless |
 
-**Workaround:** Users manually chain prompts (`/ck-plan` → `/ck-code` → `/ck-test` → `/ck-review-codebase`)
+**Workaround:** Users manually chain prompts (`/ck.plan` → `/ck.code` → `/ck.test` → `/ck.review-codebase`)
 
 ---
 

@@ -110,7 +110,7 @@ Otherwise?
 |----------|-------|---------|
 | Prompts | 21 | Commands for Copilot |
 | Agents | 9 | Specialized AI assistants |
-| Skills | 7 | Domain expertise |
+| Skills | 49 | Domain expertise |
 | Instructions | 5 | Context-aware rules |
 | Collections | 5 | Bundled workflows |
 

@@ -18,7 +18,7 @@ How Copilot processes user input through CoKit resources to produce output.
 
 ### CoKit Examples
 
-**Prompts:** `/ck-fix`, `/ck-plan`, `/ck-code`, `/ck-cook`, `/ck-test`, `/ck-review-codebase`, `/ck-docs`, `/ck-bootstrap`, `/ck-brainstorm`, `/ck-debug`, `/ck-scout`, `/ck-ask`, `/ck-git`, `/ck-ck-help`
+**Prompts:** `/ck.fix`, `/ck.plan`, `/ck.code`, `/ck.cook`, `/ck.test`, `/ck.review-codebase`, `/ck.docs`, `/ck.bootstrap`, `/ck.brainstorm`, `/ck.debug`, `/ck.scout`, `/ck.ask`, `/ck.git`, `/ck.help`
 
 **Agents:** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
 
@@ -54,10 +54,10 @@ You are debugging an issue. Follow systematic troubleshooting...
 ```
 
 **CoKit Examples:**
-- `/ck-fix` - Debug and fix
-- `/ck-plan` - Create implementation plan
-- `/ck-cook` - Step-by-step feature implementation
-- `/ck-review-codebase` - Scan and analyze code
+- `/ck.fix` - Debug and fix
+- `/ck.plan` - Create implementation plan
+- `/ck.cook` - Step-by-step feature implementation
+- `/ck.review-codebase` - Scan and analyze code
 
 **When to use:** User wants to execute a specific workflow
 
@@ -132,7 +132,7 @@ When editing React files:
 
 **Example: ck-debugging/SKILL.md**
 ```
-skills/ck-debugging/
+skills/ck.debugging/
 ├── SKILL.md                  # Main methodology
 ├── references/               # Case studies, patterns
 └── examples/                 # Real debugging examples
@@ -163,9 +163,9 @@ description: Essential agents, prompts, and skills
 items:
   - path: agents/planner.agent.md
   - path: agents/code-reviewer.agent.md
-  - path: prompts/ck-plan.prompt.md
-  - path: prompts/ck-code.prompt.md
-  - path: skills/ck-planning/
+  - path: prompts/ck.plan.prompt.md
+  - path: prompts/ck.code.prompt.md
+  - path: skills/ck.planning/
 ```
 
 **CoKit Collections:**
@@ -194,7 +194,7 @@ items:
 ## CoKit Processing Example
 
 ```
-User types: /ck-fix
+User types: /ck.fix
     ↓
 Prompt (ck-fix.prompt.md) activates
     ↓
@@ -209,4 +209,4 @@ Output: Systematic debugging solution
 
 ## One-liner
 
-> User calls **Prompt** (e.g., `/ck-fix`) → Prompt references **Agent** (e.g., `debugger`) → Agent auto-receives **Instructions** by file pattern → Agent activates **Skills** when needed → All can be bundled in **Collection** (e.g., `ck-core`).
+> User calls **Prompt** (e.g., `/ck.fix`) → Prompt references **Agent** (e.g., `debugger`) → Agent auto-receives **Instructions** by file pattern → Agent activates **Skills** when needed → All can be bundled in **Collection** (e.g., `ck-core`).

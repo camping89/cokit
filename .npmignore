@@ -1,0 +1,38 @@
+# Development files
+.git/
+.github/workflows/
+.vscode/
+*.log
+.DS_Store
+
+# Testing
+tests/
+__tests__/
+*.test.js
+*.test.cjs
+*.test.mjs
+.coverage
+coverage/
+
+# Nested dependencies (bloat)
+**/node_modules/
+**/.venv/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Build/sync sources
+upstream/
+plans/
+eng/
+repomix-output.xml
+
+# Git/config
+.gitignore
+.gitattributes
+.ckignore
+
+# Editor files
+.idea/
+*.swp
+*.swo
