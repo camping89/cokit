@@ -2,7 +2,7 @@
 
 Make GitHub Copilot smarter in 30 seconds.
 
-CoKit provides 9 agents, 14 prompts, 5 instructions, 7 skills, and 5 collections to supercharge your Copilot experience.
+CoKit provides 9 agents, 21 prompts, 5 instructions, 7 skills, and 5 collections to supercharge your Copilot experience.
 
 ## Quick Start
 
@@ -20,7 +20,44 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 | `npx cokit-cli init -g` | Install global resources only |
 | `npx cokit-cli init -a` | Install both project and global resources |
 
-## Resources
+## Prompts
+
+### ClaudeKit Commands (`ck.*`) - Flexible Development
+
+For day-to-day development, quick fixes, and exploration.
+
+| Prompt | Description |
+|--------|-------------|
+| [ck.plan](prompts/ck-plan.prompt.md) | Intelligent plan creation with prompt enhancement |
+| [ck.plan.hard](prompts/ck-plan-hard.prompt.md) | Deep research + comprehensive implementation plan |
+| [ck.plan.fast](prompts/ck-plan-fast.prompt.md) | Quick plan without research phase |
+| [ck.fix](prompts/ck-fix.prompt.md) | Analyze and fix issues |
+| [ck.test](prompts/ck-test.prompt.md) | Run tests and analyze results |
+| [ck.ask](prompts/ck-ask.prompt.md) | Answer technical questions |
+| [ck.bootstrap](prompts/ck-bootstrap.prompt.md) | Bootstrap a new project step by step |
+| [ck.review](prompts/ck-review.prompt.md) | Scan and analyze codebase |
+| [ck.watzup](prompts/ck-watzup.prompt.md) | Review recent changes |
+| [ck.journal](prompts/ck-journal.prompt.md) | Write journal entries |
+| [ck.preview](prompts/ck-preview.prompt.md) | Preview markdown files |
+| [ck.help](prompts/ck-help.prompt.md) | CoKit usage guide |
+
+### SpecKit Commands (`ck.spec.*`) - Spec-Driven Development
+
+For complex features requiring formal specifications. From [GitHub SpecKit](https://github.com/github/spec-kit).
+
+| Prompt | Description |
+|--------|-------------|
+| [ck.spec.specify](prompts/ck-spec-specify.prompt.md) | Create feature specification from natural language |
+| [ck.spec.clarify](prompts/ck-spec-clarify.prompt.md) | Ask clarification questions for specs |
+| [ck.spec.constitution](prompts/ck-spec-constitution.prompt.md) | Create/update project constitution |
+| [ck.spec.plan](prompts/ck-spec-plan.prompt.md) | Generate implementation plan from spec |
+| [ck.spec.tasks](prompts/ck-spec-tasks.prompt.md) | Generate tasks from plan |
+| [ck.spec.implement](prompts/ck-spec-implement.prompt.md) | Execute tasks from plan |
+| [ck.spec.analyze](prompts/ck-spec-analyze.prompt.md) | Cross-artifact consistency analysis |
+| [ck.spec.checklist](prompts/ck-spec-checklist.prompt.md) | Generate requirements validation checklist |
+| [ck.spec.taskstoissues](prompts/ck-spec-taskstoissues.prompt.md) | Convert tasks to GitHub issues |
+
+See [Commands Usage Guide](docs/cokit-commands-usage-guide.md) for when to use each workflow.
 
 ## Agents
 
@@ -36,25 +73,6 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 | [scout](agents/scout.agent.md) | Quickly locate relevant files across a large codebase to complete a specific task. |
 | [tester](agents/tester.agent.md) | Validate code quality through testing - unit, integration, coverage, error handling, performance. |
 
-## Prompts
-
-| Prompt | Description |
-|--------|-------------|
-| [ck-ask](prompts/ck-ask.prompt.md) | Answer technical and architectural questions. |
-| [ck-bootstrap](prompts/ck-bootstrap.prompt.md) | Bootstrap a new project step by step |
-| [ck-brainstorm](prompts/ck-brainstorm.prompt.md) | Brainstorm a feature |
-| [ck-ck-help](prompts/ck-ck-help.prompt.md) | CoKit usage guide - just type naturally |
-| [ck-code](prompts/ck-code.prompt.md) | Start coding & testing an existing plan |
-| [ck-cook](prompts/ck-cook.prompt.md) | Implement a feature [step by step] |
-| [ck-debug](prompts/ck-debug.prompt.md) | Debugging technical issues and providing solutions |
-| [ck-docs](prompts/ck-docs.prompt.md) | Documentation workflow - init, summarize, or update docs |
-| [ck-fix](prompts/ck-fix.prompt.md) | Analyze and fix issues [INTELLIGENT ROUTING] |
-| [ck-git](prompts/ck-git.prompt.md) | Git workflow - commit, push, merge, or create PR |
-| [ck-plan](prompts/ck-plan.prompt.md) | Intelligent plan creation with prompt enhancement |
-| [ck-review-codebase](prompts/ck-review-codebase.prompt.md) | Scan & analyze the codebase |
-| [ck-scout](prompts/ck-scout.prompt.md) | Scout given directories to respond to the user's requests |
-| [ck-test](prompts/ck-test.prompt.md) | Run tests locally and analyze the summary report |
-
 ## Instructions
 
 | Instruction | ApplyTo | Description |
@@ -69,23 +87,36 @@ This installs all CoKit resources to `~/.copilot/` for global use.
 
 | Skill | Description |
 |-------|-------------|
-| [ck-backend-development](skills/ck-backend-development/SKILL.md) | Build robust backend systems with modern technologies (Node.js, Python, Go, Rust), frameworks (NestJ... |
-| [ck-code-review](skills/ck-code-review/SKILL.md) | Use when receiving code review feedback (especially if unclear or technically questionable), when co... |
-| [ck-debugging](skills/ck-debugging/SKILL.md) | Systematic debugging framework ensuring root cause investigation before fixes. Includes four-phase d... |
-| [ck-frontend-development](skills/ck-frontend-development/SKILL.md) | Frontend development guidelines for React/TypeScript applications. Modern patterns including Suspens... |
-| [ck-planning](skills/ck-planning/SKILL.md) | Use when you need to plan technical solutions that are scalable, secure, and maintainable. |
-| [ck-problem-solving](skills/ck-problem-solving/SKILL.md) | Apply systematic problem-solving techniques for complexity spirals (simplification cascades), innova... |
-| [ck-sequential-thinking](skills/ck-sequential-thinking/SKILL.md) | Apply structured, reflective problem-solving for complex tasks requiring multi-step analysis, revisi... |
+| [ck-backend-development](skills/ck-backend-development/SKILL.md) | Build robust backend systems with modern technologies |
+| [ck-code-review](skills/ck-code-review/SKILL.md) | Code review feedback and quality assessment |
+| [ck-debugging](skills/ck-debugging/SKILL.md) | Systematic debugging with root cause analysis |
+| [ck-frontend-development](skills/ck-frontend-development/SKILL.md) | Frontend development for React/TypeScript |
+| [ck-planning](skills/ck-planning/SKILL.md) | Plan scalable, secure, maintainable solutions |
+| [ck-problem-solving](skills/ck-problem-solving/SKILL.md) | Systematic problem-solving techniques |
+| [ck-sequential-thinking](skills/ck-sequential-thinking/SKILL.md) | Structured multi-step analysis |
 
 ## Collections
 
 | Collection | Description |
 |------------|-------------|
-| [CK Core Workflows](collections/ck-core.collection.yml) | Core CoKit workflows combining all essential agents, prompts, and skills for full-stack development ... |
-| [CK Development Rules](collections/ck-development-rules.collection.yml) | Essential development rules and best practices including YAGNI, KISS, DRY principles, file naming, c... |
-| [CK Documentation Management](collections/ck-documentation.collection.yml) | Documentation management workflows for maintaining project docs, codebase summaries, design guidelin... |
-| [CK Git Workflow](collections/ck-git-workflow.collection.yml) | Git workflow automation including commit, push, merge, and pull request management. |
-| [CK Orchestration Protocol](collections/ck-orchestration.collection.yml) | Workflow orchestration patterns for managing subagents, task delegation, and multi-phase implementat... |
+| [CK Core Workflows](collections/ck-core.collection.yml) | Core CoKit workflows for full-stack development |
+| [CK Development Rules](collections/ck-development-rules.collection.yml) | YAGNI, KISS, DRY principles |
+| [CK Documentation](collections/ck-documentation.collection.yml) | Documentation management workflows |
+| [CK Git Workflow](collections/ck-git-workflow.collection.yml) | Git workflow automation |
+| [CK Orchestration](collections/ck-orchestration.collection.yml) | Workflow orchestration patterns |
+
+## Development
+
+```bash
+# Sync upstream sources (SpecKit + ClaudeKit)
+npm run sync
+
+# Transform only (no git pull)
+npm run sync:transform
+
+# Preview changes
+npm run sync:dry-run
+```
 
 ## License
 

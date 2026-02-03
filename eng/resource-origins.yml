@@ -1,0 +1,166 @@
+version: '2.0'
+synced_at: '2026-02-03T12:56:52.528Z'
+sources:
+  speckit:
+    repo: https://github.com/github/spec-kit.git
+    ref: main
+    path: upstream/speckit/templates/commands
+    last_sync: '2026-02-03T12:56:52.529Z'
+  claudekit:
+    path: ~/.claude/commands
+    last_sync: '2026-02-03T12:56:52.529Z'
+ignore:
+  - ck.kanban
+  - ck.brainstorm
+  - ck.cook
+  - ck.scout
+  - ck.git
+  - ck.debug
+  - ck.docs
+mappings:
+  ck.spec.specify:
+    origin: speckit
+    original: speckit.specify
+    upstream_file: specify.md
+    description: Create feature specification from natural language
+  ck.spec.clarify:
+    origin: speckit
+    original: speckit.clarify
+    upstream_file: clarify.md
+    description: Ask clarification questions for underspecified areas
+  ck.spec.constitution:
+    origin: speckit
+    original: speckit.constitution
+    upstream_file: constitution.md
+    description: Create/update project constitution and governance
+  ck.spec.plan:
+    origin: speckit
+    original: speckit.plan
+    upstream_file: plan.md
+    description: Generate implementation plan from spec
+  ck.spec.tasks:
+    origin: speckit
+    original: speckit.tasks
+    upstream_file: tasks.md
+    description: Generate tasks from plan
+  ck.spec.implement:
+    origin: speckit
+    original: speckit.implement
+    upstream_file: implement.md
+    description: Execute tasks from plan
+  ck.spec.analyze:
+    origin: speckit
+    original: speckit.analyze
+    upstream_file: analyze.md
+    description: Cross-artifact consistency analysis
+  ck.spec.checklist:
+    origin: speckit
+    original: speckit.checklist
+    upstream_file: checklist.md
+    description: Generate requirements validation checklist
+  ck.spec.taskstoissues:
+    origin: speckit
+    original: speckit.taskstoissues
+    upstream_file: taskstoissues.md
+    description: Convert tasks to GitHub issues
+  ck.plan:
+    origin: claudekit
+    original: plan
+    upstream_file: plan.md
+    description: Intelligent plan creation with prompt enhancement
+  ck.plan.hard:
+    origin: claudekit
+    original: plan/hard
+    upstream_file: plan/hard.md
+    description: Deep research + comprehensive plan
+  ck.plan.fast:
+    origin: claudekit
+    original: plan/fast
+    upstream_file: plan/fast.md
+    description: Quick plan without research
+  ck.fix:
+    origin: claudekit
+    original: fix
+    upstream_file: ck/fix.md
+    description: Analyze and fix issues
+  ck.test:
+    origin: claudekit
+    original: test
+    upstream_file: test.md
+    description: Run tests and analyze results
+  ck.ask:
+    origin: claudekit
+    original: ask
+    upstream_file: ask.md
+    description: Answer technical questions
+  ck.bootstrap:
+    origin: claudekit
+    original: bootstrap
+    upstream_file: bootstrap.md
+    description: Bootstrap a new project
+  ck.review:
+    origin: claudekit
+    original: review
+    upstream_file: review/codebase.md
+    description: Scan and analyze codebase
+  ck.watzup:
+    origin: claudekit
+    original: watzup
+    upstream_file: watzup.md
+    description: Review recent changes
+  ck.journal:
+    origin: claudekit
+    original: journal
+    upstream_file: journal.md
+    description: Write journal entries
+  ck.preview:
+    origin: claudekit
+    original: preview
+    upstream_file: preview.md
+    description: Preview markdown files
+  ck.help:
+    origin: claudekit
+    original: ck-help
+    upstream_file: ck-help.md
+    description: CoKit usage guide
+unknown_commands: []
+navigation:
+  ck.spec.specify:
+    next:
+      - ck.spec.clarify
+      - ck.spec.plan
+  ck.spec.clarify:
+    next:
+      - ck.spec.specify
+      - ck.spec.plan
+  ck.spec.plan:
+    next:
+      - ck.spec.tasks
+      - ck.spec.checklist
+  ck.spec.tasks:
+    next:
+      - ck.spec.implement
+      - ck.spec.analyze
+  ck.spec.implement:
+    next:
+      - ck.test
+      - ck.spec.checklist
+  ck.plan:
+    next:
+      - ck.plan.hard
+      - ck.plan.fast
+  ck.plan.hard:
+    next:
+      - ck.test
+      - ck.fix
+  ck.plan.fast:
+    next:
+      - ck.test
+      - ck.fix
+  ck.test:
+    next:
+      - ck.fix
+      - ck.review
+  ck.fix:
+    next:
+      - ck.test

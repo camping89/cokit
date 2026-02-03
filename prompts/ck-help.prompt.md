@@ -1,13 +1,30 @@
 ---
-agent: 'agent'
-description: 'Cokit usage guide - just type naturally'
-tools: ['search/codebase']
+description: ClaudeKit usage guide - just type naturally
+argument-hint:
+  - category|command|task description
+name: ck.help
 ---
 
 Think harder.
-All-in-one Cokit guide for GitHub Copilot. Run the script and present output based on type markers.
+All-in-one ClaudeKit guide. Run the script and present output based on type markers.
 
-## Pre-Processing
+## Intent Validation
+
+The script uses keyword matching with smart weighting. After getting results, **validate** against these heuristics:
+
+| Sentence Pattern | Primary Intent | Example |
+|------------------|----------------|---------|
+| `[action verb] my [object]` | The action verb | "commit my changes" → git |
+| `[context] [subject noun]` | The subject noun | "setup notifications" → notifications |
+| `[noun] [noun]` | Last noun (topic) | "discord webhook" → notifications |
+
+**Action verbs** (high intent when first): fix, test, commit, push, build, create, review, deploy, run, check, find, plan, refactor
+
+**Context words** (low intent, modify subject): setup, add, start, new, my, the, configure
+
+**Override script only if:** result clearly mismatches the sentence pattern above. Otherwise trust the algorithm.
+
+## Translation
 
 **IMPORTANT: Always translate `${input}` to English before passing to script.**
 
@@ -17,7 +34,9 @@ The Python script only understands English keywords. If `${input}` is in another
 
 ## Execution
 
-Search for CoKit resources in `.github/` directory and present them to user based on their query: `${input}`
+```bash
+python $HOME/.claude/scripts/ck-help.py "${input}"
+```
 
 ## Output Type Detection
 
@@ -42,8 +61,8 @@ Full documentation (config, schema, setup guides).
 ## Additional Tips
 
 **When to use global vs local config:**
-- Use global ( for personal preferences like language, issue prefix style
-- Use local ( for project-specific paths, naming conventions
+- Use global (~/.claude/.ck.json) for personal preferences like language, issue prefix style
+- Use local ($HOME/.claude/.ck.json) for project-specific paths, naming conventions
 
 **Common setup for teams:**
 Each team member sets their locale globally, but projects share local config via git.
@@ -107,6 +126,17 @@ Never replace or summarize the script output. Always show it fully, then enhance
 
 ## Important: Correct Workflows
 
-- **`/ck-plan` → `/ck-code`**: Plan first, then execute the plan
-- **`/ck-cook`**: Standalone - plans internally, no separate plan needed
-- **NEVER** suggest `/ck-plan` → `/ck-cook` (cook has its own planning)
+- **`/ck.plan` → `/cook`**: Plan first, then execute the plan
+- **`/cook`**: Standalone - plans internally, no separate `/ck.plan` needed
+- **NEVER** suggest `/ck.plan` → `/cook` (cook has its own planning)
+
+---
+
+## Suggested Next Steps
+
+| Command | Description |
+|---------|-------------|
+| `/ck.brainstorm` | Explore ideas |
+| `/ck.plan` | Create plan |
+
+**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

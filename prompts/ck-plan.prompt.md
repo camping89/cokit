@@ -1,7 +1,8 @@
 ---
-agent: 'agent'
-description: 'Intelligent plan creation with prompt enhancement'
-tools: ['search/codebase', 'search/changes', 'web/fetch', 'read/problems']
+description: ⚡⚡⚡ Intelligent plan creation with prompt enhancement
+argument-hint:
+  - task
+name: ck.plan
 ---
 
 ## Your mission
@@ -17,64 +18,26 @@ Check the `## Plan Context` section in the injected context:
 - If "Plan: none" → Proceed to create new plan using naming pattern from `## Naming` section.
 
 ## Workflow
-- Analyze the given task and ask user for more details if needed.
-- Decide complexity:
-  - **Simple task** (clear scope, no research needed) → Use `/plan:fast`
-  - **Complex task** (needs research, multiple aspects) → Use `/plan:hard`
-- Execute the chosen SlashCommand with an **enhanced detailed prompt**:
-  - `/plan:fast <detailed-instructions-prompt>`
-  - `/plan:hard <detailed-instructions-prompt>`
-
-**Note:** The `detailed-instructions-prompt` must describe the task in detail based on user's input.
-
-## Output
-The output MUST be markdown plan files saved to `plans/` directory:
-```
-{plan-dir}/
-├── plan.md              ← Main plan with YAML frontmatter
-├── phase-XX-*.md        ← Implementation phases
-└── reports/             ← Any analysis reports
-```
-
-## Clarification & Finalization Flow
-
-After creating the initial plan:
-
-1. **If questions exist** → List questions at the end of your response (max 3-5 questions)
-2. **After user answers** → Update `plan.md` with clarified requirements
-3. **Repeat** until no ambiguities remain
-4. **Finalize** → Confirm plan is complete and ready for implementation
-
-**Question format:**
-```
-## Questions before finalizing:
-1. [Question 1]?
-2. [Question 2]?
-...
-```
-
-## Next Steps Suggestion
-
-After plan is finalized, suggest the appropriate implementation command:
-
-| Task Type | Suggested Command |
-|-----------|-------------------|
-| Feature development | `/ck-cook` or `/ck-code` |
-| Bug fix | `/fix` |
-| Refactoring | `/refactor` |
-| Documentation | `/docs` |
-
-**Example output:**
-```
-✅ Plan finalized: {plan-dir}/plan.md
-
-Ready to implement? Run one of these:
-- `/ck-cook` - Full-featured implementation with tests
-- `/ck-code` - Quick implementation
-```
+- Analyze the given task and use `AskUserQuestion` tool to ask for more details if needed.
+- Decide to use `/ck.plan:fast` or `/ck.plan:hard` SlashCommands based on the complexity.
+- Execute SlashCommand: `/ck.plan:fast <detailed-instructions-prompt>` or `/ck.plan:hard <detailed-instructions-prompt>`
+- Activate `planning` skill.
+- Note: `detailed-instructions-prompt` is **an enhanced prompt** that describes the task in detail based on the provided task description.
 
 ## Important Notes
-- **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
-- **IMPORTANT:** Ensure token efficiency while maintaining high quality.
-- **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
-- **IMPORTANT:** **Do not** start implementing.
+**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
+**IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
+**IMPORTANT:** Ensure token efficiency while maintaining high quality.
+**IMPORTANT:** In reports, list any unresolved questions at the end, if any.
+**IMPORTANT**: **Do not** start implementing.
+
+---
+
+## Suggested Next Steps
+
+| Command | Description |
+|---------|-------------|
+| `/ck.plan.hard` | Deep research + comprehensive plan |
+| `/ck.plan.fast` | Quick plan without research |
+
+**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

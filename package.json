@@ -10,6 +10,10 @@
     "test": "node --test",
     "lint": "echo 'No linter configured'",
     "build": "node eng/update-readme.mjs",
+    "sync": "npm run sync:pull && npm run sync:transform",
+    "sync:pull": "git subtree pull --prefix=upstream/speckit speckit main --squash",
+    "sync:transform": "node eng/sync.mjs",
+    "sync:dry-run": "node eng/sync.mjs --dry-run",
     "convert:agents": "node eng/convert-agents.mjs",
     "convert:commands": "node eng/convert-commands.mjs",
     "convert:skills": "node eng/convert-skills.mjs",
@@ -34,9 +38,14 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
     "commander": "^12.0.0",
-    "prompts": "^2.4.2",
-    "chalk": "^5.3.0"
+    "prompts": "^2.4.2"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "globby": "^16.1.0",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.1"
+  }
 }

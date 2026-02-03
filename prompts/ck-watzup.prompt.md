@@ -1,12 +1,12 @@
 ---
-description: ⚡ Run tests locally and analyze the summary report.
-name: ck.test
+description: ⚡ Review recent changes and wrap up the work
+name: ck.watzup
 ---
-
-Use the `tester` subagent to run tests locally and analyze the summary report.
+Review my current branch and the most recent commits. 
+Provide a detailed summary of all changes, including what was modified, added, or removed. 
+Analyze the overall impact and quality of the changes.
 
 **IMPORTANT**: **Do not** start implementing.
-**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
 
 ---
 
@@ -14,7 +14,7 @@ Use the `tester` subagent to run tests locally and analyze the summary report.
 
 | Command | Description |
 |---------|-------------|
-| `/ck.fix` | Analyze and fix issues |
-| `/ck.review` | Scan and analyze codebase |
+| `/ck.brainstorm` | Explore ideas |
+| `/ck.plan` | Create plan |
 
 **All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
