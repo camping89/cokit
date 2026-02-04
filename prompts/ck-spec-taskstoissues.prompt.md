@@ -5,8 +5,8 @@ description: >-
 tools:
   - github/github-mcp-server/issue_write
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-  ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
 name: ck.spec.taskstoissues
 ---
 
@@ -21,17 +21,18 @@ You **MUST** consider the user input before proceeding (if not empty).
 ## Outline
 
 1. Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
-1. From the executed script, extract the path to **tasks**.
-1. Get the Git remote by running:
 
-```bash
-git config --get remote.origin.url
-```
+2. From the executed script, extract the path to **tasks**.
+
+3. **Verify Git repository and GitHub remote**:
+   - Check if this is a git repository: `git rev-parse --git-dir 2>/dev/null`
+   - If NOT a git repo: **STOP** and inform user "This command requires a git repository with a GitHub remote. Initialize git first or use `/ck.spec.implement` instead."
+   - Get the Git remote: `git config --get remote.origin.url`
 
 > [!CAUTION]
-> ONLY PROCEED TO NEXT STEPS IF THE REMOTE IS A GITHUB URL
+> ONLY PROCEED TO NEXT STEPS IF THE REMOTE IS A GITHUB URL (contains github.com)
 
-1. For each task in the list, use the GitHub MCP server to create a new issue in the repository that is representative of the Git remote.
+4. For each task in the list, use the GitHub MCP server to create a new issue in the repository that is representative of the Git remote.
 
 > [!CAUTION]
 > UNDER NO CIRCUMSTANCES EVER CREATE ISSUES IN REPOSITORIES THAT DO NOT MATCH THE REMOTE URL
@@ -40,9 +41,10 @@ git config --get remote.origin.url
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.implement` | Start implementation | Issues created, ready to code |
+| `/ck.spec.tasks` | Regenerate tasks | Need to update task list |
+| `/ck.kanban` | View project board | Track progress on created issues |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Usage:** Run after `/ck.spec.tasks` to sync tasks with GitHub Issues for team tracking

@@ -12,8 +12,8 @@ handoffs:
     prompt: Start the implementation in phases
     send: true
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json
-  ps: scripts/powershell/check-prerequisites.ps1 -Json
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json
 name: ck.spec.tasks
 ---
 
@@ -45,30 +45,70 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Create parallel execution examples per user story
    - Validate task completeness (each user story has all needed tasks, independently testable)
 
-4. **Generate tasks.md**: Use `templates/tasks-template.md` as structure, fill with:
-   - Correct feature name from plan.md
-   - Phase 1: Setup tasks (project initialization)
-   - Phase 2: Foundational tasks (blocking prerequisites for all user stories)
-   - Phase 3+: One phase per user story (in priority order from spec.md)
-   - Each phase includes: story goal, independent test criteria, tests (if requested), implementation tasks
-   - Final Phase: Polish & cross-cutting concerns
-   - All tasks must follow the strict checklist format (see Task Generation Rules below)
-   - Clear file paths for each task
-   - Dependencies section showing story completion order
-   - Parallel execution examples per story
-   - Implementation strategy section (MVP first, incremental delivery)
+4. **Generate hybrid task structure**: Create master file + individual phase files:
 
-5. **Report**: Output path to generated tasks.md and summary:
-   - Total task count
-   - Task count per user story
+   **4a. Create phase files** in `FEATURE_DIR/tasks/`:
+   - `phase-01-setup.md` - Project initialization
+   - `phase-02-foundation.md` - Blocking prerequisites for all user stories
+   - `phase-03-us1-[slug].md` - User Story 1 (P1 priority)
+   - `phase-04-us2-[slug].md` - User Story 2 (P2 priority)
+   - ... (one file per user story, in priority order)
+   - `phase-NN-polish.md` - Final phase: Cross-cutting concerns
+
+   **Phase file structure**:
+   ```markdown
+   # Phase N: [Phase Title]
+
+   **Status**: pending | in-progress | completed
+   **Dependencies**: [List phase dependencies, e.g., "Phase 2 must complete first"]
+
+   ## Goal
+   [Brief description of what this phase delivers]
+
+   ## Test Criteria
+   [How to verify this phase is complete - independently testable]
+
+   ## Tasks
+   - [ ] TXXX [P?] [Story?] Description with file path
+   - [ ] TXXX ...
+
+   ## Checkpoint
+   [What should be true when this phase completes]
+   ```
+
+   **4b. Create master tasks.md** in `FEATURE_DIR/`:
+   Use `spec-kit/templates/tasks-template.md` as reference, generate:
+   - Feature name and overview
+   - Phase summary table with status and links:
+     ```markdown
+     | Phase | Title | Status | Tasks | Dependencies |
+     |-------|-------|--------|-------|--------------|
+     | 1 | [Setup](tasks/phase-01-setup.md) | pending | 3 | - |
+     | 2 | [Foundation](tasks/phase-02-foundation.md) | pending | 6 | Phase 1 |
+     | 3 | [US1: Title](tasks/phase-03-us1-slug.md) | pending | 7 | Phase 2 |
+     ```
+   - Dependency graph (text diagram showing phase order)
+   - Parallel execution notes
+   - Implementation strategy (MVP first, incremental delivery)
+   - Quick reference: Total tasks, parallel opportunities, MVP scope
+
+5. **Report**: Output paths to generated files and summary:
+   - Files created: `tasks.md` + list of `tasks/phase-*.md` files
+   - Total task count and count per phase
    - Parallel opportunities identified
    - Independent test criteria for each story
-   - Suggested MVP scope (typically just User Story 1)
-   - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+   - Suggested MVP scope (typically Phase 1-3: Setup + Foundation + US1)
+   - Format validation: Confirm ALL tasks follow the checklist format
 
 Context for task generation: {ARGS}
 
-The tasks.md should be immediately executable - each task must be specific enough that an LLM can complete it without additional context.
+**Hybrid Structure Benefits**:
+- Master `tasks.md` provides overview and navigation
+- Individual phase files enable parallel work by multiple agents/developers
+- Each phase file is self-contained with clear dependencies
+- Easy to track progress per phase independently
+
+The task files should be immediately executable - each task must be specific enough that an LLM can complete it without additional context.
 
 ## Task Generation Rules
 
@@ -146,9 +186,10 @@ Every task MUST strictly follow this format:
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.spec.implement` | Execute tasks from plan |
-| `/ck.spec.analyze` | Cross-artifact consistency analysis |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.analyze` | Cross-artifact consistency check | Before implementation, validate spec/plan/tasks alignment |
+| `/ck.spec.implement` | Execute implementation | All tasks validated, ready to code |
+| `/ck.spec.taskstoissues` | Create GitHub issues | Track tasks in GitHub project board |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Workflow:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`

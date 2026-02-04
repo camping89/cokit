@@ -3,8 +3,8 @@ description: >-
   Perform a non-destructive cross-artifact consistency and quality analysis
   across spec.md, plan.md, and tasks.md after task generation.
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-  ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
 name: ck.spec.analyze
 ---
 
@@ -24,7 +24,7 @@ Identify inconsistencies, duplications, ambiguities, and underspecified items ac
 
 **STRICTLY READ-ONLY**: Do **not** modify any files. Output a structured analysis report. Offer an optional remediation plan (user must explicitly approve before any follow-up editing commands would be invoked manually).
 
-**Constitution Authority**: The project constitution (`/memory/constitution.md`) is **non-negotiable** within this analysis scope. Constitution conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit constitution update outside `/ck.spec.analyze`.
+**Constitution Authority**: The project constitution (`constitution.md` at project root) is **non-negotiable** within this analysis scope. Constitution conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit constitution update outside `/ck.spec.analyze`.
 
 ## Execution Steps
 
@@ -34,7 +34,8 @@ Run `{SCRIPT}` once from repo root and parse JSON for FEATURE_DIR and AVAILABLE_
 
 - SPEC = FEATURE_DIR/spec.md
 - PLAN = FEATURE_DIR/plan.md
-- TASKS = FEATURE_DIR/tasks.md
+- TASKS = FEATURE_DIR/tasks.md (master file)
+- TASKS_DIR = FEATURE_DIR/tasks/ (phase files, if hybrid structure)
 
 Abort with an error message if any required file is missing (instruct the user to run missing prerequisite command).
 For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
@@ -58,17 +59,19 @@ Load only the minimal necessary context from each artifact:
 - Phases
 - Technical constraints
 
-**From tasks.md:**
+**From tasks.md (and tasks/ if hybrid structure):**
 
 - Task IDs
 - Descriptions
-- Phase grouping
+- Phase grouping (from master file or individual phase files)
 - Parallel markers [P]
+- Story labels [USx]
 - Referenced file paths
+- Phase dependencies and status
 
 **From constitution:**
 
-- Load `/memory/constitution.md` for principle validation
+- Load `constitution.md` (project root) for principle validation
 
 ### 3. Build Semantic Models
 
@@ -193,9 +196,10 @@ Ask the user: "Would you like me to suggest concrete remediation edits for the t
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.implement` | Start implementation | Analysis passed, no critical issues |
+| `/ck.spec.clarify` | Clarify requirements | Analysis found ambiguities in spec |
+| `/ck.spec.tasks` | Regenerate tasks | Task coverage gaps identified |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Workflow:** `/ck.spec.analyze` → fix issues → `/ck.spec.implement`

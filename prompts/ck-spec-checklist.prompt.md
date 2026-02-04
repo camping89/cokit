@@ -3,8 +3,8 @@ description: >-
   Generate a custom checklist for the current feature based on user
   requirements.
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json
-  ps: scripts/powershell/check-prerequisites.ps1 -Json
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json
 name: ck.spec.checklist
 ---
 
@@ -209,7 +209,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - ✅ "Are [edge cases/scenarios] addressed in requirements?"
    - ✅ "Does the spec define [missing aspect]?"
 
-6. **Structure Reference**: Generate the checklist following the canonical template in `templates/checklist-template.md` for title, meta section, category headings, and ID formatting. If template is unavailable, use: H1 title, purpose/created meta lines, `##` category sections containing `- [ ] CHK### <requirement item>` lines with globally incrementing IDs starting at CHK001.
+6. **Structure Reference**: Generate the checklist following the canonical template in `spec-kit/templates/checklist-template.md` for title, meta section, category headings, and ID formatting. If template is unavailable, use: H1 title, purpose/created meta lines, `##` category sections containing `- [ ] CHK### <requirement item>` lines with globally incrementing IDs starting at CHK001.
 
 7. **Report**: Output full path to created checklist, item count, and remind user that each run creates a new file. Summarize:
    - Focus areas selected
@@ -303,9 +303,10 @@ Sample items:
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.clarify` | Clarify requirements | Checklist revealed gaps in spec |
+| `/ck.spec.plan` | Generate implementation plan | Checklist passed, spec is solid |
+| `/ck.spec.implement` | Start implementation | Plan exists, checklist validated |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Usage:** Run `/ck.spec.checklist [domain]` for focused validation (e.g., security, ux, api)

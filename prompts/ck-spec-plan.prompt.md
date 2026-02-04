@@ -11,11 +11,11 @@ handoffs:
     agent: ck.spec.checklist
     prompt: Create a checklist for the following domain...
 scripts:
-  sh: scripts/bash/setup-plan.sh --json
-  ps: scripts/powershell/setup-plan.ps1 -Json
+  sh: spec-kit/scripts/bash/setup-plan.sh --json
+  ps: spec-kit/scripts/powershell/setup-plan.ps1 -Json
 agent_scripts:
-  sh: scripts/bash/update-agent-context.sh __AGENT__
-  ps: scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
+  sh: spec-kit/scripts/bash/update-agent-context.sh __AGENT__
+  ps: spec-kit/scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
 name: ck.spec.plan
 ---
 
@@ -31,7 +31,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
-2. **Load context**: Read FEATURE_SPEC and `/memory/constitution.md`. Load IMPL_PLAN template (already copied).
+2. **Load context**: Read FEATURE_SPEC and `constitution.md` (project root). Load IMPL_PLAN template (already copied).
 
 3. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
    - Fill Technical Context (mark unknowns as "NEEDS CLARIFICATION")
@@ -101,9 +101,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.spec.tasks` | Generate tasks from plan |
-| `/ck.spec.checklist` | Generate requirements validation checklist |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.tasks` | Generate executable tasks | Plan complete with data-model.md, contracts/ ready |
+| `/ck.spec.checklist` | Generate validation checklist | Need domain-specific QA before implementation |
+| `/ck.spec.analyze` | Cross-artifact analysis | After tasks generated, check consistency |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Workflow:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`

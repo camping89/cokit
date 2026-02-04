@@ -8,8 +8,8 @@ handoffs:
     agent: ck.spec.plan
     prompt: Create a plan for the spec. I am building with...
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json --paths-only
-  ps: scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json --paths-only
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly
 name: ck.spec.clarify
 ---
 
@@ -191,9 +191,10 @@ Context for prioritization: {ARGS}
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.spec.specify` | Create feature specification from natural language |
-| `/ck.spec.plan` | Generate implementation plan from spec |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.plan` | Generate implementation plan | All clarifications resolved, spec is complete |
+| `/ck.spec.checklist` | Generate validation checklist | Need domain-specific requirements validation |
+| `/ck.spec.specify` | Update/rewrite spec | Major scope changes or new feature |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Workflow:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`

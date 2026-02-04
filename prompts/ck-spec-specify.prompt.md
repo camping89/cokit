@@ -11,8 +11,8 @@ handoffs:
     prompt: Clarify specification requirements
     send: true
 scripts:
-  sh: 'scripts/bash/create-new-feature.sh --json "{ARGS}"'
-  ps: 'scripts/powershell/create-new-feature.ps1 -Json "{ARGS}"'
+  sh: 'spec-kit/scripts/bash/create-new-feature.sh --json "{ARGS}"'
+  ps: 'spec-kit/scripts/powershell/create-new-feature.ps1 -Json "{ARGS}"'
 name: ck.spec.specify
 ---
 
@@ -42,23 +42,22 @@ Given that feature description, do this:
      - "Create a dashboard for analytics" → "analytics-dashboard"
      - "Fix payment processing timeout bug" → "fix-payment-timeout"
 
-2. **Check for existing branches before creating new one**:
+2. **Check for existing specs and determine feature number**:
 
-   a. First, fetch all remote branches to ensure we have the latest information:
-
+   a. First, check if this is a git repository (optional - skip git steps if not):
       ```bash
-      git fetch --all --prune
+      git rev-parse --git-dir 2>/dev/null
       ```
 
-   b. Find the highest feature number across all sources for the short-name:
-      - Remote branches: `git ls-remote --heads origin | grep -E 'refs/heads/[0-9]+-<short-name>$'`
-      - Local branches: `git branch | grep -E '^[* ]*[0-9]+-<short-name>$'`
-      - Specs directories: Check for directories matching `specs/[0-9]+-<short-name>`
+   b. Find the highest feature number from available sources:
+      - **Always check**: Specs directories matching `specs/[0-9]+-<short-name>`
+      - **If git repo**: Local branches matching `^[* ]*[0-9]+-<short-name>$`
+      - **If git repo with remote**: Remote branches (run `git fetch --all --prune` first, then check `git ls-remote --heads origin`)
 
    c. Determine the next available number:
-      - Extract all numbers from all three sources
+      - Extract all numbers from available sources
       - Find the highest number N
-      - Use N+1 for the new branch number
+      - Use N+1 for the new feature number (start with 1 if none found)
 
    d. Run the script `{SCRIPT}` with the calculated number and short-name:
       - Pass `--number N+1` and `--short-name "your-short-name"` along with the feature description
@@ -66,15 +65,14 @@ Given that feature description, do this:
       - PowerShell example: `{SCRIPT} -Json -Number 5 -ShortName "user-auth" "Add user authentication"`
 
    **IMPORTANT**:
-   - Check all three sources (remote branches, local branches, specs directories) to find the highest number
-   - Only match branches/directories with the exact short-name pattern
-   - If no existing branches/directories found with this short-name, start with number 1
+   - Specs directories are the PRIMARY source - always check these
+   - Git operations are OPTIONAL - only run if the project is a git repository
+   - If no existing specs found with this short-name, start with number 1
    - You must only ever run this script once per feature
-   - The JSON is provided in the terminal as output - always refer to it to get the actual content you're looking for
-   - The JSON output will contain BRANCH_NAME and SPEC_FILE paths
+   - The JSON output will contain FEATURE_DIR and SPEC_FILE paths
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot")
 
-3. Load `templates/spec-template.md` to understand required sections.
+3. Load `spec-kit/templates/spec-template.md` to understand required sections.
 
 4. Follow this execution flow:
 
@@ -267,9 +265,10 @@ Success criteria must be:
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.spec.clarify` | Ask clarification questions for underspecified areas |
-| `/ck.spec.plan` | Generate implementation plan from spec |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.spec.clarify` | Ask clarification questions | Spec has [NEEDS CLARIFICATION] markers or vague requirements |
+| `/ck.spec.plan` | Generate implementation plan | Spec is complete and ready for technical planning |
+| `/ck.spec.constitution` | Create project principles | Need to establish non-negotiable rules before planning |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**All commands:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`

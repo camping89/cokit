@@ -11,12 +11,6 @@ sources:
     last_sync: '2026-02-03T12:56:52.529Z'
 ignore:
   - ck.kanban
-  - ck.brainstorm
-  - ck.cook
-  - ck.scout
-  - ck.git
-  - ck.debug
-  - ck.docs
 mappings:
   ck.spec.specify:
     origin: speckit
@@ -123,6 +117,36 @@ mappings:
     original: ck-help
     upstream_file: ck-help.md
     description: CoKit usage guide
+  ck.brainstorm:
+    origin: claudekit
+    original: brainstorm
+    upstream_file: skills/brainstorm/SKILL.md
+    description: Brainstorm solutions with trade-off analysis
+  ck.cook:
+    origin: claudekit
+    original: cook
+    upstream_file: skills/cook/SKILL.md
+    description: Smart feature implementation with workflow detection
+  ck.scout:
+    origin: claudekit
+    original: scout
+    upstream_file: skills/scout/SKILL.md
+    description: Fast codebase scouting using parallel agents
+  ck.git:
+    origin: claudekit
+    original: git
+    upstream_file: skills/git/SKILL.md
+    description: Git operations with conventional commits
+  ck.debug:
+    origin: claudekit
+    original: debug
+    upstream_file: skills/debug/SKILL.md
+    description: Debug systematically with root cause analysis
+  ck.docs:
+    origin: claudekit
+    original: docs-seeker
+    upstream_file: skills/docs-seeker/SKILL.md
+    description: Search library/framework documentation
 unknown_commands: []
 navigation:
   ck.spec.specify:
@@ -164,3 +188,32 @@ navigation:
   ck.fix:
     next:
       - ck.test
+      - ck.debug
+  ck.brainstorm:
+    next:
+      - ck.plan
+      - ck.ask
+  ck.cook:
+    next:
+      - ck.test
+      - ck.git
+      - ck.review
+  ck.scout:
+    next:
+      - ck.plan
+      - ck.cook
+      - ck.ask
+  ck.git:
+    next:
+      - ck.test
+      - ck.review
+  ck.debug:
+    next:
+      - ck.test
+      - ck.fix
+      - ck.git
+  ck.docs:
+    next:
+      - ck.ask
+      - ck.plan
+      - ck.cook

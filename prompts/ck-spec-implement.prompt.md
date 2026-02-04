@@ -3,8 +3,8 @@ description: >-
   Execute the implementation plan by processing and executing all tasks defined
   in tasks.md
 scripts:
-  sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-  ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
+  sh: spec-kit/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
+  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
 name: ck.spec.implement
 ---
 
@@ -52,8 +52,9 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Automatically proceed to step 3
 
 3. Load and analyze the implementation context:
-   - **REQUIRED**: Read tasks.md for the complete task list and execution plan
+   - **REQUIRED**: Read tasks.md for overview, phase summary, and dependency graph
    - **REQUIRED**: Read plan.md for tech stack, architecture, and file structure
+   - **IF EXISTS**: Read tasks/ directory for individual phase files (hybrid structure)
    - **IF EXISTS**: Read data-model.md for entities and relationships
    - **IF EXISTS**: Read contracts/ for API specifications and test requirements
    - **IF EXISTS**: Read research.md for technical decisions and constraints
@@ -103,11 +104,14 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
 
-5. Parse tasks.md structure and extract:
-   - **Task phases**: Setup, Tests, Core, Integration, Polish
+5. Parse task structure and extract:
+   - **Hybrid structure detection**: Check if `tasks/` folder exists with phase files
+     - If hybrid: Read phase summary from tasks.md, load each phase file as needed
+     - If single file: Parse tasks.md directly for all phases
+   - **Task phases**: Setup, Foundation, User Stories (US1, US2...), Polish
    - **Task dependencies**: Sequential vs parallel execution rules
-   - **Task details**: ID, description, file paths, parallel markers [P]
-   - **Execution flow**: Order and dependency requirements
+   - **Task details**: ID, description, file paths, parallel markers [P], story labels [USx]
+   - **Execution flow**: Order and dependency requirements from phase files
 
 6. Execute implementation following the task plan:
    - **Phase-by-phase execution**: Complete each phase before moving to the next
@@ -129,7 +133,9 @@ You **MUST** consider the user input before proceeding (if not empty).
    - For parallel tasks [P], continue with successful tasks, report failed ones
    - Provide clear error messages with context for debugging
    - Suggest next steps if implementation cannot proceed
-   - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
+   - **IMPORTANT** For completed tasks:
+     - If hybrid structure: Mark task as [X] in the corresponding `tasks/phase-*.md` file AND update phase status in tasks.md
+     - If single file: Mark task as [X] in tasks.md
 
 9. Completion validation:
    - Verify all required tasks are completed
@@ -138,15 +144,19 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Confirm the implementation follows the technical plan
    - Report final status with summary of completed work
 
-Note: This command assumes a complete task breakdown exists in tasks.md. If tasks are incomplete or missing, suggest running `/ck.spec.tasks` first to regenerate the task list.
+**Notes**:
+- This command supports both single-file (tasks.md only) and hybrid structure (tasks.md + tasks/phase-*.md)
+- If tasks are incomplete or missing, suggest running `/ck.spec.tasks` first to regenerate the task list
+- Hybrid structure enables parallel work: multiple agents can work on different phase files simultaneously
 
 ---
 
 ## Suggested Next Steps
 
-| Command | Description |
-|---------|-------------|
-| `/ck.test` | Run tests and analyze results |
-| `/ck.spec.checklist` | Generate requirements validation checklist |
+| Command | Description | When to Use |
+|---------|-------------|-------------|
+| `/ck.test` | Run tests and analyze | Validate implementation against requirements |
+| `/ck.review` | Code review | Implementation complete, ready for QA |
+| `/ck.fix` | Fix issues | Tests failed or bugs discovered |
 
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+**Workflow:** `/ck.spec.implement` → `/ck.test` → `/ck.review` → `/ck.git`

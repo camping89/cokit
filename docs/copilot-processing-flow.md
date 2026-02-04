@@ -18,7 +18,7 @@ How Copilot processes user input through CoKit resources to produce output.
 
 ### CoKit Examples
 
-**Prompts:** `/ck.fix`, `/ck.plan`, `/ck.code`, `/ck.cook`, `/ck.test`, `/ck.review-codebase`, `/ck.docs`, `/ck.bootstrap`, `/ck.brainstorm`, `/ck.debug`, `/ck.scout`, `/ck.ask`, `/ck.git`, `/ck.help`
+**Prompts:** `/ck.ask`, `/ck.bootstrap`, `/ck.brainstorm`, `/ck.cook`, `/ck.debug`, `/ck.docs`, `/ck.fix`, `/ck.git`, `/ck.help`, `/ck.journal`, `/ck.plan`, `/ck.plan.fast`, `/ck.plan.hard`, `/ck.preview`, `/ck.review`, `/ck.scout`, `/ck.test`, `/ck.watzup`
 
 **Agents:** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
 
