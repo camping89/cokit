@@ -1,6 +1,6 @@
 # Asset Processing Workflow
 
-Complete workflow for processing design assets using `media-processing` skill.
+Complete workflow for processing design assets using CLI tools (ImageMagick, FFmpeg, RMBG).
 
 ## Processing Workflow
 
@@ -20,9 +20,9 @@ Get assets from:
 - Design tools exports (Figma, Sketch)
 - Screenshots or captured frames
 
-### Step 3: Process with Media-Processing Skill
+### Step 3: Process Assets with CLI Tools
 
-Use `media-processing` skill tools:
+Use these CLI tools:
 
 **Image Processing (ImageMagick)**:
 ```bash

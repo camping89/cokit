@@ -23,7 +23,7 @@ Use `docs-seeker` skill to research:
    - Compare to design guidelines
    - Iterate until correct
 
-4. **DevTools check** with `chrome-devtools` skill
+4. **DevTools check** with `agent-browser` or browser automation tools
 
 5. **Test** compilation with `tester` agent
 
@@ -31,4 +31,4 @@ Use `docs-seeker` skill to research:
 
 ## Tips
 - Read `./docs/design-guidelines.md` first
-- Use `media-processing` skill for image editing (ImageMagick, FFmpeg)
+- Use ImageMagick/FFmpeg CLI for image editing

@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Create polished frontend interfaces from designs/screenshots/videos. Use for web components, 3D experiences, replicating UI designs, quick prototypes, immersive interfaces, avoiding AI slop.
+description: Create polished frontend interfaces from designs/screenshots. Use for web components, replicating UI designs, quick prototypes, avoiding AI slop.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -13,11 +13,8 @@ Choose workflow based on input type:
 | Input | Workflow | Reference |
 |-------|----------|-----------|
 | Screenshot | Replicate exactly | `./references/workflow-screenshot.md` |
-| Video | Replicate with animations | `./references/workflow-video.md` |
-| Screenshot/Video (describe only) | Document for devs | `./references/workflow-describe.md` |
-| 3D/WebGL request | Three.js immersive | `./references/workflow-3d.md` |
 | Quick task | Rapid implementation | `./references/workflow-quick.md` |
-| Complex/award-quality | Full immersive | `./references/workflow-immersive.md` |
+| Describe only | Document for devs | `./references/workflow-describe.md` |
 | From scratch | Design Thinking below | - |
 
 **All workflows**: Activate `ui-styling` skill FIRST for design patterns and component library.
@@ -49,7 +46,7 @@ Before coding, commit to a BOLD aesthetic direction:
 - **Motion**: CSS-first, anime.js for complex (`./references/animejs.md`). Orchestrated page loads > scattered micro-interactions.
 - **Spatial**: Unexpected layouts. Asymmetry. Overlap. Negative space OR controlled density.
 - **Backgrounds**: Atmosphere over solid colors. Gradients, noise, patterns, shadows, grain.
-- **Assets**: Process with `media-processing` skill (ImageMagick, FFmpeg, RMBG)
+- **Assets**: Process with ImageMagick, FFmpeg, RMBG CLI tools
 
 ## Asset & Analysis References
 

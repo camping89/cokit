@@ -16,7 +16,7 @@ When to activate each skill during fixing workflows.
 | `sequential-thinking` | Complex logic chain, multi-step reasoning needed |
 | `brainstorming` | Multiple valid approaches, architecture decision |
 | `context-engineering` | Fixing AI/LLM/agent code, context window issues |
-| `media-processing` | Image/video processing, visual asset manipulation |
+| ImageMagick/FFmpeg | Image/video processing, visual asset manipulation |
 
 ## Subagent Usage
 

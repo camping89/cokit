@@ -25,7 +25,7 @@ Use `ui-ux-designer` subagent directly:
 - Maintain quality despite speed
 
 ### 3. Process Assets
-Use `media-processing` skill:
+Use CLI tools:
 - Process images with ImageMagick
 - Optimize assets for web
 - Quick adjustments as needed
@@ -50,5 +50,5 @@ While moving fast, maintain:
 - Clean code structure
 
 ## Related
-- `workflow-immersive.md` - For comprehensive designs
+- `workflow-screenshot.md` - For exact replication
 - `technical-overview.md` - Quick reference

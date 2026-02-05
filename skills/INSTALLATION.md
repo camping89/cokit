@@ -100,7 +100,7 @@ Most skills use only Python standard library and require no external packages.
 
 Several skills require external CLI tools:
 
-#### media-processing
+#### Media Processing CLI Tools
 - **FFmpeg**: Video/audio processing
   - Ubuntu/Debian: `sudo apt-get install ffmpeg`
   - macOS: `brew install ffmpeg`
@@ -127,7 +127,7 @@ Several skills require external CLI tools:
 - **MongoDB Shell**: https://www.mongodb.com/try/download/shell
 - **MongoDB Tools**: https://www.mongodb.com/try/download/database-tools
 
-#### web-frameworks, ui-styling
+#### ui-styling
 - **Node.js 18+**: https://nodejs.org/
 - **pnpm**: `npm install -g pnpm`
 - **yarn**: `npm install -g yarn`
@@ -252,7 +252,7 @@ chmod +x $HOME/.copilot/skills/*/scripts/*.py
 
 If you only want to use specific skills:
 
-**For media-processing only:**
+**For media processing tools only:**
 ```bash
 # macOS
 brew install ffmpeg imagemagick
@@ -268,7 +268,7 @@ npm install -g rmbg-cli
 ```
 
 **For other skills:**
-Most other skills (better-auth, repomix, devops, web-frameworks, ui-styling, databases) use only Python stdlib and require no `pip install`.
+Most other skills (better-auth, repomix, devops, ui-styling, databases) use only Python stdlib and require no `pip install`.
 
 ## Development Setup
 
@@ -290,7 +290,7 @@ pytest $HOME/.copilot/skills/*/scripts/tests/ --cov=.copilot/skills --cov-report
 
 ## Skill-Specific Notes
 
-### media-processing
+### Media Processing Tools
 - FFmpeg must be in PATH
 - ImageMagick must be in PATH
 - RMBG CLI must be installed globally

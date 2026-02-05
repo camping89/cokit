@@ -500,10 +500,10 @@ install_system_deps() {
         fi
     fi
 
-    # FFmpeg (required for media-processing skill)
+    # FFmpeg (video/audio processing)
     install_system_package "ffmpeg" "FFmpeg" "ffmpeg"
 
-    # ImageMagick (required for media-processing skill)
+    # ImageMagick (image processing)
     install_system_package "imagemagick" "ImageMagick" "magick,convert"
 
     # PostgreSQL client (optional - just check)
@@ -620,13 +620,6 @@ install_node_deps() {
     # Install local npm packages for skills
     print_info "Installing local npm packages for skills..."
 
-    # chrome-devtools
-    if [ -d "$SCRIPT_DIR/chrome-devtools/scripts" ] && [ -f "$SCRIPT_DIR/chrome-devtools/scripts/package.json" ]; then
-        print_info "Installing chrome-devtools dependencies..."
-        (cd "$SCRIPT_DIR/chrome-devtools/scripts" && npm install --quiet)
-        print_success "chrome-devtools dependencies installed"
-    fi
-
     # sequential-thinking
     if [ -d "$SCRIPT_DIR/sequential-thinking" ] && [ -f "$SCRIPT_DIR/sequential-thinking/package.json" ]; then
         print_info "Installing sequential-thinking dependencies..."
@@ -639,13 +632,6 @@ install_node_deps() {
         print_info "Installing mcp-management dependencies..."
         (cd "$SCRIPT_DIR/mcp-management/scripts" && npm install --quiet)
         print_success "mcp-management dependencies installed"
-    fi
-
-    # plans-kanban (gray-matter)
-    if [ -d "$SCRIPT_DIR/plans-kanban" ] && [ -f "$SCRIPT_DIR/plans-kanban/package.json" ]; then
-        print_info "Installing plans-kanban dependencies..."
-        (cd "$SCRIPT_DIR/plans-kanban" && npm install --quiet)
-        print_success "plans-kanban dependencies installed"
     fi
 }
 

@@ -37,7 +37,7 @@ Use `ui-ux-designer` subagent:
 - Match screenshot precisely
 
 ### 4. Process Assets
-Use `media-processing` skill:
+Use CLI tools:
 - Process images with ImageMagick
 - Remove backgrounds with RMBG CLI
 - Optimize assets for web
