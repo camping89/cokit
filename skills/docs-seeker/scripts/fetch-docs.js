@@ -91,7 +91,8 @@ async function getUrlVariations(library, topic = null) {
     'astro': 'withastro/astro',
     'shadcn': 'shadcn-ui/ui',
     'shadcn/ui': 'shadcn-ui/ui',
-    'better-auth': 'better-auth/better-auth',
+    'tailwind': 'tailwindlabs/tailwindcss',
+    'tailwindcss': 'tailwindlabs/tailwindcss',
   };
 
   const normalized = library.toLowerCase();

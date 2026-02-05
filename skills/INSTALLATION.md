@@ -117,9 +117,8 @@ Several skills require external CLI tools:
 - **Docker**: https://docs.docker.com/get-docker/
 - **Google Cloud CLI**: https://cloud.google.com/sdk/docs/install
 
-#### better-auth, repomix
+#### repomix
 - **Node.js 18+**: https://nodejs.org/
-- **Better Auth**: `npm install better-auth`
 - **Repomix**: `npm install -g repomix`
 
 #### databases
@@ -268,7 +267,7 @@ npm install -g rmbg-cli
 ```
 
 **For other skills:**
-Most other skills (better-auth, repomix, devops, ui-styling, databases) use only Python stdlib and require no `pip install`.
+Most other skills (repomix, devops, ui-styling, databases) use only Python stdlib and require no `pip install`.
 
 ## Development Setup
 
