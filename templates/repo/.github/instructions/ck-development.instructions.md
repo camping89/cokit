@@ -1,6 +1,6 @@
 ---
-applyTo: "**/*"
-description: "General development rules applied to all files"
+description: 'General development rules applied to all files'
+applyTo: '**/*'
 ---
 
 # Development Rules

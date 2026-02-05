@@ -162,6 +162,150 @@ Accept: application/vnd.myapi.v2+json
 
 **Recommendation:** URL versioning for simplicity and discoverability
 
+### REST API Implementation (ASP.NET Core)
+
+```csharp
+// UsersController.cs - RESTful API with best practices
+[ApiController]
+[Route("api/v1/[controller]")]
+[Produces("application/json")]
+public class UsersController : ControllerBase
+{
+    private readonly IUserService _userService;
+
+    public UsersController(IUserService userService) => _userService = userService;
+
+    /// <summary>List users with pagination</summary>
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResult<UserDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetUsers(
+        [FromQuery] int page = 1,
+        [FromQuery] int limit = 50,
+        [FromQuery] string? status = null,
+        [FromQuery] string? sort = null)
+    {
+        var result = await _userService.GetUsersAsync(page, limit, status, sort);
+        return Ok(result);
+    }
+
+    /// <summary>Get user by ID</summary>
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetUser(string id)
+    {
+        var user = await _userService.GetByIdAsync(id);
+        return user is null ? NotFound() : Ok(user);
+    }
+
+    /// <summary>Create new user</summary>
+    [HttpPost]
+    [ProducesResponseType(typeof(UserDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
+    {
+        var user = await _userService.CreateAsync(dto);
+        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+    }
+
+    /// <summary>Update user (full)</summary>
+    [HttpPut("{id}")]
+    [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserDto dto)
+    {
+        var user = await _userService.UpdateAsync(id, dto);
+        return user is null ? NotFound() : Ok(user);
+    }
+
+    /// <summary>Delete user</summary>
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteUser(string id)
+    {
+        var deleted = await _userService.DeleteAsync(id);
+        return deleted ? NoContent() : NotFound();
+    }
+
+    /// <summary>Get user's posts</summary>
+    [HttpGet("{id}/posts")]
+    [ProducesResponseType(typeof(IEnumerable<PostDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetUserPosts(string id)
+    {
+        var posts = await _userService.GetUserPostsAsync(id);
+        return Ok(posts);
+    }
+}
+
+// DTOs with validation
+public record CreateUserDto(
+    [Required][EmailAddress] string Email,
+    [Required][StringLength(100, MinimumLength = 2)] string Name,
+    [Range(18, 120)] int? Age
+);
+
+public record UpdateUserDto(
+    [EmailAddress] string? Email,
+    [StringLength(100, MinimumLength = 2)] string? Name
+);
+
+// Pagination response
+public record PagedResult<T>(
+    IEnumerable<T> Data,
+    PaginationMeta Pagination,
+    PaginationLinks Links
+);
+
+public record PaginationMeta(int Page, int Limit, int Total, int TotalPages, bool HasNext, bool HasPrev);
+public record PaginationLinks(string First, string? Prev, string? Next, string Last);
+```
+
+### REST API Implementation (Node.js/Express)
+
+```typescript
+// Express router with TypeScript
+import { Router, Request, Response } from 'express';
+
+const router = Router();
+
+// GET /api/v1/users - List users
+router.get('/users', async (req: Request, res: Response) => {
+  const { page = 1, limit = 50, status, sort } = req.query;
+  const result = await userService.findAll({ page, limit, status, sort });
+  res.json(result);
+});
+
+// GET /api/v1/users/:id - Get user
+router.get('/users/:id', async (req: Request, res: Response) => {
+  const user = await userService.findById(req.params.id);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
+// POST /api/v1/users - Create user
+router.post('/users', async (req: Request, res: Response) => {
+  const user = await userService.create(req.body);
+  res.status(201).location(`/api/v1/users/${user.id}`).json(user);
+});
+
+// PUT /api/v1/users/:id - Update user
+router.put('/users/:id', async (req: Request, res: Response) => {
+  const user = await userService.update(req.params.id, req.body);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
+// DELETE /api/v1/users/:id - Delete user
+router.delete('/users/:id', async (req: Request, res: Response) => {
+  const deleted = await userService.delete(req.params.id);
+  if (!deleted) return res.status(404).json({ error: 'User not found' });
+  res.status(204).send();
+});
+
+export default router;
+```
+
 ## GraphQL API Design
 
 ### Schema Definition
@@ -368,6 +512,64 @@ message CreateUserRequest {
   string name = 2;
   string password = 3;
 }
+```
+
+### Implementation (ASP.NET Core gRPC)
+
+```csharp
+// UserService.cs - gRPC service implementation
+public class UserService : User.UserBase
+{
+    private readonly IUserRepository _userRepository;
+
+    public UserService(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
+    }
+
+    public override async Task<UserResponse> GetUser(
+        GetUserRequest request, ServerCallContext context)
+    {
+        var user = await _userRepository.FindByIdAsync(request.Id);
+        return new UserResponse
+        {
+            Id = user.Id,
+            Email = user.Email,
+            Name = user.Name
+        };
+    }
+
+    public override async Task<UserResponse> CreateUser(
+        CreateUserRequest request, ServerCallContext context)
+    {
+        var user = await _userRepository.CreateAsync(new User
+        {
+            Email = request.Email,
+            Name = request.Name
+        });
+        return new UserResponse { Id = user.Id, Email = user.Email };
+    }
+
+    public override async Task StreamUsers(
+        StreamUsersRequest request,
+        IServerStreamWriter<UserResponse> responseStream,
+        ServerCallContext context)
+    {
+        var users = await _userRepository.GetAllAsync();
+        foreach (var user in users)
+        {
+            await responseStream.WriteAsync(new UserResponse
+            {
+                Id = user.Id,
+                Email = user.Email
+            });
+        }
+    }
+}
+
+// Program.cs - Register gRPC service
+builder.Services.AddGrpc();
+app.MapGrpcService<UserService>();
 ```
 
 ### Implementation (Node.js)

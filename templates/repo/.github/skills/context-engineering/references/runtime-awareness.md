@@ -41,7 +41,7 @@ Requires OAuth Bearer token with `anthropic-beta: oauth-2025-04-20` header.
 | Platform | Method | Location |
 |----------|--------|----------|
 | macOS | Keychain | `Claude Code-credentials` |
-| Windows | File | `%USERPROFILE%\.copilot\.credentials.json` |
+| Windows | File | `%USERPROFILE%.copilot\.credentials.json` |
 | Linux | File | `~/.copilot/.credentials.json` |
 
 ### Response Structure

@@ -1,6 +1,6 @@
 ---
-applyTo: "**/*.py,**/*.go,**/*.rs,**/*.java,**/*.cs,**/api/**,**/services/**,**/controllers/**"
-description: "Backend development rules for Python, Go, Rust, Java, C# and API files"
+description: 'Backend development rules for Python, Go, Rust, Java, C# and API files'
+applyTo: '**/*.py,**/*.go,**/*.rs,**/*.java,**/*.cs,**/api/**,**/services/**,**/controllers/**'
 ---
 
 # Backend Guidelines

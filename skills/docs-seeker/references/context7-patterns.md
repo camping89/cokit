@@ -14,9 +14,6 @@ shadcn/ui date picker
 Next.js caching
 → https://context7.com/vercel/next.js/llms.txt?topic=cache
 
-Better Auth OAuth
-→ https://context7.com/better-auth/better-auth/llms.txt?topic=oauth
-
 FFmpeg compression
 → https://context7.com/websites/ffmpeg_doxygen_8_0/llms.txt?topic=compress
 ```
@@ -38,7 +35,6 @@ astro → withastro/astro
 remix → remix-run/remix
 shadcn → shadcn-ui/ui
 shadcn/ui → shadcn-ui/ui
-better-auth → better-auth/better-auth
 ```
 
 ## Official Site Fallbacks

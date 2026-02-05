@@ -1,7 +1,6 @@
 ---
-description: >-
-  Create or update the feature specification from a natural language feature
-  description.
+agent: 'agent'
+description: 'Create or update the feature specification from a natural language description'
 handoffs:
   - label: Build Technical Plan
     agent: ck.spec.plan
@@ -13,7 +12,6 @@ handoffs:
 scripts:
   sh: 'spec-kit/scripts/bash/create-new-feature.sh --json "{ARGS}"'
   ps: 'spec-kit/scripts/powershell/create-new-feature.ps1 -Json "{ARGS}"'
-name: ck.spec.specify
 ---
 
 ## User Input
@@ -270,5 +268,3 @@ Success criteria must be:
 | `/ck.spec.clarify` | Ask clarification questions | Spec has [NEEDS CLARIFICATION] markers or vague requirements |
 | `/ck.spec.plan` | Generate implementation plan | Spec is complete and ready for technical planning |
 | `/ck.spec.constitution` | Create project principles | Need to establish non-negotiable rules before planning |
-
-**All commands:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`

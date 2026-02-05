@@ -17,7 +17,7 @@ items:
     kind: prompt
   - path: prompts/ck-plan.prompt.md
     kind: prompt
-  - path: prompts/ck-code.prompt.md
+  - path: prompts/ck-cook.prompt.md
     kind: prompt
   - path: prompts/ck-test.prompt.md
     kind: prompt

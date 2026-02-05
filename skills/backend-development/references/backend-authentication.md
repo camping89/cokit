@@ -69,7 +69,67 @@ eyJhbGciOi...  .  eyJzdWIiOi...  .  SflKxwRJ...
 4. **Include minimal claims** - Don't include sensitive data
 5. **Refresh token rotation** - Issue new refresh token on each use
 
-### Implementation
+### Implementation (ASP.NET Core)
+
+```csharp
+// Program.cs - JWT configuration with best practices
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            RequireExpirationTime = true,
+            ClockSkew = TimeSpan.FromMinutes(1), // Reduce default 5-min skew
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                if (context.Exception is SecurityTokenExpiredException)
+                    context.Response.Headers.Add("Token-Expired", "true");
+                return Task.CompletedTask;
+            }
+        };
+    });
+
+// Generate JWT token
+public string GenerateToken(User user)
+{
+    var claims = new[]
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+    var token = new JwtSecurityToken(
+        issuer: _config["Jwt:Issuer"],
+        audience: _config["Jwt:Audience"],
+        claims: claims,
+        expires: DateTime.UtcNow.AddMinutes(15), // Short-lived access token
+        signingCredentials: creds);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+```
+
+### Implementation (Node.js/TypeScript)
 
 ```typescript
 import jwt from 'jsonwebtoken';
@@ -141,6 +201,41 @@ export class RolesGuard implements CanActivate {
 @Roles(Role.ADMIN, Role.EDITOR)
 async createPost(@Body() createPostDto: CreatePostDto) {
   return this.postsService.create(createPostDto);
+}
+```
+
+### Implementation (ASP.NET Core Example)
+
+```csharp
+// Define roles
+public static class Roles
+{
+    public const string Admin = "admin";
+    public const string Editor = "editor";
+    public const string Viewer = "viewer";
+}
+
+// Authorization policy
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminOrEditor", policy =>
+        policy.RequireRole(Roles.Admin, Roles.Editor));
+});
+
+// Usage in controller
+[Authorize(Policy = "RequireAdminOrEditor")]
+[HttpPost]
+public async Task<IActionResult> CreatePost([FromBody] CreatePostDto dto)
+{
+    return Ok(await _postsService.CreateAsync(dto));
+}
+
+// Or use attribute-based authorization
+[Authorize(Roles = "admin,editor")]
+[HttpPost]
+public async Task<IActionResult> CreatePost([FromBody] CreatePostDto dto)
+{
+    return Ok(await _postsService.CreateAsync(dto));
 }
 ```
 

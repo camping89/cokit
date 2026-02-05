@@ -16,7 +16,7 @@ When to activate each skill during fixing workflows.
 | `sequential-thinking` | Complex logic chain, multi-step reasoning needed |
 | `brainstorming` | Multiple valid approaches, architecture decision |
 | `context-engineering` | Fixing AI/LLM/agent code, context window issues |
-| `ai-multimodal` | UI issues, screenshots provided, visual bugs |
+| ImageMagick/FFmpeg | Image/video processing, visual asset manipulation |
 
 ## Subagent Usage
 
@@ -62,4 +62,4 @@ See `references/parallel-exploration.md` for detailed patterns.
 | "complex", "multi-step" | `sequential-thinking` |
 | "which approach", "options" | `brainstorming` |
 | "latest docs", "best practice" | `researcher` subagent |
-| Screenshot attached | `ai-multimodal` |
+| Screenshot attached | Visual analysis |

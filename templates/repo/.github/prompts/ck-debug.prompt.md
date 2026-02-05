@@ -1,8 +1,7 @@
 ---
+agent: 'agent'
 description: 'Debug systematically with root cause analysis before fixes'
-argument-hint:
-  - issue-description
-name: ck.debug
+argument-hint: 'Describe the issue to debug'
 ---
 
 ## Context
@@ -113,5 +112,3 @@ Stop and follow process if thinking:
 | `/ck.test` | Run tests to verify |
 | `/ck.fix` | Apply fix |
 | `/ck.git` | Commit fix |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

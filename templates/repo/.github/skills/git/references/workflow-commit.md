@@ -12,7 +12,7 @@ echo "=== GROUPS ===" && \
 git diff --cached --name-only | awk -F'/' '{
   if ($0 ~ /\.(md|txt)$/) print "docs:"$0
   else if ($0 ~ /test|spec/) print "test:"$0
-  else if ($0 ~ /.copilot/) print "config:"$0
+  else if ($0 ~ /\.copilot/) print "config:"$0
   else if ($0 ~ /package\.json|lock/) print "deps:"$0
   else print "code:"$0
 }'

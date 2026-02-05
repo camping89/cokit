@@ -57,7 +57,7 @@ All modes share core steps with mode-specific variations.
 **All modes:**
 - Execute phase tasks sequentially (Step 3.1, 3.2, etc.)
 - Use `ui-ux-designer` for frontend
-- Use `ai-multimodal` for image assets
+- Use ImageMagick/FFmpeg CLI for image assets
 - Run type checking after each file
 
 **Parallel mode:**

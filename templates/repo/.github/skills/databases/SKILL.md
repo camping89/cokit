@@ -1,6 +1,6 @@
 ---
 name: databases
-description: Design schemas, write queries for MongoDB and PostgreSQL. Use for database design, SQL/NoSQL queries, aggregation pipelines, indexes, migrations, replication, performance optimization, psql CLI.
+description: Design schemas, write queries for MongoDB, PostgreSQL, SQL Server. Use for database design, SQL/NoSQL queries, aggregation pipelines, indexes, migrations, replication, performance optimization, psql CLI, EF Core.
 license: MIT
 ---
 
@@ -75,9 +75,38 @@ python scripts/db_performance_check.py --db mongodb --threshold 100ms
 - Regular VACUUM and ANALYZE maintenance
 - Connection pooling (pgBouncer) for web apps
 
+## .NET / Entity Framework Core
+
+For .NET projects, use Entity Framework Core with PostgreSQL or SQL Server:
+
+```csharp
+// DbContext configuration
+public class AppDbContext : DbContext
+{
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Post> Posts => Set<Post>();
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseNpgsql("Host=localhost;Database=mydb;Username=user;Password=pass");
+        // Or: options.UseSqlServer(connectionString);
+}
+
+// Migrations
+// dotnet ef migrations add InitialCreate
+// dotnet ef database update
+
+// Query with LINQ
+var activeUsers = await _context.Users
+    .Where(u => u.IsActive)
+    .Include(u => u.Posts)
+    .ToListAsync();
+```
+
 ## Resources
 
 - MongoDB: https://www.mongodb.com/docs/
 - PostgreSQL: https://www.postgresql.org/docs/
+- SQL Server: https://learn.microsoft.com/sql/
+- Entity Framework Core: https://learn.microsoft.com/ef/core/
 - MongoDB University: https://learn.mongodb.com/
 - PostgreSQL Tutorial: https://www.postgresqltutorial.com/

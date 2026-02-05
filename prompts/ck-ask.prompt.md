@@ -1,8 +1,7 @@
 ---
-description: ⚡ Answer technical and architectural questions.
-argument-hint:
-  - technical-question
-name: ck.ask
+agent: 'agent'
+description: 'Answer technical and architectural questions'
+argument-hint: 'Describe your technical question or architecture challenge'
 ---
 
 ## Context
@@ -65,5 +64,3 @@ This command focuses on architectural consultation and strategic guidance. Do no
 |---------|-------------|
 | `/ck.brainstorm` | Explore ideas |
 | `/ck.plan` | Create plan |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

@@ -500,10 +500,10 @@ install_system_deps() {
         fi
     fi
 
-    # FFmpeg (required for media-processing skill)
+    # FFmpeg (video/audio processing)
     install_system_package "ffmpeg" "FFmpeg" "ffmpeg"
 
-    # ImageMagick (required for media-processing skill)
+    # ImageMagick (image processing)
     install_system_package "imagemagick" "ImageMagick" "magick,convert"
 
     # PostgreSQL client (optional - just check)
@@ -620,13 +620,6 @@ install_node_deps() {
     # Install local npm packages for skills
     print_info "Installing local npm packages for skills..."
 
-    # chrome-devtools
-    if [ -d "$SCRIPT_DIR/chrome-devtools/scripts" ] && [ -f "$SCRIPT_DIR/chrome-devtools/scripts/package.json" ]; then
-        print_info "Installing chrome-devtools dependencies..."
-        (cd "$SCRIPT_DIR/chrome-devtools/scripts" && npm install --quiet)
-        print_success "chrome-devtools dependencies installed"
-    fi
-
     # sequential-thinking
     if [ -d "$SCRIPT_DIR/sequential-thinking" ] && [ -f "$SCRIPT_DIR/sequential-thinking/package.json" ]; then
         print_info "Installing sequential-thinking dependencies..."
@@ -639,38 +632,6 @@ install_node_deps() {
         print_info "Installing mcp-management dependencies..."
         (cd "$SCRIPT_DIR/mcp-management/scripts" && npm install --quiet)
         print_success "mcp-management dependencies installed"
-    fi
-
-    # markdown-novel-viewer (marked, highlight.js, gray-matter)
-    if [ -d "$SCRIPT_DIR/markdown-novel-viewer" ] && [ -f "$SCRIPT_DIR/markdown-novel-viewer/package.json" ]; then
-        print_info "Installing markdown-novel-viewer dependencies..."
-        (cd "$SCRIPT_DIR/markdown-novel-viewer" && npm install --quiet)
-        print_success "markdown-novel-viewer dependencies installed"
-    fi
-
-    # plans-kanban (gray-matter)
-    if [ -d "$SCRIPT_DIR/plans-kanban" ] && [ -f "$SCRIPT_DIR/plans-kanban/package.json" ]; then
-        print_info "Installing plans-kanban dependencies..."
-        (cd "$SCRIPT_DIR/plans-kanban" && npm install --quiet)
-        print_success "plans-kanban dependencies installed"
-    fi
-
-    # Optional: Shopify CLI (ask user unless auto-confirming)
-    if [ -d "$SCRIPT_DIR/shopify" ]; then
-        if [[ "$SKIP_CONFIRM" == "true" ]]; then
-            print_info "Skipping Shopify CLI installation (optional, use --yes to install all)"
-        else
-            read -p "Install Shopify CLI for Shopify skill? (y/N) " -n 1 -r
-            echo
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                print_info "Installing Shopify CLI..."
-                npm install -g @shopify/cli @shopify/theme 2>/dev/null || {
-                    print_warning "Failed to install Shopify CLI globally. Trying with sudo..."
-                    sudo npm install -g @shopify/cli @shopify/theme
-                }
-                print_success "Shopify CLI installed"
-            fi
-        fi
     fi
 }
 
@@ -781,8 +742,8 @@ setup_python_env() {
         if [ -d "$skill_dir" ]; then
             skill_name=$(basename "$skill_dir")
 
-            # Skip .venv and document-skills
-            if [ "$skill_name" == ".venv" ] || [ "$skill_name" == "document-skills" ]; then
+            # Skip .venv
+            if [ "$skill_name" == ".venv" ]; then
                 continue
             fi
 

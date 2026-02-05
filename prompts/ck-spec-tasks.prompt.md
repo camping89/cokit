@@ -1,7 +1,6 @@
 ---
-description: >-
-  Generate an actionable, dependency-ordered tasks.md for the feature based on
-  available design artifacts.
+agent: 'agent'
+description: 'Generate actionable, dependency-ordered tasks.md from design artifacts'
 handoffs:
   - label: Analyze For Consistency
     agent: ck.spec.analyze
@@ -14,7 +13,6 @@ handoffs:
 scripts:
   sh: spec-kit/scripts/bash/check-prerequisites.sh --json
   ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json
-name: ck.spec.tasks
 ---
 
 ## User Input

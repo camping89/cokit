@@ -1,6 +1,6 @@
 ---
-applyTo: "**/*.tsx,**/*.jsx,**/*.vue,**/*.svelte,**/components/**"
-description: "Frontend component guidelines for React, Vue, Svelte"
+description: 'Frontend component guidelines for React, Vue, Svelte'
+applyTo: '**/*.tsx,**/*.jsx,**/*.vue,**/*.svelte,**/components/**'
 ---
 
 # Frontend Guidelines

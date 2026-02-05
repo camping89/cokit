@@ -1,8 +1,8 @@
 ---
-description: ClaudeKit usage guide - just type naturally
-argument-hint:
-  - category|command|task description
-name: ck.help
+agent: 'agent'
+description: 'CoKit usage guide - just type naturally'
+argument-hint: 'Category, command name, or task description'
+tools: ['execute/runInTerminal', 'execute/getTerminalOutput']
 ---
 
 Think harder.
@@ -138,5 +138,3 @@ Never replace or summarize the script output. Always show it fully, then enhance
 |---------|-------------|
 | `/ck.brainstorm` | Explore ideas |
 | `/ck.plan` | Create plan |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

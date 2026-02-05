@@ -7,7 +7,7 @@ items:
     kind: agent
   - path: agents/debugger.agent.md
     kind: agent
-  - path: prompts/ck-code.prompt.md
+  - path: prompts/ck-cook.prompt.md
     kind: prompt
   - path: prompts/ck-fix.prompt.md
     kind: prompt

@@ -1,8 +1,7 @@
 ---
-description: ⚡⚡⚡ Intelligent plan creation with prompt enhancement
-argument-hint:
-  - task
-name: ck.plan
+agent: 'agent'
+description: 'Intelligent plan creation with prompt enhancement'
+argument-hint: 'Task description or requirements'
 ---
 
 ## Your mission
@@ -19,8 +18,6 @@ Check the `## Plan Context` section in the injected context:
 
 ## Workflow
 - Analyze the given task and use `AskUserQuestion` tool to ask for more details if needed.
-- Decide to use `/ck.plan:fast` or `/ck.plan:hard` SlashCommands based on the complexity.
-- Execute SlashCommand: `/ck.plan:fast <detailed-instructions-prompt>` or `/ck.plan:hard <detailed-instructions-prompt>`
 - Activate `planning` skill.
 - Note: `detailed-instructions-prompt` is **an enhanced prompt** that describes the task in detail based on the provided task description.
 
@@ -37,7 +34,5 @@ Check the `## Plan Context` section in the injected context:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.plan.hard` | Deep research + comprehensive plan |
-| `/ck.plan.fast` | Quick plan without research |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
+| `/ck.test` | Run tests and analyze results |
+| `/ck.fix` | Analyze and fix issues |

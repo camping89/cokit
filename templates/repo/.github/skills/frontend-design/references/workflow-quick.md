@@ -3,16 +3,13 @@
 Rapid design creation with minimal planning overhead.
 
 ## Prerequisites
-- Activate `ui-ux-pro-max` skill first
+- Activate `ui-styling` skill first for design patterns
 
 ## Initial Research
-Run `ui-ux-pro-max` searches:
-```bash
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<product-type>" --domain product
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<style-keywords>" --domain style
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<mood>" --domain typography
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<industry>" --domain color
-```
+Quick reference from `ui-styling` skill:
+- shadcn/ui components for rapid development
+- Tailwind CSS utility classes
+- Color and typography defaults
 
 ## Workflow Steps
 
@@ -27,11 +24,11 @@ Use `ui-ux-designer` subagent directly:
 - Focus on core functionality
 - Maintain quality despite speed
 
-### 3. Generate Assets
-Use `ai-multimodal` skill:
-- Generate required visuals
-- Verify quality quickly
-- Use `media-processing` for adjustments
+### 3. Process Assets
+Use CLI tools:
+- Process images with ImageMagick
+- Optimize assets for web
+- Quick adjustments as needed
 
 ### 4. Report & Approve
 - Summarize changes briefly
@@ -53,5 +50,5 @@ While moving fast, maintain:
 - Clean code structure
 
 ## Related
-- `workflow-immersive.md` - For comprehensive designs
+- `workflow-screenshot.md` - For exact replication
 - `technical-overview.md` - Quick reference

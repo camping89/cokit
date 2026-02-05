@@ -23,6 +23,12 @@ Comprehensive testing approaches, frameworks, and quality assurance practices (2
 
 ### Frameworks by Language
 
+**C#/.NET:**
+- **xUnit** - Modern, extensible, .NET recommended, best parallel execution
+- **NUnit** - Mature, attribute-based, rich assertions, data-driven testing
+- **MSTest** - Microsoft's official, Visual Studio integrated
+- **Moq** - Mocking library for dependency injection
+
 **TypeScript/JavaScript:**
 - **Vitest** - 50% faster than Jest in CI/CD, ESM native
 - **Jest** - Mature, large ecosystem, snapshot testing
@@ -130,6 +136,55 @@ describe('POST /api/users', () => {
       });
   });
 });
+```
+
+### API Integration Tests (ASP.NET Core)
+
+```csharp
+public class UsersControllerTests : IClassFixture<WebApplicationFactory<Program>>
+{
+    private readonly WebApplicationFactory<Program> _factory;
+    private readonly HttpClient _client;
+
+    public UsersControllerTests(WebApplicationFactory<Program> factory)
+    {
+        _factory = factory;
+        _client = factory.CreateClient();
+    }
+
+    [Fact]
+    public async Task CreateUser_WithValidData_Returns201()
+    {
+        // Arrange
+        var userData = new { Email = "test@example.com", Name = "Test User" };
+        var content = new StringContent(
+            JsonSerializer.Serialize(userData),
+            Encoding.UTF8,
+            "application/json");
+
+        // Act
+        var response = await _client.PostAsync("/api/users", content);
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        var user = await response.Content.ReadFromJsonAsync<UserDto>();
+        Assert.Equal("test@example.com", user?.Email);
+    }
+
+    [Fact]
+    public async Task CreateUser_WithInvalidEmail_Returns400()
+    {
+        var userData = new { Email = "invalid-email", Name = "Test" };
+        var content = new StringContent(
+            JsonSerializer.Serialize(userData),
+            Encoding.UTF8,
+            "application/json");
+
+        var response = await _client.PostAsync("/api/users", content);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+}
 ```
 
 ### Database Testing with TestContainers

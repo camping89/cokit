@@ -1,8 +1,7 @@
 ---
-description: '⚡⚡ Analyze and fix issues [INTELLIGENT ROUTING]'
-argument-hint:
-  - issues
-name: ck.fix
+agent: 'agent'
+description: 'Analyze and fix issues with intelligent routing'
+argument-hint: 'Describe the issues to fix'
 ---
 
 **Analyze issues and route to specialized fix command:**
@@ -51,5 +50,3 @@ name: ck.fix
 | Command | Description |
 |---------|-------------|
 | `/ck.test` | Run tests and analyze results |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

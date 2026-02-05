@@ -1,8 +1,8 @@
 ---
+agent: 'agent'
 description: 'Git operations with conventional commits'
-argument-hint:
-  - operation
-name: ck.git
+argument-hint: 'cm | cp | pr | merge'
+tools: ['execute/runInTerminal', 'execute/getTerminalOutput']
 ---
 
 ## Context
@@ -102,5 +102,3 @@ gh pr create --title "type(scope): description" --body "## Summary
 |---------|-------------|
 | `/ck.test` | Run tests before push |
 | `/ck.review` | Code review |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

@@ -82,5 +82,5 @@ See `references/review-cycle.md` for mode-specific handling.
 | 6 | `git-manager`, `docs-manager` subagents |
 
 **Rules:** Don't skip steps. Validate before proceeding. One phase at a time.
-**Frontend:** Use `chrome`, `chrome-devtools` or any relevant skills/tools to verify. 
-**Visual Assets:** Use `ai-multimodal` for visual assets generation, analysis and verification.
+**Frontend:** Use `agent-browser` or browser automation tools to verify.
+**Visual Assets:** Use ImageMagick/FFmpeg CLI for image/video processing.

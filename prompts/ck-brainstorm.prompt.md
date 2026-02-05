@@ -1,8 +1,7 @@
 ---
+agent: 'agent'
 description: 'Brainstorm solutions with trade-off analysis and brutal honesty'
-argument-hint:
-  - problem-or-idea
-name: ck.brainstorm
+argument-hint: 'Describe the problem or idea to brainstorm'
 ---
 
 ## Context
@@ -85,5 +84,3 @@ When brainstorming concludes with agreement, create a detailed markdown summary 
 |---------|-------------|
 | `/ck.plan` | Create implementation plan |
 | `/ck.ask` | Answer technical questions |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

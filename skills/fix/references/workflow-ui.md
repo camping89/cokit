@@ -3,29 +3,27 @@
 For fixing visual/UI issues. Requires design skills.
 
 ## Required Skills (activate in order)
-1. `ui-ux-pro-max` - Design database (ALWAYS FIRST)
-2. `aesthetic` - Design principles
-3. `frontend-design` - Implementation patterns
+1. `ui-styling` - Design patterns and components (ALWAYS FIRST)
+2. `frontend-design` - Implementation patterns
 
 ## Pre-fix Research
-```bash
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<product-type>" --domain product
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<style>" --domain style
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "accessibility" --domain ux
-```
+Use `docs-seeker` skill to research:
+- Design patterns for the product type
+- Accessibility best practices
+- Component styling guidelines
 
 ## Workflow
 
-1. **Analyze** screenshots/videos with `ai-multimodal` skill
+1. **Analyze** screenshots/videos visually
 
 2. **Implement** fix with `ui-ux-designer` agent
 
-3. **Verify** with screenshot + `ai-multimodal` analysis
+3. **Verify** with screenshot comparison
    - Capture parent container, not whole page
    - Compare to design guidelines
    - Iterate until correct
 
-4. **DevTools check** with `chrome-devtools` skill
+4. **DevTools check** with `agent-browser` or browser automation tools
 
 5. **Test** compilation with `tester` agent
 
@@ -33,5 +31,4 @@ python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "accessibility" --
 
 ## Tips
 - Read `./docs/design-guidelines.md` first
-- Use `ai-multimodal` for generating visual assets
-- Use `ImageMagick` for image editing
+- Use ImageMagick/FFmpeg CLI for image editing

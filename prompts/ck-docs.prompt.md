@@ -1,8 +1,8 @@
 ---
+agent: 'agent'
 description: 'Search library/framework documentation via context7'
-argument-hint:
-  - library-or-query
-name: ck.docs
+argument-hint: 'Library name or documentation query'
+tools: ['web/fetch']
 ---
 
 ## Context
@@ -99,5 +99,3 @@ Search and retrieve up-to-date documentation for libraries, frameworks, and pack
 | `/ck.ask` | Ask technical questions |
 | `/ck.plan` | Create implementation plan |
 | `/ck.cook` | Implement feature |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

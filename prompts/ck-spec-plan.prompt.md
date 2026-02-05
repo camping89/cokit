@@ -1,7 +1,6 @@
 ---
-description: >-
-  Execute the implementation planning workflow using the plan template to
-  generate design artifacts.
+agent: 'agent'
+description: 'Execute implementation planning workflow to generate design artifacts'
 handoffs:
   - label: Create Tasks
     agent: ck.spec.tasks
@@ -16,7 +15,6 @@ scripts:
 agent_scripts:
   sh: spec-kit/scripts/bash/update-agent-context.sh __AGENT__
   ps: spec-kit/scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
-name: ck.spec.plan
 ---
 
 ## User Input

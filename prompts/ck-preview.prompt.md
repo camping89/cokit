@@ -1,10 +1,8 @@
 ---
-description: 'Path to markdown file, plan directory, or plans collection'
-arguments:
-  - name: path
-    description: Path to file or directory to preview
-    required: false
-name: ck.preview
+agent: 'agent'
+description: 'Preview markdown files, plan directories, or plans collection'
+argument-hint: 'Path to markdown file or directory'
+tools: ['execute/runInTerminal', 'execute/getTerminalOutput']
 ---
 
 Universal viewer using `markdown-novel-viewer` skill - pass ANY path and see it rendered nicely.
@@ -93,5 +91,3 @@ After starting, parse the JSON output (e.g., `{"success":true,"url":"http://loca
 |---------|-------------|
 | `/ck.brainstorm` | Explore ideas |
 | `/ck.plan` | Create plan |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

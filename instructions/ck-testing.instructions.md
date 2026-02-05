@@ -1,6 +1,6 @@
 ---
-applyTo: "**/*.test.ts,**/*.spec.ts,**/*.test.js,**/*.spec.js,**/*.test.py,**/test_*.py,**/*_test.go"
-description: "Testing guidelines for test files across languages"
+description: 'Testing guidelines for test files across languages'
+applyTo: '**/*.test.ts,**/*.spec.ts,**/*.test.js,**/*.spec.js,**/*.test.py,**/test_*.py,**/*_test.go'
 ---
 
 # Testing Guidelines

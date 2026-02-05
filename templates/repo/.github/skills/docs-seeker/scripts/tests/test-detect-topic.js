@@ -45,7 +45,7 @@ assertEqual(normalizeTopic('caching'), 'caching', 'Normalize caching');
 console.log('\n## Testing normalizeLibrary()');
 assertEqual(normalizeLibrary('Next.js'), 'next.js', 'Normalize Next.js');
 assertEqual(normalizeLibrary('shadcn/ui'), 'shadcn/ui', 'Normalize shadcn/ui');
-assertEqual(normalizeLibrary('Better Auth'), 'better-auth', 'Normalize Better Auth');
+assertEqual(normalizeLibrary('Tailwind CSS'), 'tailwind-css', 'Normalize Tailwind CSS');
 
 // Test topic-specific queries
 console.log('\n## Testing topic-specific queries');
@@ -64,11 +64,11 @@ if (topicQuery2) {
   assertEqual(topicQuery2.library, 'next.js', 'Query 2 library is "next.js"');
 }
 
-const topicQuery3 = detectTopic('Better Auth OAuth setup');
+const topicQuery3 = detectTopic('Tailwind CSS flexbox layout');
 assert(topicQuery3 !== null, 'Detect topic-specific query 3');
 assert(topicQuery3.isTopicSpecific === true, 'Query 3 is topic-specific');
 
-const topicQuery4 = detectTopic('Using authentication with Better Auth');
+const topicQuery4 = detectTopic('Using animations with Tailwind CSS');
 assert(topicQuery4 !== null, 'Detect topic-specific query 4');
 assert(topicQuery4.isTopicSpecific === true, 'Query 4 is topic-specific');
 
@@ -85,7 +85,7 @@ assert(generalQuery1 === null, 'Detect general query 1 (returns null)');
 const generalQuery2 = detectTopic('Astro getting started');
 assert(generalQuery2 === null, 'Detect general query 2 (returns null)');
 
-const generalQuery3 = detectTopic('How to use Better Auth');
+const generalQuery3 = detectTopic('How to use Tailwind CSS');
 assert(generalQuery3 === null, 'Detect general query 3 (returns null)');
 
 const generalQuery4 = detectTopic('Next.js API reference');

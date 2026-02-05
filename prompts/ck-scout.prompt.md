@@ -1,8 +1,8 @@
 ---
+agent: 'agent'
 description: 'Fast codebase scouting using parallel agents'
-argument-hint:
-  - search-target
-name: ck.scout
+argument-hint: 'Search target or keyword'
+tools: ['search/codebase', 'read/readFile', 'search/listDirectory', 'search/textSearch', 'search/fileSearch']
 ---
 
 ## Context
@@ -82,5 +82,3 @@ Use Glob and Grep with wide range of patterns:
 | `/ck.plan` | Create implementation plan |
 | `/ck.cook` | Implement feature |
 | `/ck.ask` | Ask technical questions |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

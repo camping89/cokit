@@ -1,14 +1,12 @@
 ---
-description: >-
-  Create or update the project constitution from interactive or provided
-  principle inputs, ensuring all dependent templates stay in sync.
+agent: 'agent'
+description: 'Create or update the project constitution from principle inputs'
 handoffs:
   - label: Build Specification
     agent: ck.spec.specify
     prompt: >-
       Implement the feature specification based on the updated constitution. I
       want to build...
-name: ck.spec.constitution
 ---
 
 ## User Input

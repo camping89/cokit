@@ -1,8 +1,7 @@
 ---
-description: ⚡⚡ No research. Only analyze and create an implementation plan
-argument-hint:
-  - task
-name: ck.plan.fast
+agent: 'agent'
+description: 'No research. Only analyze and create an implementation plan'
+argument-hint: 'Task description or requirements'
 ---
 
 Think.
@@ -84,5 +83,3 @@ This reminder is **NON-NEGOTIABLE** - always output it after presenting the plan
 |---------|-------------|
 | `/ck.test` | Run tests and analyze results |
 | `/ck.fix` | Analyze and fix issues |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

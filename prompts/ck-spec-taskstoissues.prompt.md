@@ -1,13 +1,11 @@
 ---
-description: >-
-  Convert existing tasks into actionable, dependency-ordered GitHub issues for
-  the feature based on available design artifacts.
+agent: 'agent'
+description: 'Convert tasks into GitHub issues for project tracking'
 tools:
   - github/github-mcp-server/issue_write
 scripts:
   sh: spec-kit/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
   ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
-name: ck.spec.taskstoissues
 ---
 
 ## User Input

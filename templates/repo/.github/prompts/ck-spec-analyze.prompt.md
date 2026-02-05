@@ -1,11 +1,9 @@
 ---
-description: >-
-  Perform a non-destructive cross-artifact consistency and quality analysis
-  across spec.md, plan.md, and tasks.md after task generation.
+agent: 'agent'
+description: 'Cross-artifact consistency and quality analysis across spec, plan, and tasks'
 scripts:
   sh: spec-kit/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
   ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
-name: ck.spec.analyze
 ---
 
 ## User Input

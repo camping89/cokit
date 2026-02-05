@@ -1,8 +1,7 @@
 ---
-description: ⚡⚡⚡⚡⚡ Bootstrap a new project step by step
-argument-hint:
-  - user-requirements
-name: ck.bootstrap
+agent: 'agent'
+description: 'Bootstrap a new project step by step'
+argument-hint: 'Describe your project requirements'
 ---
 
 **Ultrathink** to plan & bootstrap a new project follow the Orchestration Protocol, Core Responsibilities, Subagents Team and Development Rules in your `CLAUDE.md` file: 
@@ -146,5 +145,3 @@ Follow strictly these following steps:
 |---------|-------------|
 | `/ck.brainstorm` | Explore ideas |
 | `/ck.plan` | Create plan |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.fix`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`

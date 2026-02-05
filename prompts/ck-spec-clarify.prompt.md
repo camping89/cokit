@@ -1,8 +1,6 @@
 ---
-description: >-
-  Identify underspecified areas in the current feature spec by asking up to 5
-  highly targeted clarification questions and encoding answers back into the
-  spec.
+agent: 'agent'
+description: 'Identify underspecified areas and ask targeted clarification questions'
 handoffs:
   - label: Build Technical Plan
     agent: ck.spec.plan
@@ -10,7 +8,6 @@ handoffs:
 scripts:
   sh: spec-kit/scripts/bash/check-prerequisites.sh --json --paths-only
   ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly
-name: ck.spec.clarify
 ---
 
 ## User Input

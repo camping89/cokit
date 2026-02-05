@@ -21,12 +21,23 @@ Security best practices, OWASP Top 10 mitigation, and modern security standards 
 - Use JWT with proper claims validation
 
 ```typescript
-// Good: Server-side authorization check
+// Good: Server-side authorization check (NestJS)
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('admin')
 async deleteUser(@Param('id') id: string) {
   // Verify user can access this resource
   return this.usersService.delete(id);
+}
+```
+
+```csharp
+// Good: Server-side authorization check (ASP.NET Core)
+[Authorize(Roles = "admin")]
+[HttpDelete("{id}")]
+public async Task<IActionResult> DeleteUser(string id)
+{
+    await _usersService.DeleteAsync(id);
+    return NoContent();
 }
 ```
 
@@ -178,6 +189,24 @@ class CreateUserDto {
 }
 ```
 
+```csharp
+// Use DataAnnotations with ASP.NET Core
+public class CreateUserDto
+{
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    [Required]
+    [MinLength(12)]
+    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)")]
+    public string Password { get; set; }
+
+    [Range(18, 120)]
+    public int Age { get; set; }
+}
+```
+
 **2. Sanitization**
 ```typescript
 import DOMPurify from 'isomorphic-dompurify';
@@ -200,6 +229,7 @@ const sanitized = Object.keys(input)
 ### Token Bucket Algorithm (Industry Standard)
 
 ```typescript
+// Express rate limiting
 import rateLimit from 'express-rate-limit';
 
 const limiter = rateLimit({
@@ -211,6 +241,26 @@ const limiter = rateLimit({
 });
 
 app.use('/api/', limiter);
+```
+
+```csharp
+// ASP.NET Core rate limiting (.NET 7+)
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("api", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(15);
+        opt.PermitLimit = 100;
+        opt.QueueLimit = 0;
+    });
+});
+
+app.UseRateLimiter();
+
+// Apply to endpoint
+[EnableRateLimiting("api")]
+[HttpGet]
+public IActionResult GetUsers() => Ok(_userService.GetAll());
 ```
 
 ### API-Specific Limits

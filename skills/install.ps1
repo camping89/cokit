@@ -644,17 +644,6 @@ function Install-NodeDeps {
     # Install local npm packages for skills
     Write-Info "Installing local npm packages for skills..."
 
-    # chrome-devtools
-    $chromeDevToolsPath = Join-Path $ScriptDir "chrome-devtools\scripts"
-    $chromePackageJson = Join-Path $chromeDevToolsPath "package.json"
-    if ((Test-Path $chromeDevToolsPath) -and (Test-Path $chromePackageJson)) {
-        Write-Info "Installing chrome-devtools dependencies..."
-        Push-Location $chromeDevToolsPath
-        npm install --quiet
-        Pop-Location
-        Write-Success "chrome-devtools dependencies installed"
-    }
-
     # sequential-thinking
     $seqThinkingPath = Join-Path $ScriptDir "sequential-thinking"
     $seqPackageJson = Join-Path $seqThinkingPath "package.json"
@@ -675,43 +664,6 @@ function Install-NodeDeps {
         npm install --quiet
         Pop-Location
         Write-Success "mcp-management dependencies installed"
-    }
-
-    # markdown-novel-viewer (marked, highlight.js, gray-matter)
-    $novelViewerPath = Join-Path $ScriptDir "markdown-novel-viewer"
-    $novelViewerPackageJson = Join-Path $novelViewerPath "package.json"
-    if ((Test-Path $novelViewerPath) -and (Test-Path $novelViewerPackageJson)) {
-        Write-Info "Installing markdown-novel-viewer dependencies..."
-        Push-Location $novelViewerPath
-        npm install --quiet
-        Pop-Location
-        Write-Success "markdown-novel-viewer dependencies installed"
-    }
-
-    # plans-kanban (gray-matter)
-    $plansKanbanPath = Join-Path $ScriptDir "plans-kanban"
-    $plansKanbanPackageJson = Join-Path $plansKanbanPath "package.json"
-    if ((Test-Path $plansKanbanPath) -and (Test-Path $plansKanbanPackageJson)) {
-        Write-Info "Installing plans-kanban dependencies..."
-        Push-Location $plansKanbanPath
-        npm install --quiet
-        Pop-Location
-        Write-Success "plans-kanban dependencies installed"
-    }
-
-    # Optional: Shopify CLI (ask user unless auto-confirming)
-    $shopifyPath = Join-Path $ScriptDir "shopify"
-    if (Test-Path $shopifyPath) {
-        if ($Y) {
-            Write-Info "Skipping Shopify CLI installation (optional, use -Y to install all)"
-        } else {
-            $confirmation = Get-UserInput -Prompt "Install Shopify CLI for Shopify skill? (y/N)" -Default "N"
-            if ($confirmation -eq 'y' -or $confirmation -eq 'Y') {
-                Write-Info "Installing Shopify CLI..."
-                npm install -g @shopify/cli @shopify/theme
-                Write-Success "Shopify CLI installed"
-            }
-        }
     }
 }
 
@@ -839,8 +791,8 @@ function Setup-PythonEnv {
     Get-ChildItem -Path $ScriptDir -Directory | ForEach-Object {
         $skillName = $_.Name
 
-        # Skip .venv and document-skills
-        if ($skillName -eq ".venv" -or $skillName -eq "document-skills") {
+        # Skip .venv
+        if ($skillName -eq ".venv") {
             return
         }
 

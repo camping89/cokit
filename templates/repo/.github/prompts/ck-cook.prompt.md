@@ -1,8 +1,7 @@
 ---
+agent: 'agent'
 description: 'Smart feature implementation with automatic workflow detection'
-argument-hint:
-  - task-or-plan-path
-name: ck.cook
+argument-hint: 'Task description or path to plan file'
 ---
 
 ## Context
@@ -25,7 +24,7 @@ Task or plan path:
 ## Workflow Overview
 
 ```
-[Intent Detection] → [Research?] → [Review] → [Plan] → [Review] → [Implement] → [Review] → [Test?] → [Review] → [Finalize]
+[Intent Detection] → [Research?] → [Review] → [Plan] → [Review] → [Implement] → [Simplify] → [Review] → [Test?] → [Review] → [Finalize]
 ```
 
 **Default (non-auto):** Stops at `[Review]` gates for human approval before each major step.
@@ -66,7 +65,9 @@ Human review required at these checkpoints (skipped with `--auto`):
 | Research | `@researcher` (parallel, optional in fast) |
 | Scout | `@scout` |
 | Plan | `@planner` |
-| UI Work | `ui-ux-designer` |
+| UI Work | `@ui-ux-designer` |
+| Implement | `@fullstack-developer` (parallel mode) |
+| Simplify | `@code-simplifier` (post-implement) |
 | Testing | `@tester`, `@debugger` |
 | Review | `@code-reviewer` |
 | Finalize | `project-manager`, `@docs-manager`, `@git-manager` |
@@ -77,10 +78,11 @@ Human review required at these checkpoints (skipped with `--auto`):
 2. **Scout**: Use `/ck.scout` to discover relevant files
 3. **Research** (if applicable): Gather technical context
 4. **Plan**: Create or load implementation plan
-5. **Implement**: Execute plan phases
-6. **Test**: Run tests and validate
-7. **Review**: Code review with quality gates
-8. **Finalize**: Update docs, commit changes
+5. **Implement**: Execute plan phases (use `@fullstack-developer` in parallel mode)
+6. **Simplify**: `@code-simplifier` refines implemented code for clarity
+7. **Test**: Run tests and validate
+8. **Review**: Code review with quality gates
+9. **Finalize**: Update docs, commit changes
 
 ---
 
@@ -91,5 +93,3 @@ Human review required at these checkpoints (skipped with `--auto`):
 | `/ck.test` | Run tests |
 | `/ck.git` | Commit changes |
 | `/ck.review` | Code review |
-
-**All commands:** `ck.ask`, `ck.bootstrap`, `ck.brainstorm`, `ck.cook`, `ck.debug`, `ck.docs`, `ck.fix`, `ck.git`, `ck.help`, `ck.journal`, `ck.plan`, `ck.plan.fast`, `ck.plan.hard`, `ck.preview`, `ck.review`, `ck.scout`, `ck.spec.analyze`, `ck.spec.checklist`, `ck.spec.clarify`, `ck.spec.constitution`, `ck.spec.implement`, `ck.spec.plan`, `ck.spec.specify`, `ck.spec.tasks`, `ck.spec.taskstoissues`, `ck.test`, `ck.watzup`
