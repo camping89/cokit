@@ -4,6 +4,27 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 
 ## Programming Languages
 
+### C#/.NET
+**Market Position:** Enterprise standard, Azure ecosystem, cross-platform (.NET 8+)
+
+**Best For:**
+- Enterprise applications
+- Azure cloud-native development
+- Microservices with strong tooling
+- High-performance APIs (benchmark leader)
+
+**Popular Frameworks:**
+- **ASP.NET Core** - High-performance, cross-platform, production-ready
+- **Minimal APIs** - Lightweight, fast startup, microservices-friendly
+- **Blazor** - Full-stack C# (WebAssembly or Server)
+- **Orleans** - Virtual actor model for distributed systems
+
+**ORMs:**
+- **Entity Framework Core 8** - Feature-rich, LINQ, migrations, batch operations
+- **Dapper** - Micro-ORM, raw SQL performance
+
+**When to Choose:** Enterprise apps, Azure integration, strong typing, team .NET expertise, Windows services
+
 ### Node.js/TypeScript
 **Market Position:** TypeScript dominance in Node.js backend (industry standard)
 
@@ -137,6 +158,17 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 
 ### Modern ORMs (2025)
 
+**Entity Framework Core 8** (C#/.NET)
+- Microsoft's official ORM, batch operations support
+- LINQ queries, migrations, change tracking
+- AsNoTracking() for read-only queries
+- Best for: .NET enterprise apps
+
+**Dapper** (C#/.NET)
+- Micro-ORM, minimal overhead
+- Raw SQL with strong typing
+- Best for: Performance-critical .NET apps
+
 **Drizzle ORM** (TypeScript)
 - Winning NestJS performance race
 - 7.4kb, zero dependencies
@@ -196,6 +228,15 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 
 ## Framework Comparisons
 
+### C#/.NET Frameworks
+
+| Framework | Performance | Features | Use Case |
+|-----------|------------|----------|----------|
+| ASP.NET Core | Very High | Full-featured, enterprise | Production apps, APIs |
+| Minimal APIs | Very High | Lightweight, fast startup | Microservices, simple APIs |
+| Blazor Server | High | Real-time UI, SignalR | Internal dashboards |
+| Orleans | High | Distributed actors | Gaming, IoT, scalable systems |
+
 ### Node.js Frameworks
 
 | Framework | Performance | Learning Curve | Use Case |
@@ -217,14 +258,16 @@ Core technologies, frameworks, databases, and message queues for modern backend 
 
 ```
 Start → Need real-time features?
-       → Yes → Node.js + Socket.io
+       → Yes → Node.js + Socket.io or ASP.NET Core + SignalR
        → No → Need ML/AI integration?
               → Yes → Python + FastAPI
-              → No → Need maximum performance?
-                     → Yes → Rust + Axum
-                     → No → Need high concurrency?
-                            → Yes → Go + Gin
-                            → No → Node.js + NestJS (safe default)
+              → No → Enterprise/.NET ecosystem?
+                     → Yes → C# + ASP.NET Core
+                     → No → Need maximum performance?
+                            → Yes → Rust + Axum
+                            → No → Need high concurrency?
+                                   → Yes → Go + Gin
+                                   → No → Node.js + NestJS (safe default)
 
 Database Selection:
 ACID needed? → Yes → PostgreSQL
@@ -250,6 +293,7 @@ Millions msg/sec? → Yes → Kafka
 
 - **NestJS:** https://nestjs.com
 - **FastAPI:** https://fastapi.tiangolo.com
+- **ASP.NET Core:** https://learn.microsoft.com/aspnet/core
 - **PostgreSQL:** https://www.postgresql.org/docs/
 - **MongoDB:** https://www.mongodb.com/docs/
 - **Redis:** https://redis.io/docs/

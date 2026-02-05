@@ -1,6 +1,6 @@
 ---
 name: backend-development
-description: Build backends with Node.js, Python, Go (NestJS, FastAPI, Django). Use for REST/GraphQL/gRPC APIs, auth (OAuth, JWT), databases, microservices, security (OWASP), Docker/K8s.
+description: Build backends with Node.js, Python, Go, C#/.NET (NestJS, FastAPI, Django, ASP.NET Core). Use for REST/GraphQL/gRPC APIs, auth (OAuth, JWT), databases, microservices, security (OWASP), Docker/K8s.
 license: MIT
 version: 1.0.0
 ---
@@ -23,9 +23,9 @@ Production-ready backend development with modern technologies, best practices, a
 
 ## Technology Selection Guide
 
-**Languages:** Node.js/TypeScript (full-stack), Python (data/ML), Go (concurrency), Rust (performance)
-**Frameworks:** NestJS, FastAPI, Django, Express, Gin
-**Databases:** PostgreSQL (ACID), MongoDB (flexible schema), Redis (caching)
+**Languages:** Node.js/TypeScript (full-stack), Python (data/ML), Go (concurrency), C#/.NET (enterprise), Rust (performance)
+**Frameworks:** NestJS, FastAPI, Django, Express, Gin, ASP.NET Core, Minimal APIs
+**Databases:** PostgreSQL (ACID), MongoDB (flexible schema), Redis (caching), SQL Server
 **APIs:** REST (simple), GraphQL (flexible), gRPC (performance)
 
 See: `references/backend-technologies.md` for detailed comparisons
@@ -68,8 +68,9 @@ See: `references/backend-technologies.md` for detailed comparisons
 | Fast development | Node.js + NestJS |
 | Data/ML integration | Python + FastAPI |
 | High concurrency | Go + Gin |
+| Enterprise/.NET ecosystem | C# + ASP.NET Core |
 | Max performance | Rust + Axum |
-| ACID transactions | PostgreSQL |
+| ACID transactions | PostgreSQL / SQL Server |
 | Flexible schema | MongoDB |
 | Caching | Redis |
 | Internal services | gRPC |
