@@ -3,13 +3,12 @@
 Create detailed design documentation from screenshot/video for developer implementation.
 
 ## Prerequisites
-- Activate `ui-ux-pro-max` skill first
-- Have `ai-multimodal` skill ready
+- Activate `ui-styling` skill first for design patterns
 
 ## Workflow Steps
 
 ### 1. Comprehensive Visual Analysis
-Use `ai-multimodal` skill to describe exhaustively:
+Analyze and describe exhaustively:
 
 **Layout & Structure**
 - Element positions (absolute coords or relative)

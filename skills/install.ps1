@@ -677,17 +677,6 @@ function Install-NodeDeps {
         Write-Success "mcp-management dependencies installed"
     }
 
-    # markdown-novel-viewer (marked, highlight.js, gray-matter)
-    $novelViewerPath = Join-Path $ScriptDir "markdown-novel-viewer"
-    $novelViewerPackageJson = Join-Path $novelViewerPath "package.json"
-    if ((Test-Path $novelViewerPath) -and (Test-Path $novelViewerPackageJson)) {
-        Write-Info "Installing markdown-novel-viewer dependencies..."
-        Push-Location $novelViewerPath
-        npm install --quiet
-        Pop-Location
-        Write-Success "markdown-novel-viewer dependencies installed"
-    }
-
     # plans-kanban (gray-matter)
     $plansKanbanPath = Join-Path $ScriptDir "plans-kanban"
     $plansKanbanPackageJson = Join-Path $plansKanbanPath "package.json"
@@ -697,21 +686,6 @@ function Install-NodeDeps {
         npm install --quiet
         Pop-Location
         Write-Success "plans-kanban dependencies installed"
-    }
-
-    # Optional: Shopify CLI (ask user unless auto-confirming)
-    $shopifyPath = Join-Path $ScriptDir "shopify"
-    if (Test-Path $shopifyPath) {
-        if ($Y) {
-            Write-Info "Skipping Shopify CLI installation (optional, use -Y to install all)"
-        } else {
-            $confirmation = Get-UserInput -Prompt "Install Shopify CLI for Shopify skill? (y/N)" -Default "N"
-            if ($confirmation -eq 'y' -or $confirmation -eq 'Y') {
-                Write-Info "Installing Shopify CLI..."
-                npm install -g @shopify/cli @shopify/theme
-                Write-Success "Shopify CLI installed"
-            }
-        }
     }
 }
 

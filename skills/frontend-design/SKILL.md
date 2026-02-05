@@ -20,11 +20,11 @@ Choose workflow based on input type:
 | Complex/award-quality | Full immersive | `./references/workflow-immersive.md` |
 | From scratch | Design Thinking below | - |
 
-**All workflows**: Activate `ui-ux-pro-max` skill FIRST for design intelligence.
+**All workflows**: Activate `ui-styling` skill FIRST for design patterns and component library.
 
 ## Screenshot/Video Replication (Quick Reference)
 
-1. **Analyze** with `ai-multimodal` skill - extract colors, fonts, spacing, effects
+1. **Analyze** visually - extract colors, fonts, spacing, effects
 2. **Plan** with `ui-ux-designer` subagent - create phased implementation
 3. **Implement** - match source precisely
 4. **Verify** - compare to original
@@ -49,7 +49,7 @@ Before coding, commit to a BOLD aesthetic direction:
 - **Motion**: CSS-first, anime.js for complex (`./references/animejs.md`). Orchestrated page loads > scattered micro-interactions.
 - **Spatial**: Unexpected layouts. Asymmetry. Overlap. Negative space OR controlled density.
 - **Backgrounds**: Atmosphere over solid colors. Gradients, noise, patterns, shadows, grain.
-- **Assets**: Generate with `ai-multimodal`, process with `media-processing`
+- **Assets**: Process with `media-processing` skill (ImageMagick, FFmpeg, RMBG)
 
 ## Asset & Analysis References
 
@@ -61,7 +61,7 @@ Before coding, commit to a BOLD aesthetic direction:
 | Optimization | `./references/technical-overview.md` |
 | Animations | `./references/animejs.md` |
 
-Quick start: `./references/ai-multimodal-overview.md`
+Quick start: `./references/asset-generation.md`
 
 ## Anti-Patterns (AI Slop)
 

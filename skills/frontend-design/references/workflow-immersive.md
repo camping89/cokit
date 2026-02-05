@@ -3,16 +3,14 @@
 Create award-quality designs with storytelling, 3D experiences, and micro-interactions.
 
 ## Prerequisites
-- Activate `ui-ux-pro-max` skill first
+- Activate `ui-styling` skill first for design patterns
 
 ## Initial Research
-Run `ui-ux-pro-max` searches:
-```bash
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<product-type>" --domain product
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<style-keywords>" --domain style
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<mood>" --domain typography
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<industry>" --domain color
-```
+Use `docs-seeker` skill to research:
+- Design patterns for the product type
+- Current style trends
+- Typography combinations
+- Color palette recommendations
 
 ## Workflow Steps
 
@@ -53,12 +51,12 @@ Add polish:
 - Hover effects
 - Scroll responses
 
-### 6. Asset Generation
-Use `ai-multimodal` skill:
-- Generate high-quality visuals
-- Create unique imagery
-- Verify asset quality
-- Remove backgrounds as needed
+### 6. Asset Processing
+Use `media-processing` skill:
+- Process images with ImageMagick
+- Remove backgrounds with RMBG CLI
+- Optimize assets for web
+- Create sprites and animations
 
 ### 7. Verify & Report
 - Review against inspiration

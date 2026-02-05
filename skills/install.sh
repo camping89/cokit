@@ -641,36 +641,11 @@ install_node_deps() {
         print_success "mcp-management dependencies installed"
     fi
 
-    # markdown-novel-viewer (marked, highlight.js, gray-matter)
-    if [ -d "$SCRIPT_DIR/markdown-novel-viewer" ] && [ -f "$SCRIPT_DIR/markdown-novel-viewer/package.json" ]; then
-        print_info "Installing markdown-novel-viewer dependencies..."
-        (cd "$SCRIPT_DIR/markdown-novel-viewer" && npm install --quiet)
-        print_success "markdown-novel-viewer dependencies installed"
-    fi
-
     # plans-kanban (gray-matter)
     if [ -d "$SCRIPT_DIR/plans-kanban" ] && [ -f "$SCRIPT_DIR/plans-kanban/package.json" ]; then
         print_info "Installing plans-kanban dependencies..."
         (cd "$SCRIPT_DIR/plans-kanban" && npm install --quiet)
         print_success "plans-kanban dependencies installed"
-    fi
-
-    # Optional: Shopify CLI (ask user unless auto-confirming)
-    if [ -d "$SCRIPT_DIR/shopify" ]; then
-        if [[ "$SKIP_CONFIRM" == "true" ]]; then
-            print_info "Skipping Shopify CLI installation (optional, use --yes to install all)"
-        else
-            read -p "Install Shopify CLI for Shopify skill? (y/N) " -n 1 -r
-            echo
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                print_info "Installing Shopify CLI..."
-                npm install -g @shopify/cli @shopify/theme 2>/dev/null || {
-                    print_warning "Failed to install Shopify CLI globally. Trying with sudo..."
-                    sudo npm install -g @shopify/cli @shopify/theme
-                }
-                print_success "Shopify CLI installed"
-            fi
-        fi
     fi
 }
 

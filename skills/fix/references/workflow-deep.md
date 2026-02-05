@@ -88,4 +88,4 @@ See `references/review-cycle.md` for mode-specific handling.
 
 **Rules:** Don't skip steps. Validate before proceeding. One phase at a time.
 **Frontend:** Use `chrome`, `chrome-devtools` or any relevant skills/tools to verify. 
-**Visual Assets:** Use `ai-multimodal` for visual assets generation, analysis and verification.
+**Visual Assets:** Use `media-processing` skill for image/video processing.

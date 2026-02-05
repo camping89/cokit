@@ -3,17 +3,14 @@
 Create immersive interactive 3D designs with Three.js.
 
 ## Prerequisites
-- Activate `ui-ux-pro-max` skill first
-- Activate `threejs` skill for 3D and WebGL expertise
-- Have `ai-multimodal` skill ready for asset generation
+- Activate `ui-styling` skill first for design patterns
+- Use `docs-seeker` skill to query Three.js documentation
 
 ## Initial Research
-Run `ui-ux-pro-max` searches:
-```bash
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "<product-type>" --domain product
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "immersive 3d" --domain style
-python3 $HOME/.copilot/skills/ui-ux-pro-max/scripts/search.py "animation" --domain ux
-```
+Use `docs-seeker` skill to research:
+- Three.js scene setup and best practices
+- WebGL performance optimization
+- 3D animation patterns
 
 ## Workflow Steps
 
@@ -33,13 +30,7 @@ Use `ui-ux-designer` subagent to build:
 - Post-processing effects
 - Interactive elements
 
-### 3. Generate 3D Assets
-Use `ai-multimodal` skill for:
-- Textures and materials
-- Skyboxes and environment maps
-- Particle sprites
-- Video backgrounds
-
+### 3. Process 3D Assets
 Use `media-processing` skill for:
 - Texture optimization for WebGL
 - Normal/height map generation

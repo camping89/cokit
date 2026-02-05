@@ -48,7 +48,7 @@ The Markdown body has no restrictions on it.
 
 # Additional Information
 
-For a minimal example, see the `template-skill` example.
+For examples, browse existing skills in this repository.
 
 # Version History
 

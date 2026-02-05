@@ -86,36 +86,15 @@ If you prefer manual installation or the automated script fails:
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Install all skill dependencies
-pip install -r $HOME/.copilot/skills/ai-multimodal/scripts/requirements.txt
-
 # Install test dependencies for development
 pip install pytest pytest-cov pytest-mock
-```
-
-### Option 2: Install Per-Skill
-
-Navigate to specific skill and install:
-
-```bash
-cd $HOME/.copilot/skills/ai-multimodal/scripts
-pip install -r requirements.txt
 ```
 
 ## Skills Dependencies
 
 ### Python Package Dependencies
 
-Most skills use only Python standard library. Only **ai-multimodal** requires external packages:
-
-**ai-multimodal** (`$HOME/.copilot/skills/ai-multimodal/scripts/requirements.txt`):
-- `google-genai>=0.1.0` - Google Gemini API
-- `pypdf>=4.0.0` - PDF processing
-- `python-docx>=1.0.0` - DOCX conversion
-- `docx2pdf>=0.1.8` - PDF conversion (Windows only)
-- `markdown>=3.5.0` - Markdown processing
-- `Pillow>=10.0.0` - Image processing
-- `python-dotenv>=1.0.0` - Environment variables
+Most skills use only Python standard library and require no external packages.
 
 ### System Tool Dependencies
 
@@ -138,11 +117,10 @@ Several skills require external CLI tools:
 - **Docker**: https://docs.docker.com/get-docker/
 - **Google Cloud CLI**: https://cloud.google.com/sdk/docs/install
 
-#### better-auth, repomix, shopify
+#### better-auth, repomix
 - **Node.js 18+**: https://nodejs.org/
 - **Better Auth**: `npm install better-auth`
 - **Repomix**: `npm install -g repomix`
-- **Shopify CLI**: `npm install -g @shopify/cli @shopify/theme`
 
 #### databases
 - **PostgreSQL client**: `sudo apt-get install postgresql-client` (Linux)
@@ -163,10 +141,6 @@ Several skills require external CLI tools:
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Python packages (ai-multimodal only)
-cd $HOME/.copilot/skills/ai-multimodal/scripts
-pip install -r requirements.txt
-
 # System tools
 sudo apt-get update
 sudo apt-get install -y ffmpeg imagemagick postgresql-client
@@ -174,7 +148,7 @@ sudo apt-get install -y ffmpeg imagemagick postgresql-client
 # Node.js and tools
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
-npm install -g pnpm wrangler repomix rmbg-cli @shopify/cli
+npm install -g pnpm wrangler repomix rmbg-cli
 ```
 
 ### macOS
@@ -184,16 +158,12 @@ npm install -g pnpm wrangler repomix rmbg-cli @shopify/cli
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Python packages (ai-multimodal only)
-cd $HOME/.copilot/skills/ai-multimodal/scripts
-pip install -r requirements.txt
-
 # System tools via Homebrew
 brew install ffmpeg imagemagick postgresql
 
 # Node.js and tools
 brew install node
-npm install -g pnpm wrangler repomix rmbg-cli @shopify/cli
+npm install -g pnpm wrangler repomix rmbg-cli
 ```
 
 ### Windows
@@ -203,15 +173,11 @@ npm install -g pnpm wrangler repomix rmbg-cli @shopify/cli
 python -m venv .venv
 .venv\Scripts\activate
 
-# Python packages (ai-multimodal only)
-cd .copilot\skills\ai-multimodal\scripts
-pip install -r requirements.txt
-
 # System tools via Chocolatey
 choco install ffmpeg imagemagick nodejs
 
 # Node.js tools
-npm install -g pnpm wrangler repomix rmbg-cli @shopify/cli
+npm install -g pnpm wrangler repomix rmbg-cli
 ```
 
 ## Testing Dependencies
@@ -286,11 +252,6 @@ chmod +x $HOME/.copilot/skills/*/scripts/*.py
 
 If you only want to use specific skills:
 
-**For ai-multimodal only:**
-```bash
-pip install google-genai pypdf python-docx markdown Pillow python-dotenv
-```
-
 **For media-processing only:**
 ```bash
 # macOS
@@ -307,7 +268,7 @@ npm install -g rmbg-cli
 ```
 
 **For other skills:**
-Most other skills (better-auth, repomix, shopify, devops, web-frameworks, ui-styling, databases) use only Python stdlib and require no `pip install`.
+Most other skills (better-auth, repomix, devops, web-frameworks, ui-styling, databases) use only Python stdlib and require no `pip install`.
 
 ## Development Setup
 
@@ -329,11 +290,6 @@ pytest $HOME/.copilot/skills/*/scripts/tests/ --cov=.copilot/skills --cov-report
 
 ## Skill-Specific Notes
 
-### ai-multimodal
-- Requires `GEMINI_API_KEY` in environment
-- Get API key: https://aistudio.google.com/app/apikey
-- Windows users: `docx2pdf` requires Microsoft Word installed
-
 ### media-processing
 - FFmpeg must be in PATH
 - ImageMagick must be in PATH
@@ -344,10 +300,6 @@ pytest $HOME/.copilot/skills/*/scripts/tests/ --cov=.copilot/skills --cov-report
 - Cloudflare: Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`
 - GCloud: Requires `GOOGLE_APPLICATION_CREDENTIALS` path to service account JSON
 - Docker: Must have Docker daemon running
-
-### shopify
-- Requires Shopify CLI authentication: `shopify auth login`
-- Partner account needed for app development
 
 ## Getting Help
 
