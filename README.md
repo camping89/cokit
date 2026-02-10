@@ -1,6 +1,7 @@
 # CoKit
 
 Make GitHub Copilot smarter in 30 seconds.
+Check it out at https://camping89.github.io/cokit/index.html
 
 ## Installation
 

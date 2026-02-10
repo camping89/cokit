@@ -1,0 +1,3431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoKit - Complete Guide</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-card: #1a2332;
+      --bg-hover: #334155;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --green: #34d399;
+      --orange: #fb923c;
+      --pink: #f472b6;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --border: #334155;
+      --border-light: #475569;
+      --gradient-1: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      --gradient-2: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+      --gradient-3: linear-gradient(135deg, #f472b6 0%, #818cf8 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 120px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 99px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 15px;
+      color: var(--green);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .hero-install:hover {
+      border-color: var(--green);
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
+    }
+
+    .hero-install .copy-icon {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header .label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== ANALOGY ===== */
+    .analogy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .analogy-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .analogy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .analogy-card.blue::before {
+      background: var(--gradient-1);
+    }
+
+    /* ===== CONCEPT CARDS ===== */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .concept-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .concept-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .concept-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .concept-icon.blue {
+      background: rgba(56, 189, 248, 0.15);
+    }
+
+    .concept-icon.green {
+      background: rgba(52, 211, 153, 0.15);
+    }
+
+    .concept-icon.purple {
+      background: rgba(129, 140, 248, 0.15);
+    }
+
+    .concept-icon.orange {
+      background: rgba(251, 146, 60, 0.15);
+    }
+
+    .concept-icon.pink {
+      background: rgba(244, 114, 182, 0.15);
+    }
+
+    .concept-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .concept-card .tech-name {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .concept-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .concept-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--accent);
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+
+    .concept-tag.green {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--green);
+    }
+
+    .concept-tag.orange {
+      background: rgba(251, 146, 60, 0.1);
+      color: var(--orange);
+    }
+
+    .concept-tag.purple {
+      background: rgba(129, 140, 248, 0.1);
+      color: var(--accent2);
+    }
+
+    /* ===== FLOW DIAGRAM ===== */
+    .flow-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      overflow-x: auto;
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-width: fit-content;
+    }
+
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 12px;
+      border-radius: 12px;
+      min-width: 120px;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .flow-step:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .flow-step .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .flow-step .step-num.blue {
+      background: rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+    }
+
+    .flow-step .step-num.green {
+      background: rgba(52, 211, 153, 0.3);
+      color: var(--green);
+    }
+
+    .flow-step .step-num.purple {
+      background: rgba(129, 140, 248, 0.3);
+      color: var(--accent2);
+    }
+
+    .flow-step .step-num.orange {
+      background: rgba(251, 146, 60, 0.3);
+      color: var(--orange);
+    }
+
+    .flow-step .step-num.pink {
+      background: rgba(244, 114, 182, 0.3);
+      color: var(--pink);
+    }
+
+    .flow-step .step-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .flow-step .step-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .flow-arrow {
+      font-size: 18px;
+      color: var(--text-dim);
+    }
+
+    /* ===== TABS ===== */
+    .tab-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .tab-header {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      position: relative;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content {
+      display: none;
+      padding: 24px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== TABLE ===== */
+    .cmd-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cmd-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmd-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      font-size: 14px;
+    }
+
+    .cmd-table tr:hover td {
+      background: rgba(56, 189, 248, 0.03);
+    }
+
+    .cmd-table code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--green);
+      background: rgba(52, 211, 153, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .cmd-table .desc {
+      color: var(--text-muted);
+    }
+
+    /* ===== WORKFLOW ===== */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .workflow-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .workflow-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .workflow-card.fast::before {
+      background: var(--gradient-2);
+    }
+
+    .workflow-card.spec::before {
+      background: var(--gradient-3);
+    }
+
+    .workflow-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .workflow-label.fast {
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--green);
+    }
+
+    .workflow-label.spec {
+      background: rgba(244, 114, 182, 0.15);
+      color: var(--pink);
+    }
+
+    .workflow-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .workflow-card .when {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .workflow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .workflow-step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .workflow-step-item code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    .workflow-step-item .arrow-right {
+      color: var(--text-dim);
+    }
+
+    /* ===== SCENARIOS ===== */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .scenario-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .scenario-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .scenario-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .scenario-time {
+      font-size: 11px;
+      color: var(--orange);
+      background: rgba(251, 146, 60, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .scenario-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .scenario-card .scenario-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .scenario-cmd {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--green);
+      line-height: 1.8;
+    }
+
+    .scenario-cmd .comment {
+      color: var(--text-dim);
+    }
+
+    /* ===== STATS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ===== DECISION TREE ===== */
+    .decision-tree {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .decision-node {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .decision-node:hover {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.03);
+    }
+
+    .decision-node.expanded {
+      border-color: var(--accent);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-bottom: 0;
+    }
+
+    .decision-q {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .decision-q .q-icon {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .decision-answer {
+      display: none;
+      background: rgba(56, 189, 248, 0.03);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .decision-answer.show {
+      display: block;
+    }
+
+    .decision-answer code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--green);
+      background: rgba(52, 211, 153, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .decision-answer .answer-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .decision-toggle {
+      color: var(--text-dim);
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .decision-node.expanded .decision-toggle {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    /* ===== RESOURCE MAP ===== */
+    .resource-map {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s;
+    }
+
+    .resource-item:hover {
+      border-color: var(--border-light);
+    }
+
+    .resource-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .resource-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .resource-item li {
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+    }
+
+    .resource-item li:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== INSTALL ===== */
+    .install-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .install-header {
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .install-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .install-dot.red {
+      background: #ff5f57;
+    }
+
+    .install-dot.yellow {
+      background: #febc2e;
+    }
+
+    .install-dot.green {
+      background: #28c840;
+    }
+
+    .install-header span {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-left: 12px;
+    }
+
+    .install-body {
+      padding: 24px;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .install-body .prompt {
+      color: var(--text-dim);
+    }
+
+    .install-body .cmd {
+      color: var(--green);
+    }
+
+    .install-body .comment {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    .install-body .output {
+      color: var(--text-muted);
+    }
+
+    .install-body .success {
+      color: var(--green);
+    }
+
+    /* ===== COMPARE TABLE ===== */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table th {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .compare-table td {
+      color: var(--text-muted);
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(56, 189, 248, 0.03);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .flow-steps {
+        justify-content: flex-start;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      scroll-margin-top: 70px;
+    }
+
+    .tip-box {
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .tip-box strong {
+      color: var(--accent);
+    }
+
+    .warning-box {
+      background: rgba(251, 146, 60, 0.05);
+      border: 1px solid rgba(251, 146, 60, 0.15);
+      border-left: 3px solid var(--orange);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .warning-box strong {
+      color: var(--orange);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">CoKit</div>
+      <div class="nav-links">
+        <a href="#what">What is CoKit?</a>
+        <a href="#concepts">5 Parts</a>
+        <a href="#how">How it Works</a>
+        <a href="#commands">Commands</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#scenarios">Examples</a>
+        <a href="#decide">Pick a Command</a>
+        <a href="#flowchart">Flowchart</a>
+        <a href="#deepdive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+        <a href="#install">Install</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-badge">&#9889; Version 1.1.0</div>
+    <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
+    <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
+      your project and works like a real developer.</p>
+    <div class="hero-install" onclick="copyInstall()" id="installCmd">
+      <span>npx cokit-cli init -g</span>
+      <span class="copy-icon" id="copyIcon">&#128203; copy</span>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <section class="section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">28</div>
+        <div class="stat-label">Prompts (Commands)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Agents (Experts)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">23</div>
+        <div class="stat-label">Skills (Knowledge)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Instructions (Rules)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Collections (Bundles)</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== WHAT IS COKIT ===== -->
+  <section class="section" id="what">
+    <div class="section-header">
+      <div class="label">Introduction</div>
+      <h2>What is CoKit?</h2>
+      <p>Think of it like running a restaurant...</p>
+    </div>
+
+    <div class="analogy-grid">
+      <div class="analogy-card blue">
+        <h3 style="margin-bottom: 16px; color: var(--accent);">&#127869; Restaurant vs &#128187; CoKit</h3>
+        <table class="compare-table">
+          <tr>
+            <th>Restaurant</th>
+            <th>CoKit</th>
+          </tr>
+          <tr>
+            <td><strong>Menu</strong> &mdash; Customer picks a dish</td>
+            <td><strong>Prompts</strong> &mdash; You type a command: <code>/ck.fix</code>, <code>/ck.plan</code></td>
+          </tr>
+          <tr>
+            <td><strong>Expert chefs</strong> &mdash; People who do the cooking</td>
+            <td><strong>Agents</strong> &mdash; AI specialists: debugger, planner, tester...</td>
+          </tr>
+          <tr>
+            <td><strong>Recipes</strong> &mdash; Deep cooking knowledge</td>
+            <td><strong>Skills</strong> &mdash; Knowledge: debugging, code-review, planning...</td>
+          </tr>
+          <tr>
+            <td><strong>Kitchen rules</strong> &mdash; Rules everyone follows</td>
+            <td><strong>Instructions</strong> &mdash; Auto coding standards: frontend, backend, testing</td>
+          </tr>
+          <tr>
+            <td><strong>Combo meal</strong> &mdash; Bundle of items</td>
+            <td><strong>Collections</strong> &mdash; Group of resources by topic</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <strong>&#128161; In short:</strong> GitHub Copilot is like a super talented chef who doesn't know your
+        restaurant yet. CoKit gives it the menu, recipes, and kitchen rules &mdash; so the chef can work better right
+        away.
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== 5 CONCEPTS ===== -->
+  <section class="section" id="concepts">
+    <div class="section-header">
+      <div class="label">Core Concepts</div>
+      <h2>The 5 Parts of CoKit</h2>
+      <p>Each part has its own job. They work together automatically.</p>
+    </div>
+
+    <div class="concept-grid">
+      <!-- PROMPT -->
+      <div class="concept-card">
+        <div class="concept-icon blue">&#128172;</div>
+        <div class="tech-name">Prompt</div>
+        <h3>Commands you type</h3>
+        <p>Like a <strong>button on your phone</strong>. You type a command, and Copilot knows exactly what to do. Each
+          prompt is a complete workflow.</p>
+        <p><strong>How to use:</strong> Type <code style="color: var(--green);">/ck.fix</code> in Copilot Chat</p>
+        <div>
+          <span class="concept-tag">28 prompts</span>
+          <span class="concept-tag">You trigger it</span>
+        </div>
+      </div>
+
+      <!-- AGENT -->
+      <div class="concept-card">
+        <div class="concept-icon purple">&#129302;</div>
+        <div class="tech-name">Agent</div>
+        <h3>AI specialists</h3>
+        <p>Like <strong>experts on your team</strong>. Each agent has a special skill: one fixes bugs, one writes tests,
+          one makes plans.</p>
+        <p><strong>How it works:</strong> Prompts call them automatically</p>
+        <div>
+          <span class="concept-tag purple">12 agents</span>
+          <span class="concept-tag purple">Automatic</span>
+        </div>
+      </div>
+
+      <!-- SKILL -->
+      <div class="concept-card">
+        <div class="concept-icon green">&#128218;</div>
+        <div class="tech-name">Skill</div>
+        <h3>Deep knowledge</h3>
+        <p>Like a <strong>textbook</strong>. Teaches Copilot the right way to debug, review code, and plan &mdash;
+          instead of guessing.</p>
+        <p><strong>How it works:</strong> Turns on automatically based on what you're doing</p>
+        <div>
+          <span class="concept-tag green">23 skills</span>
+          <span class="concept-tag green">Context-aware</span>
+        </div>
+      </div>
+
+      <!-- INSTRUCTION -->
+      <div class="concept-card">
+        <div class="concept-icon orange">&#128220;</div>
+        <div class="tech-name">Instruction</div>
+        <h3>Auto coding rules</h3>
+        <p>Like <strong>company rules</strong>. When Copilot edits a React file &rarr; frontend rules apply. Edits an
+          API file &rarr; backend rules apply.</p>
+        <p><strong>How it works:</strong> Applies automatically based on file type</p>
+        <div>
+          <span class="concept-tag orange">5 instructions</span>
+          <span class="concept-tag orange">Auto-apply</span>
+        </div>
+      </div>
+
+      <!-- COLLECTION -->
+      <div class="concept-card">
+        <div class="concept-icon pink">&#128230;</div>
+        <div class="tech-name">Collection</div>
+        <h3>Resource bundles</h3>
+        <p>Like a <strong>combo meal</strong>. Groups prompts + agents + skills by topic: core development, git
+          workflow, documentation...</p>
+        <p><strong>How it works:</strong> Pick the bundle you need</p>
+        <div>
+          <span class="concept-tag" style="background: rgba(244,114,182,0.1); color: var(--pink);">5 collections</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section" id="how">
+    <div class="section-header">
+      <div class="label">How It Works</div>
+      <h2>What happens when you type a command?</h2>
+      <p>You just type the command. Everything else is automatic.</p>
+    </div>
+
+    <div class="flow-container">
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num blue">1</div>
+          <div class="step-label">You type</div>
+          <div class="step-desc" style="color: var(--green); font-family: monospace;">/ck.fix</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-step">
+          <div class="step-num purple">2</div>
+          <div class="step-label">Prompt starts</div>
+          <div class="step-desc">Bug-fix workflow</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-step">
+          <div class="step-num green">3</div>
+          <div class="step-label">Agent works</div>
+          <div class="step-desc">Debugger expert</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-step">
+          <div class="step-num orange">4</div>
+          <div class="step-label">Rules apply</div>
+          <div class="step-desc">Auto code standards</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-step">
+          <div class="step-num pink">5</div>
+          <div class="step-label">Skills help</div>
+          <div class="step-desc">Deep knowledge</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-step">
+          <div class="step-num" style="background: rgba(52,211,153,0.5); color: white;">&#10003;</div>
+          <div class="step-label" style="color: var(--green);">Done!</div>
+          <div class="step-desc">Bug fixed properly</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top: 24px;">
+      <strong>&#128161; One-liner:</strong> You call a <strong>Prompt</strong> &rarr; Prompt calls an
+      <strong>Agent</strong> &rarr; Agent gets <strong>Instructions</strong> by file type &rarr; Agent uses
+      <strong>Skills</strong> when needed &rarr; All can be bundled in a <strong>Collection</strong>.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== COMMANDS ===== -->
+  <section class="section" id="commands">
+    <div class="section-header">
+      <div class="label">Commands</div>
+      <h2>All CoKit Commands</h2>
+      <p>Click a tab to see each group of commands.</p>
+    </div>
+
+    <div class="tab-container">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab(event, 'tab-daily')">&#128736; Daily Use</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-plan')">&#128203; Planning</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-spec')">&#128196; Spec-Driven</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-util')">&#128295; Utilities</button>
+      </div>
+
+      <!-- Daily -->
+      <div class="tab-content active" id="tab-daily">
+        <table class="cmd-table">
+          <tr>
+            <th>Command</th>
+            <th>What it does</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td><code>/ck.fix</code></td>
+            <td>Fix bugs, errors, issues</td>
+            <td class="desc">"Login button not working"</td>
+          </tr>
+          <tr>
+            <td><code>/ck.debug</code></td>
+            <td>Deep root-cause analysis</td>
+            <td class="desc">"App crashes on file upload"</td>
+          </tr>
+          <tr>
+            <td><code>/ck.cook</code></td>
+            <td>Implement a feature or plan</td>
+            <td class="desc">"Build the auth module" or path to plan</td>
+          </tr>
+          <tr>
+            <td><code>/ck.test</code></td>
+            <td>Run tests &amp; analyze results</td>
+            <td class="desc">"Test the auth module"</td>
+          </tr>
+          <tr>
+            <td><code>/ck.review</code></td>
+            <td>Review code quality</td>
+            <td class="desc">"Review the payment module"</td>
+          </tr>
+          <tr>
+            <td><code>/ck.ask</code></td>
+            <td>Ask technical questions</td>
+            <td class="desc">"Should we use JWT or sessions?"</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Planning -->
+      <div class="tab-content" id="tab-plan">
+        <table class="cmd-table">
+          <tr>
+            <th>Command</th>
+            <th>What it does</th>
+            <th>When to use</th>
+          </tr>
+          <tr>
+            <td><code>/ck.plan</code></td>
+            <td>Create plan (auto-detects complexity)</td>
+            <td class="desc">Medium features</td>
+          </tr>
+          <tr>
+            <td><code>/ck.plan.fast</code></td>
+            <td>Quick plan, no research</td>
+            <td class="desc">Small features &lt; 2 hours</td>
+          </tr>
+          <tr>
+            <td><code>/ck.plan.hard</code></td>
+            <td>Deep research + detailed plan</td>
+            <td class="desc">Complex features needing research</td>
+          </tr>
+          <tr>
+            <td><code>/ck.brainstorm</code></td>
+            <td>Brainstorm solutions</td>
+            <td class="desc">Not sure what to build</td>
+          </tr>
+          <tr>
+            <td><code>/ck.bootstrap</code></td>
+            <td>Start a new project</td>
+            <td class="desc">Create project from scratch</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Spec-Driven -->
+      <div class="tab-content" id="tab-spec">
+        <div class="warning-box" style="margin-bottom: 16px;">
+          <strong>&#128204; Note:</strong> Spec-Driven is for complex features (multi-day). It needs clear requirements.
+          Use in order: specify &rarr; clarify &rarr; plan &rarr; tasks &rarr; implement.
+        </div>
+        <table class="cmd-table">
+          <tr>
+            <th>Command</th>
+            <th>What it does</th>
+            <th>Step</th>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.specify</code></td>
+            <td>Write spec from an idea</td>
+            <td class="desc">Step 1 &mdash; Create requirements</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.clarify</code></td>
+            <td>Ask questions to clear up unknowns</td>
+            <td class="desc">Step 2 &mdash; Confirm details</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.plan</code></td>
+            <td>Create plan from spec</td>
+            <td class="desc">Step 3 &mdash; Make the plan</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.tasks</code></td>
+            <td>Break plan into small tasks</td>
+            <td class="desc">Step 4 &mdash; Split into pieces</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.implement</code></td>
+            <td>Execute the tasks</td>
+            <td class="desc">Step 5 &mdash; Write the code</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.analyze</code></td>
+            <td>Check spec consistency</td>
+            <td class="desc">Optional</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.checklist</code></td>
+            <td>Validate all requirements</td>
+            <td class="desc">Optional</td>
+          </tr>
+          <tr>
+            <td><code>/ck.spec.taskstoissues</code></td>
+            <td>Export tasks to GitHub Issues</td>
+            <td class="desc">Optional</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Utilities -->
+      <div class="tab-content" id="tab-util">
+        <table class="cmd-table">
+          <tr>
+            <th>Command</th>
+            <th>What it does</th>
+          </tr>
+          <tr>
+            <td><code>/ck.git</code></td>
+            <td>Commit, push, create PR &mdash; all Git operations</td>
+          </tr>
+          <tr>
+            <td><code>/ck.scout</code></td>
+            <td>Quick search across the codebase</td>
+          </tr>
+          <tr>
+            <td><code>/ck.watzup</code></td>
+            <td>See recent changes on your branch</td>
+          </tr>
+          <tr>
+            <td><code>/ck.docs</code></td>
+            <td>Create or update documentation</td>
+          </tr>
+          <tr>
+            <td><code>/ck.preview</code></td>
+            <td>Preview markdown files and plans</td>
+          </tr>
+          <tr>
+            <td><code>/ck.journal</code></td>
+            <td>Write dev journal entries</td>
+          </tr>
+          <tr>
+            <td><code>/ck.simplify</code></td>
+            <td>Simplify &amp; refine code for clarity</td>
+          </tr>
+          <tr>
+            <td><code>/ck.help</code></td>
+            <td>CoKit usage guide</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== WORKFLOWS ===== -->
+  <section class="section" id="workflows">
+    <div class="section-header">
+      <div class="label">Workflows</div>
+      <h2>2 Main Workflows</h2>
+      <p>Pick the workflow that matches how big the job is.</p>
+    </div>
+
+    <div class="workflow-grid">
+      <!-- Quick workflow (ck.*) -->
+      <div class="workflow-card fast">
+        <div class="workflow-label fast">QUICK &mdash; ck.*</div>
+        <h3>Flexible, for daily work</h3>
+        <div class="when">Use for: bug fixes, small features, prototypes, quick experiments</div>
+        <div class="workflow-steps">
+          <div class="workflow-step-item">
+            <code>/ck.plan.fast</code> <span class="arrow-right">&rarr;</span> Quick plan
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.cook</code> <span class="arrow-right">&rarr;</span> Write the code
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.test</code> <span class="arrow-right">&rarr;</span> Run tests
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.fix</code> <span class="arrow-right">&rarr;</span> Fix if tests fail
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.review</code> <span class="arrow-right">&rarr;</span> Review code
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.git</code> <span class="arrow-right">&rarr;</span> Commit &amp; push
+          </div>
+        </div>
+        <div class="tip-box" style="margin-top: 16px;">
+          <strong>&#9201; Time:</strong> Minutes to hours
+        </div>
+      </div>
+
+      <!-- Spec-driven workflow (ck.spec.*) -->
+      <div class="workflow-card spec">
+        <div class="workflow-label spec">SPEC-DRIVEN &mdash; ck.spec.*</div>
+        <h3>Rigorous, for big features</h3>
+        <div class="when">Use for: complex features, clear specs needed, team collaboration</div>
+        <div class="workflow-steps">
+          <div class="workflow-step-item">
+            <code>/ck.spec.specify</code> <span class="arrow-right">&rarr;</span> Write detailed requirements
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.spec.clarify</code> <span class="arrow-right">&rarr;</span> Clear up unknowns
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.spec.plan</code> <span class="arrow-right">&rarr;</span> Create plan from spec
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.spec.tasks</code> <span class="arrow-right">&rarr;</span> Split into small tasks
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.spec.implement</code> <span class="arrow-right">&rarr;</span> Build each task
+          </div>
+          <div class="workflow-step-item">
+            <code>/ck.test</code> <span class="arrow-right">&rarr;</span> Test everything
+          </div>
+        </div>
+        <div class="tip-box" style="margin-top: 16px;">
+          <strong>&#9201; Time:</strong> Days to weeks
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <strong>&#128161; Rule of thumb:</strong> If you can explain it in one sentence &rarr; use <strong>Quick
+        workflow</strong> (<code>ck.*</code>). If you need a document &rarr; use <strong>Spec-Driven</strong>
+      (<code>ck.spec.*</code>).
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SCENARIOS ===== -->
+  <section class="section" id="scenarios">
+    <div class="section-header">
+      <div class="label">Real Examples</div>
+      <h2>When do I use what?</h2>
+      <p>Common everyday situations and which commands to use.</p>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">5 min</span>
+          <h4>&#128027; Quick bug fix</h4>
+        </div>
+        <div class="scenario-desc">Users can't login with email containing "+"</div>
+        <div class="scenario-cmd">
+          <span class="comment"># One command, done!</span><br>
+          /ck.fix "Users can't login with email containing +"
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">30 min</span>
+          <h4>&#127763; Small feature</h4>
+        </div>
+        <div class="scenario-desc">Add a dark mode toggle button</div>
+        <div class="scenario-cmd">
+          /ck.plan.fast "Add dark mode toggle"<br>
+          <span class="comment"># Implement the plan...</span><br>
+          /ck.test<br>
+          /ck.fix <span class="comment"># if tests fail</span>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">2-4 hrs</span>
+          <h4>&#128179; Medium feature</h4>
+        </div>
+        <div class="scenario-desc">Integrate Stripe payments</div>
+        <div class="scenario-cmd">
+          /ck.plan.hard "Integrate Stripe payments"<br>
+          <span class="comment"># Implement phase by phase...</span><br>
+          /ck.test<br>
+          /ck.review
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">Multi-day</span>
+          <h4>&#127959; Complex feature</h4>
+        </div>
+        <div class="scenario-desc">Multi-tenant SaaS billing system</div>
+        <div class="scenario-cmd">
+          /ck.spec.specify "Multi-tenant billing"<br>
+          /ck.spec.clarify<br>
+          /ck.spec.plan<br>
+          /ck.spec.tasks<br>
+          /ck.spec.implement<br>
+          /ck.test
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">10 min</span>
+          <h4>&#128269; Explore codebase</h4>
+        </div>
+        <div class="scenario-desc">Just joined the project, need to understand the code</div>
+        <div class="scenario-cmd">
+          /ck.scout "auth handlers"<br>
+          /ck.ask "How does auth work in this project?"<br>
+          /ck.watzup <span class="comment"># see recent changes</span>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <span class="scenario-time">15 min</span>
+          <h4>&#128640; New project</h4>
+        </div>
+        <div class="scenario-desc">Start a React project from scratch</div>
+        <div class="scenario-cmd">
+          /ck.bootstrap "New React app with auth"<br>
+          <span class="comment"># Copilot sets up everything!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== DECISION TREE ===== -->
+  <section class="section" id="decide">
+    <div class="section-header">
+      <div class="label">Pick a Command</div>
+      <h2>Not sure which command to use?</h2>
+      <p>Answer the question, find the right command. Click to expand.</p>
+    </div>
+
+    <div class="decision-tree">
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Have a bug to fix?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.fix</code> &mdash; analyzes and fixes it right away</div>
+        <div class="answer-desc">If the bug is complex and unclear: use <code>/ck.debug</code> instead</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Small feature, done in a few hours?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.plan.fast</code> &mdash; quick plan, no research needed</div>
+        <div class="answer-desc">Good for: adding a button, changing layout, small refactors</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Medium feature, need to research first?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.plan.hard</code> &mdash; deep research, then plan</div>
+        <div class="answer-desc">Good for: integrating a new API, adding a big module</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Complex feature, need clear requirements?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.spec.specify</code> &mdash; start the Spec-Driven workflow</div>
+        <div class="answer-desc">Good for: new systems, multi-day features, needs documentation</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Not sure what to build, need ideas?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.brainstorm</code> &mdash; discuss different approaches</div>
+        <div class="answer-desc">Copilot will analyze pros and cons of each option</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Need to run tests?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.test</code> &mdash; runs tests and explains results</div>
+        <div class="answer-desc">Works with both workflows (Quick and Spec-Driven)</div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Code messy? Want to clean it up?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.simplify</code> &mdash; simplifies and refines code for clarity</div>
+        <div class="answer-desc">Reduces nesting, improves naming, removes redundancy &mdash; without changing behavior
+        </div>
+      </div>
+
+      <div class="decision-node" onclick="toggleDecision(this)">
+        <div class="decision-q"><span class="q-icon">&#10067;</span> Need to commit and push code?</div>
+        <div class="decision-toggle">&#9660;</div>
+      </div>
+      <div class="decision-answer">
+        <div>&#8594; Use <code>/ck.git</code> &mdash; commit, push, create PR</div>
+        <div class="answer-desc">Auto-generates clean commit messages</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== COMMAND FINDER FLOWCHART ===== -->
+  <section class="section" id="flowchart" style="max-width: 100%; padding: 60px 16px;">
+    <div class="section-header" style="max-width: 1200px; margin: 0 auto 48px;">
+      <div class="label">Visual Map</div>
+      <h2>Command Finder Flowchart</h2>
+      <p>Interactive diagram &mdash; click any node to see the path. Click command buttons at the top to trace routes.
+      </p>
+    </div>
+
+    <div class="cf-wrapper"
+      style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
+
+      <!-- Command Finder: Command buttons bar -->
+      <div class="cf-cmd-bar" id="cfCmdBar"></div>
+
+      <!-- Command Finder: SVG flowchart -->
+      <div class="cf-flowchart-wrap">
+        <svg id="cfFlowchart" viewBox="0 0 1500 1120"></svg>
+      </div>
+
+      <!-- Command Finder: Tooltip -->
+      <div class="cf-tooltip" id="cfTooltip"></div>
+
+      <!-- Command Finder: Info bar -->
+      <div class="cf-info-bar">
+        Click any node or edge to highlight the path. Press <kbd>Esc</kbd> or click background to reset.
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== COMMAND FINDER SCOPED STYLES ===== */
+    .cf-wrapper {
+      --node-decision: #1e3a5f;
+      --node-decision-stroke: #38bdf8;
+      --node-command: #1a2e1a;
+      --node-command-stroke: #34d399;
+      --node-start: #2d1b4e;
+      --node-start-stroke: #818cf8;
+      --edge-color: #475569;
+      --edge-active: #38bdf8;
+      --fade-opacity: 0.12;
+    }
+
+    .cf-cmd-bar {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--bg-surface);
+    }
+
+    .cf-cmd-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .cf-cmd-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .cf-cmd-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+    }
+
+    .cf-cmd-btn-reset {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--orange);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cf-cmd-btn-reset:hover {
+      border-color: var(--orange);
+      background: rgba(251, 146, 60, 0.1);
+    }
+
+    .cf-flowchart-wrap {
+      overflow: auto;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      min-height: 500px;
+    }
+
+    .cf-flowchart-wrap svg {
+      width: 100%;
+      height: auto;
+      min-height: 480px;
+      max-height: 85vh;
+    }
+
+    .cf-wrapper svg text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      user-select: none;
+    }
+
+    .cf-wrapper .cf-node {
+      cursor: pointer;
+      transition: filter 0.25s, opacity 0.25s;
+    }
+
+    .cf-wrapper .cf-node:hover {
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+
+    .cf-wrapper .cf-node.faded {
+      opacity: var(--fade-opacity);
+    }
+
+    .cf-wrapper .cf-node.active {
+      filter: drop-shadow(0 0 12px var(--accent));
+    }
+
+    .cf-wrapper .cf-edge {
+      transition: opacity 0.25s, stroke 0.25s;
+    }
+
+    .cf-wrapper .cf-edge.faded {
+      opacity: var(--fade-opacity);
+    }
+
+    .cf-wrapper .cf-edge.active line,
+    .cf-wrapper .cf-edge.active path,
+    .cf-wrapper .cf-edge.active polyline {
+      stroke: var(--edge-active) !important;
+      stroke-width: 2.5 !important;
+    }
+
+    .cf-wrapper .cf-edge.active text {
+      fill: var(--accent) !important;
+    }
+
+    .cf-tooltip {
+      position: fixed;
+      padding: 8px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 100;
+      max-width: 280px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .cf-tooltip.show {
+      opacity: 1;
+    }
+
+    .cf-tooltip code {
+      color: var(--green);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+    }
+
+    .cf-info-bar {
+      padding: 10px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    (function () {
+      // ========== COMMAND FINDER DATA ==========
+      // Flow logic:
+      //   New project? → bootstrap
+      //   Fix bug? → know cause? Yes→fix, No→debug→fix
+      //   Build feature? → need spec? No→plan→cook→test, Yes→spec flow, Unsure→brainstorm
+      //   Explore? → scout→watzup
+      //   Git? → git
+      //   Test? → test→fix (if fail)
+      //   Docs/review? → review | docs | preview
+      //   Help? → help | ask | journal
+
+      const CF_NODES = [
+        // Start
+        { id: 'start', text: 'What do you\nwant to do?', type: 'start', x: 60, y: 420 },
+
+        // Level 1 decisions (logical order)
+        { id: 'q_new', text: 'New\nproject?', type: 'decision', x: 240, y: 80 },
+        { id: 'q_bug', text: 'Fix a\nbug?', type: 'decision', x: 240, y: 200 },
+        { id: 'q_feature', text: 'Build\nfeature?', type: 'decision', x: 240, y: 370 },
+        { id: 'q_explore', text: 'Explore\ncodebase?', type: 'decision', x: 240, y: 530 },
+        { id: 'q_git', text: 'Git\nops?', type: 'decision', x: 240, y: 630 },
+        { id: 'q_test', text: 'Run\ntests?', type: 'decision', x: 240, y: 730 },
+        { id: 'q_docs', text: 'Code quality\nor docs?', type: 'decision', x: 240, y: 840 },
+        { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1000 },
+
+        // New project
+        { id: 'c_bootstrap', text: '/ck.bootstrap', type: 'command', x: 480, y: 80, desc: 'Start a new project from scratch' },
+
+        // Bug fix branch
+        { id: 'q_knowcause', text: 'Know the\ncause?', type: 'decision', x: 480, y: 200 },
+        { id: 'c_fix', text: '/ck.fix', type: 'command', x: 700, y: 160, desc: 'Analyze and fix bugs, errors, issues' },
+        { id: 'c_debug', text: '/ck.debug', type: 'command', x: 700, y: 240, desc: 'Systematic root cause analysis' },
+
+        // Feature branch
+        { id: 'q_formal', text: 'Need formal\nrequirements?', type: 'decision', x: 480, y: 370 },
+        { id: 'c_brainstorm', text: '/ck.brainstorm', type: 'command', x: 700, y: 300, desc: 'Collaborative ideation with expert advice' },
+        { id: 'c_plan', text: '/ck.plan', type: 'command', x: 700, y: 370, desc: 'Create implementation plan (auto-detect complexity)' },
+        { id: 'c_cook', text: '/ck.cook', type: 'command', x: 880, y: 370, desc: 'Smart feature implementation from plan or task' },
+        { id: 'c_test_after', text: '/ck.test', type: 'command', x: 1040, y: 370, desc: 'Run tests after implementation' },
+
+        // Spec-driven flow
+        { id: 'c_spec_specify', text: '/ck.spec.specify', type: 'command', x: 700, y: 450, desc: 'Create formal specification from idea' },
+        { id: 'c_spec_clarify', text: '/ck.spec.clarify', type: 'command', x: 880, y: 450, desc: 'Ask clarification questions about spec' },
+        { id: 'c_spec_plan', text: '/ck.spec.plan', type: 'command', x: 1040, y: 450, desc: 'Generate plan from specification' },
+        { id: 'c_spec_tasks', text: '/ck.spec.tasks', type: 'command', x: 1200, y: 450, desc: 'Break plan into executable tasks' },
+        { id: 'c_spec_implement', text: '/ck.spec.implement', type: 'command', x: 1380, y: 450, desc: 'Execute tasks from spec plan' },
+
+        // Spec extras
+        { id: 'c_spec_analyze', text: '/ck.spec.analyze', type: 'command', x: 1040, y: 525, desc: 'Check specification consistency' },
+        { id: 'c_spec_checklist', text: '/ck.spec.checklist', type: 'command', x: 1200, y: 525, desc: 'Validate all requirements covered' },
+        { id: 'c_spec_issues', text: '/ck.spec.taskstoissues', type: 'command', x: 1380, y: 525, desc: 'Export tasks to GitHub Issues' },
+
+        // Explore
+        { id: 'c_scout', text: '/ck.scout', type: 'command', x: 480, y: 530, desc: 'Fast codebase search and exploration' },
+        { id: 'c_watzup', text: '/ck.watzup', type: 'command', x: 650, y: 530, desc: 'Review recent changes in current branch' },
+
+        // Git
+        { id: 'c_git', text: '/ck.git', type: 'command', x: 480, y: 630, desc: 'Git operations: commit, push, PR, merge' },
+
+        // Test (standalone)
+        { id: 'c_test', text: '/ck.test', type: 'command', x: 480, y: 730, desc: 'Run and analyze tests' },
+
+        // Docs/Review/Simplify
+        { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 840 },
+        { id: 'c_review', text: '/ck.review', type: 'command', x: 700, y: 780, desc: 'Code review and quality check' },
+        { id: 'c_simplify', text: '/ck.simplify', type: 'command', x: 700, y: 830, desc: 'Simplify & refine code for clarity' },
+        { id: 'c_docs', text: '/ck.docs', type: 'command', x: 700, y: 880, desc: 'Generate/update project documentation' },
+        { id: 'c_preview', text: '/ck.preview', type: 'command', x: 700, y: 930, desc: 'Preview markdown files and plans visually' },
+
+        // Help
+        { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1000 },
+        { id: 'c_help', text: '/ck.help', type: 'command', x: 700, y: 960, desc: 'Interactive CoKit help and guidance' },
+        { id: 'c_ask', text: '/ck.ask', type: 'command', x: 700, y: 1000, desc: 'Technical & architectural questions' },
+        { id: 'c_journal', text: '/ck.journal', type: 'command', x: 700, y: 1040, desc: 'Write development journal entries' },
+      ];
+
+      const CF_EDGES = [
+        // Start → all questions
+        { from: 'start', to: 'q_new', label: '' },
+        { from: 'start', to: 'q_bug', label: '' },
+        { from: 'start', to: 'q_feature', label: '' },
+        { from: 'start', to: 'q_explore', label: '' },
+        { from: 'start', to: 'q_git', label: '' },
+        { from: 'start', to: 'q_test', label: '' },
+        { from: 'start', to: 'q_docs', label: '' },
+        { from: 'start', to: 'q_help', label: '' },
+
+        // New project
+        { from: 'q_new', to: 'c_bootstrap', label: 'Yes' },
+
+        // Bug fix: know cause? → fix or debug→fix
+        { from: 'q_bug', to: 'q_knowcause', label: 'Yes' },
+        { from: 'q_knowcause', to: 'c_fix', label: 'Yes' },
+        { from: 'q_knowcause', to: 'c_debug', label: 'No' },
+        { from: 'c_debug', to: 'c_fix', label: 'Then\nfix' },
+
+        // Feature: need formal spec?
+        { from: 'q_feature', to: 'q_formal', label: 'Yes' },
+        { from: 'q_formal', to: 'c_brainstorm', label: 'Unsure' },
+        { from: 'q_formal', to: 'c_plan', label: 'No' },
+        { from: 'c_plan', to: 'c_cook', label: '' },
+        { from: 'c_cook', to: 'c_test_after', label: '' },
+
+        // Spec-driven flow
+        { from: 'q_formal', to: 'c_spec_specify', label: 'Yes' },
+        { from: 'c_spec_specify', to: 'c_spec_clarify', label: '' },
+        { from: 'c_spec_clarify', to: 'c_spec_plan', label: '' },
+        { from: 'c_spec_plan', to: 'c_spec_tasks', label: '' },
+        { from: 'c_spec_tasks', to: 'c_spec_implement', label: '' },
+        { from: 'c_spec_plan', to: 'c_spec_analyze', label: '' },
+        { from: 'c_spec_tasks', to: 'c_spec_checklist', label: '' },
+        { from: 'c_spec_tasks', to: 'c_spec_issues', label: '' },
+
+        // Explore
+        { from: 'q_explore', to: 'c_scout', label: 'Yes' },
+        { from: 'c_scout', to: 'c_watzup', label: 'Recent\nchanges?' },
+
+        // Git
+        { from: 'q_git', to: 'c_git', label: 'Yes' },
+
+        // Test (standalone)
+        { from: 'q_test', to: 'c_test', label: 'Yes' },
+
+        // Docs/Review
+        { from: 'q_docs', to: 'q_doctype', label: 'Yes' },
+        { from: 'q_doctype', to: 'c_review', label: 'Review' },
+        { from: 'q_doctype', to: 'c_simplify', label: 'Simplify' },
+        { from: 'q_doctype', to: 'c_docs', label: 'Docs' },
+        { from: 'q_doctype', to: 'c_preview', label: 'Preview' },
+
+        // Help
+        { from: 'q_help', to: 'q_helptype', label: 'Yes' },
+        { from: 'q_helptype', to: 'c_help', label: 'CoKit' },
+        { from: 'q_helptype', to: 'c_ask', label: 'Tech' },
+        { from: 'q_helptype', to: 'c_journal', label: 'Journal' },
+      ];
+
+      // ========== NODE DIMENSIONS ==========
+      const DECISION_SIZE = 55;
+      const CMD_W = 130;
+      const CMD_H = 32;
+      const START_W = 140;
+      const START_H = 50;
+
+      // ========== ADJACENCY FOR PATH TRACING ==========
+      const adjForward = {};
+      const adjBackward = {};
+      CF_EDGES.forEach(function (e) {
+        if (!adjForward[e.from]) adjForward[e.from] = [];
+        adjForward[e.from].push(e.to);
+        if (!adjBackward[e.to]) adjBackward[e.to] = [];
+        adjBackward[e.to].push(e.from);
+      });
+
+      function tracePathTo(nodeId) {
+        var path = new Set();
+        var edgesInPath = new Set();
+        function walkBack(id) {
+          if (path.has(id)) return;
+          path.add(id);
+          var parents = adjBackward[id] || [];
+          parents.forEach(function (pid) {
+            edgesInPath.add(pid + '->' + id);
+            walkBack(pid);
+          });
+        }
+        walkBack(nodeId);
+        function walkForward(id, depth) {
+          if (depth > 6) return;
+          var children = adjForward[id] || [];
+          children.forEach(function (cid) {
+            path.add(cid);
+            edgesInPath.add(id + '->' + cid);
+            walkForward(cid, depth + 1);
+          });
+        }
+        walkForward(nodeId, 0);
+        return { nodes: path, edges: edgesInPath };
+      }
+
+      // ========== SVG RENDERING ==========
+      var svg = document.getElementById('cfFlowchart');
+      var NS = 'http://www.w3.org/2000/svg';
+
+      function svgEl(tag, attrs) {
+        var el = document.createElementNS(NS, tag);
+        if (attrs) Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      // Arrow markers
+      var defs = svgEl('defs');
+      var marker = svgEl('marker', {
+        id: 'cf-arrow', viewBox: '0 0 10 10', refX: '10', refY: '5',
+        markerWidth: '6', markerHeight: '6', orient: 'auto-start-reverse', fill: 'var(--edge-color)'
+      });
+      marker.appendChild(svgEl('path', { d: 'M 0 0 L 10 5 L 0 10 z' }));
+      defs.appendChild(marker);
+
+      var markerActive = svgEl('marker', {
+        id: 'cf-arrow-active', viewBox: '0 0 10 10', refX: '10', refY: '5',
+        markerWidth: '6', markerHeight: '6', orient: 'auto-start-reverse', fill: 'var(--edge-active)'
+      });
+      markerActive.appendChild(svgEl('path', { d: 'M 0 0 L 10 5 L 0 10 z' }));
+      defs.appendChild(markerActive);
+      svg.appendChild(defs);
+
+      // Layers
+      var edgeLayer = svgEl('g', { id: 'cf-edges' });
+      var nodeLayer = svgEl('g', { id: 'cf-nodes' });
+      svg.appendChild(edgeLayer);
+      svg.appendChild(nodeLayer);
+
+      // Node connection points
+      function getNodeRight(n) {
+        if (n.type === 'decision') return { x: n.x + DECISION_SIZE, y: n.y };
+        if (n.type === 'start') return { x: n.x + START_W / 2, y: n.y };
+        return { x: n.x + CMD_W / 2, y: n.y };
+      }
+      function getNodeLeft(n) {
+        if (n.type === 'decision') return { x: n.x - DECISION_SIZE, y: n.y };
+        if (n.type === 'start') return { x: n.x - START_W / 2, y: n.y };
+        return { x: n.x - CMD_W / 2, y: n.y };
+      }
+
+      // Draw edges
+      var edgeElements = {};
+      var nodeMap = {};
+      CF_NODES.forEach(function (n) { nodeMap[n.id] = n; });
+
+      CF_EDGES.forEach(function (e) {
+        var fromN = nodeMap[e.from];
+        var toN = nodeMap[e.to];
+        if (!fromN || !toN) return;
+
+        var g = svgEl('g', { class: 'cf-edge', 'data-edge': e.from + '->' + e.to });
+        var fp = getNodeRight(fromN);
+        var tp = getNodeLeft(toN);
+        var dx = tp.x - fp.x;
+        var dy = tp.y - fp.y;
+        var d;
+
+        if (Math.abs(dy) < 10) {
+          d = 'M ' + fp.x + ' ' + fp.y + ' L ' + tp.x + ' ' + tp.y;
+        } else {
+          var cx1 = fp.x + dx * 0.4;
+          var cx2 = tp.x - dx * 0.4;
+          d = 'M ' + fp.x + ' ' + fp.y + ' C ' + cx1 + ' ' + fp.y + ', ' + cx2 + ' ' + tp.y + ', ' + tp.x + ' ' + tp.y;
+        }
+
+        var path = svgEl('path', {
+          d: d, fill: 'none', stroke: 'var(--edge-color)',
+          'stroke-width': '1.5', 'marker-end': 'url(#cf-arrow)'
+        });
+        g.appendChild(path);
+
+        if (e.label) {
+          var mx = (fp.x + tp.x) / 2;
+          var my = (fp.y + tp.y) / 2 - 8;
+          var lines = e.label.split('\n');
+          lines.forEach(function (line, i) {
+            var txt = svgEl('text', {
+              x: mx, y: my + i * 13,
+              'text-anchor': 'middle', 'font-size': '10', fill: 'var(--text-muted)'
+            });
+            txt.textContent = line;
+            g.appendChild(txt);
+          });
+        }
+
+        g.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          highlightNode(e.to);
+        });
+
+        edgeLayer.appendChild(g);
+        edgeElements[e.from + '->' + e.to] = g;
+      });
+
+      // Draw nodes
+      var nodeElements = {};
+
+      CF_NODES.forEach(function (n) {
+        var g = svgEl('g', { class: 'cf-node', 'data-node': n.id });
+
+        if (n.type === 'start') {
+          var rect = svgEl('rect', {
+            x: n.x - START_W / 2, y: n.y - START_H / 2,
+            width: START_W, height: START_H, rx: '25', ry: '25',
+            fill: 'var(--node-start)', stroke: 'var(--node-start-stroke)', 'stroke-width': '2'
+          });
+          g.appendChild(rect);
+          var lines = n.text.split('\n');
+          lines.forEach(function (line, i) {
+            var txt = svgEl('text', {
+              x: n.x, y: n.y + (i - (lines.length - 1) / 2) * 16,
+              'text-anchor': 'middle', 'dominant-baseline': 'central',
+              'font-size': '13', 'font-weight': '600', fill: 'var(--accent2)'
+            });
+            txt.textContent = line;
+            g.appendChild(txt);
+          });
+
+        } else if (n.type === 'decision') {
+          var s = DECISION_SIZE;
+          var poly = svgEl('polygon', {
+            points: n.x + ',' + (n.y - s) + ' ' + (n.x + s) + ',' + n.y + ' ' + n.x + ',' + (n.y + s) + ' ' + (n.x - s) + ',' + n.y,
+            fill: 'var(--node-decision)', stroke: 'var(--node-decision-stroke)', 'stroke-width': '1.5'
+          });
+          g.appendChild(poly);
+          var lines = n.text.split('\n');
+          lines.forEach(function (line, i) {
+            var txt = svgEl('text', {
+              x: n.x, y: n.y + (i - (lines.length - 1) / 2) * 14,
+              'text-anchor': 'middle', 'dominant-baseline': 'central',
+              'font-size': '11', 'font-weight': '500', fill: 'var(--accent)'
+            });
+            txt.textContent = line;
+            g.appendChild(txt);
+          });
+
+        } else {
+          var rect = svgEl('rect', {
+            x: n.x - CMD_W / 2, y: n.y - CMD_H / 2,
+            width: CMD_W, height: CMD_H, rx: '6', ry: '6',
+            fill: 'var(--node-command)', stroke: 'var(--node-command-stroke)', 'stroke-width': '1.5'
+          });
+          g.appendChild(rect);
+          var txt = svgEl('text', {
+            x: n.x, y: n.y,
+            'text-anchor': 'middle', 'dominant-baseline': 'central',
+            'font-size': '11', 'font-weight': '600', fill: 'var(--green)',
+            'font-family': "'SF Mono', 'Fira Code', monospace"
+          });
+          txt.textContent = n.text;
+          g.appendChild(txt);
+        }
+
+        g.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          highlightNode(n.id);
+        });
+
+        if (n.desc) {
+          g.addEventListener('mouseenter', function (ev) { cfShowTooltip(ev, n); });
+          g.addEventListener('mousemove', function (ev) { cfMoveTooltip(ev); });
+          g.addEventListener('mouseleave', cfHideTooltip);
+        }
+
+        nodeLayer.appendChild(g);
+        nodeElements[n.id] = g;
+      });
+
+      // ========== INTERACTION ==========
+      var activeHighlight = null;
+
+      function clearHighlight() {
+        activeHighlight = null;
+        Object.values(nodeElements).forEach(function (el) { el.classList.remove('faded', 'active'); });
+        Object.values(edgeElements).forEach(function (el) {
+          el.classList.remove('faded', 'active');
+          var p = el.querySelector('path');
+          if (p) p.setAttribute('marker-end', 'url(#cf-arrow)');
+        });
+        document.querySelectorAll('.cf-cmd-btn').forEach(function (b) { b.classList.remove('active'); });
+      }
+
+      function highlightNode(nodeId) {
+        if (activeHighlight === nodeId) { clearHighlight(); return; }
+        activeHighlight = nodeId;
+
+        var result = tracePathTo(nodeId);
+        var nodes = result.nodes;
+        var edges = result.edges;
+
+        Object.keys(nodeElements).forEach(function (id) {
+          var el = nodeElements[id];
+          if (nodes.has(id)) { el.classList.remove('faded'); el.classList.add('active'); }
+          else { el.classList.add('faded'); el.classList.remove('active'); }
+        });
+        Object.keys(edgeElements).forEach(function (key) {
+          var el = edgeElements[key];
+          if (edges.has(key)) {
+            el.classList.remove('faded'); el.classList.add('active');
+            var p = el.querySelector('path');
+            if (p) p.setAttribute('marker-end', 'url(#cf-arrow-active)');
+          } else {
+            el.classList.add('faded'); el.classList.remove('active');
+            var p = el.querySelector('path');
+            if (p) p.setAttribute('marker-end', 'url(#cf-arrow)');
+          }
+        });
+
+        document.querySelectorAll('.cf-cmd-btn').forEach(function (b) {
+          b.classList.toggle('active', b.dataset.cmd === nodeId);
+        });
+      }
+
+      // Background click to reset
+      svg.addEventListener('click', clearHighlight);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') clearHighlight(); });
+
+      // ========== COMMAND BUTTONS ==========
+      var cmdBar = document.getElementById('cfCmdBar');
+      var commandNodes = CF_NODES.filter(function (n) { return n.type === 'command'; });
+
+      var resetBtn = document.createElement('button');
+      resetBtn.className = 'cf-cmd-btn-reset';
+      resetBtn.textContent = 'Reset';
+      resetBtn.addEventListener('click', clearHighlight);
+      cmdBar.appendChild(resetBtn);
+
+      commandNodes.forEach(function (n) {
+        var btn = document.createElement('button');
+        btn.className = 'cf-cmd-btn';
+        btn.textContent = n.text;
+        btn.dataset.cmd = n.id;
+        btn.addEventListener('click', function () { highlightNode(n.id); });
+        cmdBar.appendChild(btn);
+      });
+
+      // ========== TOOLTIP ==========
+      var tooltipEl = document.getElementById('cfTooltip');
+
+      function cfShowTooltip(ev, node) {
+        tooltipEl.innerHTML = '<code>' + node.text + '</code><br>' + node.desc;
+        tooltipEl.classList.add('show');
+        cfMoveTooltip(ev);
+      }
+      function cfMoveTooltip(ev) {
+        tooltipEl.style.left = (ev.clientX + 12) + 'px';
+        tooltipEl.style.top = (ev.clientY + 12) + 'px';
+      }
+      function cfHideTooltip() {
+        tooltipEl.classList.remove('show');
+      }
+    })();
+  </script>
+
+  <div class="divider"></div>
+
+  <!-- ===== COMMAND DEEP DIVE ===== -->
+  <section class="section" id="deepdive" style="max-width: 100%; padding: 60px 16px;">
+    <div class="section-header" style="max-width: 1200px; margin: 0 auto 48px;">
+      <div class="label">Under the Hood</div>
+      <h2>Command Deep Dive</h2>
+      <p>See what happens inside <strong>GitHub Copilot</strong> when you run a CoKit command &mdash; which agents,
+        skills, and tools Copilot triggers.</p>
+    </div>
+
+    <!-- Command selector tabs -->
+    <div class="dd-selector" id="ddSelector">
+      <button class="dd-tab active" data-cmd="cook" onclick="ddSwitchCmd('cook')">&#127859; /ck.cook</button>
+      <button class="dd-tab" data-cmd="fix" onclick="ddSwitchCmd('fix')">&#128295; /ck.fix</button>
+      <button class="dd-tab" data-cmd="plan" onclick="ddSwitchCmd('plan')">&#128203; /ck.plan</button>
+      <button class="dd-tab" data-cmd="test" onclick="ddSwitchCmd('test')">&#129514; /ck.test</button>
+      <button class="dd-tab" data-cmd="review" onclick="ddSwitchCmd('review')">&#128269; /ck.review</button>
+      <button class="dd-tab" data-cmd="debug" onclick="ddSwitchCmd('debug')">&#128375; /ck.debug</button>
+    </div>
+
+    <!-- Pipeline container (shared) -->
+    <div class="dd-pipeline" id="dd-pipeline">
+
+      <!-- Pipeline header -->
+      <div class="dd-header">
+        <div class="dd-title" id="ddPipeTitle">/ck.cook &mdash; Smart Feature Implementation</div>
+        <div class="dd-subtitle">How Copilot processes your request using CoKit resources. Click any phase to see
+          details.</div>
+      </div>
+
+      <!-- Mode bar (only for cook) -->
+      <div class="dd-modes" id="ddModes">
+        <div class="dd-mode-label">Modes:</div>
+        <button class="dd-mode active" data-mode="interactive">Interactive</button>
+        <button class="dd-mode" data-mode="fast">Fast</button>
+        <button class="dd-mode" data-mode="auto">Auto</button>
+        <button class="dd-mode" data-mode="parallel">Parallel</button>
+        <button class="dd-mode" data-mode="code">Code</button>
+      </div>
+
+      <!-- SVG Pipeline -->
+      <div class="dd-svg-wrap">
+        <svg id="ddPipeline" viewBox="0 0 1500 520"></svg>
+      </div>
+
+      <!-- Detail panel (shows on click) -->
+      <div class="dd-detail" id="ddDetail">
+        <div class="dd-detail-title" id="ddDetailTitle">Click a phase to see details</div>
+        <div class="dd-detail-body" id="ddDetailBody">
+          <div class="dd-detail-placeholder">Each phase triggers specific agents, skills, and VS Code tools. Click any
+            phase node above to explore.</div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="dd-legend">
+        <span class="dd-legend-item"><span class="dd-dot" style="background: var(--accent2);"></span> Phase</span>
+        <span class="dd-legend-item"><span class="dd-dot" style="background: var(--accent);"></span> Agent</span>
+        <span class="dd-legend-item"><span class="dd-dot" style="background: var(--green);"></span> Skill</span>
+        <span class="dd-legend-item"><span class="dd-dot" style="background: var(--orange);"></span> VS Code Tool</span>
+        <span class="dd-legend-item"><span class="dd-dot" style="background: var(--pink);"></span> Review Gate</span>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== DEEP DIVE STYLES ===== */
+    .dd-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .dd-tab {
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .dd-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .dd-tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    .dd-pipeline {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .dd-header {
+      padding: 20px 24px 0;
+      text-align: center;
+    }
+
+    .dd-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .dd-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .dd-modes {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px 24px 8px;
+      flex-wrap: wrap;
+    }
+
+    .dd-mode-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .dd-mode {
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .dd-mode:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .dd-mode.active {
+      border-color: var(--accent2);
+      color: var(--accent2);
+      background: rgba(129, 140, 248, 0.12);
+    }
+
+    .dd-svg-wrap {
+      padding: 16px;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dd-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      min-height: 300px;
+    }
+
+    .dd-svg-wrap svg text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      user-select: none;
+    }
+
+    .dd-phase {
+      cursor: pointer;
+      transition: filter 0.2s, opacity 0.2s;
+    }
+
+    .dd-phase:hover {
+      filter: drop-shadow(0 0 10px var(--accent2));
+    }
+
+    .dd-phase.active {
+      filter: drop-shadow(0 0 14px var(--accent2));
+    }
+
+    .dd-phase.faded {
+      opacity: 0.2;
+    }
+
+    .dd-phase.skipped {
+      opacity: 0.15;
+    }
+
+    .dd-phase.skipped rect,
+    .dd-phase.skipped polygon {
+      stroke-dasharray: 6 4;
+    }
+
+    .dd-arrow {
+      transition: opacity 0.2s;
+    }
+
+    .dd-arrow.faded {
+      opacity: 0.15;
+    }
+
+    .dd-sub-node {
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .dd-detail {
+      margin: 0 24px 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      min-height: 80px;
+      transition: all 0.3s;
+    }
+
+    .dd-detail-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .dd-detail-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .dd-detail-placeholder {
+      font-style: italic;
+      color: var(--text-dim);
+    }
+
+    .dd-detail-body .dd-agent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .dd-detail-body .dd-skill {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .dd-detail-body .dd-tool {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .dd-detail-body .dd-gate {
+      color: var(--pink);
+      font-weight: 600;
+    }
+
+    .dd-detail-body code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--green);
+      background: rgba(52, 211, 153, 0.1);
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    .dd-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .dd-detail-card {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .dd-detail-card h5 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .dd-detail-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .dd-detail-card li {
+      font-size: 12px;
+      padding: 2px 0;
+    }
+
+    .dd-legend {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      flex-wrap: wrap;
+    }
+
+    .dd-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dd-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+
+  <script>
+    (function () {
+      // ========== ALL PIPELINE DATA ==========
+      var DD_COMMANDS = {
+        cook: {
+          title: '/ck.cook — Smart Feature Implementation',
+          hasModes: true,
+          phases: [
+            {
+              id: 'detect', label: 'Intent\nDetect', x: 80, color: 'var(--accent2)',
+              desc: 'Analyzes your input to pick the right workflow mode.',
+              agents: [], skills: ['cook (intent-detection)'], tools: [],
+              detail: 'Reads your input and matches patterns:<br>- Plan path → <strong>code</strong> mode<br>- "fast" / "quick" → <strong>fast</strong> mode<br>- "trust me" / "auto" → <strong>auto</strong> mode<br>- 3+ features → <strong>parallel</strong> mode<br>- Default → <strong>interactive</strong> mode',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+            },
+            {
+              id: 'scout', label: 'Scout', x: 220, color: 'var(--accent)',
+              desc: 'Scans codebase to find relevant files.',
+              agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
+              detail: '<span class="dd-agent">@scout</span> agent uses parallel search to locate all files related to your task.<br>Output: file list + architecture context for the planner.',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false }
+            },
+            {
+              id: 'research', label: 'Research', x: 360, color: 'var(--accent)',
+              desc: 'Gathers technical context from docs and web.',
+              agents: ['researcher'], skills: ['docs-seeker', 'research'], tools: ['web/fetch', 'search/codebase'],
+              detail: '<span class="dd-agent">@researcher</span> agents run in parallel to gather info.<br>Uses <span class="dd-skill">docs-seeker</span> (context7) + web search.<br>Output: research report for planner.',
+              modes: { interactive: true, fast: false, auto: true, parallel: true, code: false }
+            },
+            {
+              id: 'review1', label: 'Review', x: 470, color: 'var(--pink)', type: 'gate',
+              desc: 'Human review gate: approve research findings.',
+              agents: [], skills: [], tools: [],
+              detail: '<span class="dd-gate">Review Gate</span>: You review research findings before planning begins.<br>In <strong>auto</strong> mode: skipped if quality score ≥ 9.5',
+              modes: { interactive: true, fast: false, auto: 'auto', parallel: true, code: false }
+            },
+            {
+              id: 'plan', label: 'Plan', x: 580, color: 'var(--accent)',
+              desc: 'Creates implementation plan with phases.',
+              agents: ['planner'], skills: ['planning', 'sequential-thinking'], tools: ['search/codebase', 'web/fetch'],
+              detail: '<span class="dd-agent">@planner</span> creates a detailed plan:<br>- Phase breakdown with TODO tasks<br>- Uses <span class="dd-skill">planning</span> + <span class="dd-skill">sequential-thinking</span> skills<br>- Saves to <code>plans/</code> directory',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false }
+            },
+            {
+              id: 'review2', label: 'Review', x: 690, color: 'var(--pink)', type: 'gate',
+              desc: 'Human review gate: approve plan before coding.',
+              agents: [], skills: [], tools: [],
+              detail: '<span class="dd-gate">Review Gate</span>: You approve the plan before implementation starts.<br>In <strong>auto</strong> mode: auto-approved if score ≥ 9.5',
+              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: false }
+            },
+            {
+              id: 'implement', label: 'Implement', x: 800, color: 'var(--green)',
+              desc: 'Writes the actual code, phase by phase.',
+              agents: ['fullstack-developer', 'ui-ux-designer'], skills: ['cook', 'frontend-dev', 'backend-dev'], tools: ['edit', 'create', 'runInTerminal'],
+              detail: 'Copilot writes code following the plan:<br>- <span class="dd-agent">@fullstack-developer</span> executes phases (parallel in parallel mode)<br>- <span class="dd-agent">@ui-ux-designer</span> for UI work<br>- Uses <span class="dd-skill">frontend-dev</span> / <span class="dd-skill">backend-dev</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-frontend</code>, <code>ck-backend</code>, <code>ck-development</code>',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+            },
+            {
+              id: 'simplify', label: 'Simplify', x: 920, color: 'var(--accent2)',
+              desc: 'Refines code for clarity and maintainability.',
+              agents: ['code-simplifier'], skills: [], tools: ['edit', 'search/changes'],
+              detail: '<span class="dd-agent">@code-simplifier</span> refines implemented code:<br>- Reduces nesting, adds guard clauses<br>- Improves naming, removes redundancy<br>- Preserves all functionality<br>- Follows <code>code-standards.md</code> conventions',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+            },
+            {
+              id: 'review3', label: 'Review', x: 1030, color: 'var(--pink)', type: 'gate',
+              desc: 'Human review gate: approve code before testing.',
+              agents: ['code-reviewer'], skills: ['code-review'], tools: ['search/codebase', 'read/problems'],
+              detail: '<span class="dd-agent">@code-reviewer</span> scans for quality issues.<br>Uses <span class="dd-skill">code-review</span> skill.<br><span class="dd-gate">Review Gate</span>: You approve code before tests run.',
+              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: true }
+            },
+            {
+              id: 'test', label: 'Test', x: 1150, color: 'var(--accent)',
+              desc: 'Runs tests and validates everything works.',
+              agents: ['tester', 'debugger'], skills: ['debugging'], tools: ['runTests', 'runInTerminal', 'testFailure'],
+              detail: '<span class="dd-agent">@tester</span> runs test suites + analyzes results.<br>If tests fail: <span class="dd-agent">@debugger</span> investigates root cause.<br>Uses <span class="dd-skill">debugging</span> skill + <span class="dd-tool">runTests</span> tool.<br><strong>Requirement:</strong> 100% tests must pass.',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+            },
+            {
+              id: 'finalize', label: 'Finalize', x: 1300, color: 'var(--green)',
+              desc: 'Updates docs, commits code, done!',
+              agents: ['docs-manager', 'git-manager'], skills: [], tools: ['search/changes'],
+              detail: '<span class="dd-agent">@docs-manager</span> updates project docs in <code>./docs/</code><br><span class="dd-agent">@git-manager</span> creates conventional commit + push.<br>Output: clean commit with all changes.',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+            }
+          ]
+        },
+
+        fix: {
+          title: '/ck.fix — Intelligent Bug Router',
+          hasModes: false,
+          phases: [
+            {
+              id: 'analyze', label: 'Analyze\nInput', x: 120, color: 'var(--accent2)',
+              desc: 'Reads your issue description and classifies it.',
+              agents: [], skills: [], tools: [],
+              detail: 'Copilot reads your issue description and checks:<br>- Is there an existing plan? → Route to <strong>/ck:code</strong><br>- Keyword matching to classify the issue type<br>- Complexity assessment for routing decision'
+            },
+            {
+              id: 'route', label: 'Route', x: 300, color: 'var(--accent2)',
+              desc: 'Picks the best sub-command for this issue type.',
+              agents: [], skills: [], tools: [],
+              detail: 'Smart routing by issue type:<br>- <strong>Type errors</strong> → <code>/ck:fix:types</code><br>- <strong>UI/UX issues</strong> → <code>/ck:fix:ui</code><br>- <strong>CI/CD issues</strong> → <code>/ck:fix:ci</code><br>- <strong>Test failures</strong> → <code>/ck:fix:test</code><br>- <strong>Log errors</strong> → <code>/ck:fix:logs</code><br>- <strong>Multiple issues</strong> → <code>/ck:fix:parallel</code><br>- <strong>Complex</strong> → <code>/ck:fix:hard</code><br>- <strong>Simple</strong> → <code>/ck:fix:fast</code>'
+            },
+            {
+              id: 'scout', label: 'Scout', x: 480, color: 'var(--accent)',
+              desc: 'Finds files related to the bug.',
+              agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
+              detail: '<span class="dd-agent">@scout</span> locates all files related to the issue.<br>Searches for error patterns, related functions, and dependencies.'
+            },
+            {
+              id: 'diagnose', label: 'Diagnose', x: 660, color: 'var(--accent)',
+              desc: 'Root cause analysis before fixing.',
+              agents: ['debugger'], skills: ['debugging', 'sequential-thinking'], tools: ['read/problems', 'runInTerminal'],
+              detail: '<span class="dd-agent">@debugger</span> performs root cause analysis:<br>- Read error messages completely<br>- Reproduce the issue<br>- Check recent changes (<code>git diff</code>)<br>- Uses <span class="dd-skill">debugging</span> + <span class="dd-skill">sequential-thinking</span> skills'
+            },
+            {
+              id: 'fix', label: 'Fix', x: 840, color: 'var(--green)',
+              desc: 'Applies the fix at the root cause.',
+              agents: [], skills: ['frontend-dev', 'backend-dev'], tools: ['edit', 'create', 'runInTerminal'],
+              detail: 'Copilot writes the fix:<br>- Targets root cause, not symptoms<br>- Uses <span class="dd-skill">frontend-dev</span> / <span class="dd-skill">backend-dev</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-development</code>'
+            },
+            {
+              id: 'verify', label: 'Verify', x: 1020, color: 'var(--accent)',
+              desc: 'Runs tests to confirm the fix works.',
+              agents: ['tester'], skills: [], tools: ['runTests', 'testFailure'],
+              detail: '<span class="dd-agent">@tester</span> verifies the fix:<br>- Runs existing test suite<br>- Confirms issue is resolved<br>- Checks for regressions<br><strong>If tests fail:</strong> loops back to diagnose'
+            }
+          ]
+        },
+
+        plan: {
+          title: '/ck.plan — Intelligent Plan Creation',
+          hasModes: false,
+          phases: [
+            {
+              id: 'input', label: 'Analyze\nTask', x: 100, color: 'var(--accent2)',
+              desc: 'Reads task description and checks for existing plans.',
+              agents: [], skills: [], tools: [],
+              detail: 'Pre-creation checks:<br>- Active plan exists? → Ask to continue<br>- Branch-matched plan? → Ask to activate or create new<br>- No plan? → Create new using naming convention<br>- May ask clarifying questions via <span class="dd-tool">AskUserQuestion</span>'
+            },
+            {
+              id: 'research', label: 'Research', x: 320, color: 'var(--accent)',
+              desc: 'Multiple researchers gather context in parallel.',
+              agents: ['researcher'], skills: ['research', 'docs-seeker'], tools: ['web/fetch', 'search/codebase'],
+              detail: 'Multiple <span class="dd-agent">@researcher</span> agents run in parallel:<br>- Search docs, web, and codebase<br>- Uses <span class="dd-skill">docs-seeker</span> (context7) for library docs<br>- Uses <span class="dd-skill">research</span> skill for best practices<br>- Output: research reports (≤150 lines each)'
+            },
+            {
+              id: 'scout', label: 'Scout', x: 540, color: 'var(--accent)',
+              desc: 'Discovers relevant codebase files.',
+              agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
+              detail: '<span class="dd-agent">@scout</span> maps the codebase:<br>- Finds all files related to the task<br>- Identifies architecture patterns<br>- Output: file list + context for planner'
+            },
+            {
+              id: 'plan', label: 'Create\nPlan', x: 760, color: 'var(--green)',
+              desc: 'Generates detailed implementation plan.',
+              agents: ['planner'], skills: ['planning', 'sequential-thinking'], tools: ['search/codebase'],
+              detail: '<span class="dd-agent">@planner</span> creates the plan:<br>- Analyzes research + scout reports<br>- Uses <span class="dd-skill">planning</span> + <span class="dd-skill">sequential-thinking</span><br>- Output: <code>plan.md</code> overview + <code>phase-XX-*.md</code> files<br>- Saves to <code>plans/</code> directory'
+            },
+            {
+              id: 'output', label: 'Output', x: 980, color: 'var(--accent2)',
+              desc: 'Plan ready for review. Does NOT implement.',
+              agents: [], skills: [], tools: [],
+              detail: 'Plan is saved and presented to user:<br>- Overview: <code>plan.md</code> (under 80 lines)<br>- Detailed phases: <code>phase-XX-name.md</code><br>- Each phase has: requirements, architecture, steps, TODOs<br><strong>Important:</strong> Does NOT start implementing.'
+            }
+          ]
+        },
+
+        test: {
+          title: '/ck.test — Test Runner & Analyzer',
+          hasModes: false,
+          phases: [
+            {
+              id: 'detect', label: 'Detect\nFramework', x: 140, color: 'var(--accent2)',
+              desc: 'Identifies the testing framework and config.',
+              agents: [], skills: [], tools: ['search/codebase'],
+              detail: 'Copilot detects your test setup:<br>- Scans <code>package.json</code>, config files<br>- Identifies: Jest, Vitest, Mocha, Playwright, etc.<br>- Finds test scripts and commands'
+            },
+            {
+              id: 'run', label: 'Run\nTests', x: 400, color: 'var(--accent)',
+              desc: 'Executes the test suite.',
+              agents: ['tester'], skills: [], tools: ['runTests', 'runInTerminal', 'getTerminalOutput'],
+              detail: '<span class="dd-agent">@tester</span> runs the test suite:<br>- Uses <span class="dd-tool">runTests</span> for built-in test runner<br>- Or <span class="dd-tool">runInTerminal</span> for custom commands<br>- Captures all output and exit codes'
+            },
+            {
+              id: 'analyze', label: 'Analyze\nResults', x: 660, color: 'var(--accent)',
+              desc: 'Parses output, identifies failures.',
+              agents: ['tester'], skills: [], tools: ['testFailure', 'read/problems'],
+              detail: '<span class="dd-agent">@tester</span> analyzes results:<br>- Parses test output for pass/fail counts<br>- Identifies failing tests with stack traces<br>- Uses <span class="dd-tool">read/problems</span> for IDE diagnostics<br>- Generates summary report'
+            },
+            {
+              id: 'report', label: 'Report', x: 920, color: 'var(--green)',
+              desc: 'Summary with pass/fail counts and recommendations.',
+              agents: [], skills: [], tools: [],
+              detail: 'Test report includes:<br>- Pass/fail/skip counts<br>- Failing test details with root cause hints<br>- Coverage info (if available)<br>- Recommended next: <code>/ck.fix</code> or <code>/ck.review</code>'
+            }
+          ]
+        },
+
+        review: {
+          title: '/ck.review — Codebase Scan & Analysis',
+          hasModes: false,
+          phases: [
+            {
+              id: 'research', label: 'Research', x: 100, color: 'var(--accent)',
+              desc: 'Researchers gather best practices in parallel.',
+              agents: ['researcher'], skills: ['research', 'docs-seeker'], tools: ['web/fetch', 'search/codebase'],
+              detail: '2 <span class="dd-agent">@researcher</span> agents run in parallel:<br>- Search up to 5 sources per agent<br>- Uses <span class="dd-skill">docs-seeker</span> + <span class="dd-skill">research</span> skills<br>- Output: concise reports (≤150 lines)'
+            },
+            {
+              id: 'scout', label: 'Scout', x: 300, color: 'var(--accent)',
+              desc: 'Finds all files relevant to review scope.',
+              agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
+              detail: '<span class="dd-agent">@scout</span> maps the review scope:<br>- Uses <code>/scout:ext</code> (preferred) or <code>/scout</code> fallback<br>- Identifies files needing review<br>- Checks architecture patterns'
+            },
+            {
+              id: 'review', label: 'Code\nReview', x: 530, color: 'var(--accent)',
+              desc: 'Multiple reviewers scan code in parallel.',
+              agents: ['code-reviewer'], skills: ['code-review'], tools: ['search/codebase', 'read/problems'],
+              detail: 'Multiple <span class="dd-agent">@code-reviewer</span> agents in parallel:<br>- Uses <span class="dd-skill">code-review</span> skill<br>- Checks: quality, security, duplication, YAGNI/KISS/DRY<br>- Scans with <span class="dd-tool">read/problems</span> for IDE issues'
+            },
+            {
+              id: 'plan', label: 'Plan', x: 750, color: 'var(--accent)',
+              desc: 'Creates improvement plan from findings.',
+              agents: ['planner'], skills: ['planning'], tools: [],
+              detail: '<span class="dd-agent">@planner</span> creates improvement plan:<br>- Analyzes research + review findings<br>- Creates <code>plan.md</code> + <code>phase-XX-*.md</code> files<br>- Prioritizes issues by severity'
+            },
+            {
+              id: 'report', label: 'Report', x: 970, color: 'var(--green)',
+              desc: 'Summary of findings and next steps.',
+              agents: [], skills: [], tools: [],
+              detail: 'Final report includes:<br>- Summary of all findings<br>- Improvement plan with priorities<br>- Asks: commit and push to git?<br>- Uses <span class="dd-agent">@git-manager</span> if approved'
+            }
+          ]
+        },
+
+        debug: {
+          title: '/ck.debug — Systematic Root Cause Analysis',
+          hasModes: false,
+          phases: [
+            {
+              id: 'reproduce', label: 'Reproduce', x: 100, color: 'var(--accent2)',
+              desc: 'Read error messages, reproduce consistently.',
+              agents: [], skills: ['debugging'], tools: ['runInTerminal', 'read/problems'],
+              detail: '<strong>Phase 1: Root Cause Investigation</strong><br>- Read error messages completely<br>- Reproduce the issue consistently<br>- Check recent changes (<code>git diff</code>, <code>git log</code>)<br>- Gather evidence before theorizing'
+            },
+            {
+              id: 'pattern', label: 'Pattern\nAnalysis', x: 340, color: 'var(--accent)',
+              desc: 'Compare working vs broken code.',
+              agents: [], skills: ['sequential-thinking'], tools: ['search/codebase'],
+              detail: '<strong>Phase 2: Pattern Analysis</strong><br>- Find working examples in codebase<br>- Compare working vs broken code<br>- Uses <span class="dd-skill">sequential-thinking</span> skill<br>- Document findings systematically'
+            },
+            {
+              id: 'hypothesis', label: 'Hypothesis', x: 580, color: 'var(--accent)',
+              desc: 'Form theory and test with minimal changes.',
+              agents: [], skills: ['debugging'], tools: ['runInTerminal'],
+              detail: '<strong>Phase 3: Hypothesis & Testing</strong><br>- Form theory based on evidence<br>- Test with minimal changes<br>- Verify hypothesis is correct<br>- Document confirmation<br><span class="dd-gate">Key rule</span>: Complete each phase before proceeding'
+            },
+            {
+              id: 'fix', label: 'Root\nCause Fix', x: 820, color: 'var(--green)',
+              desc: 'Fix at the source, not at the symptom.',
+              agents: [], skills: [], tools: ['edit', 'runInTerminal'],
+              detail: '<strong>Phase 4: Implementation</strong><br>- Create test that catches the bug<br>- Fix at the root cause (not symptom)<br>- Defense-in-depth: validate at every layer<br>- Entry validation → Business logic → Environment guards'
+            },
+            {
+              id: 'verify', label: 'Verify', x: 1020, color: 'var(--accent)',
+              desc: 'Fresh verification with evidence.',
+              agents: ['tester'], skills: [], tools: ['runTests', 'testFailure'],
+              detail: '<strong>Iron Law:</strong> No completion claims without fresh verification.<br>- <span class="dd-agent">@tester</span> runs full test suite<br>- Run the command → Read the output → Then claim result<br>- Output: Debug Report (Issue, Root Cause, Fix, Verification)'
+            }
+          ]
+        }
+      };
+
+      // ========== RENDERING ENGINE ==========
+      var PIPE_Y = 100;
+      var NODE_W = 100;
+      var NODE_H = 48;
+      var SUB_Y_START = 200;
+      var NS = 'http://www.w3.org/2000/svg';
+
+      var svg = document.getElementById('ddPipeline');
+      var activePhase = null;
+      var currentMode = 'interactive';
+      var currentCmd = 'cook';
+      var phaseEls = {};
+      var arrowEls = [];
+      var arrowLayer, nodeLayer, subLayer;
+
+      function svgEl(tag, attrs) {
+        var el = document.createElementNS(NS, tag);
+        if (attrs) Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      function initSvg() {
+        svg.innerHTML = '';
+        var defs = svgEl('defs');
+        var m1 = svgEl('marker', { id: 'dd-arr', viewBox: '0 0 10 10', refX: '10', refY: '5', markerWidth: '5', markerHeight: '5', orient: 'auto', fill: 'var(--text-dim)' });
+        m1.appendChild(svgEl('path', { d: 'M0 0 L10 5 L0 10z' }));
+        defs.appendChild(m1);
+        var m2 = svgEl('marker', { id: 'dd-arr-a', viewBox: '0 0 10 10', refX: '10', refY: '5', markerWidth: '5', markerHeight: '5', orient: 'auto', fill: 'var(--accent2)' });
+        m2.appendChild(svgEl('path', { d: 'M0 0 L10 5 L0 10z' }));
+        defs.appendChild(m2);
+        svg.appendChild(defs);
+
+        arrowLayer = svgEl('g');
+        nodeLayer = svgEl('g');
+        subLayer = svgEl('g');
+        svg.appendChild(arrowLayer);
+        svg.appendChild(nodeLayer);
+        svg.appendChild(subLayer);
+      }
+
+      function renderPipeline(cmdKey) {
+        var cmd = DD_COMMANDS[cmdKey];
+        var phases = cmd.phases;
+        phaseEls = {};
+        arrowEls = [];
+        initSvg();
+
+        // Calculate viewBox width
+        var maxX = 0;
+        phases.forEach(function (p) { if (p.x > maxX) maxX = p.x; });
+        svg.setAttribute('viewBox', '0 0 ' + (maxX + 120) + ' 520');
+
+        // Draw arrows
+        for (var i = 0; i < phases.length - 1; i++) {
+          var p1 = phases[i], p2 = phases[i + 1];
+          var x1 = p1.x + NODE_W / 2 + 2;
+          var x2 = p2.x - NODE_W / 2 - 2;
+          var line = svgEl('line', {
+            x1: x1, y1: PIPE_Y, x2: x2, y2: PIPE_Y,
+            stroke: 'var(--text-dim)', 'stroke-width': '1.5', 'marker-end': 'url(#dd-arr)',
+            class: 'dd-arrow'
+          });
+          arrowLayer.appendChild(line);
+          arrowEls.push(line);
+        }
+
+        // Draw nodes
+        phases.forEach(function (p, idx) {
+          var g = svgEl('g', { class: 'dd-phase', 'data-phase': p.id });
+          var isGate = p.type === 'gate';
+
+          if (isGate) {
+            var s = 30;
+            var poly = svgEl('polygon', {
+              points: p.x + ',' + (PIPE_Y - s) + ' ' + (p.x + s) + ',' + PIPE_Y + ' ' + p.x + ',' + (PIPE_Y + s) + ' ' + (p.x - s) + ',' + PIPE_Y,
+              fill: 'rgba(244,114,182,0.12)', stroke: p.color, 'stroke-width': '2'
+            });
+            g.appendChild(poly);
+            var txt = svgEl('text', {
+              x: p.x, y: PIPE_Y + 1,
+              'text-anchor': 'middle', 'dominant-baseline': 'central',
+              'font-size': '10', 'font-weight': '600', fill: p.color
+            });
+            txt.textContent = p.label;
+            g.appendChild(txt);
+          } else {
+            var rect = svgEl('rect', {
+              x: p.x - NODE_W / 2, y: PIPE_Y - NODE_H / 2,
+              width: NODE_W, height: NODE_H, rx: '8', ry: '8',
+              fill: 'rgba(129,140,248,0.08)', stroke: p.color, 'stroke-width': '2'
+            });
+            g.appendChild(rect);
+            var lines = p.label.split('\n');
+            lines.forEach(function (line, li) {
+              var txt = svgEl('text', {
+                x: p.x, y: PIPE_Y + (li - (lines.length - 1) / 2) * 14,
+                'text-anchor': 'middle', 'dominant-baseline': 'central',
+                'font-size': '12', 'font-weight': '700', fill: p.color
+              });
+              txt.textContent = line;
+              g.appendChild(txt);
+            });
+          }
+
+          // Number badge
+          if (!isGate) {
+            var badge = svgEl('circle', {
+              cx: p.x - NODE_W / 2 + 8, cy: PIPE_Y - NODE_H / 2 - 4,
+              r: '9', fill: 'var(--bg)', stroke: p.color, 'stroke-width': '1.5'
+            });
+            g.appendChild(badge);
+            var bTxt = svgEl('text', {
+              x: p.x - NODE_W / 2 + 8, y: PIPE_Y - NODE_H / 2 - 3,
+              'text-anchor': 'middle', 'dominant-baseline': 'central',
+              'font-size': '9', 'font-weight': '700', fill: p.color
+            });
+            bTxt.textContent = idx + 1;
+            g.appendChild(bTxt);
+          }
+
+          g.addEventListener('click', function (ev) {
+            ev.stopPropagation();
+            selectPhase(p.id);
+          });
+
+          nodeLayer.appendChild(g);
+          phaseEls[p.id] = g;
+        });
+
+        svg.addEventListener('click', clearPhase);
+        applyMode();
+      }
+
+      function drawSubNodes(phaseId) {
+        while (subLayer.firstChild) subLayer.removeChild(subLayer.firstChild);
+        var phases = DD_COMMANDS[currentCmd].phases;
+        var phase = phases.find(function (p) { return p.id === phaseId; });
+        if (!phase) return;
+
+        var items = [];
+        phase.agents.forEach(function (a) { items.push({ label: '@' + a, color: 'var(--accent)' }); });
+        phase.skills.forEach(function (s) { items.push({ label: s, color: 'var(--green)' }); });
+        phase.tools.forEach(function (t) { items.push({ label: t, color: 'var(--orange)' }); });
+        if (items.length === 0) return;
+
+        var startY = SUB_Y_START;
+        var spacing = 36;
+        var centerX = phase.x;
+
+        var conn = svgEl('line', {
+          x1: centerX, y1: PIPE_Y + NODE_H / 2,
+          x2: centerX, y2: startY - 8,
+          stroke: 'var(--border-light)', 'stroke-width': '1', 'stroke-dasharray': '4 3'
+        });
+        subLayer.appendChild(conn);
+
+        items.forEach(function (item, i) {
+          var y = startY + i * spacing;
+          var g = svgEl('g', { class: 'dd-sub-node' });
+          var pill = svgEl('rect', {
+            x: centerX - 55, y: y - 12, width: 110, height: 24, rx: '12',
+            fill: 'rgba(0,0,0,0.3)', stroke: item.color, 'stroke-width': '1'
+          });
+          g.appendChild(pill);
+          var txt = svgEl('text', {
+            x: centerX, y: y,
+            'text-anchor': 'middle', 'dominant-baseline': 'central',
+            'font-size': '10', 'font-weight': '600', fill: item.color
+          });
+          txt.textContent = item.label.length > 14 ? item.label.substring(0, 13) + '…' : item.label;
+          g.appendChild(txt);
+          subLayer.appendChild(g);
+        });
+      }
+
+      function selectPhase(phaseId) {
+        if (activePhase === phaseId) { clearPhase(); return; }
+        activePhase = phaseId;
+        var phases = DD_COMMANDS[currentCmd].phases;
+        var phase = phases.find(function (p) { return p.id === phaseId; });
+
+        Object.keys(phaseEls).forEach(function (id) {
+          phaseEls[id].classList.remove('active', 'faded');
+          if (id === phaseId) phaseEls[id].classList.add('active');
+          else phaseEls[id].classList.add('faded');
+        });
+        arrowEls.forEach(function (el) { el.classList.add('faded'); });
+
+        document.getElementById('ddDetailTitle').innerHTML = phase.label.replace('\n', ' ') + ' &mdash; ' + phase.desc;
+        document.getElementById('ddDetailBody').innerHTML = phase.detail;
+        drawSubNodes(phaseId);
+        applyMode();
+      }
+
+      function clearPhase() {
+        activePhase = null;
+        Object.keys(phaseEls).forEach(function (id) { phaseEls[id].classList.remove('active', 'faded'); });
+        arrowEls.forEach(function (el) { el.classList.remove('faded'); });
+        while (subLayer.firstChild) subLayer.removeChild(subLayer.firstChild);
+        document.getElementById('ddDetailTitle').textContent = 'Click a phase to see details';
+        document.getElementById('ddDetailBody').innerHTML = '<div class="dd-detail-placeholder">Each phase triggers specific agents, skills, and VS Code tools. Click any phase node above to explore.</div>';
+        applyMode();
+      }
+
+      function applyMode() {
+        var phases = DD_COMMANDS[currentCmd].phases;
+        phases.forEach(function (p) {
+          var el = phaseEls[p.id];
+          if (!el) return;
+          el.classList.remove('skipped');
+          if (p.modes) {
+            var modeVal = p.modes[currentMode];
+            if (modeVal === false) el.classList.add('skipped');
+          }
+        });
+      }
+
+      // ========== COMMAND SWITCHING ==========
+      window.ddSwitchCmd = function (cmdKey) {
+        currentCmd = cmdKey;
+        currentMode = 'interactive';
+        var cmd = DD_COMMANDS[cmdKey];
+
+        // Update tabs
+        document.querySelectorAll('.dd-tab').forEach(function (t) { t.classList.remove('active'); });
+        document.querySelector('.dd-tab[data-cmd="' + cmdKey + '"]').classList.add('active');
+
+        // Update title
+        document.getElementById('ddPipeTitle').textContent = cmd.title;
+
+        // Show/hide mode bar
+        var modesEl = document.getElementById('ddModes');
+        modesEl.style.display = cmd.hasModes ? 'flex' : 'none';
+        if (cmd.hasModes) {
+          document.querySelectorAll('.dd-mode').forEach(function (b) { b.classList.remove('active'); });
+          document.querySelector('.dd-mode[data-mode="interactive"]').classList.add('active');
+        }
+
+        // Render pipeline
+        renderPipeline(cmdKey);
+        clearPhase();
+      };
+
+      // Mode switching
+      document.querySelectorAll('.dd-mode').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.dd-mode').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentMode = btn.dataset.mode;
+          clearPhase();
+        });
+      });
+
+      // Initial render
+      renderPipeline('cook');
+    })();
+  </script>
+
+  <div class="divider"></div>
+
+  <!-- ===== RESOURCES ===== -->
+  <section class="section" id="resources">
+    <div class="section-header">
+      <div class="label">Details</div>
+      <h2>What's included</h2>
+      <p>Full list of agents, skills, instructions, and collections.</p>
+    </div>
+
+    <div class="resource-map">
+      <div class="resource-item">
+        <h4 style="color: var(--accent2);">&#129302; Agents (12)</h4>
+        <ul>
+          <li><strong>planner</strong> &mdash; Makes plans</li>
+          <li><strong>code-reviewer</strong> &mdash; Reviews code</li>
+          <li><strong>debugger</strong> &mdash; Investigates bugs</li>
+          <li><strong>tester</strong> &mdash; Writes &amp; runs tests</li>
+          <li><strong>researcher</strong> &mdash; Finds information</li>
+          <li><strong>scout</strong> &mdash; Searches files</li>
+          <li><strong>git-manager</strong> &mdash; Manages git</li>
+          <li><strong>brainstormer</strong> &mdash; Explores ideas</li>
+          <li><strong>docs-manager</strong> &mdash; Writes docs</li>
+          <li><strong>ui-ux-designer</strong> &mdash; Designs UI/UX</li>
+          <li><strong>code-simplifier</strong> &mdash; Simplifies code</li>
+          <li><strong>fullstack-developer</strong> &mdash; Implements features</li>
+        </ul>
+      </div>
+
+      <div class="resource-item">
+        <h4 style="color: var(--green);">&#128218; Skills (top 7)</h4>
+        <ul>
+          <li><strong>debugging</strong> &mdash; Root cause analysis</li>
+          <li><strong>code-review</strong> &mdash; Review protocols</li>
+          <li><strong>planning</strong> &mdash; Research &rarr; design</li>
+          <li><strong>problem-solving</strong> &mdash; Solve hard problems</li>
+          <li><strong>sequential-thinking</strong> &mdash; Step-by-step logic</li>
+          <li><strong>backend-dev</strong> &mdash; Node/Python/Go</li>
+          <li><strong>frontend-dev</strong> &mdash; React/TypeScript</li>
+        </ul>
+      </div>
+
+      <div class="resource-item">
+        <h4 style="color: var(--orange);">&#128220; Instructions (5)</h4>
+        <ul>
+          <li><strong>ck-backend</strong> &mdash; Backend rules</li>
+          <li><strong>ck-frontend</strong> &mdash; Frontend rules</li>
+          <li><strong>ck-testing</strong> &mdash; Testing standards</li>
+          <li><strong>ck-development</strong> &mdash; YAGNI/KISS/DRY</li>
+          <li><strong>ck-research</strong> &mdash; Research methods</li>
+        </ul>
+      </div>
+
+      <div class="resource-item">
+        <h4 style="color: var(--pink);">&#128230; Collections (5)</h4>
+        <ul>
+          <li><strong>ck-core</strong> &mdash; Core workflows</li>
+          <li><strong>ck-dev-rules</strong> &mdash; Dev standards</li>
+          <li><strong>ck-documentation</strong> &mdash; Doc management</li>
+          <li><strong>ck-git-workflow</strong> &mdash; Git workflow</li>
+          <li><strong>ck-orchestration</strong> &mdash; Task coordination</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== INSTALL ===== -->
+  <section class="section" id="install">
+    <div class="section-header">
+      <div class="label">Get Started</div>
+      <h2>Install in 30 seconds</h2>
+      <p>Just one command. No extra setup needed.</p>
+    </div>
+
+    <div class="install-box">
+      <div class="install-header">
+        <div class="install-dot red"></div>
+        <div class="install-dot yellow"></div>
+        <div class="install-dot green"></div>
+        <span>Terminal</span>
+      </div>
+      <div class="install-body">
+        <span class="comment"># Global install (recommended)</span><br>
+        <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -g</span><br><br>
+        <span class="comment"># Or install for both project + personal</span><br>
+        <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -a</span><br><br>
+        <span class="output">&#128640; CoKit Setup</span><br>
+        <span class="success">&#10003; 28 prompts installed</span><br>
+        <span class="success">&#10003; 12 agents configured</span><br>
+        <span class="success">&#10003; 23 skills activated</span><br>
+        <span class="success">&#10003; 5 instructions applied</span><br>
+        <span class="success">&#10003; 5 collections bundled</span><br><br>
+        <span class="output">&#127881; Done! Try /ck.fix in Copilot Chat.</span>
+      </div>
+    </div>
+
+    <div style="max-width: 700px; margin: 24px auto 0;">
+      <table class="compare-table">
+        <tr>
+          <th>CLI Command</th>
+          <th>What it does</th>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli init</code></td>
+          <td>Interactive setup (asks you questions)</td>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli init -g</code></td>
+          <td>Global install (no questions)</td>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli init -a</code></td>
+          <td>Install both global + project</td>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli list</code></td>
+          <td>See what's installed</td>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli doctor</code></td>
+          <td>Check for setup problems</td>
+        </tr>
+        <tr>
+          <td><code style="color: var(--green);">npx cokit-cli update</code></td>
+          <td>Update to latest version</td>
+        </tr>
+      </table>
+
+      <div class="warning-box" style="margin-top: 16px;">
+        <strong>&#9888; Requirements:</strong> Node.js >= 18 and VS Code with GitHub Copilot installed.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>CoKit v1.1.0 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
+      BY-NC 4.0</p>
+    <p style="margin-top: 8px;">Made with &#10084;&#65039; for developers who want smarter AI assistance.</p>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    function switchTab(e, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function toggleDecision(node) {
+      const answer = node.nextElementSibling;
+      const isOpen = node.classList.contains('expanded');
+      document.querySelectorAll('.decision-node').forEach(n => n.classList.remove('expanded'));
+      document.querySelectorAll('.decision-answer').forEach(a => a.classList.remove('show'));
+      if (!isOpen) {
+        node.classList.add('expanded');
+        answer.classList.add('show');
+      }
+    }
+
+    function copyInstall() {
+      navigator.clipboard.writeText('npx cokit-cli init -g').then(() => {
+        const icon = document.getElementById('copyIcon');
+        icon.textContent = '\u2713 copied!';
+        icon.style.color = 'var(--green)';
+        setTimeout(() => {
+          icon.textContent = '\ud83d\udccb copy';
+          icon.style.color = '';
+        }, 2000);
+      });
+    }
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
