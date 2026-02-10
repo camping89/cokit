@@ -175,6 +175,12 @@
       font-size: 13px;
     }
 
+    .hero-hint {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
     /* ===== SECTIONS ===== */
     .section {
       max-width: 1200px;
@@ -1058,14 +1064,15 @@
 
   <!-- ===== HERO ===== -->
   <header class="hero">
-    <div class="hero-badge">&#9889; Version 1.1.0</div>
+    <div class="hero-badge">&#9889; Version 1.2.1</div>
     <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
     <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
       your project and works like a real developer.</p>
     <div class="hero-install" onclick="copyInstall()" id="installCmd">
-      <span>npx cokit-cli init -g</span>
+      <span>npx cokit-cli init</span>
       <span class="copy-icon" id="copyIcon">&#128203; copy</span>
     </div>
+    <p class="hero-hint">cd into your project folder first, then run the command above.</p>
   </header>
 
   <!-- ===== STATS ===== -->

@@ -2,6 +2,12 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.1] - 2026-02-10
+
+### Changed
+- Added install hint in hero section (cd into project folder first)
+- Bumped version to 1.2.1
+
 ## [1.2.0] - 2026-02-10
 
 ### Added
