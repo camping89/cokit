@@ -1,9 +1,9 @@
 # CoKit Project Roadmap
 
 **Project:** CoKit - Claude Code to GitHub Copilot Port
-**Version:** 1.0.9
+**Version:** 1.2.0
 **Start Date:** 2026-01-06
-**Last Updated:** 2026-01-20 (Cleanup phase complete)
+**Last Updated:** 2026-02-10 (SpecKit integration complete)
 **Current Phase:** 6 of 6 (COMPLETE)
 **Overall Progress:** 100%
 
@@ -12,11 +12,12 @@
 CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
 ### Key Features (Current)
-- 14 prompt files with `ck-` prefix (fix, plan, code, cook, test, review, docs, bootstrap, brainstorm, debug, scout, ask, git, ck-help)
-- 7 specialized skills (debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-development)
-- 9 expert agents (planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager)
+- 28 prompt files with `ck-` and `ck.spec-` prefixes
+- 27 specialized skills (debugging, code-review, planning, frontend-design, databases, devops, etc.)
+- 12 expert agents (planner, code-reviewer, debugger, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.)
 - 5 instructions (backend, frontend, testing, development, research)
 - 5 collections bundling resources by workflow
+- Sync pipeline for upstream ClaudeKit + SpecKit sources
 - Repo-level templates (VS Code settings, agent instructions, prompts, collections)
 - Beginner-friendly CLI with zero configuration
 - Cross-platform support (VS Code + JetBrains)
@@ -44,31 +45,27 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - `.vscode/settings.json` template
 
 ### Phase 3: Skills, Agents, Instructions & Collections (DONE)
-**Status:** COMPLETE (2026-01-06, Enhanced 2026-01-20)
-**Effort:** 6h
+**Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
+**Effort:** 8h
 **Deliverables:**
-- 7 specialized skills (ck-* prefix)
-  - `ck-debugging/` - systematic troubleshooting
-  - `ck-code-review/` - verification gates
-  - `ck-planning/` - research → design → implementation
-  - `ck-problem-solving/` - complexity spirals
-  - `ck-sequential-thinking/` - structured reasoning
-  - `ck-backend-development/` - Node.js, Python, Go, Rust patterns
-  - `ck-frontend-development/` - React, TypeScript patterns
-- 9 expert agents for specialized tasks
+- 27 specialized skills including:
+  - debugging, code-review, planning, problem-solving, sequential-thinking
+  - backend-development, frontend-design, databases, devops
+  - mcp-management, context-engineering, research, git, etc.
+- 12 expert agents (original 9 + code-simplifier, fullstack-developer, ui-ux-designer)
 - 5 coding instructions (backend, frontend, testing, development, research)
 - 5 resource collections (core, development-rules, documentation, git-workflow, orchestration)
 
 ### Phase 4: Prompt Files (DONE)
-**Status:** COMPLETE (2026-01-06, Enhanced 2026-01-20)
-**Effort:** 3h
+**Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
+**Effort:** 4h
 **Deliverables:**
-- 14 prompt files created with `ck-` prefix
-  - Core workflows: `/ck.fix`, `/ck.plan`, `/ck.code`, `/ck.cook`, `/ck.test`, `/ck.review-codebase`, `/ck.docs`
-  - Feature workflows: `/ck.bootstrap`, `/ck.brainstorm`, `/ck.debug`
-  - Utility workflows: `/ck.scout`, `/ck.ask`, `/ck.git`, `/ck.help`
+- 28 prompt files from ClaudeKit + SpecKit
+  - ClaudeKit: `ck.fix`, `ck.plan`, `ck.cook`, `ck.test`, `ck.review`, etc.
+  - SpecKit: `ck.spec.specify`, `ck.spec.clarify`, `ck.spec.plan`, `ck.spec.tasks`, etc.
+- Unified namespace: `ck.*` for all commands
+- Sync pipeline combines upstream sources
 - All prompts follow Copilot format with `mode: agent`
-- Real examples using actual agent names and workflows
 - 0 critical issues
 
 **Completion Details:**
@@ -130,12 +127,12 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 |-------|-------|--------|--------|----------|------|
 | 1 | CLI Tool | DONE | 4h | 100% | 2026-01-06 |
 | 2 | Repo Templates | DONE | 3h | 100% | 2026-01-06 |
-| 3 | User Skills | DONE | 4h | 100% | 2026-01-06 |
-| 4 | Prompt Files | DONE | 2h | 100% | 2026-01-06 |
-| 5 | Documentation | DONE | 3h | 100% | 2026-01-06 |
+| 3 | User Skills | DONE | 8h | 100% | 2026-02-10 |
+| 4 | Prompt Files | DONE | 4h | 100% | 2026-02-10 |
+| 5 | Documentation | DONE | 4h | 100% | 2026-02-10 |
 
-**Total Effort:** 16h
-**Completed:** 16h (100%)
+**Total Effort:** 23h
+**Completed:** 23h (100%)
 **Remaining:** 0h (0%)
 
 ---
@@ -161,6 +158,37 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 ---
 
 ## Changelog
+
+### 2026-02-10 - v1.2.0 Release (SpecKit Integration)
+
+**Resources Expanded:**
+- Prompts: 21 → 28 (added SpecKit spec-driven workflow commands)
+- Agents: 9 → 12 (added code-simplifier, fullstack-developer, ui-ux-designer)
+- Skills: 7 → 27 (major expansion including frontend-design, databases, devops, etc.)
+- Sync Pipeline: Unified ClaudeKit + SpecKit sources into single `ck.*` namespace
+
+**Features Added:**
+- Sync pipeline (eng/sync.mjs) for automated upstream merging
+- Transform modules for both ClaudeKit and SpecKit sources
+- Navigation patcher for cross-command workflow suggestions
+- Configuration-driven resource mappings (resource-origins.yml)
+- Conversion scripts for agents, commands, and skills
+
+**Documentation Updated:**
+- Codebase architecture documentation with pipeline details
+- System architecture diagrams and data flow
+- Comprehensive resource mappings and namespace conventions
+- All docs updated to v1.2.0 with current resource counts
+
+**Commits Included:**
+- chore(release): bump version to 1.2.0
+- clean up
+- add more command
+- chore: prepare v1.1.0 for npm publishing
+- docs: add user-focused README and documentation index
+- chore(release): v1.1.0 - add SpecKit sync pipeline
+
+---
 
 ### 2026-01-06 - PROJECT COMPLETE
 
@@ -275,6 +303,6 @@ None at completion. All functional requirements satisfied.
 
 ---
 
-**Last Updated:** 2026-01-06
+**Last Updated:** 2026-02-10
 **Project Manager:** project-manager agent
-**Status:** ALL PHASES COMPLETE - PROJECT DELIVERED
+**Status:** ALL PHASES COMPLETE - v1.2.0 RELEASED

@@ -1,6 +1,6 @@
 # CoKit Documentation Index
 
-**Version:** 1.1.0 | **Updated:** 2026-02-03
+**Version:** 1.2.0 | **Updated:** 2026-02-10
 
 ## Reading Order by Role
 
@@ -44,9 +44,9 @@
 ### What's in CoKit?
 | Resource | Count | Location |
 |----------|-------|----------|
-| Prompts | 21 | `prompts/ck-*.prompt.md` |
-| Agents | 9 | `agents/*.agent.md` |
-| Skills | 7 | `skills/ck-*/` |
+| Prompts | 28 | `prompts/ck-*.prompt.md` |
+| Agents | 12 | `agents/*.agent.md` |
+| Skills | 27 | `skills/*/` |
 | Instructions | 5 | `instructions/ck-*.instructions.md` |
 | Collections | 5 | `collections/ck-*.collection.yml` |
 

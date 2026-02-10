@@ -2,8 +2,8 @@
 
 Complete reference for CoKit GitHub Copilot resource toolkit.
 
-**Version:** 1.0.9
-**Date:** 2026-01-20
+**Version:** 1.2.0
+**Date:** 2026-02-10
 
 ---
 
@@ -22,9 +22,9 @@ Complete reference for CoKit GitHub Copilot resource toolkit.
 
 CoKit transforms GitHub Copilot from basic autocomplete to a structured AI development assistant with:
 
-- **9 Specialized Agents** - Planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
-- **14 Prompt Templates** - Reusable workflows with `ck-` prefix (`/ck.fix`, `/ck.plan`, `/ck.cook`, etc.)
-- **7 Skill Packages** - Deep expertise in debugging, code-review, planning, problem-solving, sequential-thinking, backend, frontend
+- **12 Specialized Agents** - Planner, code-reviewer, debugger, tester, researcher, code-simplifier, fullstack-developer, ui-ux-designer, etc.
+- **28 Prompt Templates** - Reusable workflows with `ck.*` and `ck.spec.*` prefixes
+- **27 Skill Packages** - Deep expertise in debugging, code-review, planning, frontend-design, databases, devops, etc.
 - **5 Instructions** - Coding standards auto-applied by file pattern (backend, frontend, testing, development, research)
 - **5 Collections** - Bundled resource sets for specific workflows (core, development-rules, documentation, git-workflow, orchestration)
 
@@ -56,16 +56,13 @@ description: 'Clear task description'
 Step-by-step instructions...
 ```
 
-**CoKit Prompts (14 total):**
+**CoKit Prompts (28 total):**
 
-| Category | Prompts |
-|----------|---------|
-| Core Debugging | `/ck.fix` (debug & fix), `/ck.debug` (debug issues) |
-| Planning & Design | `/ck.plan` (create plans), `/ck.brainstorm` (ideate) |
-| Implementation | `/ck.code` (implement), `/ck.cook` (feature implementation) |
-| Project Setup | `/ck.bootstrap` (new project) |
-| Quality Assurance | `/ck.test` (write/run tests), `/ck.review-codebase` (code analysis) |
-| Utilities | `/ck.scout` (find files), `/ck.ask` (Q&A), `/ck.git` (git workflows), `/ck.docs` (docs), `/ck.help` (help) |
+**ClaudeKit (ck.* namespace):** Development workflows - fix, plan, cook, test, review, debug, ask, etc.
+
+**SpecKit (ck.spec.* namespace):** Spec-driven workflows - specify, clarify, constitution, plan, tasks, implement, analyze, checklist, taskstoissues, etc.
+
+All 28 prompts are unified in a single namespace for seamless workflow navigation.
 
 **Usage Example:**
 ```
@@ -79,19 +76,13 @@ Result: Systematic debugging plan and fix
 
 **Purpose:** Specialized personas executing specific tasks referenced by prompts.
 
-**CoKit Agents (9 total):**
+**CoKit Agents (12 total):**
 
-| Agent | Specialization | Used By |
-|-------|---|---|
-| **planner** | Creates implementation plans from requirements | /ck.plan, /ck.bootstrap |
-| **code-reviewer** | Comprehensive code review and quality gates | /ck.review-codebase |
-| **debugger** | Investigates issues, diagnoses root causes | /ck.fix, /ck.debug |
-| **tester** | Writes tests, validates implementation | /ck.test |
-| **researcher** | Technology research, finds documentation | /ck.ask, /ck.scout |
-| **scout** | Locates files in codebase by purpose | /ck.scout |
-| **git-manager** | Handles commits, pushes, merges, PRs | /ck.git |
-| **brainstormer** | Solution ideation, architecture discussion | /ck.brainstorm |
-| **docs-manager** | Creates and updates documentation | /ck.docs |
+Core agents (9): planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
+
+New agents (3): code-simplifier, fullstack-developer, ui-ux-designer
+
+Each agent provides specialized expertise and is invoked by relevant prompts and commands.
 
 ### Instructions (`instructions/ck-*.instructions.md`)
 
@@ -131,17 +122,13 @@ skills/ck-skill-name/
 └── examples/               # Concrete examples
 ```
 
-**CoKit Skills (7 total):**
+**CoKit Skills (27 total):**
 
-| Skill | Expertise |
-|-------|-----------|
-| **ck-debugging** | Systematic root cause analysis, not random fixes |
-| **ck-code-review** | Verification gates, technical rigor, feedback protocols |
-| **ck-planning** | Research → design → implementation workflow |
-| **ck-problem-solving** | Complexity spirals, innovation blocks, systematic solutions |
-| **ck-sequential-thinking** | Multi-step problem solving with revision capability |
-| **ck-backend-development** | Backend frameworks (Express, Django, FastAPI, etc.) |
-| **ck-frontend-development** | Frontend frameworks (React, Vue, Svelte, etc.) |
+Core: debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-design
+
+Extended: databases, devops, git, markdown-novel-viewer, mcp-management, context-engineering, cook, debug, fix, frontend-design, research, scout, ui-styling, web-testing, and more
+
+Skills are organized by domain expertise with specialized tools and reference materials for each.
 
 ### Collections (`collections/ck-*.collection.yml`)
 

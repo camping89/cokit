@@ -37,7 +37,7 @@
 ## Slide 4: One Command
 
 ```bash
-npx cokit init
+npx cokit-cli init
 ```
 
 That's it. No install. No config. No account.
@@ -61,40 +61,30 @@ npm publish                               Downloads cokit-cli
 
 ## Slide 6: What Users Get
 
-### 14 Prompts (with ck- prefix)
-| Command | Action |
-|---------|--------|
-| `/ck.fix` | Debug issues |
-| `/ck.plan` | Create plans |
-| `/ck.code` | Implement |
-| `/ck.cook` | Feature implementation |
-| `/ck.test` | Write tests |
-| `/ck.review-codebase` | Scan codebase |
-| `/ck.docs` | Update docs |
-| `/ck.bootstrap` | Project setup |
-| `/ck.brainstorm` | Feature ideation |
-| `/ck.debug` | Debug problems |
-| `/ck.scout` | Find files |
-| `/ck.ask` | Q&A |
-| `/ck.git` | Git workflows |
-| `/ck.help` | Help & usage |
+### 28 Prompts (ClaudeKit + SpecKit)
+
+**Development workflows (ck.*):**
+- `/ck.fix`, `/ck.plan`, `/ck.cook`, `/ck.test`, `/ck.review`, `/ck.bootstrap`, `/ck.brainstorm`, etc.
+
+**Spec-driven workflows (ck.spec.*):**
+- `/ck.spec.specify`, `/ck.spec.clarify`, `/ck.spec.plan`, `/ck.spec.tasks`, `/ck.spec.implement`, etc.
+
+All unified in single namespace with cross-navigation.
 
 ---
 
 ## Slide 7: What Users Get (cont.)
 
-### 7 Skills + 9 Agents (Auto-Activate)
+### 27 Skills + 12 Agents (Auto-Activate)
 
-**Skills:**
-- **ck-debugging** - Root cause analysis
-- **ck-code-review** - Security + best practices
-- **ck-planning** - Break down features
-- **ck-problem-solving** - Systematic solutions
-- **ck-sequential-thinking** - Step-by-step logic
-- **ck-backend-development** - Backend patterns
-- **ck-frontend-development** - Frontend patterns
+**Skills (27 total):**
+- debugging, code-review, planning, problem-solving, sequential-thinking
+- backend-development, frontend-design, databases, devops, git, mcp-management
+- research, scout, and more specialized expertise
 
-**Agents:** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
+**Agents (12 total):**
+- Original 9: planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
+- New 3: code-simplifier, fullstack-developer, ui-ux-designer
 
 ---
 

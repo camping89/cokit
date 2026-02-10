@@ -18,11 +18,11 @@ How Copilot processes user input through CoKit resources to produce output.
 
 ### CoKit Examples
 
-**Prompts:** `/ck.ask`, `/ck.bootstrap`, `/ck.brainstorm`, `/ck.cook`, `/ck.debug`, `/ck.docs`, `/ck.fix`, `/ck.git`, `/ck.help`, `/ck.journal`, `/ck.plan`, `/ck.plan.fast`, `/ck.plan.hard`, `/ck.preview`, `/ck.review`, `/ck.scout`, `/ck.test`, `/ck.watzup`
+**Prompts (28 total):** ClaudeKit (ck.*) and SpecKit (ck.spec.*) namespaces with 28 unified commands
 
-**Agents:** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
+**Agents (12 total):** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager, code-simplifier, fullstack-developer, ui-ux-designer
 
-**Skills:** ck-debugging, ck-code-review, ck-planning, ck-problem-solving, ck-sequential-thinking, ck-backend-development, ck-frontend-development
+**Skills (27 total):** debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-design, databases, devops, git, mcp-management, and more
 
 **Instructions:** ck-backend, ck-frontend, ck-testing, ck-development, ck-research
 
@@ -81,7 +81,7 @@ You are a research-first planner...
 - Create detailed implementation plans
 ```
 
-**CoKit Agents:**
+**CoKit Agents (12 total):**
 - `planner` - Creates implementation plans
 - `code-reviewer` - Provides comprehensive code review
 - `debugger` - Investigates and diagnoses issues
@@ -91,6 +91,9 @@ You are a research-first planner...
 - `git-manager` - Handles commits and workflows
 - `brainstormer` - Ideates solutions
 - `docs-manager` - Creates and updates documentation
+- `code-simplifier` - Refactors and simplifies code
+- `fullstack-developer` - Full-stack implementation
+- `ui-ux-designer` - UI/UX design and implementation
 
 **When to use:** Referenced by prompts to specialize execution
 

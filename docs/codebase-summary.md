@@ -2,12 +2,13 @@
 
 ## Overview
 
-CoKit is a CLI tool that enhances GitHub Copilot with 21 prompts (12 ClaudeKit + 9 SpecKit), 9 agents, 5 instructions, 7 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck.* namespace.
+CoKit is a CLI tool that enhances GitHub Copilot with 28 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck.* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
-**Version:** 1.1.0
+**Version:** 1.2.0
 **License:** CC BY-NC 4.0
 **Node Requirements:** >= 18.0.0
+**Last Updated:** 2026-02-10
 
 ## Architecture
 
@@ -66,10 +67,10 @@ cokit/
 │   ├── transform-speckit.mjs        # SpecKit transformer
 │   ├── patch-navigation.mjs         # Navigation footer injection
 │   └── resource-origins.yml         # Configuration (mappings, navigation)
-├── prompts/                        # Output: Transformed prompts (21 files)
-├── agents/                         # Agent definitions (9 files)
+├── prompts/                        # Output: Transformed prompts (28 files)
+├── agents/                         # Agent definitions (12 files)
 ├── instructions/                   # Instruction sets (5 files)
-├── skills/                         # Skill packs (7 directories)
+├── skills/                         # Skill packs (27 directories)
 ├── collections/                    # Collection definitions (5 files)
 ├── docs/                           # Documentation
 └── package.json                    # Dependencies & scripts
@@ -90,7 +91,7 @@ Registers 5 commands using Commander.js:
 **Flow:**
 1. Load resource-origins.yml configuration
 2. Transform ClaudeKit and SpecKit sources in parallel
-3. Merge results (total: 21 prompts)
+3. Merge results (total: 28 prompts)
 4. Apply navigation patches to all prompts
 5. Write output files or show dry-run preview
 6. Update sync timestamps
@@ -162,9 +163,9 @@ Maintains mappings and sync metadata.
 - `synced_at` - Last sync timestamp
 - `sources.speckit` - SpecKit repo location
 - `sources.claudekit` - ClaudeKit local path (~/.claude/commands)
-- `ignore` - Commands to skip (6 ignored in v1.1.0)
-- `mappings` - 21 command mappings with origins and descriptions
-- `navigation` - Workflow navigation rules for 6 commands
+- `ignore` - Commands to skip
+- `mappings` - 28 command mappings with origins and descriptions
+- `navigation` - Workflow navigation rules
 - `unknown_commands` - Tracking array for unmapped sources
 
 ## Prompt Inventory
@@ -248,7 +249,8 @@ Output (ck.*)
 
 ## Version History
 
-- **v1.1.0** (Current) - 21 prompts (12 ClaudeKit + 9 SpecKit)
+- **v1.2.0** (Current) - 28 prompts, 12 agents, 27 skills
+- **v1.1.0** - 21 prompts (12 ClaudeKit + 9 SpecKit), SpecKit sync pipeline
 - **v1.0.9** - Comprehensive documentation update
 - **v1.0.8** - Initial release
 

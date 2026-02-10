@@ -28,8 +28,8 @@
 │                       OUTPUT                                 │
 ├─────────────────────────────────────────────────────────────┤
 │  prompts/                                                    │
-│  ├── ck-*.prompt.md (12 ClaudeKit commands)                 │
-│  └── ck-spec-*.prompt.md (9 SpecKit commands)               │
+│  ├── ck-*.prompt.md (28 total commands)                     │
+│  └── agents/, skills/, instructions/, collections/         │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼

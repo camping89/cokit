@@ -1,9 +1,9 @@
 # CoKit: Team Presentation
 
-**Date:** January 20, 2026 (Updated from cleanup phase)
+**Date:** February 10, 2026 (v1.2.0)
 **Presenter:** [Your Name]
 **Repository:** https://github.com/camping89/cokit
-**Version:** 1.0.9
+**Version:** 1.2.0
 
 ---
 
@@ -18,11 +18,12 @@
 - Project-specific context
 
 **Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
-- 14 prompts with `ck-` prefix (fix, plan, code, cook, test, review, docs, bootstrap, brainstorm, debug, scout, ask, git, etc.) using `mode: agent`
-- 7 skills teaching Copilot best practices (debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-development)
-- 9 specialized agents for different tasks
+- 28 prompts with unified `ck.*` namespace (ClaudeKit + SpecKit) using `mode: agent`
+- 27 skills teaching Copilot best practices (debugging, code-review, planning, frontend-design, databases, devops, etc.)
+- 12 specialized agents (including code-simplifier, fullstack-developer, ui-ux-designer)
 - 5 instructions (backend, frontend, testing, development, research)
 - 5 collections bundling related resources
+- Sync pipeline for upstream integration
 - Project templates for team consistency
 
 ---
@@ -78,7 +79,7 @@
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ ✓ .github/copilot-instructions.md                       │ │
 │   │ ✓ .github/AGENTS.md                                     │ │
-│   │ ✓ .github/prompts/ck-*.prompt.md (14 prompts)           │ │
+│   │ ✓ .github/prompts/ck-*.prompt.md (28 prompts)           │ │
 │   │ ✓ .github/instructions/ck-*.instructions.md (5 files)   │ │
 │   │ ✓ .github/collections/ck-*.collection.yml (5 bundles)   │ │
 │   │ ✓ .vscode/settings.json                                 │ │
@@ -166,54 +167,31 @@ your-project/
 
 ---
 
-## 5. Prompts Included (14 total)
+## 5. Prompts Included (28 total)
 
-| Prompt | What it does | Example usage |
-|--------|--------------|---------------|
-| `/ck.fix` | Debug and fix issues | "The login is broken" |
-| `/ck.plan` | Create implementation plan | "Add user authentication" |
-| `/ck.code` | Implement from plan | "Implement step 1 from plan.md" |
-| `/ck.cook` | Feature implementation step by step | "Cook the auth feature" |
-| `/ck.test` | Write/run tests | "Test the auth module" |
-| `/ck.review-codebase` | Scan & analyze codebase | "Review the api folder" |
-| `/ck.docs` | Documentation management | "Document the API" |
-| `/ck.bootstrap` | Project bootstrap | "Bootstrap a new React app" |
-| `/ck.brainstorm` | Feature ideation | "Brainstorm payment features" |
-| `/ck.debug` | Debugging technical issues | "Debug the crash on startup" |
-| `/ck.scout` | Find files across codebase | "Scout for auth handlers" |
-| `/ck.ask` | Technical questions | "How does auth work?" |
-| `/ck.git` | Git workflow | "Create a commit" |
-| `/ck.help` | CoKit usage guide | "How do I use CoKit?" |
+**ClaudeKit (ck.*):** Development workflow commands
+- `/ck.fix`, `/ck.plan`, `/ck.cook`, `/ck.test`, `/ck.review`, `/ck.debug`, `/ck.ask`, etc.
+
+**SpecKit (ck.spec.*):** Spec-driven workflow commands
+- `/ck.spec.specify`, `/ck.spec.clarify`, `/ck.spec.plan`, `/ck.spec.tasks`, `/ck.spec.implement`, etc.
+
+All 28 prompts unified in single namespace with cross-navigation support.
 
 ---
 
 ## 6. Specialized Skills & Agents
 
-All 7 skills available at `~/.copilot/skills/ck-*/` with supporting resources:
+**27 skills** available at `~/.copilot/skills/*/` with supporting resources:
 
-| Skill | What Copilot learns |
-|-------|---------------------|
-| **ck-debugging** | Systematic root cause analysis, not random fixes |
-| **ck-code-review** | Verification gates, technical rigor, feedback protocols |
-| **ck-planning** | Research → design → implementation planning workflow |
-| **ck-problem-solving** | Complexity spirals, innovation blocks, systematic solutions |
-| **ck-sequential-thinking** | Structured multi-step problem solving with revision |
-| **ck-backend-development** | Node.js, Python, Go, Rust backend patterns |
-| **ck-frontend-development** | React, TypeScript, component patterns, performance |
+Core: debugging, code-review, planning, problem-solving, sequential-thinking, backend-development, frontend-design, databases, devops, git, mcp-management, context-engineering, research, and more.
 
-## 7. Specialized Agents (9 total)
+## 7. Specialized Agents (12 total)
 
-| Agent | Specialization |
-|-------|----------------|
-| **planner** | Implementation planning and design |
-| **code-reviewer** | Comprehensive code review and quality |
-| **debugger** | Issue investigation and root cause analysis |
-| **tester** | Test writing and validation |
-| **researcher** | Technology research and documentation discovery |
-| **scout** | Codebase navigation and file location |
-| **git-manager** | Commit management and git workflows |
-| **brainstormer** | Solution ideation and architecture discussion |
-| **docs-manager** | Documentation creation and maintenance |
+Original 9: planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager
+
+New 3: code-simplifier, fullstack-developer, ui-ux-designer
+
+Each agent provides specialized expertise for different development tasks.
 
 ---
 

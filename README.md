@@ -108,9 +108,9 @@ Otherwise?
 
 | Resource | Count | Purpose |
 |----------|-------|---------|
-| Prompts | 21 | Commands for Copilot |
-| Agents | 9 | Specialized AI assistants |
-| Skills | 49 | Domain expertise |
+| Prompts | 28 | Commands for Copilot |
+| Agents | 12 | Specialized AI assistants |
+| Skills | 27 | Domain expertise |
 | Instructions | 5 | Context-aware rules |
 | Collections | 5 | Bundled workflows |
 
