@@ -1079,7 +1079,7 @@
   <section class="section">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-num">28</div>
+        <div class="stat-num">27</div>
         <div class="stat-label">Prompts (Commands)</div>
       </div>
       <div class="stat-card">
@@ -1129,7 +1129,7 @@
           </tr>
           <tr>
             <td><strong>Recipes</strong> &mdash; Deep cooking knowledge</td>
-            <td><strong>Skills</strong> &mdash; Knowledge: debugging, code-review, planning...</td>
+            <td><strong>Skills</strong> &mdash; Knowledge: debug, code-review, planning...</td>
           </tr>
           <tr>
             <td><strong>Kitchen rules</strong> &mdash; Rules everyone follows</td>
@@ -1756,7 +1756,7 @@
 
       <!-- Command Finder: SVG flowchart -->
       <div class="cf-flowchart-wrap">
-        <svg id="cfFlowchart" viewBox="0 0 1500 1120"></svg>
+        <svg id="cfFlowchart" viewBox="0 0 1560 1260"></svg>
       </div>
 
       <!-- Command Finder: Tooltip -->
@@ -1932,8 +1932,8 @@
       // ========== COMMAND FINDER DATA ==========
       // Flow logic:
       //   New project? → bootstrap
-      //   Fix bug? → know cause? Yes→fix, No→debug→fix
-      //   Build feature? → need spec? No→plan→cook→test, Yes→spec flow, Unsure→brainstorm
+      //   Fix bug? → know cause? Yes→fix→variants, No→debug→fix→variants
+      //   Build feature? → need spec? No→complexity?→plan-fast|plan|plan-hard→cook→test, Yes→spec flow, Unsure→brainstorm
       //   Explore? → scout→watzup
       //   Git? → git
       //   Test? → test→fix (if fail)
@@ -1942,66 +1942,81 @@
 
       const CF_NODES = [
         // Start
-        { id: 'start', text: 'What do you\nwant to do?', type: 'start', x: 60, y: 420 },
+        { id: 'start', text: 'What do you\nwant to do?', type: 'start', x: 60, y: 520 },
 
-        // Level 1 decisions (logical order)
+        // Level 1 decisions
         { id: 'q_new', text: 'New\nproject?', type: 'decision', x: 240, y: 80 },
-        { id: 'q_bug', text: 'Fix a\nbug?', type: 'decision', x: 240, y: 200 },
-        { id: 'q_feature', text: 'Build\nfeature?', type: 'decision', x: 240, y: 370 },
-        { id: 'q_explore', text: 'Explore\ncodebase?', type: 'decision', x: 240, y: 530 },
-        { id: 'q_git', text: 'Git\nops?', type: 'decision', x: 240, y: 630 },
-        { id: 'q_test', text: 'Run\ntests?', type: 'decision', x: 240, y: 730 },
-        { id: 'q_docs', text: 'Code quality\nor docs?', type: 'decision', x: 240, y: 840 },
-        { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1000 },
+        { id: 'q_bug', text: 'Fix a\nbug?', type: 'decision', x: 240, y: 240 },
+        { id: 'q_feature', text: 'Build\nfeature?', type: 'decision', x: 240, y: 510 },
+        { id: 'q_explore', text: 'Explore\ncodebase?', type: 'decision', x: 240, y: 680 },
+        { id: 'q_git', text: 'Git\nops?', type: 'decision', x: 240, y: 780 },
+        { id: 'q_test', text: 'Run\ntests?', type: 'decision', x: 240, y: 870 },
+        { id: 'q_docs', text: 'Code quality\nor docs?', type: 'decision', x: 240, y: 980 },
+        { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1140 },
 
         // New project
         { id: 'c_bootstrap', text: '/ck-bootstrap', type: 'command', x: 480, y: 80, desc: 'Start a new project from scratch' },
 
         // Bug fix branch
-        { id: 'q_knowcause', text: 'Know the\ncause?', type: 'decision', x: 480, y: 200 },
-        { id: 'c_fix', text: '/ck-fix', type: 'command', x: 700, y: 160, desc: 'Analyze and fix bugs, errors, issues' },
-        { id: 'c_debug', text: '/ck-debug', type: 'command', x: 700, y: 240, desc: 'Systematic root cause analysis' },
+        { id: 'q_knowcause', text: 'Know the\ncause?', type: 'decision', x: 480, y: 240 },
+        { id: 'c_fix', text: '/ck-fix', type: 'command', x: 700, y: 200, desc: 'Smart bug router — analyzes and routes to best variant' },
+        { id: 'c_debug', text: '/ck-debug', type: 'command', x: 700, y: 290, desc: 'Systematic root cause analysis' },
+
+        // Fix variants
+        { id: 'q_fixtype', text: 'Issue\ntype?', type: 'decision', x: 900, y: 200 },
+        { id: 'c_fix_fast', text: '/ck-fix-fast', type: 'command', x: 1120, y: 60, desc: 'Quick fix for small, obvious issues' },
+        { id: 'c_fix_hard', text: '/ck-fix-hard', type: 'command', x: 1120, y: 100, desc: 'Complex issues needing systematic approach' },
+        { id: 'c_fix_types', text: '/ck-fix-types', type: 'command', x: 1120, y: 140, desc: 'Fix TypeScript/type errors' },
+        { id: 'c_fix_ui', text: '/ck-fix-ui', type: 'command', x: 1120, y: 180, desc: 'Fix UI/UX visual and layout issues' },
+        { id: 'c_fix_ci', text: '/ck-fix-ci', type: 'command', x: 1120, y: 220, desc: 'Fix CI/CD and GitHub Actions failures' },
+        { id: 'c_fix_test', text: '/ck-fix-test', type: 'command', x: 1120, y: 260, desc: 'Fix failing tests' },
+        { id: 'c_fix_logs', text: '/ck-fix-logs', type: 'command', x: 1120, y: 300, desc: 'Analyze logs and fix issues found' },
 
         // Feature branch
-        { id: 'q_formal', text: 'Need formal\nrequirements?', type: 'decision', x: 480, y: 370 },
-        { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 300, desc: 'Collaborative ideation with expert advice' },
-        { id: 'c_plan', text: '/ck-plan', type: 'command', x: 700, y: 370, desc: 'Create implementation plan (auto-detect complexity)' },
-        { id: 'c_cook', text: '/ck-cook', type: 'command', x: 880, y: 370, desc: 'Smart feature implementation from plan or task' },
-        { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1040, y: 370, desc: 'Run tests after implementation' },
+        { id: 'q_formal', text: 'Need formal\nrequirements?', type: 'decision', x: 480, y: 510 },
+        { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 440, desc: 'Collaborative ideation with expert advice' },
+
+        // Plan: ck-plan is the entry point, then routes to fast/hard variants
+        { id: 'c_plan', text: '/ck-plan', type: 'command', x: 700, y: 510, desc: 'Intelligent plan creation — auto-detects complexity' },
+        { id: 'c_plan_fast', text: '/ck-plan-fast', type: 'command', x: 920, y: 460, desc: 'Quick plan, no research needed' },
+        { id: 'c_plan_hard', text: '/ck-plan-hard', type: 'command', x: 920, y: 560, desc: 'Deep research + detailed plan' },
+        { id: 'c_plan_validate', text: '/ck-plan-validate', type: 'command', x: 1120, y: 510, desc: 'Validate any plan with critical questions' },
+        { id: 'c_cook', text: '/ck-cook', type: 'command', x: 1300, y: 510, desc: 'Smart feature implementation from plan or task' },
+        { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1460, y: 510, desc: 'Run tests after implementation' },
 
         // Spec-driven flow
-        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 450, desc: 'Create formal specification from idea' },
-        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 880, y: 450, desc: 'Ask clarification questions about spec' },
-        { id: 'c_spec_plan', text: '/ck-spec-plan', type: 'command', x: 1040, y: 450, desc: 'Generate plan from specification' },
-        { id: 'c_spec_tasks', text: '/ck-spec-tasks', type: 'command', x: 1200, y: 450, desc: 'Break plan into executable tasks' },
-        { id: 'c_spec_implement', text: '/ck-spec-implement', type: 'command', x: 1380, y: 450, desc: 'Execute tasks from spec plan' },
+        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 600, desc: 'Create formal specification from idea' },
+        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 880, y: 600, desc: 'Ask clarification questions about spec' },
+        { id: 'c_spec_plan', text: '/ck-spec-plan', type: 'command', x: 1060, y: 600, desc: 'Generate plan from specification' },
+        { id: 'c_spec_tasks', text: '/ck-spec-tasks', type: 'command', x: 1240, y: 600, desc: 'Break plan into executable tasks' },
+        { id: 'c_spec_implement', text: '/ck-spec-implement', type: 'command', x: 1420, y: 600, desc: 'Execute tasks from spec plan' },
 
         // Spec extras
-        { id: 'c_spec_analyze', text: '/ck-spec-analyze', type: 'command', x: 1040, y: 525, desc: 'Check specification consistency' },
-        { id: 'c_spec_checklist', text: '/ck-spec-checklist', type: 'command', x: 1200, y: 525, desc: 'Validate all requirements covered' },
+        { id: 'c_spec_analyze', text: '/ck-spec-analyze', type: 'command', x: 1060, y: 660, desc: 'Check specification consistency' },
+        { id: 'c_spec_checklist', text: '/ck-spec-checklist', type: 'command', x: 1240, y: 660, desc: 'Validate all requirements covered' },
 
         // Explore
-        { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 530, desc: 'Fast codebase search and exploration' },
-        { id: 'c_watzup', text: '/ck-watzup', type: 'command', x: 650, y: 530, desc: 'Review recent changes in current branch' },
+        { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 680, desc: 'Fast codebase search and exploration' },
+        { id: 'c_watzup', text: '/ck-watzup', type: 'command', x: 650, y: 680, desc: 'Review recent changes in current branch' },
 
         // Git
-        { id: 'c_git', text: '/ck-git', type: 'command', x: 480, y: 630, desc: 'Git operations: commit, push, PR, merge' },
+        { id: 'c_git', text: '/ck-git', type: 'command', x: 480, y: 780, desc: 'Git operations: commit, push, PR, merge' },
 
         // Test (standalone)
-        { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 730, desc: 'Run and analyze tests' },
+        { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 870, desc: 'Run and analyze tests' },
 
         // Docs/Review/Simplify
-        { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 840 },
-        { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 780, desc: 'Code review and quality check' },
-        { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 830, desc: 'Simplify & refine code for clarity' },
-        { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 880, desc: 'Generate/update project documentation' },
-        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 930, desc: 'Preview markdown files and plans visually' },
+        { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 980 },
+        { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 920, desc: 'Code review and quality check' },
+        { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 960, desc: 'Simplify & refine code for clarity' },
+        { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 1000, desc: 'Generate/update project documentation' },
+        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 1040, desc: 'Preview markdown files and plans visually' },
 
         // Help
-        { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1000 },
-        { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 960, desc: 'Interactive CoKit help and guidance' },
-        { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1000, desc: 'Technical & architectural questions' },
-        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1040, desc: 'Write development journal entries' },
+        { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1140 },
+        { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 1100, desc: 'Interactive CoKit help and guidance' },
+        { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1140, desc: 'Technical & architectural questions' },
+        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1180, desc: 'Write development journal entries' },
       ];
 
       const CF_EDGES = [
@@ -2018,17 +2033,36 @@
         // New project
         { from: 'q_new', to: 'c_bootstrap', label: 'Yes' },
 
-        // Bug fix: know cause? → fix or debug→fix
+        // Bug fix: know cause? → fix → variants
         { from: 'q_bug', to: 'q_knowcause', label: 'Yes' },
         { from: 'q_knowcause', to: 'c_fix', label: 'Yes' },
         { from: 'q_knowcause', to: 'c_debug', label: 'No' },
         { from: 'c_debug', to: 'c_fix', label: 'Then\nfix' },
 
+        // Fix → variant routing
+        { from: 'c_fix', to: 'q_fixtype', label: 'Routes' },
+        { from: 'q_fixtype', to: 'c_fix_fast', label: 'Simple' },
+        { from: 'q_fixtype', to: 'c_fix_hard', label: 'Complex' },
+        { from: 'q_fixtype', to: 'c_fix_types', label: 'Types' },
+        { from: 'q_fixtype', to: 'c_fix_ui', label: 'UI' },
+        { from: 'q_fixtype', to: 'c_fix_ci', label: 'CI/CD' },
+        { from: 'q_fixtype', to: 'c_fix_test', label: 'Tests' },
+        { from: 'q_fixtype', to: 'c_fix_logs', label: 'Logs' },
+
         // Feature: need formal spec?
         { from: 'q_feature', to: 'q_formal', label: 'Yes' },
         { from: 'q_formal', to: 'c_brainstorm', label: 'Unsure' },
+
+        // Plan: ck-plan first, then decides variant
         { from: 'q_formal', to: 'c_plan', label: 'No' },
-        { from: 'c_plan', to: 'c_cook', label: '' },
+        { from: 'c_plan', to: 'c_plan_fast', label: 'Simple' },
+        { from: 'c_plan', to: 'c_plan_hard', label: 'Complex' },
+        // fast → cook directly (skip validate)
+        { from: 'c_plan_fast', to: 'c_cook', label: '' },
+        // standard & hard → validate → cook
+        { from: 'c_plan', to: 'c_plan_validate', label: '' },
+        { from: 'c_plan_hard', to: 'c_plan_validate', label: '' },
+        { from: 'c_plan_validate', to: 'c_cook', label: '' },
         { from: 'c_cook', to: 'c_test_after', label: '' },
 
         // Spec-driven flow
@@ -2036,7 +2070,8 @@
         { from: 'c_spec_specify', to: 'c_spec_clarify', label: '' },
         { from: 'c_spec_clarify', to: 'c_spec_plan', label: '' },
         { from: 'c_spec_plan', to: 'c_spec_tasks', label: '' },
-        { from: 'c_spec_tasks', to: 'c_spec_implement', label: '' },
+        { from: 'c_spec_tasks', to: 'c_spec_implement', label: 'Spec\nflow' },
+        { from: 'c_spec_tasks', to: 'c_cook', label: 'Quick\nflow' },
         { from: 'c_spec_plan', to: 'c_spec_analyze', label: '' },
         { from: 'c_spec_tasks', to: 'c_spec_checklist', label: '' },
 
@@ -2397,15 +2432,8 @@
           details.</div>
       </div>
 
-      <!-- Mode bar (only for cook) -->
-      <div class="dd-modes" id="ddModes">
-        <div class="dd-mode-label">Modes:</div>
-        <button class="dd-mode active" data-mode="interactive">Interactive</button>
-        <button class="dd-mode" data-mode="fast">Fast</button>
-        <button class="dd-mode" data-mode="auto">Auto</button>
-        <button class="dd-mode" data-mode="parallel">Parallel</button>
-        <button class="dd-mode" data-mode="code">Code</button>
-      </div>
+      <!-- Mode bar (dynamic per command) -->
+      <div class="dd-modes" id="ddModes"></div>
 
       <!-- SVG Pipeline -->
       <div class="dd-svg-wrap">
@@ -2709,83 +2737,84 @@
         cook: {
           title: '/ck-cook — Smart Feature Implementation',
           hasModes: true,
+          modeList: ['interactive', 'fast', 'auto', 'parallel', 'code', 'no-test'],
           phases: [
             {
               id: 'detect', label: 'Intent\nDetect', x: 80, color: 'var(--accent2)',
               desc: 'Analyzes your input to pick the right workflow mode.',
               agents: [], skills: ['cook (intent-detection)'], tools: [],
               detail: 'Reads your input and matches patterns:<br>- Plan path → <strong>code</strong> mode<br>- "fast" / "quick" → <strong>fast</strong> mode<br>- "trust me" / "auto" → <strong>auto</strong> mode<br>- 3+ features → <strong>parallel</strong> mode<br>- Default → <strong>interactive</strong> mode',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true, 'no-test': true }
             },
             {
               id: 'scout', label: 'Scout', x: 220, color: 'var(--accent)',
               desc: 'Scans codebase to find relevant files.',
               agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
               detail: '<span class="dd-agent">@scout</span> agent uses parallel search to locate all files related to your task.<br>Output: file list + architecture context for the planner.',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false }
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false, 'no-test': true }
             },
             {
               id: 'research', label: 'Research', x: 360, color: 'var(--accent)',
               desc: 'Gathers technical context from docs and web.',
               agents: ['researcher'], skills: ['docs-seeker', 'research'], tools: ['web/fetch', 'search/codebase'],
               detail: '<span class="dd-agent">@researcher</span> agents run in parallel to gather info.<br>Uses <span class="dd-skill">docs-seeker</span> (context7) + web search.<br>Output: research report for planner.',
-              modes: { interactive: true, fast: false, auto: true, parallel: true, code: false }
+              modes: { interactive: true, fast: false, auto: true, parallel: true, code: false, 'no-test': true }
             },
             {
               id: 'review1', label: 'Review', x: 470, color: 'var(--pink)', type: 'gate',
               desc: 'Human review gate: approve research findings.',
               agents: [], skills: [], tools: [],
               detail: '<span class="dd-gate">Review Gate</span>: You review research findings before planning begins.<br>In <strong>auto</strong> mode: skipped if quality score ≥ 9.5',
-              modes: { interactive: true, fast: false, auto: 'auto', parallel: true, code: false }
+              modes: { interactive: true, fast: false, auto: 'auto', parallel: true, code: false, 'no-test': true }
             },
             {
               id: 'plan', label: 'Plan', x: 580, color: 'var(--accent)',
               desc: 'Creates implementation plan with phases.',
               agents: ['planner'], skills: ['planning', 'sequential-thinking'], tools: ['search/codebase', 'web/fetch'],
               detail: '<span class="dd-agent">@planner</span> creates a detailed plan:<br>- Phase breakdown with TODO tasks<br>- Uses <span class="dd-skill">planning</span> + <span class="dd-skill">sequential-thinking</span> skills<br>- Saves to <code>plans/</code> directory',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false }
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: false, 'no-test': true }
             },
             {
               id: 'review2', label: 'Review', x: 690, color: 'var(--pink)', type: 'gate',
               desc: 'Human review gate: approve plan before coding.',
               agents: [], skills: [], tools: [],
               detail: '<span class="dd-gate">Review Gate</span>: You approve the plan before implementation starts.<br>In <strong>auto</strong> mode: auto-approved if score ≥ 9.5',
-              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: false }
+              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: false, 'no-test': true }
             },
             {
               id: 'implement', label: 'Implement', x: 800, color: 'var(--green)',
               desc: 'Writes the actual code, phase by phase.',
-              agents: ['fullstack-developer', 'ui-ux-designer'], skills: ['cook', 'frontend-dev', 'backend-dev'], tools: ['edit', 'create', 'runInTerminal'],
-              detail: 'Copilot writes code following the plan:<br>- <span class="dd-agent">@fullstack-developer</span> executes phases (parallel in parallel mode)<br>- <span class="dd-agent">@ui-ux-designer</span> for UI work<br>- Uses <span class="dd-skill">frontend-dev</span> / <span class="dd-skill">backend-dev</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-frontend</code>, <code>ck-backend</code>, <code>ck-development</code>',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+              agents: ['fullstack-developer', 'ui-ux-designer'], skills: ['cook', 'frontend-design', 'backend-development'], tools: ['edit', 'create', 'runInTerminal'],
+              detail: 'Copilot writes code following the plan:<br>- <span class="dd-agent">@fullstack-developer</span> executes phases (parallel in parallel mode)<br>- <span class="dd-agent">@ui-ux-designer</span> for UI work<br>- Uses <span class="dd-skill">frontend-design</span> / <span class="dd-skill">backend-development</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-frontend</code>, <code>ck-backend</code>, <code>ck-development</code>',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true, 'no-test': true }
             },
             {
               id: 'simplify', label: 'Simplify', x: 920, color: 'var(--accent2)',
               desc: 'Refines code for clarity and maintainability.',
               agents: ['code-simplifier'], skills: [], tools: ['edit', 'search/changes'],
               detail: '<span class="dd-agent">@code-simplifier</span> refines implemented code:<br>- Reduces nesting, adds guard clauses<br>- Improves naming, removes redundancy<br>- Preserves all functionality<br>- Follows <code>code-standards.md</code> conventions',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true, 'no-test': true }
             },
             {
               id: 'review3', label: 'Review', x: 1030, color: 'var(--pink)', type: 'gate',
               desc: 'Human review gate: approve code before testing.',
               agents: ['code-reviewer'], skills: ['code-review'], tools: ['search/codebase', 'read/problems'],
               detail: '<span class="dd-agent">@code-reviewer</span> scans for quality issues.<br>Uses <span class="dd-skill">code-review</span> skill.<br><span class="dd-gate">Review Gate</span>: You approve code before tests run.',
-              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: true }
+              modes: { interactive: true, fast: true, auto: 'auto', parallel: true, code: true, 'no-test': true }
             },
             {
               id: 'test', label: 'Test', x: 1150, color: 'var(--accent)',
               desc: 'Runs tests and validates everything works.',
-              agents: ['tester', 'debugger'], skills: ['debugging'], tools: ['runTests', 'runInTerminal', 'testFailure'],
-              detail: '<span class="dd-agent">@tester</span> runs test suites + analyzes results.<br>If tests fail: <span class="dd-agent">@debugger</span> investigates root cause.<br>Uses <span class="dd-skill">debugging</span> skill + <span class="dd-tool">runTests</span> tool.<br><strong>Requirement:</strong> 100% tests must pass.',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+              agents: ['tester', 'debugger'], skills: ['debug'], tools: ['runTests', 'runInTerminal', 'testFailure'],
+              detail: '<span class="dd-agent">@tester</span> runs test suites + analyzes results.<br>If tests fail: <span class="dd-agent">@debugger</span> investigates root cause.<br>Uses <span class="dd-skill">debug</span> skill + <span class="dd-tool">runTests</span> tool.<br><strong>Requirement:</strong> 100% tests must pass.',
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true, 'no-test': false }
             },
             {
               id: 'finalize', label: 'Finalize', x: 1300, color: 'var(--green)',
               desc: 'Updates docs, commits code, done!',
               agents: ['docs-manager', 'git-manager'], skills: [], tools: ['search/changes'],
               detail: '<span class="dd-agent">@docs-manager</span> updates project docs in <code>./docs/</code><br><span class="dd-agent">@git-manager</span> creates conventional commit + push.<br>Output: clean commit with all changes.',
-              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true }
+              modes: { interactive: true, fast: true, auto: true, parallel: true, code: true, 'no-test': true }
             }
           ]
         },
@@ -2803,8 +2832,8 @@
             {
               id: 'route', label: 'Route', x: 300, color: 'var(--accent2)',
               desc: 'Picks the best sub-command for this issue type.',
-              agents: [], skills: [], tools: [],
-              detail: 'Smart routing by issue type:<br>- <strong>Type errors</strong> → <code>/ck:fix:types</code><br>- <strong>UI/UX issues</strong> → <code>/ck:fix:ui</code><br>- <strong>CI/CD issues</strong> → <code>/ck:fix:ci</code><br>- <strong>Test failures</strong> → <code>/ck:fix:test</code><br>- <strong>Log errors</strong> → <code>/ck:fix:logs</code><br>- <strong>Multiple issues</strong> → <code>/ck:fix:parallel</code><br>- <strong>Complex</strong> → <code>/ck:fix:hard</code><br>- <strong>Simple</strong> → <code>/ck:fix:fast</code>'
+              agents: [], skills: [], tools: ['/ck-fix-fast', '/ck-fix-hard', '/ck-fix-types', '/ck-fix-ui', '/ck-fix-ci', '/ck-fix-test', '/ck-fix-logs'],
+              detail: 'Smart routing by issue type:<br>- <strong>Type errors</strong> → <code>/ck-fix-types</code><br>- <strong>UI/UX issues</strong> → <code>/ck-fix-ui</code><br>- <strong>CI/CD issues</strong> → <code>/ck-fix-ci</code><br>- <strong>Test failures</strong> → <code>/ck-fix-test</code><br>- <strong>Log errors</strong> → <code>/ck-fix-logs</code><br>- <strong>Complex</strong> → <code>/ck-fix-hard</code><br>- <strong>Simple</strong> → <code>/ck-fix-fast</code>'
             },
             {
               id: 'scout', label: 'Scout', x: 480, color: 'var(--accent)',
@@ -2815,14 +2844,14 @@
             {
               id: 'diagnose', label: 'Diagnose', x: 660, color: 'var(--accent)',
               desc: 'Root cause analysis before fixing.',
-              agents: ['debugger'], skills: ['debugging', 'sequential-thinking'], tools: ['read/problems', 'runInTerminal'],
-              detail: '<span class="dd-agent">@debugger</span> performs root cause analysis:<br>- Read error messages completely<br>- Reproduce the issue<br>- Check recent changes (<code>git diff</code>)<br>- Uses <span class="dd-skill">debugging</span> + <span class="dd-skill">sequential-thinking</span> skills'
+              agents: ['debugger'], skills: ['debug', 'sequential-thinking'], tools: ['read/problems', 'runInTerminal'],
+              detail: '<span class="dd-agent">@debugger</span> performs root cause analysis:<br>- Read error messages completely<br>- Reproduce the issue<br>- Check recent changes (<code>git diff</code>)<br>- Uses <span class="dd-skill">debug</span> + <span class="dd-skill">sequential-thinking</span> skills'
             },
             {
               id: 'fix', label: 'Fix', x: 840, color: 'var(--green)',
               desc: 'Applies the fix at the root cause.',
-              agents: [], skills: ['frontend-dev', 'backend-dev'], tools: ['edit', 'create', 'runInTerminal'],
-              detail: 'Copilot writes the fix:<br>- Targets root cause, not symptoms<br>- Uses <span class="dd-skill">frontend-dev</span> / <span class="dd-skill">backend-dev</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-development</code>'
+              agents: [], skills: ['frontend-design', 'backend-development'], tools: ['edit', 'create', 'runInTerminal'],
+              detail: 'Copilot writes the fix:<br>- Targets root cause, not symptoms<br>- Uses <span class="dd-skill">frontend-design</span> / <span class="dd-skill">backend-development</span> skills<br>- <span class="dd-tool">Instructions</span> auto-apply: <code>ck-development</code>'
             },
             {
               id: 'verify', label: 'Verify', x: 1020, color: 'var(--accent)',
@@ -2838,34 +2867,46 @@
           hasModes: false,
           phases: [
             {
-              id: 'input', label: 'Analyze\nTask', x: 100, color: 'var(--accent2)',
+              id: 'analyze', label: 'Analyze\nTask', x: 100, color: 'var(--accent2)',
               desc: 'Reads task description and checks for existing plans.',
               agents: [], skills: [], tools: [],
-              detail: 'Pre-creation checks:<br>- Active plan exists? → Ask to continue<br>- Branch-matched plan? → Ask to activate or create new<br>- No plan? → Create new using naming convention<br>- May ask clarifying questions directly and wait for user response'
+              detail: 'Pre-creation checks:<br>- Active plan exists? → Ask to continue<br>- Branch-matched plan? → Ask to activate or create new<br>- No plan? → Proceed to route by complexity<br>- May ask clarifying questions and wait for response'
             },
             {
-              id: 'research', label: 'Research', x: 320, color: 'var(--accent)',
+              id: 'route', label: 'Route', x: 280, color: 'var(--accent2)',
+              desc: 'Routes to the right planning mode by complexity.',
+              agents: [], skills: [], tools: ['/ck-plan-fast', '/ck-plan-hard', '/ck-plan-validate'],
+              detail: 'Smart routing by task complexity:<br>- <strong>Simple/Quick</strong> (single file, minor, &lt; 2h) → <code>/ck-plan-fast</code><br>- <strong>Complex/Research</strong> (architecture, multi-component, multi-day) → <code>/ck-plan-hard</code><br>- <strong>Validate existing</strong> (review plan, verify assumptions) → <code>/ck-plan-validate</code><br>- <strong>Default/Medium</strong> → Execute standard workflow'
+            },
+            {
+              id: 'research', label: 'Research', x: 460, color: 'var(--accent)',
               desc: 'Multiple researchers gather context in parallel.',
               agents: ['researcher'], skills: ['research', 'docs-seeker'], tools: ['web/fetch', 'search/codebase'],
-              detail: 'Multiple <span class="dd-agent">@researcher</span> agents run in parallel:<br>- Search docs, web, and codebase<br>- Uses <span class="dd-skill">docs-seeker</span> (context7) for library docs<br>- Uses <span class="dd-skill">research</span> skill for best practices<br>- Output: research reports (≤150 lines each)'
+              detail: 'Multiple <span class="dd-agent">@researcher</span> agents run in parallel:<br>- Search docs, web, and codebase<br>- Uses <span class="dd-skill">docs-seeker</span> (context7) for library docs<br>- Uses <span class="dd-skill">research</span> skill for best practices<br>- Output: research reports (≤150 lines each)<br><strong>Skipped in fast mode</strong>'
             },
             {
-              id: 'scout', label: 'Scout', x: 540, color: 'var(--accent)',
+              id: 'scout', label: 'Scout', x: 640, color: 'var(--accent)',
               desc: 'Discovers relevant codebase files.',
               agents: ['scout'], skills: [], tools: ['search/codebase', 'search/changes'],
               detail: '<span class="dd-agent">@scout</span> maps the codebase:<br>- Finds all files related to the task<br>- Identifies architecture patterns<br>- Output: file list + context for planner'
             },
             {
-              id: 'plan', label: 'Create\nPlan', x: 760, color: 'var(--green)',
+              id: 'plan', label: 'Create\nPlan', x: 820, color: 'var(--green)',
               desc: 'Generates detailed implementation plan.',
               agents: ['planner'], skills: ['planning', 'sequential-thinking'], tools: ['search/codebase'],
               detail: '<span class="dd-agent">@planner</span> creates the plan:<br>- Analyzes research + scout reports<br>- Uses <span class="dd-skill">planning</span> + <span class="dd-skill">sequential-thinking</span><br>- Output: <code>plan.md</code> overview + <code>phase-XX-*.md</code> files<br>- Saves to <code>plans/</code> directory'
             },
             {
-              id: 'output', label: 'Output', x: 980, color: 'var(--accent2)',
+              id: 'validate', label: 'Validate', x: 1000, color: 'var(--pink)',
+              desc: 'Optional interview to confirm plan decisions.',
+              agents: [], skills: [], tools: ['/ck-plan-validate'],
+              detail: 'Optional validation step (recommended for hard plans):<br>- Interviews user with critical questions<br>- Confirms architecture, assumptions, tradeoffs<br>- Updates plan with validation log<br>- <strong>Fast plans skip this step</strong><br>- <strong>Hard plans recommend this step</strong>'
+            },
+            {
+              id: 'output', label: 'Output', x: 1180, color: 'var(--accent2)',
               desc: 'Plan ready for review. Does NOT implement.',
               agents: [], skills: [], tools: [],
-              detail: 'Plan is saved and presented to user:<br>- Overview: <code>plan.md</code> (under 80 lines)<br>- Detailed phases: <code>phase-XX-name.md</code><br>- Each phase has: requirements, architecture, steps, TODOs<br><strong>Important:</strong> Does NOT start implementing.'
+              detail: 'Plan is saved and presented to user:<br>- Overview: <code>plan.md</code> (under 80 lines)<br>- Detailed phases: <code>phase-XX-name.md</code><br>- Each phase has: requirements, architecture, steps, TODOs<br><strong>Important:</strong> Does NOT start implementing.<br><strong>Next:</strong> <code>/ck-cook {plan-path}</code> to implement'
             }
           ]
         },
@@ -2945,7 +2986,7 @@
             {
               id: 'reproduce', label: 'Reproduce', x: 100, color: 'var(--accent2)',
               desc: 'Read error messages, reproduce consistently.',
-              agents: [], skills: ['debugging'], tools: ['runInTerminal', 'read/problems'],
+              agents: [], skills: ['debug'], tools: ['runInTerminal', 'read/problems'],
               detail: '<strong>Phase 1: Root Cause Investigation</strong><br>- Read error messages completely<br>- Reproduce the issue consistently<br>- Check recent changes (<code>git diff</code>, <code>git log</code>)<br>- Gather evidence before theorizing'
             },
             {
@@ -2957,7 +2998,7 @@
             {
               id: 'hypothesis', label: 'Hypothesis', x: 580, color: 'var(--accent)',
               desc: 'Form theory and test with minimal changes.',
-              agents: [], skills: ['debugging'], tools: ['runInTerminal'],
+              agents: [], skills: ['debug'], tools: ['runInTerminal'],
               detail: '<strong>Phase 3: Hypothesis & Testing</strong><br>- Form theory based on evidence<br>- Test with minimal changes<br>- Verify hypothesis is correct<br>- Document confirmation<br><span class="dd-gate">Key rule</span>: Complete each phase before proceeding'
             },
             {
@@ -3194,10 +3235,35 @@
       }
 
       // ========== COMMAND SWITCHING ==========
+      function renderModeBar(cmd) {
+        var modesEl = document.getElementById('ddModes');
+        modesEl.innerHTML = '';
+        if (!cmd.hasModes) { modesEl.style.display = 'none'; return; }
+        modesEl.style.display = 'flex';
+        var label = document.createElement('div');
+        label.className = 'dd-mode-label';
+        label.textContent = 'Modes:';
+        modesEl.appendChild(label);
+        var defaultMode = cmd.defaultMode || cmd.modeList[0];
+        cmd.modeList.forEach(function (m) {
+          var btn = document.createElement('button');
+          btn.className = 'dd-mode' + (m === defaultMode ? ' active' : '');
+          btn.dataset.mode = m;
+          btn.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+          btn.addEventListener('click', function () {
+            modesEl.querySelectorAll('.dd-mode').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            currentMode = btn.dataset.mode;
+            clearPhase();
+          });
+          modesEl.appendChild(btn);
+        });
+      }
+
       window.ddSwitchCmd = function (cmdKey) {
         currentCmd = cmdKey;
-        currentMode = 'interactive';
         var cmd = DD_COMMANDS[cmdKey];
+        currentMode = cmd.defaultMode || (cmd.modeList ? cmd.modeList[0] : 'interactive');
 
         // Update tabs
         document.querySelectorAll('.dd-tab').forEach(function (t) { t.classList.remove('active'); });
@@ -3206,31 +3272,17 @@
         // Update title
         document.getElementById('ddPipeTitle').textContent = cmd.title;
 
-        // Show/hide mode bar
-        var modesEl = document.getElementById('ddModes');
-        modesEl.style.display = cmd.hasModes ? 'flex' : 'none';
-        if (cmd.hasModes) {
-          document.querySelectorAll('.dd-mode').forEach(function (b) { b.classList.remove('active'); });
-          document.querySelector('.dd-mode[data-mode="interactive"]').classList.add('active');
-        }
+        // Render mode bar
+        renderModeBar(cmd);
 
         // Render pipeline
         renderPipeline(cmdKey);
         clearPhase();
       };
 
-      // Mode switching
-      document.querySelectorAll('.dd-mode').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.querySelectorAll('.dd-mode').forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          currentMode = btn.dataset.mode;
-          clearPhase();
-        });
-      });
-
       // Initial render
       renderPipeline('cook');
+      renderModeBar(DD_COMMANDS['cook']);
     })();
   </script>
 
@@ -3266,13 +3318,13 @@
       <div class="resource-item">
         <h4 style="color: var(--green);">&#128218; Skills (top 7)</h4>
         <ul>
-          <li><strong>debugging</strong> &mdash; Root cause analysis</li>
+          <li><strong>debug</strong> &mdash; Root cause analysis</li>
           <li><strong>code-review</strong> &mdash; Review protocols</li>
           <li><strong>planning</strong> &mdash; Research &rarr; design</li>
           <li><strong>problem-solving</strong> &mdash; Solve hard problems</li>
           <li><strong>sequential-thinking</strong> &mdash; Step-by-step logic</li>
-          <li><strong>backend-dev</strong> &mdash; Node/Python/Go</li>
-          <li><strong>frontend-dev</strong> &mdash; React/TypeScript</li>
+          <li><strong>backend-development</strong> &mdash; Node/Python/Go/C#</li>
+          <li><strong>frontend-design</strong> &mdash; UI from designs/screenshots</li>
         </ul>
       </div>
 
