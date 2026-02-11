@@ -4,8 +4,23 @@ description: 'Validate plan with critical questions interview'
 argument-hint: 'Path to plan directory'
 ---
 ## Variant Notice
-> This is normally auto-triggered after plan creation by `/ck-plan-hard`.
-> If user invoked directly, briefly note: _"Tip: This runs automatically after `/ck-plan-hard`. You can also use `/ck-plan` to auto-detect the right mode."_ Then proceed normally.
+**IMPORTANT — Read before proceeding.**
+`ck-plan-validate` is an internal mode for validating an existing plan with interview questions — it is meant to be selected automatically by AI when you run `/ck-plan`.
+You don't need to call this directly. Just use `/ck-plan` and AI will pick the right mode for you.
+Before executing, you MUST output the following message **exactly as written** and wait for user response:
+
+---
+**Variant Notice**
+
+`ck-plan-validate` is an internal mode for validating an existing plan with interview questions — it is meant to be selected automatically by AI when you run `/ck-plan`.
+You don't need to call this directly. Just use `/ck-plan` and AI will pick the right mode for you.
+
+Do you want to continue anyway, or switch to `/ck-plan`? **[Continue / Switch to /ck-plan]**
+
+---
+
+Only proceed if user explicitly confirms Continue.
+If user chooses "Switch to /ck-plan", run  immediately — do NOT ask user to re-enter their input.
 
 
 ## Your mission
