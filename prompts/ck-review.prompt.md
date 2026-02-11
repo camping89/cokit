@@ -53,5 +53,6 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 
 | Command | Description |
 |---------|-------------|
-| `/ck-brainstorm` | Explore ideas |
-| `/ck-plan` | Create plan |
+| `/ck-fix` | Fix issues found in review |
+| `/ck-git` | Commit changes |
+| `/ck-spec-checklist` | Validate against spec requirements |

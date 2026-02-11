@@ -91,5 +91,6 @@ Human review required at these checkpoints (skipped with `--auto`):
 | Command | Description |
 |---------|-------------|
 | `/ck-test` | Run tests |
-| `/ck-git` | Commit changes |
 | `/ck-review` | Code review |
+| `/ck-git` | Commit changes |
+| `/ck-spec-implement` | Spec-driven implementation instead |

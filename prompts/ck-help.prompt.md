@@ -138,3 +138,5 @@ Never replace or summarize the script output. Always show it fully, then enhance
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
+| `/ck-cook` | Implement feature |
+| `/ck-spec-specify` | Write detailed feature spec |

@@ -112,3 +112,4 @@ Stop and follow process if thinking:
 | `/ck-test` | Run tests to verify |
 | `/ck-fix` | Apply fix |
 | `/ck-git` | Commit fix |
+| `/ck-spec-analyze` | Analyze spec consistency |

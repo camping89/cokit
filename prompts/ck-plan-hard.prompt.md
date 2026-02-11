@@ -127,5 +127,7 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
 
 | Command | Description |
 |---------|-------------|
+| `/ck-cook` | Implement plan |
 | `/ck-test` | Run tests and analyze results |
 | `/ck-fix` | Analyze and fix issues |
+| `/ck-spec-specify` | Need formal spec? Switch to spec-driven flow |

@@ -100,5 +100,7 @@ This reminder is **NON-NEGOTIABLE** - always output it after presenting the plan
 
 | Command | Description |
 |---------|-------------|
+| `/ck-cook` | Implement plan |
 | `/ck-test` | Run tests and analyze results |
 | `/ck-fix` | Analyze and fix issues |
+| `/ck-spec-specify` | Too complex? Switch to spec-driven flow |

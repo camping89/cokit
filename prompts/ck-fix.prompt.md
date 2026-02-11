@@ -47,3 +47,4 @@ argument-hint: 'Describe the issues to fix'
 | Command | Description |
 |---------|-------------|
 | `/ck-test` | Run tests and analyze results |
+| `/ck-git` | Commit changes |

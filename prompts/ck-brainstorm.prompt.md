@@ -84,3 +84,4 @@ When brainstorming concludes with agreement, create a detailed markdown summary 
 |---------|-------------|
 | `/ck-plan` | Create implementation plan |
 | `/ck-ask` | Answer technical questions |
+| `/ck-spec-specify` | Write detailed feature spec |

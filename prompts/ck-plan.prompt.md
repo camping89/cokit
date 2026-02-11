@@ -72,3 +72,4 @@ If user chooses validation or mode is `auto`: Execute `/ck-plan-validate {plan-p
 | `/ck-cook` | Implement plan |
 | `/ck-test` | Run tests and analyze results |
 | `/ck-fix` | Analyze and fix issues |
+| `/ck-spec-specify` | Need detailed spec first? Start spec-driven flow |

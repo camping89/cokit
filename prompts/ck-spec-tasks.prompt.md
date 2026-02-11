@@ -176,5 +176,6 @@ Every task MUST strictly follow this format:
 |---------|-------------|-------------|
 | `/ck-spec-analyze` | Cross-artifact consistency check | Before implementation, validate spec/plan/tasks alignment |
 | `/ck-spec-implement` | Execute implementation | All tasks validated, ready to code |
+| `/ck-cook` | Quick flow — implement without full spec | Simple tasks that don't need spec-implement |
 
 **Workflow:** `/ck-spec-specify` → `/ck-spec-clarify` → `/ck-spec-plan` → `/ck-spec-tasks` → `/ck-spec-implement`

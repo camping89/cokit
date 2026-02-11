@@ -17,3 +17,5 @@ Use the `tester` agent to run tests locally and analyze the summary report.
 |---------|-------------|
 | `/ck-fix` | Analyze and fix issues |
 | `/ck-review` | Scan and analyze codebase |
+| `/ck-git` | Commit changes |
+| `/ck-spec-checklist` | Validate against spec requirements |

@@ -138,3 +138,4 @@ Follow strictly these following steps:
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
+| `/ck-spec-specify` | Write detailed feature spec |

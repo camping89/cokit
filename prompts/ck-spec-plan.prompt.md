@@ -90,5 +90,6 @@ You **MUST** consider the user input before proceeding (if not empty).
 | `/ck-spec-tasks` | Generate executable tasks | Plan complete with data-model.md, contracts/ ready |
 | `/ck-spec-checklist` | Generate validation checklist | Need domain-specific QA before implementation |
 | `/ck-spec-analyze` | Cross-artifact analysis | After tasks generated, check consistency |
+| `/ck-cook` | Quick flow — implement plan directly | Plan is simple, skip spec-tasks |
 
 **Workflow:** `/ck-spec-specify` → `/ck-spec-clarify` → `/ck-spec-plan` → `/ck-spec-tasks` → `/ck-spec-implement`

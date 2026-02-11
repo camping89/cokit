@@ -17,3 +17,5 @@ Analyze the overall impact and quality of the changes.
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
+| `/ck-cook` | Implement feature |
+| `/ck-spec-specify` | Write detailed feature spec |

@@ -196,5 +196,6 @@ Ask the user: "Would you like me to suggest concrete remediation edits for the t
 | `/ck-spec-implement` | Start implementation | Analysis passed, no critical issues |
 | `/ck-spec-clarify` | Clarify requirements | Analysis found ambiguities in spec |
 | `/ck-spec-tasks` | Regenerate tasks | Task coverage gaps identified |
+| `/ck-fix` | Fix issues found in analysis | Code-level bugs identified |
 
 **Workflow:** `/ck-spec-analyze` → fix issues → `/ck-spec-implement`

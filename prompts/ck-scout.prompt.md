@@ -82,3 +82,4 @@ Search the codebase with a wide range of patterns:
 | `/ck-plan` | Create implementation plan |
 | `/ck-cook` | Implement feature |
 | `/ck-ask` | Ask technical questions |
+| `/ck-spec-analyze` | Cross-artifact consistency check |

@@ -87,5 +87,6 @@ The template at `spec-kit/memory/constitution.md` should NOT be modified; always
 | `/ck-spec-specify` | Create feature spec | Constitution ready, start defining features |
 | `/ck-spec-plan` | Generate implementation plan | Update existing plan with new principles |
 | `/ck-spec-analyze` | Validate consistency | Check if existing artifacts align with constitution |
+| `/ck-brainstorm` | Brainstorm project ideas | Early stage, exploring project direction |
 
 **Usage:** Run `/ck-spec-constitution` at project start to establish non-negotiable principles

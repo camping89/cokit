@@ -74,3 +74,4 @@ After starting, parse the JSON output (e.g., `{"success":true,"url":"http://loca
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
+| `/ck-spec-specify` | Write detailed feature spec |

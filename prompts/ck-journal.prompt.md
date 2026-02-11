@@ -15,3 +15,5 @@ Keep journal entries in the `./docs/journals/` directory.
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
+| `/ck-fix` | Analyze and fix issues |
+| `/ck-spec-specify` | Write detailed feature spec |

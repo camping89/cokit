@@ -303,5 +303,6 @@ Sample items:
 | `/ck-spec-clarify` | Clarify requirements | Checklist revealed gaps in spec |
 | `/ck-spec-plan` | Generate implementation plan | Checklist passed, spec is solid |
 | `/ck-spec-implement` | Start implementation | Plan exists, checklist validated |
+| `/ck-test` | Run tests to validate | Checklist passed, verify with tests |
 
 **Usage:** Run `/ck-spec-checklist [domain]` for focused validation (e.g., security, ux, api)
