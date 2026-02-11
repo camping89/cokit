@@ -16,13 +16,13 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Identify inconsistencies, duplications, ambiguities, and underspecified items across the three core artifacts (`spec.md`, `plan.md`, `tasks.md`) before implementation. This command MUST run only after `/ck.spec.tasks` has successfully produced a complete `tasks.md`.
+Identify inconsistencies, duplications, ambiguities, and underspecified items across the three core artifacts (`spec.md`, `plan.md`, `tasks.md`) before implementation. This command MUST run only after `/ck-spec-tasks` has successfully produced a complete `tasks.md`.
 
 ## Operating Constraints
 
 **STRICTLY READ-ONLY**: Do **not** modify any files. Output a structured analysis report. Offer an optional remediation plan (user must explicitly approve before any follow-up editing commands would be invoked manually).
 
-**Constitution Authority**: The project constitution (`constitution.md` at project root) is **non-negotiable** within this analysis scope. Constitution conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit constitution update outside `/ck.spec.analyze`.
+**Constitution Authority**: The project constitution (`constitution.md` at project root) is **non-negotiable** within this analysis scope. Constitution conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit constitution update outside `/ck-spec-analyze`.
 
 ## Execution Steps
 
@@ -161,9 +161,9 @@ Output a Markdown report (no file writes) with the following structure:
 
 At end of report, output a concise Next Actions block:
 
-- If CRITICAL issues exist: Recommend resolving before `/ck.spec.implement`
+- If CRITICAL issues exist: Recommend resolving before `/ck-spec-implement`
 - If only LOW/MEDIUM: User may proceed, but provide improvement suggestions
-- Provide explicit command suggestions: e.g., "Run /ck.spec.specify with refinement", "Run /ck.spec.plan to adjust architecture", "Manually edit tasks.md to add coverage for 'performance-metrics'"
+- Provide explicit command suggestions: e.g., "Run /ck-spec-specify with refinement", "Run /ck-spec-plan to adjust architecture", "Manually edit tasks.md to add coverage for 'performance-metrics'"
 
 ### 8. Offer Remediation
 
@@ -196,8 +196,8 @@ Ask the user: "Would you like me to suggest concrete remediation edits for the t
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.spec.implement` | Start implementation | Analysis passed, no critical issues |
-| `/ck.spec.clarify` | Clarify requirements | Analysis found ambiguities in spec |
-| `/ck.spec.tasks` | Regenerate tasks | Task coverage gaps identified |
+| `/ck-spec-implement` | Start implementation | Analysis passed, no critical issues |
+| `/ck-spec-clarify` | Clarify requirements | Analysis found ambiguities in spec |
+| `/ck-spec-tasks` | Regenerate tasks | Task coverage gaps identified |
 
-**Workflow:** `/ck.spec.analyze` → fix issues → `/ck.spec.implement`
+**Workflow:** `/ck-spec-analyze` → fix issues → `/ck-spec-implement`

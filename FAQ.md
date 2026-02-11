@@ -28,7 +28,7 @@ Yes! Edit any `.prompt.md` file in `.github/prompts/`.
 
 Type the prompt name in Copilot Chat:
 ```
-/ck.fix my login function throws an error
+/ck-fix my login function throws an error
 ```
 
 ### Why isn't Copilot responding to my prompts?

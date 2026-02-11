@@ -75,7 +75,7 @@ Human review required at these checkpoints (skipped with `--auto`):
 ## Process
 
 1. **Detect Mode**: Analyze input to determine workflow mode
-2. **Scout**: Use `/ck.scout` to discover relevant files
+2. **Scout**: Use `/ck-scout` to discover relevant files
 3. **Research** (if applicable): Gather technical context
 4. **Plan**: Create or load implementation plan
 5. **Implement**: Execute plan phases (use `@fullstack-developer` in parallel mode)
@@ -90,6 +90,6 @@ Human review required at these checkpoints (skipped with `--auto`):
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests |
-| `/ck.git` | Commit changes |
-| `/ck.review` | Code review |
+| `/ck-test` | Run tests |
+| `/ck-git` | Commit changes |
+| `/ck-review` | Code review |

@@ -25,7 +25,7 @@ All modes share core steps with mode-specific variations.
 
 ### [Review Gate 1] Post-Research (skip if auto mode)
 - Present research summary to user
-- AskUserQuestion: "Proceed to planning?" / "Request more research" / "Abort"
+- Ask user: "Proceed to planning?" / "Request more research" / "Abort" — then wait for response
 - **Auto mode:** Skip this gate
 
 ## Step 2: Planning
@@ -49,7 +49,7 @@ All modes share core steps with mode-specific variations.
 
 ### [Review Gate 2] Post-Plan (skip if auto mode)
 - Present plan overview with phases
-- AskUserQuestion: "Approve plan and start implementation?" / "Request revisions" / "Abort"
+- Ask user: "Approve plan and start implementation?" / "Request revisions" / "Abort" — then wait for response
 - **Auto mode:** Skip this gate
 
 ## Step 3: Implementation
@@ -69,7 +69,7 @@ All modes share core steps with mode-specific variations.
 
 ### [Review Gate 3] Post-Implementation (skip if auto mode)
 - Present implementation summary (files changed, key changes)
-- AskUserQuestion: "Proceed to testing?" / "Request implementation changes" / "Abort"
+- Ask user: "Proceed to testing?" / "Request implementation changes" / "Abort" — then wait for response
 - **Auto mode:** Skip this gate
 
 ## Step 4: Testing (skip if no-test mode)
@@ -84,7 +84,7 @@ All modes share core steps with mode-specific variations.
 
 ### [Review Gate 4] Post-Testing (skip if auto mode)
 - Present test results summary
-- AskUserQuestion: "Proceed to code review?" / "Request test fixes" / "Abort"
+- Ask user: "Proceed to code review?" / "Request test fixes" / "Abort" — then wait for response
 - **Auto mode:** Skip this gate
 
 ## Step 5: Code Review

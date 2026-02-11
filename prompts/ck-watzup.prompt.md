@@ -15,5 +15,5 @@ Analyze the overall impact and quality of the changes.
 
 | Command | Description |
 |---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| `/ck-brainstorm` | Explore ideas |
+| `/ck-plan` | Create plan |

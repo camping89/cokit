@@ -79,6 +79,6 @@ Use Glob and Grep with wide range of patterns:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.plan` | Create implementation plan |
-| `/ck.cook` | Implement feature |
-| `/ck.ask` | Ask technical questions |
+| `/ck-plan` | Create implementation plan |
+| `/ck-cook` | Implement feature |
+| `/ck-ask` | Ask technical questions |

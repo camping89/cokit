@@ -25,7 +25,7 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 
 * Use 2 `researcher` subagents in parallel to search up to max 5 sources for the user's request, idea validation, best practices, challenges, and find the best possible solutions.
 * Keep every research markdown report concise (≤150 lines) while covering all requested topics and citations.
-* Use `/scout:ext` (preferred) or `/scout` (fallback) slash command to search the codebase for files needed to complete the task
+* Use `/ck-scout` slash command to search the codebase for files needed to complete the task
 
 ### Code Review
 
@@ -45,9 +45,7 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 * Ask the user if they want to commit and push to git repository, if yes, use `git-manager` subagent to commit and push to git repository.
 
 **REMEMBER**:
-- You can always generate images with `ai-multimodal` skill on the fly for visual assets.
-- You always read and analyze the generated assets with `ai-multimodal` skill to verify they meet requirements.
-- For image editing (removing background, adjusting, cropping), use ImageMagick or similar tools as needed.
+- Always verify generated assets meet design requirements before proceeding.
 
 ---
 
@@ -55,5 +53,5 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 
 | Command | Description |
 |---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| `/ck-brainstorm` | Explore ideas |
+| `/ck-plan` | Create plan |

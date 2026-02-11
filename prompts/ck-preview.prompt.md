@@ -5,22 +5,22 @@ argument-hint: 'Path to markdown file or directory'
 tools: ['execute/runInTerminal', 'execute/getTerminalOutput']
 ---
 
-Universal viewer using `markdown-novel-viewer` skill - pass ANY path and see it rendered nicely.
+Universal viewer - pass ANY path and see it rendered nicely.
 
 ## Usage
 
-- `/ck.preview <file.md>` - View markdown file in novel-reader UI
-- `/ck.preview <directory/>` - Browse directory contents
-- `/ck.preview --stop` - Stop running server
+- `/ck-preview <file.md>` - View markdown file in novel-reader UI
+- `/ck-preview <directory/>` - Browse directory contents
+- `/ck-preview --stop` - Stop running server
 
 ## Examples
 
 ```bash
-/ck.preview plans/my-plan/ck.plan.md     # View markdown file
-/ck.preview plans/                    # Browse plans directory
-/ck.preview docs/                     # Browse docs directory
-/ck.preview any/path/to/file.md      # View any markdown file
-/ck.preview any/path/                 # Browse any directory
+/ck-preview plans/my-plan/ck-plan.md     # View markdown file
+/ck-preview plans/                    # Browse plans directory
+/ck-preview docs/                     # Browse docs directory
+/ck-preview any/path/to/file.md      # View any markdown file
+/ck-preview any/path/                 # Browse any directory
 ```
 
 ## Execution
@@ -89,5 +89,5 @@ After starting, parse the JSON output (e.g., `{"success":true,"url":"http://loca
 
 | Command | Description |
 |---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| `/ck-brainstorm` | Explore ideas |
+| `/ck-plan` | Create plan |

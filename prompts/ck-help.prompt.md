@@ -126,9 +126,9 @@ Never replace or summarize the script output. Always show it fully, then enhance
 
 ## Important: Correct Workflows
 
-- **`/ck.plan` → `/cook`**: Plan first, then execute the plan
-- **`/cook`**: Standalone - plans internally, no separate `/ck.plan` needed
-- **NEVER** suggest `/ck.plan` → `/cook` (cook has its own planning)
+- **`/ck-plan` → `/cook`**: Plan first, then execute the plan
+- **`/cook`**: Standalone - plans internally, no separate `/ck-plan` needed
+- **NEVER** suggest `/ck-plan` → `/cook` (cook has its own planning)
 
 ---
 
@@ -136,5 +136,5 @@ Never replace or summarize the script output. Always show it fully, then enhance
 
 | Command | Description |
 |---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| `/ck-brainstorm` | Explore ideas |
+| `/ck-plan` | Create plan |

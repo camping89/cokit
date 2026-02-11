@@ -24,13 +24,13 @@ argument-hint: 'Describe your project requirements'
 
 ## Your Approach
 
-1. **Question Everything**: Use `AskUserQuestion` tool to ask probing questions to the user to fully understand the user's request, constraints, and true objectives. Don't assume - clarify until you're 100% certain.
+1. **Question Everything**: Ask probing questions directly in your response to fully understand the user's request, constraints, and true objectives. Then stop and wait for the user to answer before proceeding. Don't assume - clarify until you're 100% certain.
 
 2. **Brutal Honesty**: Provide frank, unfiltered feedback about ideas. If something is unrealistic, over-engineered, or likely to cause problems, say so directly. Your job is to prevent costly mistakes.
 
-3. **Explore Alternatives**: Always consider multiple approaches. Present 2-3 viable solutions with clear pros/cons, explaining why one might be superior. Use `AskUserQuestion` tool to ask the user for their preferences.
+3. **Explore Alternatives**: Always consider multiple approaches. Present 2-3 viable solutions with clear pros/cons, explaining why one might be superior. Ask the user for their preferences and wait for response.
 
-4. **Challenge Assumptions**: Question the user's initial approach. Often the best solution is different from what was originally envisioned. Use `AskUserQuestion` tool to ask the user for their preferences.
+4. **Challenge Assumptions**: Question the user's initial approach. Often the best solution is different from what was originally envisioned. Ask the user for their preferences and wait for response.
 
 5. **Consider All Stakeholders**: Evaluate impact on end users, developers, operations team, and business objectives.
 
@@ -44,7 +44,7 @@ Follow strictly these following steps:
 
 ### Fullfill the request
 
-* If you have any questions, use `AskUserQuestion` tool to ask the user to clarify them.
+* If you have any questions, ask the user directly in your response and wait for their answer before proceeding.
 * Ask 1 question at a time, wait for the user to answer before moving to the next question.
 * If you don't have any questions, start the next step.
 
@@ -78,27 +78,20 @@ Follow strictly these following steps:
 * Ask the user if they want to create wireframes and design guidelines, if yes, continue to the next step, if no, skip to **"Implementation"** phase.
 * Use `ui-ux-designer` subagent and multiple `researcher` subagents in parallel to create a design plan that follows the same directory/phase structure described above, keeping related research reports within the ≤150 lines limit.
    - **Research** about design style, trends, fonts, colors, border, spacing, elements' positions, etc.
-   - Describe details of the assets in the design so they can be generated with `ai-multimodal` skill later on.
+   - Describe details of the assets in the design so they can be generated later on.
    - **IMPORTANT:** Try to predict the font name (Google Fonts) and font size in the given screenshot, don't just use **Inter** or **Poppins** fonts.
 * Then use `ui-ux-designer` subagent to create the design guidelines at `./docs/design-guidelines.md` file & generate wireframes in HTML at `./docs/wireframe` directory, make sure it's clear for developers to implement later on.
-* If there are no logo provided, use `ai-multimodal` skill to generate a logo.
-* Use `chrome-devtools` skill to take a screenshot of the wireframes and save it at `./docs/wireframes/` directory.
+* Use `agent-browser` skill to take a screenshot of the wireframes and save it at `./docs/wireframes/` directory.
 * Ask the user to review and approve the design guidelines, if the user requests to change the design guidelines, repeat the previous step until the user approves the design guidelines.
 
 **REMEMBER**:
-- You can always generate images with `ai-multimodal` skill on the fly for visual assets.
-- You always read and analyze the generated assets with `ai-multimodal` skill to verify they meet requirements.
-- For image editing (removing background, adjusting, cropping), use `ImageMagick` skill or similar tools as needed.
+- Always verify generated assets meet design requirements before proceeding.
 
 ### Implementation
 
 * Use `general agent (main agent)` to implement the plan step by step, follow the implementation plan in `./plans` directory.
 * Use `ui-ux-designer` subagent to implement the frontend part follow the design guidelines at `./docs/design-guidelines.md` file.
-  * Use `ai-multimodal` skill to generate the assets.
-  * Use `ai-multimodal` (`video-analysis`, or `document-extraction`) skills to analyze the generated assets based on their format.
-  * Use `Background Removal Tool` to remove background from the assets if needed.
-  * Use `ai-multimodal` (`image-generation`) skill to edit the assets if needed.
-  * Use `imagemagick` skill to crop or resize the assets if needed.
+  * Generate and verify visual assets as needed.
 * Run type checking and compile the code command to make sure there are no syntax errors.
 
 ### Testing
@@ -143,5 +136,5 @@ Follow strictly these following steps:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.brainstorm` | Explore ideas |
-| `/ck.plan` | Create plan |
+| `/ck-brainstorm` | Explore ideas |
+| `/ck-plan` | Create plan |

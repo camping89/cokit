@@ -109,6 +109,6 @@ Stop and follow process if thinking:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests to verify |
-| `/ck.fix` | Apply fix |
-| `/ck.git` | Commit fix |
+| `/ck-test` | Run tests to verify |
+| `/ck-fix` | Apply fix |
+| `/ck-git` | Commit fix |

@@ -17,7 +17,7 @@ Check the `## Plan Context` section in the injected context:
 - If "Plan: none" → Proceed to create new plan using naming pattern from `## Naming` section.
 
 ## Workflow
-- Analyze the given task and use `AskUserQuestion` tool to ask for more details if needed.
+- Analyze the given task and ask clarifying questions directly if needed. Wait for user response before proceeding.
 - Activate `planning` skill.
 - Note: `detailed-instructions-prompt` is **an enhanced prompt** that describes the task in detail based on the provided task description.
 
@@ -34,5 +34,5 @@ Check the `## Plan Context` section in the injected context:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests and analyze results |
-| `/ck.fix` | Analyze and fix issues |
+| `/ck-test` | Run tests and analyze results |
+| `/ck-fix` | Analyze and fix issues |

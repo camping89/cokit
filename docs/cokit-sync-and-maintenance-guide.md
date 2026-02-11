@@ -6,7 +6,7 @@
 
 ## Architecture Overview
 
-CoKit merges two upstream sources into a unified `ck.*` command namespace:
+CoKit merges two upstream sources into a unified `ck-*` command namespace:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -37,13 +37,13 @@ CoKit merges two upstream sources into a unified `ck.*` command namespace:
 │                      OUTPUT                                      │
 ├─────────────────────────────────────────────────────────────────┤
 │  prompts/           agents/           skills/                   │
-│  ├── ck.brainstorm  ├── planner       ├── ck-planning/          │
-│  ├── ck.specify     ├── debugger      ├── ck-databases/         │
-│  ├── ck.plan        └── ...           └── ...                   │
+│  ├── ck-brainstorm  ├── planner       ├── ck-planning/          │
+│  ├── ck-specify     ├── debugger      ├── ck-databases/         │
+│  ├── ck-plan        └── ...           └── ...                   │
 │  └── ...                                                        │
 │                                                                 │
-│  All use unified ck.* namespace                                 │
-│  All have cross-navigation to other ck.* commands               │
+│  All use unified ck-* namespace                                 │
+│  All have cross-navigation to other ck-* commands               │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -57,7 +57,7 @@ CoKit merges two upstream sources into a unified `ck.*` command namespace:
 | `eng/transform-claudekit.mjs` | ClaudeKit → CoKit transform rules |
 | `eng/transform-speckit.mjs` | SpecKit → CoKit transform rules |
 | `eng/patch-navigation.mjs` | Injects unified navigation footer |
-| `eng/resource-origins.yml` | **CRITICAL** - Maps ck.* commands to upstream sources |
+| `eng/resource-origins.yml` | **CRITICAL** - Maps ck-* commands to upstream sources |
 
 ---
 
@@ -81,42 +81,42 @@ sources:
     last_sync: "2026-02-03"
 
 # COMMAND MAPPINGS
-# Format: ck.{name} → source info
+# Format: ck-{name} → source info
 mappings:
   # ═══════════════════════════════════════════════════════════════
   # FROM SPECKIT
   # ═══════════════════════════════════════════════════════════════
-  ck.specify:
+  ck-specify:
     origin: speckit
     original: speckit.specify
     upstream_file: templates/commands/specify.md
     description: Create feature specification from description
 
-  ck.clarify:
+  ck-clarify:
     origin: speckit
     original: speckit.clarify
     upstream_file: templates/commands/clarify.md
     description: Resolve specification ambiguities
 
-  ck.constitution:
+  ck-constitution:
     origin: speckit
     original: speckit.constitution
     upstream_file: templates/commands/constitution.md
     description: Create/update project constitution
 
-  ck.tasks:
+  ck-tasks:
     origin: speckit
     original: speckit.tasks
     upstream_file: templates/commands/tasks.md
     description: Generate task list from plan
 
-  ck.analyze:
+  ck-analyze:
     origin: speckit
     original: speckit.analyze
     upstream_file: templates/commands/analyze.md
     description: Analyze spec consistency
 
-  ck.checklist:
+  ck-checklist:
     origin: speckit
     original: speckit.checklist
     upstream_file: templates/commands/checklist.md
@@ -125,43 +125,43 @@ mappings:
   # ═══════════════════════════════════════════════════════════════
   # FROM CLAUDEKIT
   # ═══════════════════════════════════════════════════════════════
-  ck.brainstorm:
+  ck-brainstorm:
     origin: claudekit
     original: brainstorm
     upstream_file: skills/brainstorm/SKILL.md
     description: Explore solutions with trade-off analysis
 
-  ck.plan:
+  ck-plan:
     origin: claudekit
     original: plan
     upstream_file: commands/plan.md
     description: Intelligent plan creation
 
-  ck.plan.hard:
+  ck-plan-hard:
     origin: claudekit
     original: plan/hard
     upstream_file: commands/plan/hard.md
     description: Deep research + comprehensive plan
 
-  ck.plan.fast:
+  ck-plan-fast:
     origin: claudekit
     original: plan/fast
     upstream_file: commands/plan/fast.md
     description: Quick plan without research
 
-  ck.cook:
+  ck-cook:
     origin: claudekit
     original: cook
     upstream_file: skills/cook/SKILL.md
     description: Implement feature step by step
 
-  ck.fix:
+  ck-fix:
     origin: claudekit
     original: fix
     upstream_file: skills/fix/SKILL.md
     description: Analyze and fix issues
 
-  ck.test:
+  ck-test:
     origin: claudekit
     original: test
     upstream_file: commands/test.md
@@ -203,7 +203,7 @@ git commit -m "sync: update from claudekit + speckit $(date +%Y-%m-%d)"
 
 1. **Sync detects unknown command** → logged to `unknown_commands` in resource-origins.yml
 2. **Review the new command** → check upstream docs
-3. **Add to mappings** with appropriate `ck.*` name
+3. **Add to mappings** with appropriate `ck-*` name
 4. **Re-run transform**
 5. **Test the new command**
 
@@ -222,17 +222,17 @@ git commit -m "sync: update from claudekit + speckit $(date +%Y-%m-%d)"
 
 | Original | Transformed |
 |----------|-------------|
-| `/speckit.specify` | `/ck.specify` |
-| `/speckit.plan` | `/ck.plan` (conflicts with claudekit, see below) |
-| `/plan` (claudekit) | `/ck.plan` |
-| `/plan:hard` | `/ck.plan.hard` |
-| `/brainstorm` | `/ck.brainstorm` |
+| `/speckit.specify` | `/ck-specify` |
+| `/speckit.plan` | `/ck-plan` (conflicts with claudekit, see below) |
+| `/plan` (claudekit) | `/ck-plan` |
+| `/plan:hard` | `/ck-plan-hard` |
+| `/brainstorm` | `/ck-brainstorm` |
 
 ### Conflict Resolution
 
 When both sources have same command name (e.g., `plan`):
 - **Default**: ClaudeKit version wins (more mature)
-- **SpecKit version**: Available as `ck.plan.spec` if needed
+- **SpecKit version**: Available as `ck-plan.spec` if needed
 - **Document in resource-origins.yml**
 
 ### Placeholder Substitution
@@ -260,7 +260,7 @@ Transform to:
 ```yaml
 handoffs:
   - label: Build Technical Plan
-    agent: ck.plan
+    agent: ck-plan
 ```
 
 ---
@@ -276,13 +276,13 @@ Every prompt gets a navigation footer injected:
 
 | Current | Next Options |
 |---------|--------------|
-| After `ck.brainstorm` | `/ck.specify`, `/ck.plan.fast` |
-| After `ck.specify` | `/ck.clarify`, `/ck.brainstorm`, `/ck.plan` |
-| After `ck.clarify` | `/ck.specify` (update), `/ck.plan` |
-| After `ck.plan` | `/ck.cook`, `/ck.brainstorm` (rethink) |
-| After `ck.cook` | `/ck.test`, `/ck.fix` |
+| After `ck-brainstorm` | `/ck-specify`, `/ck-plan-fast` |
+| After `ck-specify` | `/ck-clarify`, `/ck-brainstorm`, `/ck-plan` |
+| After `ck-clarify` | `/ck-specify` (update), `/ck-plan` |
+| After `ck-plan` | `/ck-cook`, `/ck-brainstorm` (rethink) |
+| After `ck-cook` | `/ck-test`, `/ck-fix` |
 
-**All commands:** `ck.brainstorm`, `ck.specify`, `ck.clarify`, `ck.constitution`, `ck.plan`, `ck.plan.hard`, `ck.plan.fast`, `ck.tasks`, `ck.cook`, `ck.fix`, `ck.test`
+**All commands:** `ck-brainstorm`, `ck-specify`, `ck-clarify`, `ck-constitution`, `ck-plan`, `ck-plan-hard`, `ck-plan-fast`, `ck-tasks`, `ck-cook`, `ck-fix`, `ck-test`
 ```
 
 ---
@@ -298,32 +298,32 @@ Every prompt gets a navigation footer injected:
 │       │                                                         │
 │       ▼                                                         │
 │  ┌─────────────┐                                                │
-│  │ck.brainstorm│ ← Always start here (question everything)     │
+│  │ck-brainstorm│ ← Always start here (question everything)     │
 │  └──────┬──────┘                                                │
 │         │                                                       │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
-│  │ ck.specify  │ ← Formalize into spec                         │
+│  │ ck-specify  │ ← Formalize into spec                         │
 │  └──────┬──────┘                                                │
 │         │ Has ambiguities?                                      │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
-│  │ ck.clarify  │ ← Resolve (optional)                          │
+│  │ ck-clarify  │ ← Resolve (optional)                          │
 │  └──────┬──────┘                                                │
 │         │◄────────────────────────┐                             │
 │         ▼                         │                             │
 │  ┌─────────────┐                  │                             │
-│  │ ck.plan     │    Loop back if  │                             │
+│  │ ck-plan     │    Loop back if  │                             │
 │  └──────┬──────┘    approach needs│                             │
 │         │           rethinking    │                             │
 │         ▼                         │                             │
 │  ┌─────────────┐                  │                             │
-│  │ ck.cook     │──────────────────┘                             │
-│  └──────┬──────┘    (via ck.brainstorm)                         │
+│  │ ck-cook     │──────────────────┘                             │
+│  └──────┬──────┘    (via ck-brainstorm)                         │
 │         │                                                       │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
-│  │ ck.test     │                                                │
+│  │ ck-test     │                                                │
 │  └─────────────┘                                                │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -342,7 +342,7 @@ Every prompt gets a navigation footer injected:
 ### New command not appearing
 
 1. Check if it's in `unknown_commands` list
-2. Add to `mappings` section with `ck.*` name
+2. Add to `mappings` section with `ck-*` name
 3. Re-run sync
 
 ### Merge conflicts in generated files
@@ -369,11 +369,11 @@ ls ~/.claude/skills/
 
 For commands that don't come from upstream:
 
-1. Create directly in `prompts/` with `ck.` prefix
+1. Create directly in `prompts/` with `ck-` prefix
 2. Add to resource-origins.yml with `origin: cokit-native`:
 
 ```yaml
-ck.workflow.enterprise:
+ck-workflow.enterprise:
   origin: cokit-native
   description: Full enterprise flow (brainstorm → specify → plan → cook)
 ```

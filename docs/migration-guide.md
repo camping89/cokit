@@ -6,7 +6,7 @@ This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
 
 | Feature | Claude Code | CoKit/Copilot |
 |---------|-------------|---------------|
-| Commands | `/fix:types`, `/plan:auto` | `/ck.fix`, `/ck.plan`, `/ck.cook`, etc. |
+| Commands | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. |
 | Arguments | `$ARGUMENTS` variable | User provides in chat |
 | Subagents | Task tool delegates to agents | Referenced in prompts |
 | Hooks | Pre/post execution | Not supported |
@@ -27,8 +27,8 @@ This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
 
 **Copilot:**
 ```
-/ck.fix the type errors in auth.ts
-/ck.fix the failing tests in user.test.ts
+/ck-fix the type errors in auth.ts
+/ck-fix the failing tests in user.test.ts
 ```
 
 Provide context directly in your message.
@@ -107,10 +107,10 @@ After fixing:
 
 2. Use prompts directly:
    ```
-   /ck.fix (describe your issue)
-   /ck.plan (describe your feature)
-   /ck.cook (implement a feature)
-   /ck.bootstrap (setup new project)
+   /ck-fix (describe your issue)
+   /ck-plan (describe your feature)
+   /ck-cook (implement a feature)
+   /ck-bootstrap (setup new project)
    ```
 
 3. Skills and agents work automatically:
@@ -120,10 +120,10 @@ After fixing:
 ## Tips for Claude Users
 
 1. **Be descriptive** - Without $ARGUMENTS, include context in chat
-2. **Use specialized prompts** - `/ck.cook` for implementation, `/ck.bootstrap` for setup
+2. **Use specialized prompts** - `/ck-cook` for implementation, `/ck-bootstrap` for setup
 3. **Explicit instructions** - Put everything in the prompt
 4. **Manual verification** - No automatic hooks
-5. **Chain workflows** - Use `/ck.plan` → `/ck.code` → `/ck.test` → `/ck.review-codebase`
+5. **Chain workflows** - Use `/ck-plan` → `/ck-code` → `/ck-test` → `/ck-review-codebase`
 
 ## Getting Help
 

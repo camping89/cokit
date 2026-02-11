@@ -41,11 +41,11 @@ After plan creation, offer validation interview to confirm decisions before impl
 | Mode | Behavior |
 |------|----------|
 | `prompt` | Ask user: "Validate this plan with a brief interview?" → Yes (Recommended) / No |
-| `auto` | Automatically execute `/ck.plan:validate {plan-path}` |
+| `auto` | Automatically execute `/ck-plan-validate {plan-path}` |
 | `off` | Skip validation step entirely |
 
-**If mode is `prompt`:** Use `AskUserQuestion` tool with options above.
-**If user chooses validation or mode is `auto`:** Execute `/ck.plan:validate {plan-path}` SlashCommand.
+**If mode is `prompt`:** Present the options above directly in your response and wait for user to choose.
+**If user chooses validation or mode is `auto`:** Execute `/ck-plan-validate {plan-path}` SlashCommand.
 
 ## Context Reminder (MANDATORY)
 
@@ -92,7 +92,7 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
   created: {YYYY-MM-DD}
   ---
   ```
-- Save the overview access point at `{plan-dir}/ck.plan.md`. Keep it generic, under 80 lines, and list each implementation phase with status and progress plus links to phase files.
+- Save the overview access point at `{plan-dir}/ck-plan.md`. Keep it generic, under 80 lines, and list each implementation phase with status and progress plus links to phase files.
 - For each phase, create `{plan-dir}/phase-XX-phase-name-here.md` containing the following sections in order: Context links (reference parent plan, dependencies, docs), Overview (date, description, priority, implementation status, review status), Key Insights, Requirements, Architecture, Related code files, Implementation Steps, Todo list, Success Criteria, Risk Assessment, Security Considerations, Next steps.
 
 ## Important Notes
@@ -108,5 +108,5 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests and analyze results |
-| `/ck.fix` | Analyze and fix issues |
+| `/ck-test` | Run tests and analyze results |
+| `/ck-fix` | Analyze and fix issues |

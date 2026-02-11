@@ -41,6 +41,6 @@ Scope:
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests to verify nothing broke |
-| `/ck.review` | Code review the simplified code |
-| `/ck.git` | Commit changes |
+| `/ck-test` | Run tests to verify nothing broke |
+| `/ck-review` | Code review the simplified code |
+| `/ck-git` | Commit changes |

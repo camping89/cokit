@@ -17,8 +17,8 @@
 ├─────────────────────────────────────────────────────────────┤
 │  eng/sync.mjs                                                │
 │  ├── Load resource-origins.yml (mappings + ignore list)     │
-│  ├── transform-claudekit.mjs → ck.* namespace               │
-│  ├── transform-speckit.mjs → ck.spec.* namespace            │
+│  ├── transform-claudekit.mjs → ck-* namespace               │
+│  ├── transform-speckit.mjs → ck-spec-* namespace            │
 │  ├── patch-navigation.mjs → Add "Suggested Next Steps"      │
 │  └── Write to prompts/                                       │
 └─────────────────────────────────────────────────────────────┘
@@ -28,7 +28,7 @@
 │                       OUTPUT                                 │
 ├─────────────────────────────────────────────────────────────┤
 │  prompts/                                                    │
-│  ├── ck-*.prompt.md (28 total commands)                     │
+│  ├── ck-*.prompt.md (27 total commands)                     │
 │  └── agents/, skills/, instructions/, collections/         │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -60,7 +60,7 @@
 1. User runs: npx cokit-cli init -g
 2. CLI copies: prompts/, agents/, skills/, instructions/, collections/
 3. Target: ~/.copilot/
-4. User gets: All ck.* commands in Copilot
+4. User gets: All ck-* commands in Copilot
 ```
 
 ## Key Components
@@ -77,5 +77,5 @@
 
 | Prefix | Source | Example |
 |--------|--------|---------|
-| `ck.*` | ClaudeKit | ck.plan, ck.fix, ck.test |
-| `ck.spec.*` | SpecKit | ck.spec.specify, ck.spec.plan |
+| `ck-*` | ClaudeKit | ck-plan, ck-fix, ck-test |
+| `ck-spec-*` | SpecKit | ck-spec-specify, ck-spec-plan |

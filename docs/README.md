@@ -8,7 +8,7 @@
 | # | Doc | Purpose |
 |---|-----|---------|
 | 1 | [../README.md](../README.md) | Installation & sample workflows |
-| 2 | [cokit-commands-usage-guide.md](cokit-commands-usage-guide.md) | When to use `ck.*` vs `ck.spec.*` |
+| 2 | [cokit-commands-usage-guide.md](cokit-commands-usage-guide.md) | When to use `ck-*` vs `ck-spec-*` |
 
 ### Team Members (Understanding CoKit)
 | # | Doc | Purpose |
@@ -44,7 +44,7 @@
 ### What's in CoKit?
 | Resource | Count | Location |
 |----------|-------|----------|
-| Prompts | 28 | `prompts/ck-*.prompt.md` |
+| Prompts | 27 | `prompts/ck-*.prompt.md` |
 | Agents | 12 | `agents/*.agent.md` |
 | Skills | 27 | `skills/*/` |
 | Instructions | 5 | `instructions/ck-*.instructions.md` |
@@ -53,15 +53,15 @@
 ### Two Workflows
 | Workflow | Commands | Best For |
 |----------|----------|----------|
-| ClaudeKit | `ck.*` | Daily dev, quick fixes |
-| SpecKit | `ck.spec.*` | Complex features, formal specs |
+| ClaudeKit | `ck-*` | Daily dev, quick fixes |
+| SpecKit | `ck-spec-*` | Complex features, formal specs |
 
 ### Key Commands
 ```
-/ck.fix          → Fix bugs
-/ck.plan.fast    → Quick feature
-/ck.plan.hard    → Research + plan
-/ck.spec.specify → Formal specification
+/ck-fix          → Fix bugs
+/ck-plan-fast    → Quick feature
+/ck-plan-hard    → Research + plan
+/ck-spec-specify → Formal specification
 ```
 
 ---

@@ -96,6 +96,6 @@ Search and retrieve up-to-date documentation for libraries, frameworks, and pack
 
 | Command | Description |
 |---------|-------------|
-| `/ck.ask` | Ask technical questions |
-| `/ck.plan` | Create implementation plan |
-| `/ck.cook` | Implement feature |
+| `/ck-ask` | Ask technical questions |
+| `/ck-plan` | Create implementation plan |
+| `/ck-cook` | Implement feature |

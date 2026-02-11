@@ -1121,7 +1121,7 @@
           </tr>
           <tr>
             <td><strong>Menu</strong> &mdash; Customer picks a dish</td>
-            <td><strong>Prompts</strong> &mdash; You type a command: <code>/ck.fix</code>, <code>/ck.plan</code></td>
+            <td><strong>Prompts</strong> &mdash; You type a command: <code>/ck-fix</code>, <code>/ck-plan</code></td>
           </tr>
           <tr>
             <td><strong>Expert chefs</strong> &mdash; People who do the cooking</td>
@@ -1168,9 +1168,9 @@
         <h3>Commands you type</h3>
         <p>Like a <strong>button on your phone</strong>. You type a command, and Copilot knows exactly what to do. Each
           prompt is a complete workflow.</p>
-        <p><strong>How to use:</strong> Type <code style="color: var(--green);">/ck.fix</code> in Copilot Chat</p>
+        <p><strong>How to use:</strong> Type <code style="color: var(--green);">/ck-fix</code> in Copilot Chat</p>
         <div>
-          <span class="concept-tag">28 prompts</span>
+          <span class="concept-tag">27 prompts</span>
           <span class="concept-tag">You trigger it</span>
         </div>
       </div>
@@ -1247,7 +1247,7 @@
         <div class="flow-step">
           <div class="step-num blue">1</div>
           <div class="step-label">You type</div>
-          <div class="step-desc" style="color: var(--green); font-family: monospace;">/ck.fix</div>
+          <div class="step-desc" style="color: var(--green); font-family: monospace;">/ck-fix</div>
         </div>
         <div class="flow-arrow">&#8594;</div>
         <div class="flow-step">
@@ -1316,32 +1316,32 @@
             <th>Example</th>
           </tr>
           <tr>
-            <td><code>/ck.fix</code></td>
+            <td><code>/ck-fix</code></td>
             <td>Fix bugs, errors, issues</td>
             <td class="desc">"Login button not working"</td>
           </tr>
           <tr>
-            <td><code>/ck.debug</code></td>
+            <td><code>/ck-debug</code></td>
             <td>Deep root-cause analysis</td>
             <td class="desc">"App crashes on file upload"</td>
           </tr>
           <tr>
-            <td><code>/ck.cook</code></td>
+            <td><code>/ck-cook</code></td>
             <td>Implement a feature or plan</td>
             <td class="desc">"Build the auth module" or path to plan</td>
           </tr>
           <tr>
-            <td><code>/ck.test</code></td>
+            <td><code>/ck-test</code></td>
             <td>Run tests &amp; analyze results</td>
             <td class="desc">"Test the auth module"</td>
           </tr>
           <tr>
-            <td><code>/ck.review</code></td>
+            <td><code>/ck-review</code></td>
             <td>Review code quality</td>
             <td class="desc">"Review the payment module"</td>
           </tr>
           <tr>
-            <td><code>/ck.ask</code></td>
+            <td><code>/ck-ask</code></td>
             <td>Ask technical questions</td>
             <td class="desc">"Should we use JWT or sessions?"</td>
           </tr>
@@ -1357,27 +1357,27 @@
             <th>When to use</th>
           </tr>
           <tr>
-            <td><code>/ck.plan</code></td>
+            <td><code>/ck-plan</code></td>
             <td>Create plan (auto-detects complexity)</td>
             <td class="desc">Medium features</td>
           </tr>
           <tr>
-            <td><code>/ck.plan.fast</code></td>
+            <td><code>/ck-plan-fast</code></td>
             <td>Quick plan, no research</td>
             <td class="desc">Small features &lt; 2 hours</td>
           </tr>
           <tr>
-            <td><code>/ck.plan.hard</code></td>
+            <td><code>/ck-plan-hard</code></td>
             <td>Deep research + detailed plan</td>
             <td class="desc">Complex features needing research</td>
           </tr>
           <tr>
-            <td><code>/ck.brainstorm</code></td>
+            <td><code>/ck-brainstorm</code></td>
             <td>Brainstorm solutions</td>
             <td class="desc">Not sure what to build</td>
           </tr>
           <tr>
-            <td><code>/ck.bootstrap</code></td>
+            <td><code>/ck-bootstrap</code></td>
             <td>Start a new project</td>
             <td class="desc">Create project from scratch</td>
           </tr>
@@ -1397,43 +1397,38 @@
             <th>Step</th>
           </tr>
           <tr>
-            <td><code>/ck.spec.specify</code></td>
+            <td><code>/ck-spec-specify</code></td>
             <td>Write spec from an idea</td>
             <td class="desc">Step 1 &mdash; Create requirements</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.clarify</code></td>
+            <td><code>/ck-spec-clarify</code></td>
             <td>Ask questions to clear up unknowns</td>
             <td class="desc">Step 2 &mdash; Confirm details</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.plan</code></td>
+            <td><code>/ck-spec-plan</code></td>
             <td>Create plan from spec</td>
             <td class="desc">Step 3 &mdash; Make the plan</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.tasks</code></td>
+            <td><code>/ck-spec-tasks</code></td>
             <td>Break plan into small tasks</td>
             <td class="desc">Step 4 &mdash; Split into pieces</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.implement</code></td>
+            <td><code>/ck-spec-implement</code></td>
             <td>Execute the tasks</td>
             <td class="desc">Step 5 &mdash; Write the code</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.analyze</code></td>
+            <td><code>/ck-spec-analyze</code></td>
             <td>Check spec consistency</td>
             <td class="desc">Optional</td>
           </tr>
           <tr>
-            <td><code>/ck.spec.checklist</code></td>
+            <td><code>/ck-spec-checklist</code></td>
             <td>Validate all requirements</td>
-            <td class="desc">Optional</td>
-          </tr>
-          <tr>
-            <td><code>/ck.spec.taskstoissues</code></td>
-            <td>Export tasks to GitHub Issues</td>
             <td class="desc">Optional</td>
           </tr>
         </table>
@@ -1447,35 +1442,35 @@
             <th>What it does</th>
           </tr>
           <tr>
-            <td><code>/ck.git</code></td>
+            <td><code>/ck-git</code></td>
             <td>Commit, push, create PR &mdash; all Git operations</td>
           </tr>
           <tr>
-            <td><code>/ck.scout</code></td>
+            <td><code>/ck-scout</code></td>
             <td>Quick search across the codebase</td>
           </tr>
           <tr>
-            <td><code>/ck.watzup</code></td>
+            <td><code>/ck-watzup</code></td>
             <td>See recent changes on your branch</td>
           </tr>
           <tr>
-            <td><code>/ck.docs</code></td>
+            <td><code>/ck-docs</code></td>
             <td>Create or update documentation</td>
           </tr>
           <tr>
-            <td><code>/ck.preview</code></td>
+            <td><code>/ck-preview</code></td>
             <td>Preview markdown files and plans</td>
           </tr>
           <tr>
-            <td><code>/ck.journal</code></td>
+            <td><code>/ck-journal</code></td>
             <td>Write dev journal entries</td>
           </tr>
           <tr>
-            <td><code>/ck.simplify</code></td>
+            <td><code>/ck-simplify</code></td>
             <td>Simplify &amp; refine code for clarity</td>
           </tr>
           <tr>
-            <td><code>/ck.help</code></td>
+            <td><code>/ck-help</code></td>
             <td>CoKit usage guide</td>
           </tr>
         </table>
@@ -1494,29 +1489,29 @@
     </div>
 
     <div class="workflow-grid">
-      <!-- Quick workflow (ck.*) -->
+      <!-- Quick workflow (ck-*) -->
       <div class="workflow-card fast">
-        <div class="workflow-label fast">QUICK &mdash; ck.*</div>
+        <div class="workflow-label fast">QUICK &mdash; ck-*</div>
         <h3>Flexible, for daily work</h3>
         <div class="when">Use for: bug fixes, small features, prototypes, quick experiments</div>
         <div class="workflow-steps">
           <div class="workflow-step-item">
-            <code>/ck.plan.fast</code> <span class="arrow-right">&rarr;</span> Quick plan
+            <code>/ck-plan-fast</code> <span class="arrow-right">&rarr;</span> Quick plan
           </div>
           <div class="workflow-step-item">
-            <code>/ck.cook</code> <span class="arrow-right">&rarr;</span> Write the code
+            <code>/ck-cook</code> <span class="arrow-right">&rarr;</span> Write the code
           </div>
           <div class="workflow-step-item">
-            <code>/ck.test</code> <span class="arrow-right">&rarr;</span> Run tests
+            <code>/ck-test</code> <span class="arrow-right">&rarr;</span> Run tests
           </div>
           <div class="workflow-step-item">
-            <code>/ck.fix</code> <span class="arrow-right">&rarr;</span> Fix if tests fail
+            <code>/ck-fix</code> <span class="arrow-right">&rarr;</span> Fix if tests fail
           </div>
           <div class="workflow-step-item">
-            <code>/ck.review</code> <span class="arrow-right">&rarr;</span> Review code
+            <code>/ck-review</code> <span class="arrow-right">&rarr;</span> Review code
           </div>
           <div class="workflow-step-item">
-            <code>/ck.git</code> <span class="arrow-right">&rarr;</span> Commit &amp; push
+            <code>/ck-git</code> <span class="arrow-right">&rarr;</span> Commit &amp; push
           </div>
         </div>
         <div class="tip-box" style="margin-top: 16px;">
@@ -1524,29 +1519,29 @@
         </div>
       </div>
 
-      <!-- Spec-driven workflow (ck.spec.*) -->
+      <!-- Spec-driven workflow (ck-spec-*) -->
       <div class="workflow-card spec">
-        <div class="workflow-label spec">SPEC-DRIVEN &mdash; ck.spec.*</div>
+        <div class="workflow-label spec">SPEC-DRIVEN &mdash; ck-spec-*</div>
         <h3>Rigorous, for big features</h3>
         <div class="when">Use for: complex features, clear specs needed, team collaboration</div>
         <div class="workflow-steps">
           <div class="workflow-step-item">
-            <code>/ck.spec.specify</code> <span class="arrow-right">&rarr;</span> Write detailed requirements
+            <code>/ck-spec-specify</code> <span class="arrow-right">&rarr;</span> Write detailed requirements
           </div>
           <div class="workflow-step-item">
-            <code>/ck.spec.clarify</code> <span class="arrow-right">&rarr;</span> Clear up unknowns
+            <code>/ck-spec-clarify</code> <span class="arrow-right">&rarr;</span> Clear up unknowns
           </div>
           <div class="workflow-step-item">
-            <code>/ck.spec.plan</code> <span class="arrow-right">&rarr;</span> Create plan from spec
+            <code>/ck-spec-plan</code> <span class="arrow-right">&rarr;</span> Create plan from spec
           </div>
           <div class="workflow-step-item">
-            <code>/ck.spec.tasks</code> <span class="arrow-right">&rarr;</span> Split into small tasks
+            <code>/ck-spec-tasks</code> <span class="arrow-right">&rarr;</span> Split into small tasks
           </div>
           <div class="workflow-step-item">
-            <code>/ck.spec.implement</code> <span class="arrow-right">&rarr;</span> Build each task
+            <code>/ck-spec-implement</code> <span class="arrow-right">&rarr;</span> Build each task
           </div>
           <div class="workflow-step-item">
-            <code>/ck.test</code> <span class="arrow-right">&rarr;</span> Test everything
+            <code>/ck-test</code> <span class="arrow-right">&rarr;</span> Test everything
           </div>
         </div>
         <div class="tip-box" style="margin-top: 16px;">
@@ -1557,8 +1552,8 @@
 
     <div class="tip-box" style="margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
       <strong>&#128161; Rule of thumb:</strong> If you can explain it in one sentence &rarr; use <strong>Quick
-        workflow</strong> (<code>ck.*</code>). If you need a document &rarr; use <strong>Spec-Driven</strong>
-      (<code>ck.spec.*</code>).
+        workflow</strong> (<code>ck-*</code>). If you need a document &rarr; use <strong>Spec-Driven</strong>
+      (<code>ck-spec-*</code>).
     </div>
   </section>
 
@@ -1581,7 +1576,7 @@
         <div class="scenario-desc">Users can't login with email containing "+"</div>
         <div class="scenario-cmd">
           <span class="comment"># One command, done!</span><br>
-          /ck.fix "Users can't login with email containing +"
+          /ck-fix "Users can't login with email containing +"
         </div>
       </div>
 
@@ -1592,10 +1587,10 @@
         </div>
         <div class="scenario-desc">Add a dark mode toggle button</div>
         <div class="scenario-cmd">
-          /ck.plan.fast "Add dark mode toggle"<br>
+          /ck-plan-fast "Add dark mode toggle"<br>
           <span class="comment"># Implement the plan...</span><br>
-          /ck.test<br>
-          /ck.fix <span class="comment"># if tests fail</span>
+          /ck-test<br>
+          /ck-fix <span class="comment"># if tests fail</span>
         </div>
       </div>
 
@@ -1606,10 +1601,10 @@
         </div>
         <div class="scenario-desc">Integrate Stripe payments</div>
         <div class="scenario-cmd">
-          /ck.plan.hard "Integrate Stripe payments"<br>
+          /ck-plan-hard "Integrate Stripe payments"<br>
           <span class="comment"># Implement phase by phase...</span><br>
-          /ck.test<br>
-          /ck.review
+          /ck-test<br>
+          /ck-review
         </div>
       </div>
 
@@ -1620,12 +1615,12 @@
         </div>
         <div class="scenario-desc">Multi-tenant SaaS billing system</div>
         <div class="scenario-cmd">
-          /ck.spec.specify "Multi-tenant billing"<br>
-          /ck.spec.clarify<br>
-          /ck.spec.plan<br>
-          /ck.spec.tasks<br>
-          /ck.spec.implement<br>
-          /ck.test
+          /ck-spec-specify "Multi-tenant billing"<br>
+          /ck-spec-clarify<br>
+          /ck-spec-plan<br>
+          /ck-spec-tasks<br>
+          /ck-spec-implement<br>
+          /ck-test
         </div>
       </div>
 
@@ -1636,9 +1631,9 @@
         </div>
         <div class="scenario-desc">Just joined the project, need to understand the code</div>
         <div class="scenario-cmd">
-          /ck.scout "auth handlers"<br>
-          /ck.ask "How does auth work in this project?"<br>
-          /ck.watzup <span class="comment"># see recent changes</span>
+          /ck-scout "auth handlers"<br>
+          /ck-ask "How does auth work in this project?"<br>
+          /ck-watzup <span class="comment"># see recent changes</span>
         </div>
       </div>
 
@@ -1649,7 +1644,7 @@
         </div>
         <div class="scenario-desc">Start a React project from scratch</div>
         <div class="scenario-cmd">
-          /ck.bootstrap "New React app with auth"<br>
+          /ck-bootstrap "New React app with auth"<br>
           <span class="comment"># Copilot sets up everything!</span>
         </div>
       </div>
@@ -1672,8 +1667,8 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.fix</code> &mdash; analyzes and fixes it right away</div>
-        <div class="answer-desc">If the bug is complex and unclear: use <code>/ck.debug</code> instead</div>
+        <div>&#8594; Use <code>/ck-fix</code> &mdash; analyzes and fixes it right away</div>
+        <div class="answer-desc">If the bug is complex and unclear: use <code>/ck-debug</code> instead</div>
       </div>
 
       <div class="decision-node" onclick="toggleDecision(this)">
@@ -1681,7 +1676,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.plan.fast</code> &mdash; quick plan, no research needed</div>
+        <div>&#8594; Use <code>/ck-plan-fast</code> &mdash; quick plan, no research needed</div>
         <div class="answer-desc">Good for: adding a button, changing layout, small refactors</div>
       </div>
 
@@ -1690,7 +1685,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.plan.hard</code> &mdash; deep research, then plan</div>
+        <div>&#8594; Use <code>/ck-plan-hard</code> &mdash; deep research, then plan</div>
         <div class="answer-desc">Good for: integrating a new API, adding a big module</div>
       </div>
 
@@ -1699,7 +1694,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.spec.specify</code> &mdash; start the Spec-Driven workflow</div>
+        <div>&#8594; Use <code>/ck-spec-specify</code> &mdash; start the Spec-Driven workflow</div>
         <div class="answer-desc">Good for: new systems, multi-day features, needs documentation</div>
       </div>
 
@@ -1708,7 +1703,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.brainstorm</code> &mdash; discuss different approaches</div>
+        <div>&#8594; Use <code>/ck-brainstorm</code> &mdash; discuss different approaches</div>
         <div class="answer-desc">Copilot will analyze pros and cons of each option</div>
       </div>
 
@@ -1717,7 +1712,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.test</code> &mdash; runs tests and explains results</div>
+        <div>&#8594; Use <code>/ck-test</code> &mdash; runs tests and explains results</div>
         <div class="answer-desc">Works with both workflows (Quick and Spec-Driven)</div>
       </div>
 
@@ -1726,7 +1721,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.simplify</code> &mdash; simplifies and refines code for clarity</div>
+        <div>&#8594; Use <code>/ck-simplify</code> &mdash; simplifies and refines code for clarity</div>
         <div class="answer-desc">Reduces nesting, improves naming, removes redundancy &mdash; without changing behavior
         </div>
       </div>
@@ -1736,7 +1731,7 @@
         <div class="decision-toggle">&#9660;</div>
       </div>
       <div class="decision-answer">
-        <div>&#8594; Use <code>/ck.git</code> &mdash; commit, push, create PR</div>
+        <div>&#8594; Use <code>/ck-git</code> &mdash; commit, push, create PR</div>
         <div class="answer-desc">Auto-generates clean commit messages</div>
       </div>
     </div>
@@ -1960,54 +1955,53 @@
         { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1000 },
 
         // New project
-        { id: 'c_bootstrap', text: '/ck.bootstrap', type: 'command', x: 480, y: 80, desc: 'Start a new project from scratch' },
+        { id: 'c_bootstrap', text: '/ck-bootstrap', type: 'command', x: 480, y: 80, desc: 'Start a new project from scratch' },
 
         // Bug fix branch
         { id: 'q_knowcause', text: 'Know the\ncause?', type: 'decision', x: 480, y: 200 },
-        { id: 'c_fix', text: '/ck.fix', type: 'command', x: 700, y: 160, desc: 'Analyze and fix bugs, errors, issues' },
-        { id: 'c_debug', text: '/ck.debug', type: 'command', x: 700, y: 240, desc: 'Systematic root cause analysis' },
+        { id: 'c_fix', text: '/ck-fix', type: 'command', x: 700, y: 160, desc: 'Analyze and fix bugs, errors, issues' },
+        { id: 'c_debug', text: '/ck-debug', type: 'command', x: 700, y: 240, desc: 'Systematic root cause analysis' },
 
         // Feature branch
         { id: 'q_formal', text: 'Need formal\nrequirements?', type: 'decision', x: 480, y: 370 },
-        { id: 'c_brainstorm', text: '/ck.brainstorm', type: 'command', x: 700, y: 300, desc: 'Collaborative ideation with expert advice' },
-        { id: 'c_plan', text: '/ck.plan', type: 'command', x: 700, y: 370, desc: 'Create implementation plan (auto-detect complexity)' },
-        { id: 'c_cook', text: '/ck.cook', type: 'command', x: 880, y: 370, desc: 'Smart feature implementation from plan or task' },
-        { id: 'c_test_after', text: '/ck.test', type: 'command', x: 1040, y: 370, desc: 'Run tests after implementation' },
+        { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 300, desc: 'Collaborative ideation with expert advice' },
+        { id: 'c_plan', text: '/ck-plan', type: 'command', x: 700, y: 370, desc: 'Create implementation plan (auto-detect complexity)' },
+        { id: 'c_cook', text: '/ck-cook', type: 'command', x: 880, y: 370, desc: 'Smart feature implementation from plan or task' },
+        { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1040, y: 370, desc: 'Run tests after implementation' },
 
         // Spec-driven flow
-        { id: 'c_spec_specify', text: '/ck.spec.specify', type: 'command', x: 700, y: 450, desc: 'Create formal specification from idea' },
-        { id: 'c_spec_clarify', text: '/ck.spec.clarify', type: 'command', x: 880, y: 450, desc: 'Ask clarification questions about spec' },
-        { id: 'c_spec_plan', text: '/ck.spec.plan', type: 'command', x: 1040, y: 450, desc: 'Generate plan from specification' },
-        { id: 'c_spec_tasks', text: '/ck.spec.tasks', type: 'command', x: 1200, y: 450, desc: 'Break plan into executable tasks' },
-        { id: 'c_spec_implement', text: '/ck.spec.implement', type: 'command', x: 1380, y: 450, desc: 'Execute tasks from spec plan' },
+        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 450, desc: 'Create formal specification from idea' },
+        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 880, y: 450, desc: 'Ask clarification questions about spec' },
+        { id: 'c_spec_plan', text: '/ck-spec-plan', type: 'command', x: 1040, y: 450, desc: 'Generate plan from specification' },
+        { id: 'c_spec_tasks', text: '/ck-spec-tasks', type: 'command', x: 1200, y: 450, desc: 'Break plan into executable tasks' },
+        { id: 'c_spec_implement', text: '/ck-spec-implement', type: 'command', x: 1380, y: 450, desc: 'Execute tasks from spec plan' },
 
         // Spec extras
-        { id: 'c_spec_analyze', text: '/ck.spec.analyze', type: 'command', x: 1040, y: 525, desc: 'Check specification consistency' },
-        { id: 'c_spec_checklist', text: '/ck.spec.checklist', type: 'command', x: 1200, y: 525, desc: 'Validate all requirements covered' },
-        { id: 'c_spec_issues', text: '/ck.spec.taskstoissues', type: 'command', x: 1380, y: 525, desc: 'Export tasks to GitHub Issues' },
+        { id: 'c_spec_analyze', text: '/ck-spec-analyze', type: 'command', x: 1040, y: 525, desc: 'Check specification consistency' },
+        { id: 'c_spec_checklist', text: '/ck-spec-checklist', type: 'command', x: 1200, y: 525, desc: 'Validate all requirements covered' },
 
         // Explore
-        { id: 'c_scout', text: '/ck.scout', type: 'command', x: 480, y: 530, desc: 'Fast codebase search and exploration' },
-        { id: 'c_watzup', text: '/ck.watzup', type: 'command', x: 650, y: 530, desc: 'Review recent changes in current branch' },
+        { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 530, desc: 'Fast codebase search and exploration' },
+        { id: 'c_watzup', text: '/ck-watzup', type: 'command', x: 650, y: 530, desc: 'Review recent changes in current branch' },
 
         // Git
-        { id: 'c_git', text: '/ck.git', type: 'command', x: 480, y: 630, desc: 'Git operations: commit, push, PR, merge' },
+        { id: 'c_git', text: '/ck-git', type: 'command', x: 480, y: 630, desc: 'Git operations: commit, push, PR, merge' },
 
         // Test (standalone)
-        { id: 'c_test', text: '/ck.test', type: 'command', x: 480, y: 730, desc: 'Run and analyze tests' },
+        { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 730, desc: 'Run and analyze tests' },
 
         // Docs/Review/Simplify
         { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 840 },
-        { id: 'c_review', text: '/ck.review', type: 'command', x: 700, y: 780, desc: 'Code review and quality check' },
-        { id: 'c_simplify', text: '/ck.simplify', type: 'command', x: 700, y: 830, desc: 'Simplify & refine code for clarity' },
-        { id: 'c_docs', text: '/ck.docs', type: 'command', x: 700, y: 880, desc: 'Generate/update project documentation' },
-        { id: 'c_preview', text: '/ck.preview', type: 'command', x: 700, y: 930, desc: 'Preview markdown files and plans visually' },
+        { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 780, desc: 'Code review and quality check' },
+        { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 830, desc: 'Simplify & refine code for clarity' },
+        { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 880, desc: 'Generate/update project documentation' },
+        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 930, desc: 'Preview markdown files and plans visually' },
 
         // Help
         { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1000 },
-        { id: 'c_help', text: '/ck.help', type: 'command', x: 700, y: 960, desc: 'Interactive CoKit help and guidance' },
-        { id: 'c_ask', text: '/ck.ask', type: 'command', x: 700, y: 1000, desc: 'Technical & architectural questions' },
-        { id: 'c_journal', text: '/ck.journal', type: 'command', x: 700, y: 1040, desc: 'Write development journal entries' },
+        { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 960, desc: 'Interactive CoKit help and guidance' },
+        { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1000, desc: 'Technical & architectural questions' },
+        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1040, desc: 'Write development journal entries' },
       ];
 
       const CF_EDGES = [
@@ -2045,7 +2039,6 @@
         { from: 'c_spec_tasks', to: 'c_spec_implement', label: '' },
         { from: 'c_spec_plan', to: 'c_spec_analyze', label: '' },
         { from: 'c_spec_tasks', to: 'c_spec_checklist', label: '' },
-        { from: 'c_spec_tasks', to: 'c_spec_issues', label: '' },
 
         // Explore
         { from: 'q_explore', to: 'c_scout', label: 'Yes' },
@@ -2386,12 +2379,12 @@
 
     <!-- Command selector tabs -->
     <div class="dd-selector" id="ddSelector">
-      <button class="dd-tab active" data-cmd="cook" onclick="ddSwitchCmd('cook')">&#127859; /ck.cook</button>
-      <button class="dd-tab" data-cmd="fix" onclick="ddSwitchCmd('fix')">&#128295; /ck.fix</button>
-      <button class="dd-tab" data-cmd="plan" onclick="ddSwitchCmd('plan')">&#128203; /ck.plan</button>
-      <button class="dd-tab" data-cmd="test" onclick="ddSwitchCmd('test')">&#129514; /ck.test</button>
-      <button class="dd-tab" data-cmd="review" onclick="ddSwitchCmd('review')">&#128269; /ck.review</button>
-      <button class="dd-tab" data-cmd="debug" onclick="ddSwitchCmd('debug')">&#128375; /ck.debug</button>
+      <button class="dd-tab active" data-cmd="cook" onclick="ddSwitchCmd('cook')">&#127859; /ck-cook</button>
+      <button class="dd-tab" data-cmd="fix" onclick="ddSwitchCmd('fix')">&#128295; /ck-fix</button>
+      <button class="dd-tab" data-cmd="plan" onclick="ddSwitchCmd('plan')">&#128203; /ck-plan</button>
+      <button class="dd-tab" data-cmd="test" onclick="ddSwitchCmd('test')">&#129514; /ck-test</button>
+      <button class="dd-tab" data-cmd="review" onclick="ddSwitchCmd('review')">&#128269; /ck-review</button>
+      <button class="dd-tab" data-cmd="debug" onclick="ddSwitchCmd('debug')">&#128375; /ck-debug</button>
     </div>
 
     <!-- Pipeline container (shared) -->
@@ -2399,7 +2392,7 @@
 
       <!-- Pipeline header -->
       <div class="dd-header">
-        <div class="dd-title" id="ddPipeTitle">/ck.cook &mdash; Smart Feature Implementation</div>
+        <div class="dd-title" id="ddPipeTitle">/ck-cook &mdash; Smart Feature Implementation</div>
         <div class="dd-subtitle">How Copilot processes your request using CoKit resources. Click any phase to see
           details.</div>
       </div>
@@ -2714,7 +2707,7 @@
       // ========== ALL PIPELINE DATA ==========
       var DD_COMMANDS = {
         cook: {
-          title: '/ck.cook — Smart Feature Implementation',
+          title: '/ck-cook — Smart Feature Implementation',
           hasModes: true,
           phases: [
             {
@@ -2798,7 +2791,7 @@
         },
 
         fix: {
-          title: '/ck.fix — Intelligent Bug Router',
+          title: '/ck-fix — Intelligent Bug Router',
           hasModes: false,
           phases: [
             {
@@ -2841,14 +2834,14 @@
         },
 
         plan: {
-          title: '/ck.plan — Intelligent Plan Creation',
+          title: '/ck-plan — Intelligent Plan Creation',
           hasModes: false,
           phases: [
             {
               id: 'input', label: 'Analyze\nTask', x: 100, color: 'var(--accent2)',
               desc: 'Reads task description and checks for existing plans.',
               agents: [], skills: [], tools: [],
-              detail: 'Pre-creation checks:<br>- Active plan exists? → Ask to continue<br>- Branch-matched plan? → Ask to activate or create new<br>- No plan? → Create new using naming convention<br>- May ask clarifying questions via <span class="dd-tool">AskUserQuestion</span>'
+              detail: 'Pre-creation checks:<br>- Active plan exists? → Ask to continue<br>- Branch-matched plan? → Ask to activate or create new<br>- No plan? → Create new using naming convention<br>- May ask clarifying questions directly and wait for user response'
             },
             {
               id: 'research', label: 'Research', x: 320, color: 'var(--accent)',
@@ -2878,7 +2871,7 @@
         },
 
         test: {
-          title: '/ck.test — Test Runner & Analyzer',
+          title: '/ck-test — Test Runner & Analyzer',
           hasModes: false,
           phases: [
             {
@@ -2903,13 +2896,13 @@
               id: 'report', label: 'Report', x: 920, color: 'var(--green)',
               desc: 'Summary with pass/fail counts and recommendations.',
               agents: [], skills: [], tools: [],
-              detail: 'Test report includes:<br>- Pass/fail/skip counts<br>- Failing test details with root cause hints<br>- Coverage info (if available)<br>- Recommended next: <code>/ck.fix</code> or <code>/ck.review</code>'
+              detail: 'Test report includes:<br>- Pass/fail/skip counts<br>- Failing test details with root cause hints<br>- Coverage info (if available)<br>- Recommended next: <code>/ck-fix</code> or <code>/ck-review</code>'
             }
           ]
         },
 
         review: {
-          title: '/ck.review — Codebase Scan & Analysis',
+          title: '/ck-review — Codebase Scan & Analysis',
           hasModes: false,
           phases: [
             {
@@ -2946,7 +2939,7 @@
         },
 
         debug: {
-          title: '/ck.debug — Systematic Root Cause Analysis',
+          title: '/ck-debug — Systematic Root Cause Analysis',
           hasModes: false,
           phases: [
             {
@@ -3330,12 +3323,12 @@
         <span class="comment"># Or install for both project + personal</span><br>
         <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -a</span><br><br>
         <span class="output">&#128640; CoKit Setup</span><br>
-        <span class="success">&#10003; 28 prompts installed</span><br>
+        <span class="success">&#10003; 27 prompts installed</span><br>
         <span class="success">&#10003; 12 agents configured</span><br>
         <span class="success">&#10003; 23 skills activated</span><br>
         <span class="success">&#10003; 5 instructions applied</span><br>
         <span class="success">&#10003; 5 collections bundled</span><br><br>
-        <span class="output">&#127881; Done! Try /ck.fix in Copilot Chat.</span>
+        <span class="output">&#127881; Done! Try /ck-fix in Copilot Chat.</span>
       </div>
     </div>
 

@@ -18,7 +18,7 @@
 - Project-specific context
 
 **Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
-- 28 prompts with unified `ck.*` namespace (ClaudeKit + SpecKit) using `mode: agent`
+- 27 prompts with unified `ck-*` namespace (ClaudeKit + SpecKit) using `mode: agent`
 - 27 skills teaching Copilot best practices (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 specialized agents (including code-simplifier, fullstack-developer, ui-ux-designer)
 - 5 instructions (backend, frontend, testing, development, research)
@@ -79,16 +79,16 @@
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ ✓ .github/copilot-instructions.md                       │ │
 │   │ ✓ .github/AGENTS.md                                     │ │
-│   │ ✓ .github/prompts/ck-*.prompt.md (28 prompts)           │ │
+│   │ ✓ .github/prompts/ck-*.prompt.md (27 prompts)           │ │
 │   │ ✓ .github/instructions/ck-*.instructions.md (5 files)   │ │
 │   │ ✓ .github/collections/ck-*.collection.yml (5 bundles)   │ │
 │   │ ✓ .vscode/settings.json                                 │ │
 │   │                                                         │ │
-│   │ 🎉 Done! Try /ck.fix in Copilot Chat.                   │ │
+│   │ 🎉 Done! Try /ck-fix in Copilot Chat.                   │ │
 │   └─────────────────────────────────────────────────────────┘ │
 │                              │                                 │
 │                              ▼                                 │
-│   Step 5: User opens VS Code, types /ck.fix or /ck.plan       │
+│   Step 5: User opens VS Code, types /ck-fix or /ck-plan       │
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ Copilot Chat: "I'll help you debug systematically..."   │ │
 │   └─────────────────────────────────────────────────────────┘ │
@@ -167,15 +167,15 @@ your-project/
 
 ---
 
-## 5. Prompts Included (28 total)
+## 5. Prompts Included (27 total)
 
-**ClaudeKit (ck.*):** Development workflow commands
-- `/ck.fix`, `/ck.plan`, `/ck.cook`, `/ck.test`, `/ck.review`, `/ck.debug`, `/ck.ask`, etc.
+**ClaudeKit (ck-*):** Development workflow commands
+- `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-debug`, `/ck-ask`, etc.
 
-**SpecKit (ck.spec.*):** Spec-driven workflow commands
-- `/ck.spec.specify`, `/ck.spec.clarify`, `/ck.spec.plan`, `/ck.spec.tasks`, `/ck.spec.implement`, etc.
+**SpecKit (ck-spec-*):** Spec-driven workflow commands
+- `/ck-spec-specify`, `/ck-spec-clarify`, `/ck-spec-plan`, `/ck-spec-tasks`, `/ck-spec-implement`, etc.
 
-All 28 prompts unified in single namespace with cross-navigation support.
+All 27 prompts unified in single namespace with cross-navigation support.
 
 ---
 
@@ -300,7 +300,7 @@ npx cokit-cli init          # Always fetches latest
 | $ARGUMENTS variables | ❌ Skip | User provides context in chat |
 | Session state | ❌ Skip | Copilot is stateless |
 
-**Workaround:** Users manually chain prompts (`/ck.plan` → `/ck.code` → `/ck.test` → `/ck.review-codebase`)
+**Workaround:** Users manually chain prompts (`/ck-plan` → `/ck-code` → `/ck-test` → `/ck-review-codebase`)
 
 ---
 

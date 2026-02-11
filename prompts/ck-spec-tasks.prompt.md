@@ -3,11 +3,11 @@ agent: 'agent'
 description: 'Generate actionable, dependency-ordered tasks.md from design artifacts'
 handoffs:
   - label: Analyze For Consistency
-    agent: ck.spec.analyze
+    agent: ck-spec-analyze
     prompt: Run a project analysis for consistency
     send: true
   - label: Implement Project
-    agent: ck.spec.implement
+    agent: ck-spec-implement
     prompt: Start the implementation in phases
     send: true
 scripts:
@@ -186,8 +186,7 @@ Every task MUST strictly follow this format:
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.spec.analyze` | Cross-artifact consistency check | Before implementation, validate spec/plan/tasks alignment |
-| `/ck.spec.implement` | Execute implementation | All tasks validated, ready to code |
-| `/ck.spec.taskstoissues` | Create GitHub issues | Track tasks in GitHub project board |
+| `/ck-spec-analyze` | Cross-artifact consistency check | Before implementation, validate spec/plan/tasks alignment |
+| `/ck-spec-implement` | Execute implementation | All tasks validated, ready to code |
 
-**Workflow:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`
+**Workflow:** `/ck-spec-specify` → `/ck-spec-clarify` → `/ck-spec-plan` → `/ck-spec-tasks` → `/ck-spec-implement`

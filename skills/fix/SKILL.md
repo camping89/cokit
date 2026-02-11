@@ -18,7 +18,7 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 
 ### Step 1: Mode Selection
 
-**First action:** If there is no "auto" keyword in the request, use `AskUserQuestion` to determine workflow mode:
+**First action:** If there is no "auto" keyword in the request, ask the user directly to choose a workflow mode (then wait for response):
 
 | Option | Recommend When | Behavior |
 |--------|----------------|----------|
@@ -26,7 +26,7 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 | **Human-in-the-loop Review** | Critical/production code | Pause for approval at each step |
 | **Quick** | Type errors, lint, trivial bugs | Fast debug → fix → review cycle |
 
-See `references/mode-selection.md` for AskUserQuestion format.
+See `references/mode-selection.md` for question format.
 
 ### Step 2: Debug
 
@@ -84,7 +84,7 @@ Unified step markers:
 ## References
 
 Load as needed:
-- `references/mode-selection.md` - AskUserQuestion format for mode
+- `references/mode-selection.md` - Mode selection question format
 - `references/complexity-assessment.md` - Classification criteria
 - `references/workflow-quick.md` - Quick: debug → fix → review
 - `references/workflow-standard.md` - Standard: full pipeline

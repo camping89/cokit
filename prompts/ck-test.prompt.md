@@ -15,5 +15,5 @@ Use the `tester` subagent to run tests locally and analyze the summary report.
 
 | Command | Description |
 |---------|-------------|
-| `/ck.fix` | Analyze and fix issues |
-| `/ck.review` | Scan and analyze codebase |
+| `/ck-fix` | Analyze and fix issues |
+| `/ck-review` | Scan and analyze codebase |

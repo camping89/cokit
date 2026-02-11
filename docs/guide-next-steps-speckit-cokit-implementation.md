@@ -105,7 +105,7 @@ cokit workflow fix         → fix --auto
 ```bash
 # Update /instructions/ with combo workflows
 touch instructions/workflow-enterprise.md
-touch instructions/workflow-quick.md
+touch instructions/workflow-quick-md
 touch instructions/workflow-fix.md
 ```
 

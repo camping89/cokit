@@ -23,7 +23,7 @@ Complete reference for CoKit GitHub Copilot resource toolkit.
 CoKit transforms GitHub Copilot from basic autocomplete to a structured AI development assistant with:
 
 - **12 Specialized Agents** - Planner, code-reviewer, debugger, tester, researcher, code-simplifier, fullstack-developer, ui-ux-designer, etc.
-- **28 Prompt Templates** - Reusable workflows with `ck.*` and `ck.spec.*` prefixes
+- **27 Prompt Templates** - Reusable workflows with `ck-*` and `ck-spec-*` prefixes
 - **27 Skill Packages** - Deep expertise in debugging, code-review, planning, frontend-design, databases, devops, etc.
 - **5 Instructions** - Coding standards auto-applied by file pattern (backend, frontend, testing, development, research)
 - **5 Collections** - Bundled resource sets for specific workflows (core, development-rules, documentation, git-workflow, orchestration)
@@ -56,17 +56,17 @@ description: 'Clear task description'
 Step-by-step instructions...
 ```
 
-**CoKit Prompts (28 total):**
+**CoKit Prompts (27 total):**
 
-**ClaudeKit (ck.* namespace):** Development workflows - fix, plan, cook, test, review, debug, ask, etc.
+**ClaudeKit (ck-* namespace):** Development workflows - fix, plan, cook, test, review, debug, ask, etc.
 
-**SpecKit (ck.spec.* namespace):** Spec-driven workflows - specify, clarify, constitution, plan, tasks, implement, analyze, checklist, taskstoissues, etc.
+**SpecKit (ck-spec-* namespace):** Spec-driven workflows - specify, clarify, constitution, plan, tasks, implement, analyze, checklist, etc.
 
-All 28 prompts are unified in a single namespace for seamless workflow navigation.
+All 27 prompts are unified in a single namespace for seamless workflow navigation.
 
 **Usage Example:**
 ```
-User: /ck.fix The login endpoint returns 500 error
+User: /ck-fix The login endpoint returns 500 error
 
 Copilot uses: ck-fix.prompt.md → debugger.agent.md → ck-debugging skill
 Result: Systematic debugging plan and fix
@@ -215,7 +215,7 @@ You'll be prompted to choose:
 
 | Feature | Claude Code | CoKit/Copilot | Notes |
 |---------|-------------|---|---|
-| **Commands** | `/fix:types`, `/plan:auto` | `/ck.fix`, `/ck.plan`, `/ck.cook`, etc. | 14 prompts vs sub-commands |
+| **Commands** | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. | 14 prompts vs sub-commands |
 | **Skills** | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` | Identical structure |
 | **Instructions** | `.claude/instructions/` | `.github/instructions/ck-*.md` | Auto-applied by pattern |
 | **Agents** | Task delegation | Agent references in prompts | Different invocation model |
@@ -231,7 +231,7 @@ You'll be prompted to choose:
 ### Pattern 1: Fix & Debug Workflow
 
 ```
-User: /ck.fix The API timeout is too short
+User: /ck-fix The API timeout is too short
   ↓
 Prompt (ck-fix.prompt.md)
   ↓
@@ -245,7 +245,7 @@ Output: Root cause analysis + fix
 ### Pattern 2: Feature Implementation
 
 ```
-User: /ck.plan Build user authentication
+User: /ck-plan Build user authentication
   ↓
 Prompt (ck-plan.prompt.md) + Agent (planner.agent.md)
   ↓
@@ -253,7 +253,7 @@ Skills: ck-planning, ck-sequential-thinking
   ↓
 Output: Implementation plan
 
-User: /ck.code Implement step 1
+User: /ck-code Implement step 1
   ↓
 Prompt (ck-code.prompt.md) + Agent (code-reviewer monitors)
   ↓
@@ -261,7 +261,7 @@ Skills: ck-backend-development or ck-frontend-development
   ↓
 Output: Implemented code
 
-User: /ck.test Write tests
+User: /ck-test Write tests
   ↓
 Prompt (ck-test.prompt.md) + Agent (tester.agent.md)
   ↓
@@ -271,7 +271,7 @@ Output: Test coverage
 ### Pattern 3: Code Review
 
 ```
-User: /ck.review-codebase My auth changes
+User: /ck-review-codebase My auth changes
   ↓
 Prompt (ck-review-codebase.prompt.md)
   ↓
@@ -291,7 +291,7 @@ Output: Quality gates, security issues, improvements
 CoKit supports manual chaining (Copilot is stateless):
 
 ```
-/ck.plan feature  →  /ck.code step1  →  /ck.test  →  /ck.review-codebase
+/ck-plan feature  →  /ck-code step1  →  /ck-test  →  /ck-review-codebase
 ```
 
 ### 2. Context Management
@@ -300,10 +300,10 @@ Without `$ARGUMENTS`, provide context in chat:
 
 ```
 DON'T:
-/ck.fix $ARGUMENTS
+/ck-fix $ARGUMENTS
 
 DO:
-/ck.fix The login endpoint returns 401 for valid credentials in auth.ts
+/ck-fix The login endpoint returns 401 for valid credentials in auth.ts
 ```
 
 ### 3. Instructions Auto-Apply

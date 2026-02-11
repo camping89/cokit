@@ -1,32 +1,16 @@
 # Mode Selection
 
-Use `AskUserQuestion` at start of fixing workflow.
+Ask the user at start of fixing workflow to choose a mode. Present the question directly in your response, then stop and wait for their answer.
 
-## AskUserQuestion Format
+## Question Format
 
-```json
-{
-  "questions": [{
-    "question": "How should I handle the fix workflow?",
-    "header": "Fix Mode",
-    "options": [
-      {
-        "label": "Autonomous (Recommended)",
-        "description": "Auto-approve if quality high, only ask when stuck"
-      },
-      {
-        "label": "Human-in-the-loop",
-        "description": "Pause for approval at each major step"
-      },
-      {
-        "label": "Quick fix",
-        "description": "Fast debug-fix-review cycle for simple issues"
-      }
-    ],
-    "multiSelect": false
-  }]
-}
-```
+Ask the user:
+
+> **Fix Mode:** How should I handle the fix workflow?
+>
+> 1. **Autonomous (Recommended)** — Auto-approve if quality high, only ask when stuck
+> 2. **Human-in-the-loop** — Pause for approval at each major step
+> 3. **Quick fix** — Fast debug-fix-review cycle for simple issues
 
 ## Mode Recommendations
 

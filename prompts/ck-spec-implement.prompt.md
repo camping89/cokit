@@ -98,8 +98,8 @@ You **MUST** consider the user input before proceeding (if not empty).
    **Tool-Specific Patterns**:
    - **Docker**: `node_modules/`, `.git/`, `Dockerfile*`, `.dockerignore`, `*.log*`, `.env*`, `coverage/`
    - **ESLint**: `node_modules/`, `dist/`, `build/`, `coverage/`, `*.min.js`
-   - **Prettier**: `node_modules/`, `dist/`, `build/`, `coverage/`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`
-   - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
+   - **Prettier**: `node_modules/`, `dist/`, `build/`, `coverage/`, `package-lock.json`, `yarn.lock`, `pnpm-lock-yaml`
+   - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock-hcl`
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
 
 5. Parse task structure and extract:
@@ -144,7 +144,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **Notes**:
 - This command supports both single-file (tasks.md only) and hybrid structure (tasks.md + tasks/phase-*.md)
-- If tasks are incomplete or missing, suggest running `/ck.spec.tasks` first to regenerate the task list
+- If tasks are incomplete or missing, suggest running `/ck-spec-tasks` first to regenerate the task list
 - Hybrid structure enables parallel work: multiple agents can work on different phase files simultaneously
 
 ---
@@ -153,8 +153,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.test` | Run tests and analyze | Validate implementation against requirements |
-| `/ck.review` | Code review | Implementation complete, ready for QA |
-| `/ck.fix` | Fix issues | Tests failed or bugs discovered |
+| `/ck-test` | Run tests and analyze | Validate implementation against requirements |
+| `/ck-review` | Code review | Implementation complete, ready for QA |
+| `/ck-fix` | Fix issues | Tests failed or bugs discovered |
 
-**Workflow:** `/ck.spec.implement` → `/ck.test` → `/ck.review` → `/ck.git`
+**Workflow:** `/ck-spec-implement` → `/ck-test` → `/ck-review` → `/ck-git`

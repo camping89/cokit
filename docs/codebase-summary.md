@@ -2,7 +2,7 @@
 
 ## Overview
 
-CoKit is a CLI tool that enhances GitHub Copilot with 28 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck.* namespace.
+CoKit is a CLI tool that enhances GitHub Copilot with 27 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck-* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
 **Version:** 1.2.0
@@ -23,7 +23,7 @@ Merge Results
     ↓
 Patch Navigation (Inject workflow footers)
     ↓
-Output: Unified ck.* Prompts
+Output: Unified ck-* Prompts
 ```
 
 ### Sync Pipeline (eng/sync.mjs)
@@ -91,7 +91,7 @@ Registers 5 commands using Commander.js:
 **Flow:**
 1. Load resource-origins.yml configuration
 2. Transform ClaudeKit and SpecKit sources in parallel
-3. Merge results (total: 28 prompts)
+3. Merge results (total: 27 prompts)
 4. Apply navigation patches to all prompts
 5. Write output files or show dry-run preview
 6. Update sync timestamps
@@ -113,10 +113,10 @@ navigation: {}        # Workflow navigation rules
 #### ClaudeKit Transformer (transform-claudekit.mjs)
 **Input:** ~/.claude/commands/ (user's local ClaudeKit)
 **Transformations:**
-- Rename: `/*` → `ck.*` namespace
+- Rename: `/*` → `ck-*` namespace
 - Replace: `$ARGUMENTS` → `${input}`
 - Remove `model` field from frontmatter
-- Update handoff references to ck.* commands
+- Update handoff references to ck-* commands
 - Transform command references in content
 
 **Functions:**
@@ -129,14 +129,14 @@ navigation: {}        # Workflow navigation rules
 #### SpecKit Transformer (transform-speckit.mjs)
 **Input:** upstream/speckit/templates/commands/
 **Transformations:**
-- Rename: `/speckit.*` → `/ck.*`
+- Rename: `/speckit-*` → `/ck-*`
 - Replace: `$ARGUMENTS` → `${input}`
 - Remove `model` field from frontmatter
-- Update handoff references to ck.* commands
+- Update handoff references to ck-* commands
 
 **Functions:**
 - `transformFile()` - Apply transformations
-- `transformCommandReference()` - Update handoffs (speckit.* → ck.*)
+- `transformCommandReference()` - Update handoffs (speckit-* → ck-*)
 - `transformContentReferences()` - Replace content references
 
 ### 4. Navigation Patcher (patch-navigation.mjs)
@@ -173,8 +173,8 @@ Maintains mappings and sync metadata.
 ### ClaudeKit Commands (12)
 12 prompts from ~/.claude/commands/ (plan, fix, test, ask, bootstrap, review, watzup, journal, preview, help, plan.hard, plan.fast)
 
-### SpecKit Commands (9)
-9 prompts from upstream/speckit (specify, clarify, constitution, plan, tasks, implement, analyze, checklist, taskstoissues)
+### SpecKit Commands (8)
+8 prompts from upstream/speckit (specify, clarify, constitution, plan, tasks, implement, analyze, checklist)
 
 ## Dependencies
 
@@ -203,8 +203,8 @@ npm run build            # Update README
 ### Sync Operation
 1. **Config Load** - Read resource-origins.yml
 2. **Parallel Transform:**
-   - ClaudeKit: Glob ~/.claude/commands → Transform → Output ck.* prompts
-   - SpecKit: Glob upstream/speckit/templates/commands → Transform → Output ck.* prompts
+   - ClaudeKit: Glob ~/.claude/commands → Transform → Output ck-* prompts
+   - SpecKit: Glob upstream/speckit/templates/commands → Transform → Output ck-* prompts
 3. **Merge** - Combine results (21 total)
 4. **Patch Navigation** - Inject workflow footers
 5. **Write Output** - Create prompt files (prompts/ directory)
@@ -217,14 +217,14 @@ Input (ClaudeKit)
 ├── Content: "Run $ARGUMENTS using /fix command"
 ↓
 Transform
-├── Rename: ck.plan
+├── Rename: ck-plan
 ├── Replace: $ARGUMENTS → ${input}
-├── Update: /fix → /ck.fix
+├── Update: /fix → /ck-fix
 ├── Remove: model field
 ↓
-Output (ck.*)
-├── Frontmatter: {name: "ck.plan", ...}
-├── Content: "Run ${input} using /ck.fix command"
+Output (ck-*)
+├── Frontmatter: {name: "ck-plan", ...}
+├── Content: "Run ${input} using /ck-fix command"
 ├── Navigation Footer: "Suggested Next Steps"
 ```
 
@@ -245,11 +245,11 @@ Output (ck.*)
 5. **Parallel Processing:** Concurrent ClaudeKit + SpecKit transforms
 6. **Graceful Degradation:** Continues if sources unavailable
 7. **Frontmatter Management:** Preserves metadata, removes model field
-8. **Content Reference Updates:** Transforms all command references to ck.* namespace
+8. **Content Reference Updates:** Transforms all command references to ck-* namespace
 
 ## Version History
 
-- **v1.2.0** (Current) - 28 prompts, 12 agents, 27 skills
+- **v1.2.0** (Current) - 27 prompts, 12 agents, 27 skills
 - **v1.1.0** - 21 prompts (12 ClaudeKit + 9 SpecKit), SpecKit sync pipeline
 - **v1.0.9** - Comprehensive documentation update
 - **v1.0.8** - Initial release

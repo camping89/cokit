@@ -24,92 +24,92 @@ That's it! All CoKit resources are now available in your Copilot.
 After installation, use commands in GitHub Copilot chat:
 
 ```
-/ck.plan "Add user authentication"
-/ck.fix "Login button not working"
-/ck.test
+/ck-plan "Add user authentication"
+/ck-fix "Login button not working"
+/ck-test
 ```
 
 ## Sample Workflows
 
 ### Quick Fix (5 min)
 ```
-/ck.fix "Users can't upload files larger than 5MB"
+/ck-fix "Users can't upload files larger than 5MB"
 ```
 Done. Single command handles analysis and fix.
 
 ### Small Feature (30 min)
 ```
-/ck.plan.fast "Add dark mode toggle"
+/ck-plan-fast "Add dark mode toggle"
 → implement
-/ck.test
-/ck.fix  (if tests fail)
+/ck-test
+/ck-fix  (if tests fail)
 ```
 
 ### Medium Feature (2-4 hours)
 ```
-/ck.plan.hard "Add payment integration with Stripe"
+/ck-plan-hard "Add payment integration with Stripe"
 → implement phase by phase
-/ck.test
-/ck.review
+/ck-test
+/ck-review
 ```
 
 ### Complex Feature (multi-day)
 ```
-/ck.spec.specify "Multi-tenant SaaS billing system"
-/ck.spec.clarify  (answer questions)
-/ck.spec.plan
-/ck.spec.tasks
-/ck.spec.implement
-/ck.test
+/ck-spec-specify "Multi-tenant SaaS billing system"
+/ck-spec-clarify  (answer questions)
+/ck-spec-plan
+/ck-spec-tasks
+/ck-spec-implement
+/ck-test
 ```
 
 ## Command Reference
 
-### Daily Development (`ck.*`)
+### Daily Development (`ck-*`)
 
 | Command | When to Use |
 |---------|-------------|
-| `/ck.fix` | Fix bugs, errors, issues |
-| `/ck.test` | Run and analyze tests |
-| `/ck.plan.fast` | Quick feature (< 2 hours) |
-| `/ck.plan.hard` | Feature needing research |
-| `/ck.ask` | Technical questions |
-| `/ck.review` | Code review |
-| `/ck.bootstrap` | Start new project |
+| `/ck-fix` | Fix bugs, errors, issues |
+| `/ck-test` | Run and analyze tests |
+| `/ck-plan-fast` | Quick feature (< 2 hours) |
+| `/ck-plan-hard` | Feature needing research |
+| `/ck-ask` | Technical questions |
+| `/ck-review` | Code review |
+| `/ck-bootstrap` | Start new project |
 
-### Spec-Driven (`ck.spec.*`)
+### Spec-Driven (`ck-spec-*`)
 
 For complex features needing formal requirements:
 
 | Command | When to Use |
 |---------|-------------|
-| `/ck.spec.specify` | Create formal specification |
-| `/ck.spec.clarify` | Resolve ambiguities |
-| `/ck.spec.plan` | Generate implementation plan |
-| `/ck.spec.tasks` | Break into tasks |
-| `/ck.spec.implement` | Execute tasks |
+| `/ck-spec-specify` | Create formal specification |
+| `/ck-spec-clarify` | Resolve ambiguities |
+| `/ck-spec-plan` | Generate implementation plan |
+| `/ck-spec-tasks` | Break into tasks |
+| `/ck-spec-implement` | Execute tasks |
 
 ## Which Workflow?
 
 ```
 Is this a bug fix?
-  → /ck.fix
+  → /ck-fix
 
 Is this < 2 hours work?
-  → /ck.plan.fast
+  → /ck-plan-fast
 
 Do you need formal requirements?
-  → /ck.spec.specify (spec-driven flow)
+  → /ck-spec-specify (spec-driven flow)
 
 Otherwise?
-  → /ck.plan.hard (research + plan)
+  → /ck-plan-hard (research + plan)
 ```
 
 ## What's Included
 
 | Resource | Count | Purpose |
 |----------|-------|---------|
-| Prompts | 28 | Commands for Copilot |
+| Prompts | 27 | Commands for Copilot |
 | Agents | 12 | Specialized AI assistants |
 | Skills | 27 | Domain expertise |
 | Instructions | 5 | Context-aware rules |

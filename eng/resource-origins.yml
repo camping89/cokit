@@ -52,11 +52,6 @@ mappings:
     original: speckit.checklist
     upstream_file: checklist.md
     description: Generate requirements validation checklist
-  ck.spec.taskstoissues:
-    origin: speckit
-    original: speckit.taskstoissues
-    upstream_file: taskstoissues.md
-    description: Convert tasks to GitHub issues
   ck.plan:
     origin: claudekit
     original: plan

@@ -12,7 +12,7 @@
 CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
 ### Key Features (Current)
-- 28 prompt files with `ck-` and `ck.spec-` prefixes
+- 27 prompt files with `ck-` and `ck-spec-` prefixes
 - 27 specialized skills (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 expert agents (planner, code-reviewer, debugger, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.)
 - 5 instructions (backend, frontend, testing, development, research)
@@ -60,10 +60,10 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
 **Effort:** 4h
 **Deliverables:**
-- 28 prompt files from ClaudeKit + SpecKit
-  - ClaudeKit: `ck.fix`, `ck.plan`, `ck.cook`, `ck.test`, `ck.review`, etc.
-  - SpecKit: `ck.spec.specify`, `ck.spec.clarify`, `ck.spec.plan`, `ck.spec.tasks`, etc.
-- Unified namespace: `ck.*` for all commands
+- 27 prompt files from ClaudeKit + SpecKit
+  - ClaudeKit: `ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.
+  - SpecKit: `ck-spec-specify`, `ck-spec-clarify`, `ck-spec-plan`, `ck-spec-tasks`, etc.
+- Unified namespace: `ck-*` for all commands
 - Sync pipeline combines upstream sources
 - All prompts follow Copilot format with `mode: agent`
 - 0 critical issues
@@ -162,10 +162,10 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 ### 2026-02-10 - v1.2.0 Release (SpecKit Integration)
 
 **Resources Expanded:**
-- Prompts: 21 → 28 (added SpecKit spec-driven workflow commands)
+- Prompts: 21 → 27 (added SpecKit spec-driven workflow commands)
 - Agents: 9 → 12 (added code-simplifier, fullstack-developer, ui-ux-designer)
 - Skills: 7 → 27 (major expansion including frontend-design, databases, devops, etc.)
-- Sync Pipeline: Unified ClaudeKit + SpecKit sources into single `ck.*` namespace
+- Sync Pipeline: Unified ClaudeKit + SpecKit sources into single `ck-*` namespace
 
 **Features Added:**
 - Sync pipeline (eng/sync.mjs) for automated upstream merging

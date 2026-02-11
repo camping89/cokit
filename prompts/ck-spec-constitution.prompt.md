@@ -3,7 +3,7 @@ agent: 'agent'
 description: 'Create or update the project constitution from principle inputs'
 handoffs:
   - label: Build Specification
-    agent: ck.spec.specify
+    agent: ck-spec-specify
     prompt: >-
       Implement the feature specification based on the updated constitution. I
       want to build...
@@ -90,8 +90,8 @@ The template at `spec-kit/memory/constitution.md` should NOT be modified; always
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.spec.specify` | Create feature spec | Constitution ready, start defining features |
-| `/ck.spec.plan` | Generate implementation plan | Update existing plan with new principles |
-| `/ck.spec.analyze` | Validate consistency | Check if existing artifacts align with constitution |
+| `/ck-spec-specify` | Create feature spec | Constitution ready, start defining features |
+| `/ck-spec-plan` | Generate implementation plan | Update existing plan with new principles |
+| `/ck-spec-analyze` | Validate consistency | Check if existing artifacts align with constitution |
 
-**Usage:** Run `/ck.spec.constitution` at project start to establish non-negotiable principles
+**Usage:** Run `/ck-spec-constitution` at project start to establish non-negotiable principles

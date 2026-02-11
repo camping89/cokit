@@ -61,13 +61,13 @@ npm publish                               Downloads cokit-cli
 
 ## Slide 6: What Users Get
 
-### 28 Prompts (ClaudeKit + SpecKit)
+### 27 Prompts (ClaudeKit + SpecKit)
 
-**Development workflows (ck.*):**
-- `/ck.fix`, `/ck.plan`, `/ck.cook`, `/ck.test`, `/ck.review`, `/ck.bootstrap`, `/ck.brainstorm`, etc.
+**Development workflows (ck-*):**
+- `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-bootstrap`, `/ck-brainstorm`, etc.
 
-**Spec-driven workflows (ck.spec.*):**
-- `/ck.spec.specify`, `/ck.spec.clarify`, `/ck.spec.plan`, `/ck.spec.tasks`, `/ck.spec.implement`, etc.
+**Spec-driven workflows (ck-spec-*):**
+- `/ck-spec-specify`, `/ck-spec-clarify`, `/ck-spec-plan`, `/ck-spec-tasks`, `/ck-spec-implement`, etc.
 
 All unified in single namespace with cross-navigation.
 
@@ -127,7 +127,7 @@ $ npx cokit-cli init
 ✓ Created .github/instructions/ (5 files)
 ✓ Created .github/collections/ (5 bundles)
 
-🎉 Done! Try /ck.fix in Copilot Chat.
+🎉 Done! Try /ck-fix in Copilot Chat.
 ```
 
 ---
