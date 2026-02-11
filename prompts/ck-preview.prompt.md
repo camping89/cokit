@@ -25,9 +25,7 @@ Universal viewer - pass ANY path and see it rendered nicely.
 
 ## Execution
 
-**IMPORTANT:** Run server as background task using `run_in_background: true` with the Bash tool. This makes the server visible in `/tasks` and manageable via `KillShell`.
-
-The skill is located at `$HOME/.copilot/skills/markdown-novel-viewer/`.
+Run the server using `#tool:execute/runInTerminal`. The skill is located at `$HOME/.copilot/skills/markdown-novel-viewer/`.
 
 ### Stop Server
 
@@ -39,11 +37,11 @@ node $HOME/.copilot/skills/markdown-novel-viewer/scripts/server.cjs --stop
 
 ### Start Server
 
-Otherwise, run the `markdown-novel-viewer` server as background task with `--foreground` flag (keeps process alive for task management):
+Otherwise, run the `markdown-novel-viewer` server with `--foreground` flag:
 
 ```bash
 # Determine if path is file or directory
-INPUT_PATH="{{path}}"
+INPUT_PATH="${input}"
 if [[ -d "$INPUT_PATH" ]]; then
   # Directory mode - browse
   node $HOME/.copilot/skills/markdown-novel-viewer/scripts/server.cjs \
@@ -61,25 +59,10 @@ else
 fi
 ```
 
-**Critical:** When calling the Bash tool:
-- Set `run_in_background: true` to run as background task
-- Set `timeout: 300000` (5 minutes) to prevent premature termination
-- Parse JSON output and report URL to user
-
-Example Bash tool call:
-```json
-{
-  "command": "node $HOME/.copilot/skills/markdown-novel-viewer/scripts/server.cjs --dir \"path\" --host 0.0.0.0 --open --foreground",
-  "run_in_background": true,
-  "timeout": 300000,
-  "description": "Start preview server in background"
-}
-```
-
 After starting, parse the JSON output (e.g., `{"success":true,"url":"http://localhost:3456/view?file=...","networkUrl":"http://192.168.1.x:3456/view?file=..."}`) and report:
 - Local URL for browser access
 - Network URL for remote device access (if available)
-- Inform user that server is now running as background task (visible in `/tasks`)
+- Inform user that server is now running in the terminal; stop it by running the stop command
 
 **CRITICAL:** MUST display the FULL URL including path and query string (e.g., `http://localhost:3456/view?file=/path/to/file.md`). NEVER truncate to just `host:port` (e.g., `http://localhost:3456`). The full URL is required for direct file access.
 

@@ -1,17 +1,6 @@
 ---
 agent: 'agent'
 description: 'Create or update the feature specification from a natural language description'
-handoffs:
-  - label: Build Technical Plan
-    agent: ck-spec-plan
-    prompt: Create a plan for the spec. I am building with...
-  - label: Clarify Spec Requirements
-    agent: ck-spec-clarify
-    prompt: Clarify specification requirements
-    send: true
-scripts:
-  sh: 'spec-kit/scripts/bash/create-new-feature.sh --json "{ARGS}"'
-  ps: 'spec-kit/scripts/powershell/create-new-feature.ps1 -Json "{ARGS}"'
 ---
 
 ## User Input

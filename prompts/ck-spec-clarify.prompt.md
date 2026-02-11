@@ -1,13 +1,6 @@
 ---
 agent: 'agent'
 description: 'Identify underspecified areas and ask targeted clarification questions'
-handoffs:
-  - label: Build Technical Plan
-    agent: ck-spec-plan
-    prompt: Create a plan for the spec. I am building with...
-scripts:
-  sh: spec-kit/scripts/bash/check-prerequisites.sh --json --paths-only
-  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly
 ---
 
 ## User Input

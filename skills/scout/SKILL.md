@@ -1,7 +1,6 @@
 ---
 name: scout
-description: Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents.
-version: 1.0.0
+description: Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal and external search agents.
 ---
 
 # Scout
@@ -9,7 +8,7 @@ version: 1.0.0
 Fast, token-efficient codebase scouting using parallel agents to find files needed for tasks.
 
 ## Arguments
-- Default: Scout using built-in Explore agents in parallel (`./references/internal-scouting.md`)
+- Default: Scout using built-in search agents in parallel (`./references/internal-scouting.md`)
 - `ext`: Scout using external Gemini/OpenCode CLI tools in parallel (`./references/external-scouting.md`)
 
 ## When to Use
@@ -46,7 +45,7 @@ Read from `$HOME/.copilot/.ck.json`:
 
 ### 3. Spawn Parallel Agents
 Load appropriate reference based on decision tree:
-- **Internal (Default):** `references/internal-scouting.md` (Explore agents)
+- **Internal (Default):** `references/internal-scouting.md` (search agents)
 - **External:** `references/external-scouting.md` (Gemini/OpenCode)
 
 **Notes:**
@@ -75,5 +74,5 @@ Load appropriate reference based on decision tree:
 
 ## References
 
-- `references/internal-scouting.md` - Using Explore agents
+- `references/internal-scouting.md` - Using search agents
 - `references/external-scouting.md` - Using Gemini/OpenCode CLI

@@ -1,18 +1,6 @@
 ---
 agent: 'agent'
 description: 'Generate actionable, dependency-ordered tasks.md from design artifacts'
-handoffs:
-  - label: Analyze For Consistency
-    agent: ck-spec-analyze
-    prompt: Run a project analysis for consistency
-    send: true
-  - label: Implement Project
-    agent: ck-spec-implement
-    prompt: Start the implementation in phases
-    send: true
-scripts:
-  sh: spec-kit/scripts/bash/check-prerequisites.sh --json
-  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json
 ---
 
 ## User Input

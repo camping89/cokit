@@ -33,7 +33,7 @@ If user chooses "Switch to /ck-fix", run  immediately — do NOT ask user to re-
      - **PowerShell**: append `*>&1 | Tee-Object logs.txt`
    - Run the command to generate logs
 2. Analyze `./logs.txt` and find root causes:
-   - Use `Grep` with `head_limit: 30` to read only last 30 lines (avoid loading entire file)
+   - Search for the last 30 lines of log output (avoid loading entire file)
    - If insufficient context, increase `head_limit` as needed
 3. Search the codebase to find the exact location of the issues.
 4. Create an implementation plan based on findings.

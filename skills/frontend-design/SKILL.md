@@ -1,7 +1,6 @@
 ---
 name: frontend-design
 description: Create polished frontend interfaces from designs/screenshots. Use for web components, replicating UI designs, quick prototypes, avoiding AI slop.
-license: Complete terms in LICENSE.txt
 ---
 
 Create distinctive, production-grade frontend interfaces. Implement real working code with exceptional aesthetic attention.

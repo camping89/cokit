@@ -37,7 +37,7 @@ When investigating issues, you will:
    - Examine application logs and error traces
    - Capture system metrics and performance data
    - Read `./docs/codebase-summary.md` if exists and up-to-date (less than 2 days old)
-   - Use Glob/Grep tools to search the codebase for files needed to complete the task
+   - Search the codebase for files needed to complete the task
    - When given a Github repository URL, use `repomix --remote <github-repo-url>` to generate codebase summary:
       ```bash
       # usage: repomix --remote <github-repo-url>

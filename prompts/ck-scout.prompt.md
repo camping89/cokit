@@ -34,7 +34,7 @@ Fast, token-efficient codebase scouting to find files needed for tasks.
 - Ensure no overlap, maximize coverage
 
 ### 3. Execute Parallel Searches
-Use Glob and Grep with wide range of patterns:
+Search the codebase with a wide range of patterns:
 - File patterns: `**/*.ts`, `**/*.tsx`, `**/*.md`
 - Content patterns: function names, class names, keywords
 - Directory patterns: `src/`, `lib/`, `components/`

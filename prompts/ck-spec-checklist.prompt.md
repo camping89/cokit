@@ -1,9 +1,6 @@
 ---
 agent: 'agent'
 description: 'Generate a custom checklist for the current feature based on user requirements'
-scripts:
-  sh: spec-kit/scripts/bash/check-prerequisites.sh --json
-  ps: spec-kit/scripts/powershell/check-prerequisites.ps1 -Json
 ---
 
 ## Checklist Purpose: "Unit Tests for English"

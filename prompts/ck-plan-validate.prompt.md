@@ -156,7 +156,7 @@ After collecting answers, update `plan.md` with a detailed validation log. If a 
 **Process:**
 1. Parse "Impact on Phases" section → If empty, skip and report "No phase changes required"
 2. For each phase reference (accepts "Phase 2", "phase-02", "P2"):
-   - Glob for `phase-{N:02d}-*.md` → If missing, warn and skip
+   - Search for `phase-{N:02d}-*.md` files → If missing, warn and skip
    - Locate target section (exact → fuzzy → fallback to Key Insights)
    - Apply change + add marker: `<!-- Updated: Validation Session N - {change} -->`
    - Skip if same-session marker already exists (prevent duplication)

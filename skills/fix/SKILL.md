@@ -1,7 +1,6 @@
 ---
 name: fix
 description: ALWAYS activate this skill before fixing ANY bug, error, test failure, CI/CD issue, type error, lint, log error, UI issue, code problem.
-version: 1.1.0
 ---
 
 # Fixing
@@ -32,7 +31,7 @@ See `references/mode-selection.md` for question format.
 
 - Activate `debug` skill.
 - Guess all possible root causes.
-- Spawn multiple `Explore` agents in parallel to verify each hypothesis.
+- Search in parallel to verify each hypothesis.
 - Create report with all findings for the next step.
 
 ### Step 3: Complexity Assessment & Fix Implementation
@@ -49,7 +48,7 @@ Classify before routing. See `references/complexity-assessment.md`.
 ### Step 4: Fix Verification & Prevent Future Issues
 
 - Read and analyze all the implemented changes.
-- Spawn multiple `Explore` agents to find possible related code for verification.
+- Search in parallel to find possible related code for verification.
 - Make sure these fixes don't break other parts of the codebase.
 - Prevent future issues by adding comprehensive validation.
 
@@ -66,8 +65,8 @@ See `references/skill-activation-matrix.md` for complete matrix.
 
 **Always activate:** `debug` (all workflows)
 **Conditional:** `problem-solving`, `sequential-thinking`, `brainstorming`, `context-engineering`
-**Agents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`, `Bash`
-**Parallel:** Multiple `Explore` agents for scouting, `Bash` agents for verification
+**Agents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`
+**Parallel:** Multiple parallel searches for scouting, terminal commands for verification
 
 ## Output Format
 
@@ -91,7 +90,7 @@ Load as needed:
 - `references/workflow-deep.md` - Deep: research + brainstorm + plan
 - `references/review-cycle.md` - Review logic (autonomous vs HITL)
 - `references/skill-activation-matrix.md` - When to activate each skill
-- `references/parallel-exploration.md` - Parallel Explore/Bash agents patterns
+- `references/parallel-exploration.md` - Parallel search and execution patterns
 
 **Specialized Workflows:**
 - `references/workflow-ci.md` - GitHub Actions/CI failures

@@ -1,7 +1,6 @@
 ---
 name: planning
 description: Plan implementations, design architectures, create technical roadmaps with detailed phases. Use for feature planning, system design, solution architecture, implementation strategy, phase documentation.
-license: MIT
 ---
 
 # Planning
@@ -61,10 +60,10 @@ Load: `references/output-standards.md`
 ## Task Integration (Optional)
 
 When session has `TASK_LIST_ID` set (active plan):
-- Use TaskCreate to create tasks for each phase with clear subjects
+- Create tasks for each phase with clear subjects
 - Set dependencies: Phase N+1 `blockedBy` Phase N
 - Agents coordinate via shared task list automatically
-- Use TaskUpdate to mark progress (in_progress → completed)
+- Update tasks to mark progress (in_progress → completed)
 
 ### Important
 DO NOT create plans or reports in USER directory.
