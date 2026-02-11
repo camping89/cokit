@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'Validate plan with critical questions interview'
 argument-hint: 'Path to plan directory'
 ---
+## Variant Notice
+> This is normally auto-triggered after plan creation by `/ck-plan-hard`.
+> If user invoked directly, briefly note: _"Tip: This runs automatically after `/ck-plan-hard`. You can also use `/ck-plan` to auto-detect the right mode."_ Then proceed normally.
+
 
 ## Your mission
 

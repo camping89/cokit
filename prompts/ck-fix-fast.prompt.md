@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'Analyze and fix small issues [FAST]'
 argument-hint: 'Describe the issues'
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-fix`.
+> If user invoked directly, briefly note: _"Tip: `/ck-fix` auto-detects the right fix mode for your issue."_ Then proceed normally.
+
 
 ## Mission
 **Think hard** to analyze and fix these issues:

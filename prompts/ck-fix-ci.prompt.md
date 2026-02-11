@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'Analyze Github Actions logs and fix issues'
 argument-hint: 'Github Actions URL or description'
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-fix`.
+> If user invoked directly, briefly note: _"Tip: `/ck-fix` auto-detects the right fix mode for your issue."_ Then proceed normally.
+
 
 ## Github Actions URL
 <url>${input}</url>

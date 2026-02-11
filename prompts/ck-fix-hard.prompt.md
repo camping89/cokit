@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'Plan and fix hard issues systematically'
 argument-hint: 'Describe the issues'
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-fix`.
+> If user invoked directly, briefly note: _"Tip: `/ck-fix` auto-detects the right fix mode for your issue."_ Then proceed normally.
+
 
 **Think deeply** to plan & fix these issues:
 <issues>${input}</issues>

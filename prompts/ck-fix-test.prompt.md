@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'Run test suite and fix issues'
 argument-hint: 'Describe the test issues'
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-fix`.
+> If user invoked directly, briefly note: _"Tip: `/ck-fix` auto-detects the right fix mode for your issue."_ Then proceed normally.
+
 
 ## Reported Issues:
 <issues>${input}</issues>

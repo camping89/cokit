@@ -3,6 +3,10 @@ agent: 'agent'
 description: 'No research. Only analyze and create an implementation plan'
 argument-hint: 'Task description or requirements'
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-plan`.
+> If user invoked directly, briefly note: _"Tip: `/ck-plan` auto-detects the right planning mode for your issue."_ Then proceed normally.
+
 
 Think.
 Activate `planning` skill.

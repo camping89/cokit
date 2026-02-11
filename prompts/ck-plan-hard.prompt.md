@@ -4,6 +4,10 @@ description: 'Research, analyze, and create an implementation plan'
 argument-hint: 'Task description or requirements'
 tools: ['web/fetch', 'search/codebase', 'read/readFile', 'search/listDirectory', 'edit/createFile', 'edit/editFiles']
 ---
+## Variant Notice
+> This is a specialized variant, normally auto-routed by `/ck-plan`.
+> If user invoked directly, briefly note: _"Tip: `/ck-plan` auto-detects the right planning mode for your issue."_ Then proceed normally.
+
 
 Think harder.
 Activate `planning` skill.
