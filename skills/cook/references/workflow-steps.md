@@ -108,9 +108,9 @@ All modes share core steps with mode-specific variations.
 ## Step 6: Finalize
 
 **All modes:**
-1. `project-manager` + `docs-manager` subagents in parallel
+1. `project-manager` + `docs-manager` agents in parallel
 2. Onboarding check (API keys, env vars)
-3. Auto-commit via `git-manager` subagent
+3. Auto-commit via `git-manager` agent
 
 **Auto mode:** Continue to next phase automatically
 **Others:** Ask user before next phase

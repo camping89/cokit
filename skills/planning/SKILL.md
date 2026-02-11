@@ -60,10 +60,10 @@ Load: `references/output-standards.md`
 
 ## Task Integration (Optional)
 
-When session has `CLAUDE_CODE_TASK_LIST_ID` set (active plan):
+When session has `TASK_LIST_ID` set (active plan):
 - Use TaskCreate to create tasks for each phase with clear subjects
 - Set dependencies: Phase N+1 `blockedBy` Phase N
-- Subagents coordinate via shared task list automatically
+- Agents coordinate via shared task list automatically
 - Use TaskUpdate to mark progress (in_progress → completed)
 
 ### Important

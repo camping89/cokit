@@ -198,7 +198,7 @@ After validation completes, provide summary:
 > **Why `--auto`?** Plan was already validated - safe to skip review gates.
 > **Why absolute path?** After `/clear`, the new session loses context. Worktree paths won't be discoverable without the full path.
 >
-> Fresh context helps Claude focus solely on implementation without planning context pollution, improving plan adherence.
+> Fresh context helps the agent focus solely on implementation without planning context pollution, improving plan adherence.
 
 This reminder is **NON-NEGOTIABLE** - always output it at the end of validation with the actual absolute path.
 

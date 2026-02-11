@@ -32,7 +32,7 @@ See `references/mode-selection.md` for question format.
 
 - Activate `debug` skill.
 - Guess all possible root causes.
-- Spawn multiple `Explore` subagents in parallel to verify each hypothesis.
+- Spawn multiple `Explore` agents in parallel to verify each hypothesis.
 - Create report with all findings for the next step.
 
 ### Step 3: Complexity Assessment & Fix Implementation
@@ -49,24 +49,24 @@ Classify before routing. See `references/complexity-assessment.md`.
 ### Step 4: Fix Verification & Prevent Future Issues
 
 - Read and analyze all the implemented changes.
-- Spawn multiple `Explore` subagents to find possible related code for verification.
+- Spawn multiple `Explore` agents to find possible related code for verification.
 - Make sure these fixes don't break other parts of the codebase.
 - Prevent future issues by adding comprehensive validation.
 
 ### Step 5: Finalize
 
 - Report summary to user with confidence level/score, all the changes and related files.
-- Ask to commit via `git-manager` subagent and update docs if needed via `docs-manager` subagent (in parallel).
+- Ask to commit via `git-manager` agent and update docs if needed via `docs-manager` agent (in parallel).
 
 ---
 
-## IMPORTANT: Skill/Subagent Activation Matrix
+## IMPORTANT: Skill/Agent Activation Matrix
 
 See `references/skill-activation-matrix.md` for complete matrix.
 
 **Always activate:** `debug` (all workflows)
 **Conditional:** `problem-solving`, `sequential-thinking`, `brainstorming`, `context-engineering`
-**Subagents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`, `Bash`
+**Agents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`, `Bash`
 **Parallel:** Multiple `Explore` agents for scouting, `Bash` agents for verification
 
 ## Output Format
@@ -91,7 +91,7 @@ Load as needed:
 - `references/workflow-deep.md` - Deep: research + brainstorm + plan
 - `references/review-cycle.md` - Review logic (autonomous vs HITL)
 - `references/skill-activation-matrix.md` - When to activate each skill
-- `references/parallel-exploration.md` - Parallel Explore/Bash subagents patterns
+- `references/parallel-exploration.md` - Parallel Explore/Bash agents patterns
 
 **Specialized Workflows:**
 - `references/workflow-ci.md` - GitHub Actions/CI failures

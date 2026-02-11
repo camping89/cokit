@@ -47,10 +47,10 @@ function parseEnvFile(content) {
 function loadEnv() {
   const skillDir = path.resolve(__dirname, '../..');
   const skillsDir = path.resolve(skillDir, '..');
-  const claudeDir = path.resolve(skillsDir, '..');
+  const configDir = path.resolve(skillsDir, '..');
 
   const envPaths = [
-    path.join(claudeDir, '.env'),      // Lowest priority
+    path.join(configDir, '.env'),      // Lowest priority
     path.join(skillsDir, '.env'),
     path.join(skillDir, '.env'),       // Highest priority (file)
   ];

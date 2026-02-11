@@ -6,7 +6,7 @@ tools: ['execute/runInTerminal', 'execute/getTerminalOutput']
 ---
 
 Think harder.
-All-in-one ClaudeKit guide. Run the script and present output based on type markers.
+All-in-one CoKit guide. Run the script and present output based on type markers.
 
 ## Intent Validation
 

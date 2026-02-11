@@ -31,7 +31,7 @@ Context engineering curates the smallest high-signal token set for LLM tasks. Th
 **IMPORTANT:**
 - Sacrifice grammar for the sake of concision.
 - Ensure token efficiency while maintaining high quality.
-- Pass these rules to subagents.
+- Pass these rules to agents.
 
 ## Quick Reference
 
@@ -88,7 +88,7 @@ The system automatically injects usage awareness via PostToolUse hook:
 
 ```xml
 <usage-awareness>
-Claude Usage Limits: 5h=45%, 7d=32%
+Usage Limits: 5h=45%, 7d=32%
 Context Window Usage: 67%
 </usage-awareness>
 ```
@@ -98,7 +98,7 @@ Context Window Usage: 67%
 - 90%: CRITICAL - immediate action needed
 
 **Data Sources:**
-- Usage limits: Anthropic OAuth API (`https://api.anthropic.com/api/oauth/usage`)
+- Usage limits: Platform OAuth API (platform-specific endpoint)
 - Context window: Statusline temp file (`/tmp/ck-context-{session_id}.json`)
 
 ## Scripts

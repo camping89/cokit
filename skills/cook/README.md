@@ -4,7 +4,7 @@ End-to-end feature implementation with smart intent detection.
 
 ## Installation
 
-Copy the `cook/` folder to your Claude skills directory:
+Copy the `cook/` folder to your skills directory:
 ```bash
 cp -r cook ~/.copilot/skills/
 ```
@@ -77,7 +77,7 @@ cook/
     ├── intent-detection.md            # Detection rules
     ├── workflow-steps.md              # Step definitions
     ├── review-cycle.md                # Review process
-    └── subagent-patterns.md           # Subagent usage
+    └── agent-patterns.md               # Agent usage
 ```
 
 ## Version

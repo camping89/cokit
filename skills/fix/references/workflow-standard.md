@@ -5,7 +5,7 @@ Full pipeline for moderate complexity issues.
 ## Steps
 
 ### Step 1: Debug & Investigate
-Activate `debug` skill. Use `debugger` subagent if needed.
+Activate `debug` skill. Use `debugger` agent if needed.
 
 - Read error messages, logs, stack traces
 - Reproduce the issue
@@ -15,7 +15,7 @@ Activate `debug` skill. Use `debugger` subagent if needed.
 **Output:** `✓ Step 1: Root cause - [summary], [N] files affected`
 
 ### Step 2: Parallel Scout
-Launch multiple `Explore` subagents in parallel to scout and verify the root cause.
+Launch multiple `Explore` agents in parallel to scout and verify the root cause.
 
 **Pattern:** In SINGLE message, launch 2-3 Explore agents:
 ```
@@ -48,7 +48,7 @@ Task("Bash", "Run build", "Verify build")
 **Output:** `✓ Step 3: Implemented - [N] files, verified (types/lint/build passed)`
 
 ### Step 4: Test
-Use `tester` subagent to run tests.
+Use `tester` agent to run tests.
 
 - Write new tests if needed
 - Run existing test suite
@@ -57,7 +57,7 @@ Use `tester` subagent to run tests.
 **Output:** `✓ Step 4: Tests [X/X passed]`
 
 ### Step 5: Review
-Use `code-reviewer` subagent.
+Use `code-reviewer` agent.
 
 See `references/review-cycle.md` for mode-specific handling.
 
@@ -65,21 +65,21 @@ See `references/review-cycle.md` for mode-specific handling.
 
 ### Step 6: Finalize
 - Report summary to user
-- Ask to commit via `git-manager` subagent
+- Ask to commit via `git-manager` agent
 - Update docs if needed via `docs-manager`
 
 **Output:** `✓ Step 6: Complete - [action]`
 
-## Skills/Subagents Activated
+## Skills/Agents Activated
 
-| Step | Skills/Subagents |
+| Step | Skills/Agents |
 |------|------------------|
-| 1 | `debug`, `debugger` subagent |
-| 2 | Multiple `Explore` subagents in parallel (optional) |
+| 1 | `debug`, `debugger` agent |
+| 2 | Multiple `Explore` agents in parallel (optional) |
 | 3 | `problem-solving`, `sequential-thinking`, parallel `Bash` for verification |
-| 4 | `tester` subagent |
-| 5 | `code-reviewer` subagent |
-| 6 | `git-manager`, `docs-manager` subagents |
+| 4 | `tester` agent |
+| 5 | `code-reviewer` agent |
+| 6 | `git-manager`, `docs-manager` agents |
 
 **Rules:** Don't skip steps. Validate before proceeding. One phase at a time.
 **Frontend:** Use `agent-browser` or browser automation tools to verify.

@@ -74,9 +74,9 @@ Human review required at these checkpoints (skipped with `--auto`):
 - **Code Review:** User approval OR auto-approve (score≥9.5, 0 critical)
 - **Finalize:** project-manager AND docs-manager must complete
 
-## Required Subagents
+## Required Agents
 
-| Phase | Subagent |
+| Phase | Agent |
 |-------|----------|
 | Research | `researcher` (parallel, optional in fast) |
 | Scout | `scout` |
@@ -91,4 +91,4 @@ Human review required at these checkpoints (skipped with `--auto`):
 - `references/intent-detection.md` - Detection rules and routing logic
 - `references/workflow-steps.md` - Detailed step definitions for all modes
 - `references/review-cycle.md` - Interactive and auto review processes
-- `references/subagent-patterns.md` - Subagent invocation patterns
+- `references/agent-patterns.md` - Agent invocation patterns

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Skills Installation Script for Linux/macOS
-# Installs all dependencies for Claude Code skills
+# Installs all dependencies for skills
 #
 # Exit codes (rustup model):
 #   0 = Success (full or partial)
@@ -1199,7 +1199,7 @@ print_usage() {
 # Main installation flow
 main() {
     echo ""  # Just add spacing, don't clear terminal
-    print_header "Claude Code Skills Installation"
+    print_header "CoKit Skills Installation"
     print_info "OS: $OS"
     if [[ "$OS" == "linux" ]] || [[ "$OS" == "wsl" ]]; then
         print_info "Distro: $DISTRO"

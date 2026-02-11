@@ -22,7 +22,7 @@ Choose workflow based on input type:
 ## Screenshot/Video Replication (Quick Reference)
 
 1. **Analyze** visually - extract colors, fonts, spacing, effects
-2. **Plan** with `ui-ux-designer` subagent - create phased implementation
+2. **Plan** with `ui-ux-designer` agent - create phased implementation
 3. **Implement** - match source precisely
 4. **Verify** - compare to original
 5. **Document** - update `./docs/design-guidelines.md` if approved
@@ -72,4 +72,4 @@ DO:
 - Match complexity to vision (maximalist = elaborate; minimalist = precise)
 - Make unexpected, context-specific choices
 
-Remember: Claude is capable of extraordinary creative work. Commit fully to distinctive visions.
+Remember: The AI agent is capable of extraordinary creative work. Commit fully to distinctive visions.

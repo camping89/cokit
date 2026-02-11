@@ -97,7 +97,7 @@ echo "Search for latest Next.js 15 features and summarize the top 3" | gemini -y
 
 **Multi-Tool Orchestration**:
 ```bash
-echo "Search for Claude AI documentation, take a screenshot of the homepage, and save both to memory" | gemini -y -m <gemini.model>
+echo "Search for AI documentation, take a screenshot of the homepage, and save both to memory" | gemini -y -m <gemini.model>
 ```
 
 **Browser Automation**:
@@ -212,7 +212,7 @@ Shows detailed MCP communication logs.
 | Direct Scripts | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | Specific tools |
 | mcp-manager | ⭐ | ⭐⭐ | ⭐⭐⭐ | Fallback |
 
-**Recommendation**: Use Gemini CLI as primary method, fallback to scripts/subagent when unavailable.
+**Recommendation**: Use Gemini CLI as primary method, fallback to scripts/agent when unavailable.
 
 ## Resources
 

@@ -5,7 +5,7 @@ Full pipeline with research, brainstorming, and planning for complex issues.
 ## Steps
 
 ### Step 1: Debug & Parallel Investigation
-Activate `debug` skill. Launch 2-3 `Explore` subagents in parallel:
+Activate `debug` skill. Launch 2-3 `Explore` agents in parallel:
 ```
 Task("Explore", "Find error origin", "Trace error")
 Task("Explore", "Find affected components", "Map deps")
@@ -16,7 +16,7 @@ See `references/parallel-exploration.md` for patterns.
 **Output:** `✓ Step 1: Root cause - [summary], system impact: [scope]`
 
 ### Step 2: Research
-Use `researcher` subagent for external knowledge.
+Use `researcher` agent for external knowledge.
 
 - Search latest docs, best practices
 - Find similar issues/solutions
@@ -34,7 +34,7 @@ Activate `brainstorming` skill.
 **Output:** `✓ Step 3: Approach selected - [chosen approach]`
 
 ### Step 4: Plan
-Use `planner` subagent to create implementation plan.
+Use `planner` agent to create implementation plan.
 
 - Break down into phases
 - Identify dependencies
@@ -51,7 +51,7 @@ See `references/parallel-exploration.md`
 **Output:** `✓ Step 5: Implemented - [N] files, [M] phases, verified`
 
 ### Step 6: Test
-Use `tester` subagent.
+Use `tester` agent.
 
 - Comprehensive testing
 - Edge cases, security, performance
@@ -60,24 +60,24 @@ Use `tester` subagent.
 **Output:** `✓ Step 6: Tests [X/X passed]`
 
 ### Step 7: Review
-Use `code-reviewer` subagent.
+Use `code-reviewer` agent.
 
 See `references/review-cycle.md` for mode-specific handling.
 
 **Output:** `✓ Step 7: Review [score]/10 - [status]`
 
 ### Step 8: Finalize
-- Use `project-manager` subagent to update roadmap
-- Use `docs-manager` subagent for documentation
-- Use `git-manager` subagent for commit
+- Use `project-manager` agent to update roadmap
+- Use `docs-manager` agent for documentation
+- Use `git-manager` agent for commit
 
 **Output:** `✓ Step 8: Complete - [actions taken]`
 
-## Skills/Subagents Activated
+## Skills/Agents Activated
 
-| Step | Skills/Subagents |
+| Step | Skills/Agents |
 |------|------------------|
-| 1 | `debug`, parallel `Explore` subagents for investigation |
+| 1 | `debug`, parallel `Explore` agents for investigation |
 | 2 | `researcher` |
 | 3 | `brainstorm` |
 | 4 | `planner` |

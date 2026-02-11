@@ -50,7 +50,7 @@ Analyze and describe exhaustively:
 **Font Prediction**: Match actual fonts, avoid Inter/Poppins defaults.
 
 ### 2. Create Implementation Plan
-Use `ui-ux-designer` subagent:
+Use `ui-ux-designer` agent:
 - Create plan directory (use `## Naming` pattern)
 - Write `plan.md` overview (<80 lines)
 - Add detailed `phase-XX-name.md` files

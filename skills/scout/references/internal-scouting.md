@@ -1,15 +1,15 @@
-# Internal Scouting with Explore Subagents
+# Internal Scouting with Explore Agents
 
-Use Explore subagents when SCALE >= 6 or external tools unavailable.
+Use Explore agents when SCALE >= 6 or external tools unavailable.
 
 ## How It Works
 
-Spawn multiple `Explore` subagents via `Task` tool to search codebase in parallel.
+Spawn multiple `Explore` agents via `Task` tool to search codebase in parallel.
 
 ## Task Tool Configuration
 
 ```
-subagent_type: "Explore"
+type: "Explore"
 ```
 
 ## Prompt Template
@@ -90,15 +90,15 @@ lines_per_chunk = ceil(total_lines / chunks)
 
 **Small files (<500 lines each):**
 ```
-Task 1: subagent_type="Bash", prompt="cat file1.ts file2.ts"
-Task 2: subagent_type="Bash", prompt="cat file3.ts file4.ts"
+Task 1: type="Bash", prompt="cat file1.ts file2.ts"
+Task 2: type="Bash", prompt="cat file3.ts file4.ts"
 ```
 
 **Large file (>500 lines) - use sed for ranges:**
 ```
-Task 1: subagent_type="Bash", prompt="sed -n '1,500p' large-file.ts"
-Task 2: subagent_type="Bash", prompt="sed -n '501,1000p' large-file.ts"
-Task 3: subagent_type="Bash", prompt="sed -n '1001,1500p' large-file.ts"
+Task 1: type="Bash", prompt="sed -n '1,500p' large-file.ts"
+Task 2: type="Bash", prompt="sed -n '501,1000p' large-file.ts"
+Task 3: type="Bash", prompt="sed -n '1001,1500p' large-file.ts"
 ```
 
 ### Chunking Decision Tree
