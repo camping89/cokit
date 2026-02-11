@@ -2,6 +2,17 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.2] - 2026-02-11
+
+### Changed
+- Removed all Claude Code references from agents, prompts, and skills for full Copilot compatibility
+- Replaced Claude Code tool names (Glob, Grep, Read, WebSearch, Task tool) with generic terms across 45 files
+- Rewrote `ck-preview` execution section: `run_in_background`/`KillShell` replaced with `execute/runInTerminal`, fixed variable syntax `{{path}}` to `${input}`
+- Removed invalid frontmatter fields (`scripts`, `handoffs`, `agent_scripts`) from 8 spec-kit prompt files
+- Removed unsupported `version` and `license` fields from 25 SKILL.md files
+- Fixed `problem-solving` skill name to lowercase (Copilot spec requires lowercase, hyphens only)
+- Replaced Claude Code agent patterns (`Explore` agents, `TaskCreate`, `TaskUpdate`) with generic instructions in 4 skills
+
 ## [1.2.1] - 2026-02-10
 
 ### Changed
