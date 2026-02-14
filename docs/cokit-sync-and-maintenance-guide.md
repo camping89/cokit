@@ -104,7 +104,7 @@ mappings:
     upstream_file: templates/commands/constitution.md
     description: Create/update project constitution
 
-  ck-tasks:
+  ck-spec-tasks:
     origin: speckit
     original: speckit.tasks
     upstream_file: templates/commands/tasks.md
@@ -279,10 +279,10 @@ Every prompt gets a navigation footer injected:
 | After `ck-brainstorm` | `/ck-specify`, `/ck-plan-fast` |
 | After `ck-specify` | `/ck-clarify`, `/ck-brainstorm`, `/ck-plan` |
 | After `ck-clarify` | `/ck-specify` (update), `/ck-plan` |
-| After `ck-plan` | `/ck-cook`, `/ck-brainstorm` (rethink) |
+| After `ck-plan` | `/ck-spec-tasks`, `/ck-cook`, `/ck-brainstorm` (rethink) |
 | After `ck-cook` | `/ck-test`, `/ck-fix` |
 
-**All commands:** `ck-brainstorm`, `ck-specify`, `ck-clarify`, `ck-constitution`, `ck-plan`, `ck-plan-hard`, `ck-plan-fast`, `ck-tasks`, `ck-cook`, `ck-fix`, `ck-test`
+**All commands:** `ck-brainstorm`, `ck-specify`, `ck-clarify`, `ck-constitution`, `ck-plan`, `ck-plan-hard`, `ck-plan-fast`, `ck-spec-tasks`, `ck-cook`, `ck-fix`, `ck-test`
 ```
 
 ---
@@ -317,6 +317,11 @@ Every prompt gets a navigation footer injected:
 │  └──────┬──────┘    approach needs│                             │
 │         │           rethinking    │                             │
 │         ▼                         │                             │
+│  ┌───────────────┐                │                             │
+│  │ck-spec-tasks  │ ← Break into tasks                          │
+│  └───────┬───────┘                │                             │
+│          │                        │                             │
+│          ▼                        │                             │
 │  ┌─────────────┐                  │                             │
 │  │ ck-cook     │──────────────────┘                             │
 │  └──────┬──────┘    (via ck-brainstorm)                         │

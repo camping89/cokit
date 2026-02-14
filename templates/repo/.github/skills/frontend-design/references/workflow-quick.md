@@ -14,7 +14,7 @@ Quick reference from `ui-styling` skill:
 ## Workflow Steps
 
 ### 1. Start Design Process
-Use `ui-ux-designer` subagent directly:
+Use `ui-ux-designer` agent directly:
 - Skip extensive planning
 - Move to implementation quickly
 - Make design decisions on-the-fly

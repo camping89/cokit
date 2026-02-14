@@ -4,7 +4,7 @@ Structured, reflective problem-solving methodology converted from the sequential
 
 ## Overview
 
-This skill teaches Claude to apply systematic sequential thinking methodology for complex problem-solving, without relying on external MCP tools. It enables:
+This skill teaches the AI agent to apply systematic sequential thinking methodology for complex problem-solving, without relying on external MCP tools. It enables:
 - Breaking down complex problems into manageable thought sequences
 - Dynamic adjustment of thought count as understanding evolves
 - Revision of previous thoughts when new insights emerge
@@ -91,7 +91,7 @@ Thought 2/5: [Further analysis]
 
 **Implicit Mode**: Apply methodology internally without cluttering output
 
-## When Claude Should Use This Skill
+## When the Agent Should Use This Skill
 
 Automatically activated for:
 - Complex problem decomposition
@@ -176,7 +176,7 @@ Scripts are **optional tooling** - the methodology can be applied without them.
 
 Converted from: https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
 
-Original MCP server by Anthropic (MIT License).
+Original MCP server (MIT License).
 Skill conversion:
 - Extracts methodology as instructions
 - Adds executable scripts for deterministic validation

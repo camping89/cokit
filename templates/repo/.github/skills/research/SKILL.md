@@ -1,7 +1,6 @@
 ---
 name: research
 description: Research technical solutions, analyze architectures, gather requirements thoroughly. Use for technology evaluation, best practices research, solution design, scalability/security/maintainability analysis.
-license: MIT
 ---
 
 # Research

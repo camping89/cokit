@@ -57,16 +57,16 @@ which opencode
 
 If not installed, ask user:
 1. **Yes** - Provide installation instructions (may need manual auth steps)
-2. **No** - Fall back to Explore subagents (`internal-scouting.md`)
+2. **No** - Fall back to Explore agents (`internal-scouting.md`)
 
 ## Spawning Parallel Bash Agents
 
-Use `Task` tool with `subagent_type: "Bash"` to spawn parallel agents:
+Use `Task` tool with `type: "Bash"` to spawn parallel agents:
 
 ```
-Task 1: subagent_type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt1]'"
-Task 2: subagent_type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt2]'"
-Task 3: subagent_type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt3]'"
+Task 1: type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt1]'"
+Task 2: type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt2]'"
+Task 3: type="Bash", prompt="Run: gemini -y -m gemini-3.0-flash '[prompt3]'"
 ```
 
 Spawn all in single message for parallel execution.
@@ -112,15 +112,15 @@ lines_per_chunk = ceil(total_lines / chunks)
 
 **Small files (<500 lines each):**
 ```
-Task 1: subagent_type="Bash", prompt="cat file1.ts file2.ts"
-Task 2: subagent_type="Bash", prompt="cat file3.ts file4.ts"
+Task 1: type="Bash", prompt="cat file1.ts file2.ts"
+Task 2: type="Bash", prompt="cat file3.ts file4.ts"
 ```
 
 **Large file (>500 lines) - use sed for ranges:**
 ```
-Task 1: subagent_type="Bash", prompt="sed -n '1,500p' large-file.ts"
-Task 2: subagent_type="Bash", prompt="sed -n '501,1000p' large-file.ts"
-Task 3: subagent_type="Bash", prompt="sed -n '1001,1500p' large-file.ts"
+Task 1: type="Bash", prompt="sed -n '1,500p' large-file.ts"
+Task 2: type="Bash", prompt="sed -n '501,1000p' large-file.ts"
+Task 3: type="Bash", prompt="sed -n '1001,1500p' large-file.ts"
 ```
 
 ### Chunking Decision Tree

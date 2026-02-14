@@ -100,5 +100,5 @@ gh pr create --title "type(scope): description" --body "## Summary
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests before push |
-| `/ck.review` | Code review |
+| `/ck-test` | Run tests before push |
+| `/ck-review` | Code review |

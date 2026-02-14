@@ -2,6 +2,31 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.4] - 2026-02-12
+
+### Added
+- Added `/ck-spec-tasks` to suggested next steps in `ck-plan`, `ck-plan-fast`, `ck-plan-hard` prompts
+- Added `ck-spec-tasks` node to flowchart between plan and cook stages
+
+### Changed
+- Redesigned hero section: side-by-side layout with inline video player (replaces floating button + modal)
+- Video plays inline on click with overlay, pauses back to poster state on end
+- Updated flowchart edges: plan → spec-tasks → cook (previously plan → cook directly)
+- Updated `cokit-sync-and-maintenance-guide.md` navigation table and ASCII diagram
+- Bumped version to 1.2.4 across landing page, README, package.json, and docs
+
+## [1.2.3] - 2026-02-12
+
+### Added
+- Video intro for landing page
+- Variant commands visualization in flowchart and Deep Dive sections
+
+### Changed
+- Improved flowchart UX with zoom controls, hash navigation, and better node spacing
+- Added drag-to-pan, styled scrollbar, and vertical scroll for flowchart
+- Cross-referenced `ck-*` and `ck-spec-*` commands in suggested next steps
+- Synced templates with latest source files
+
 ## [1.2.2] - 2026-02-11
 
 ### Changed

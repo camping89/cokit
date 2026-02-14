@@ -257,4 +257,5 @@ Success criteria must be:
 | `/ck-spec-clarify` | Ask clarification questions | Spec has [NEEDS CLARIFICATION] markers or vague requirements |
 | `/ck-spec-plan` | Generate implementation plan | Spec is complete and ready for technical planning |
 | `/ck-spec-constitution` | Create project principles | Need to establish non-negotiable rules before planning |
+| `/ck-plan` | Create implementation plan | Spec is finalized, ready to plan and implement |
 | `/ck-brainstorm` | Brainstorm ideas first | Not sure what to build yet |

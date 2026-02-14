@@ -4,6 +4,25 @@ description: 'Research, analyze, and create an implementation plan'
 argument-hint: 'Task description or requirements'
 tools: ['web/fetch', 'search/codebase', 'read/readFile', 'search/listDirectory', 'edit/createFile', 'edit/editFiles']
 ---
+## Variant Notice
+**IMPORTANT — Read before proceeding.**
+`ck-plan-hard` is an internal mode for deep research + planning — it is meant to be selected automatically by AI when you run `/ck-plan`.
+You don't need to call this directly. Just use `/ck-plan` and AI will pick the right mode for you.
+Before executing, you MUST output the following message **exactly as written** and wait for user response:
+
+---
+**Variant Notice**
+
+`ck-plan-hard` is an internal mode for deep research + planning — it is meant to be selected automatically by AI when you run `/ck-plan`.
+You don't need to call this directly. Just use `/ck-plan` and AI will pick the right mode for you.
+
+Do you want to continue anyway, or switch to `/ck-plan`? **[Continue / Switch to /ck-plan]**
+
+---
+
+Only proceed if user explicitly confirms Continue.
+If user chooses "Switch to /ck-plan", run  immediately — do NOT ask user to re-enter their input.
+
 
 Think harder.
 Activate `planning` skill.
@@ -23,14 +42,14 @@ Check the `## Plan Context` section in the injected context:
 ## Workflow
 1. If creating new: Create directory using `Plan dir:` from `## Naming` section, then run `node $HOME/.copilot/scripts/set-active-plan.cjs {plan-dir}`
    If reusing: Use the active plan path from Plan Context.
-   Make sure you pass the directory path to every subagent during the process.
+   Make sure you pass the directory path to every agent during the process.
 2. Follow strictly to the "Plan Creation & Organization" rules of `planning` skill.
 3. Use multiple `researcher` agents (max 2 agents) in parallel to research for this task:
    Each agent research for a different aspect of the task and are allowed to perform max 5 tool calls.
 4. Analyze the codebase by reading `codebase-summary.md`, `code-standards.md`, `system-architecture.md` and `project-overview-pdr.md` file.
    **ONLY PERFORM THIS FOLLOWING STEP IF `codebase-summary.md` is not available or older than 3 days**: Use `/scout <instructions>` slash command to search the codebase for files needed to complete the task.
-5. Main agent gathers all research and scout report filepaths, and pass them to `planner` subagent with the prompt to create an implementation plan of this task.
-6. Main agent receives the implementation plan from `planner` subagent, and ask user to review the plan
+5. Main agent gathers all research and scout report filepaths, and pass them to `planner` agent with the prompt to create an implementation plan of this task.
+6. Main agent receives the implementation plan from `planner` agent, and ask user to review the plan
 
 ## Post-Plan Validation (Optional)
 
@@ -41,11 +60,11 @@ After plan creation, offer validation interview to confirm decisions before impl
 | Mode | Behavior |
 |------|----------|
 | `prompt` | Ask user: "Validate this plan with a brief interview?" → Yes (Recommended) / No |
-| `auto` | Automatically execute `/ck.plan:validate {plan-path}` |
+| `auto` | Automatically execute `/ck-plan-validate {plan-path}` |
 | `off` | Skip validation step entirely |
 
-**If mode is `prompt`:** Use `AskUserQuestion` tool with options above.
-**If user chooses validation or mode is `auto`:** Execute `/ck.plan:validate {plan-path}` SlashCommand.
+**If mode is `prompt`:** Present the options above directly in your response and wait for user to choose.
+**If user chooses validation or mode is `auto`:** Execute `/ck-plan-validate {plan-path}` SlashCommand.
 
 ## Context Reminder (MANDATORY)
 
@@ -92,7 +111,7 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
   created: {YYYY-MM-DD}
   ---
   ```
-- Save the overview access point at `{plan-dir}/ck.plan.md`. Keep it generic, under 80 lines, and list each implementation phase with status and progress plus links to phase files.
+- Save the overview access point at `{plan-dir}/ck-plan.md`. Keep it generic, under 80 lines, and list each implementation phase with status and progress plus links to phase files.
 - For each phase, create `{plan-dir}/phase-XX-phase-name-here.md` containing the following sections in order: Context links (reference parent plan, dependencies, docs), Overview (date, description, priority, implementation status, review status), Key Insights, Requirements, Architecture, Related code files, Implementation Steps, Todo list, Success Criteria, Risk Assessment, Security Considerations, Next steps.
 
 ## Important Notes
@@ -108,5 +127,7 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
 
 | Command | Description |
 |---------|-------------|
-| `/ck.test` | Run tests and analyze results |
-| `/ck.fix` | Analyze and fix issues |
+| `/ck-cook` | Implement plan |
+| `/ck-test` | Run tests and analyze results |
+| `/ck-fix` | Analyze and fix issues |
+| `/ck-spec-specify` | Need formal spec? Switch to spec-driven flow |

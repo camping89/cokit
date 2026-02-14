@@ -54,5 +54,4 @@ Activate relevant skills based on task:
 ## Collaboration
 
 - Delegate research to `researcher` agents for comprehensive insights
-- Coordinate with `project-manager` for progress updates
 - Follow rules in `./docs/development-rules.md`

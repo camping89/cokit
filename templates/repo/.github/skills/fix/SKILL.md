@@ -1,7 +1,6 @@
 ---
 name: fix
 description: ALWAYS activate this skill before fixing ANY bug, error, test failure, CI/CD issue, type error, lint, log error, UI issue, code problem.
-version: 1.1.0
 ---
 
 # Fixing
@@ -18,7 +17,7 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 
 ### Step 1: Mode Selection
 
-**First action:** If there is no "auto" keyword in the request, use `AskUserQuestion` to determine workflow mode:
+**First action:** If there is no "auto" keyword in the request, ask the user directly to choose a workflow mode (then wait for response):
 
 | Option | Recommend When | Behavior |
 |--------|----------------|----------|
@@ -26,13 +25,13 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 | **Human-in-the-loop Review** | Critical/production code | Pause for approval at each step |
 | **Quick** | Type errors, lint, trivial bugs | Fast debug → fix → review cycle |
 
-See `references/mode-selection.md` for AskUserQuestion format.
+See `references/mode-selection.md` for question format.
 
 ### Step 2: Debug
 
 - Activate `debug` skill.
 - Guess all possible root causes.
-- Spawn multiple `Explore` subagents in parallel to verify each hypothesis.
+- Search in parallel to verify each hypothesis.
 - Create report with all findings for the next step.
 
 ### Step 3: Complexity Assessment & Fix Implementation
@@ -49,25 +48,25 @@ Classify before routing. See `references/complexity-assessment.md`.
 ### Step 4: Fix Verification & Prevent Future Issues
 
 - Read and analyze all the implemented changes.
-- Spawn multiple `Explore` subagents to find possible related code for verification.
+- Search in parallel to find possible related code for verification.
 - Make sure these fixes don't break other parts of the codebase.
 - Prevent future issues by adding comprehensive validation.
 
 ### Step 5: Finalize
 
 - Report summary to user with confidence level/score, all the changes and related files.
-- Ask to commit via `git-manager` subagent and update docs if needed via `docs-manager` subagent (in parallel).
+- Ask to commit via `git-manager` agent and update docs if needed via `docs-manager` agent (in parallel).
 
 ---
 
-## IMPORTANT: Skill/Subagent Activation Matrix
+## IMPORTANT: Skill/Agent Activation Matrix
 
 See `references/skill-activation-matrix.md` for complete matrix.
 
 **Always activate:** `debug` (all workflows)
 **Conditional:** `problem-solving`, `sequential-thinking`, `brainstorming`, `context-engineering`
-**Subagents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`, `Bash`
-**Parallel:** Multiple `Explore` agents for scouting, `Bash` agents for verification
+**Agents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`
+**Parallel:** Multiple parallel searches for scouting, terminal commands for verification
 
 ## Output Format
 
@@ -84,14 +83,14 @@ Unified step markers:
 ## References
 
 Load as needed:
-- `references/mode-selection.md` - AskUserQuestion format for mode
+- `references/mode-selection.md` - Mode selection question format
 - `references/complexity-assessment.md` - Classification criteria
 - `references/workflow-quick.md` - Quick: debug → fix → review
 - `references/workflow-standard.md` - Standard: full pipeline
 - `references/workflow-deep.md` - Deep: research + brainstorm + plan
 - `references/review-cycle.md` - Review logic (autonomous vs HITL)
 - `references/skill-activation-matrix.md` - When to activate each skill
-- `references/parallel-exploration.md` - Parallel Explore/Bash subagents patterns
+- `references/parallel-exploration.md` - Parallel search and execution patterns
 
 **Specialized Workflows:**
 - `references/workflow-ci.md` - GitHub Actions/CI failures

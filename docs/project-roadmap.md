@@ -1,9 +1,9 @@
 # CoKit Project Roadmap
 
 **Project:** CoKit - Claude Code to GitHub Copilot Port
-**Version:** 1.2.0
+**Version:** 1.2.4
 **Start Date:** 2026-01-06
-**Last Updated:** 2026-02-10 (SpecKit integration complete)
+**Last Updated:** 2026-02-12 (video intro + flowchart UX)
 **Current Phase:** 6 of 6 (COMPLETE)
 **Overall Progress:** 100%
 
@@ -159,6 +159,15 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 
 ## Changelog
 
+### 2026-02-12 - v1.2.3 (Video Intro + Flowchart UX)
+
+**Features Added:**
+- Video intro for landing page
+- Variant commands visualization in flowchart and Deep Dive sections
+- Improved flowchart UX: zoom controls, drag-to-pan, hash navigation, styled scrollbar
+- Cross-referenced `ck-*` and `ck-spec-*` in suggested next steps
+- Synced templates with latest source files
+
 ### 2026-02-10 - v1.2.0 Release (SpecKit Integration)
 
 **Resources Expanded:**
@@ -303,6 +312,6 @@ None at completion. All functional requirements satisfied.
 
 ---
 
-**Last Updated:** 2026-02-10
+**Last Updated:** 2026-02-12
 **Project Manager:** project-manager agent
-**Status:** ALL PHASES COMPLETE - v1.2.0 RELEASED
+**Status:** ALL PHASES COMPLETE - v1.2.4 RELEASED

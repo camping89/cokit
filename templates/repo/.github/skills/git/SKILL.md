@@ -1,18 +1,17 @@
 ---
 name: git
 description: Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets.
-version: 1.0.0
 ---
 
 # Git Operations
 
-Execute git workflows via `git-manager` subagent to isolate verbose output.
+Execute git workflows via `git-manager` agent to isolate verbose output.
 Activate `context-engineering` skill.
 
 **IMPORTANT:**
 - Sacrifice grammar for the sake of concision.
 - Ensure token efficiency while maintaining high quality.
-- Pass these rules to subagents.
+- Pass these rules to agents.
 
 ## Arguments
 - `cm`: Stage files & create commits

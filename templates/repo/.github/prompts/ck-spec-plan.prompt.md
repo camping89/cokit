@@ -1,20 +1,6 @@
 ---
 agent: 'agent'
 description: 'Execute implementation planning workflow to generate design artifacts'
-handoffs:
-  - label: Create Tasks
-    agent: ck.spec.tasks
-    prompt: Break the plan into tasks
-    send: true
-  - label: Create Checklist
-    agent: ck.spec.checklist
-    prompt: Create a checklist for the following domain...
-scripts:
-  sh: spec-kit/scripts/bash/setup-plan.sh --json
-  ps: spec-kit/scripts/powershell/setup-plan.ps1 -Json
-agent_scripts:
-  sh: spec-kit/scripts/bash/update-agent-context.sh __AGENT__
-  ps: spec-kit/scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
 ---
 
 ## User Input
@@ -101,8 +87,9 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.spec.tasks` | Generate executable tasks | Plan complete with data-model.md, contracts/ ready |
-| `/ck.spec.checklist` | Generate validation checklist | Need domain-specific QA before implementation |
-| `/ck.spec.analyze` | Cross-artifact analysis | After tasks generated, check consistency |
+| `/ck-spec-tasks` | Generate executable tasks | Plan complete with data-model.md, contracts/ ready |
+| `/ck-spec-checklist` | Generate validation checklist | Need domain-specific QA before implementation |
+| `/ck-spec-analyze` | Cross-artifact analysis | After tasks generated, check consistency |
+| `/ck-cook` | Quick flow — implement plan directly | Plan is simple, skip spec-tasks |
 
-**Workflow:** `/ck.spec.specify` → `/ck.spec.clarify` → `/ck.spec.plan` → `/ck.spec.tasks` → `/ck.spec.implement`
+**Workflow:** `/ck-spec-specify` → `/ck-spec-clarify` → `/ck-spec-plan` → `/ck-spec-tasks` → `/ck-spec-implement`

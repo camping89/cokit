@@ -98,8 +98,12 @@
 
     /* ===== HERO ===== */
     .hero {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 120px 24px 60px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 48px;
       position: relative;
       overflow: hidden;
     }
@@ -116,6 +120,12 @@
       pointer-events: none;
     }
 
+    .hero-text {
+      flex: 1;
+      text-align: left;
+      min-width: 0;
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -130,7 +140,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(32px, 6vw, 56px);
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 16px;
@@ -144,10 +154,10 @@
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2.5vw, 20px);
+      font-size: clamp(15px, 2vw, 18px);
       color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 32px;
+      max-width: 520px;
+      margin: 0 0 28px;
     }
 
     .hero-install {
@@ -179,6 +189,30 @@
       color: var(--text-muted);
       font-size: 13px;
       margin-top: 10px;
+    }
+
+    .hero-video {
+      flex: 1;
+      min-width: 0;
+      max-width: 520px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-text {
+        text-align: center;
+      }
+      .hero-sub {
+        margin: 0 auto 28px;
+      }
+      .hero-video {
+        max-width: 100%;
+        width: 100%;
+      }
     }
 
     /* ===== SECTIONS ===== */
@@ -1037,6 +1071,99 @@
     .warning-box strong {
       color: var(--orange);
     }
+
+    /* ===== VIDEO INTRO ===== */
+    .video-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(56, 189, 248, 0.1);
+      background: #000;
+      cursor: pointer;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .video-container:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.1);
+    }
+
+    .video-container video {
+      display: block;
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.45);
+      transition: background 0.3s;
+    }
+
+    .video-container:hover .video-play-overlay {
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .video-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--gradient-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(56, 189, 248, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .video-container:hover .video-play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(56, 189, 248, 0.5);
+    }
+
+    .video-play-btn::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 4px;
+    }
+
+    .video-play-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .video-play-btn {
+        width: 56px;
+        height: 56px;
+      }
+      .video-play-btn::after {
+        border-left-width: 16px;
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        margin-left: 3px;
+      }
+    }
   </style>
 </head>
 
@@ -1064,15 +1191,26 @@
 
   <!-- ===== HERO ===== -->
   <header class="hero">
-    <div class="hero-badge">&#9889; Version 1.2.2</div>
-    <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
-    <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
-      your project and works like a real developer.</p>
-    <div class="hero-install" onclick="copyInstall()" id="installCmd">
-      <span>npx cokit-cli init</span>
-      <span class="copy-icon" id="copyIcon">&#128203; copy</span>
+    <div class="hero-text">
+      <div class="hero-badge">&#9889; Version 1.2.4</div>
+      <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
+      <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
+        your project and works like a real developer.</p>
+      <div class="hero-install" onclick="copyInstall()" id="installCmd">
+        <span>npx cokit-cli init</span>
+        <span class="copy-icon" id="copyIcon">&#128203; copy</span>
+      </div>
+      <p class="hero-hint">cd into your project folder first, then run the command above.</p>
     </div>
-    <p class="hero-hint">cd into your project folder first, then run the command above.</p>
+    <div class="hero-video">
+      <div class="video-container" id="videoContainer" onclick="playIntroVideo()">
+        <video id="introVideo" src="cokit-intro.mp4" preload="metadata"></video>
+        <div class="video-play-overlay" id="videoOverlay">
+          <div class="video-play-btn"></div>
+          <span class="video-play-label">Curious? Play me :)</span>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- ===== STATS ===== -->
@@ -1754,9 +1892,18 @@
       <!-- Command Finder: Command buttons bar -->
       <div class="cf-cmd-bar" id="cfCmdBar"></div>
 
+      <!-- Command Finder: Zoom controls -->
+      <div class="cf-zoom-bar">
+        <button class="cf-zoom-btn" id="cfZoomOut" title="Zoom out">&minus;</button>
+        <span class="cf-zoom-level" id="cfZoomLevel">100%</span>
+        <button class="cf-zoom-btn" id="cfZoomIn" title="Zoom in">+</button>
+        <button class="cf-zoom-btn" id="cfZoomFit" title="Fit to view" style="width: auto; padding: 0 8px; font-size: 11px;">Fit</button>
+        <span class="cf-zoom-hint">Drag or scroll to pan &bull; Ctrl+Scroll to zoom</span>
+      </div>
+
       <!-- Command Finder: SVG flowchart -->
-      <div class="cf-flowchart-wrap">
-        <svg id="cfFlowchart" viewBox="0 0 1560 1260"></svg>
+      <div class="cf-flowchart-wrap" id="cfFlowchartWrap">
+        <svg id="cfFlowchart" viewBox="-20 0 2020 1460"></svg>
       </div>
 
       <!-- Command Finder: Tooltip -->
@@ -1838,16 +1985,88 @@
     .cf-flowchart-wrap {
       overflow: auto;
       padding: 16px;
-      display: flex;
-      justify-content: center;
-      min-height: 500px;
+      position: relative;
+      min-height: 400px;
+      max-height: 85vh;
+      cursor: grab;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+    }
+
+    .cf-flowchart-wrap::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+
+    .cf-flowchart-wrap::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .cf-flowchart-wrap::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+    }
+
+    .cf-flowchart-wrap::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .cf-flowchart-wrap.cf-dragging {
+      cursor: grabbing;
+      user-select: none;
     }
 
     .cf-flowchart-wrap svg {
-      width: 100%;
+      min-width: 1200px;
       height: auto;
       min-height: 480px;
-      max-height: 85vh;
+      display: block;
+    }
+
+    /* Zoom controls */
+    .cf-zoom-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+
+    .cf-zoom-btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .cf-zoom-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .cf-zoom-level {
+      font-size: 11px;
+      color: var(--text-dim);
+      min-width: 36px;
+      text-align: center;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .cf-zoom-hint {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-left: auto;
     }
 
     .cf-wrapper svg text {
@@ -1933,7 +2152,7 @@
       // Flow logic:
       //   New project? → bootstrap
       //   Fix bug? → know cause? Yes→fix→variants, No→debug→fix→variants
-      //   Build feature? → need spec? No→complexity?→plan-fast|plan|plan-hard→cook→test, Yes→spec flow, Unsure→brainstorm
+      //   Build feature? → need format request? Yes→specify→plan, No→brainstorm→plan → cook→test
       //   Explore? → scout→watzup
       //   Git? → git
       //   Test? → test→fix (if fail)
@@ -1942,17 +2161,17 @@
 
       const CF_NODES = [
         // Start
-        { id: 'start', text: 'What do you\nwant to do?', type: 'start', x: 60, y: 520 },
+        { id: 'start', text: 'What do you\nwant to do?', type: 'start', x: 60, y: 560 },
 
         // Level 1 decisions
         { id: 'q_new', text: 'New\nproject?', type: 'decision', x: 240, y: 80 },
         { id: 'q_bug', text: 'Fix a\nbug?', type: 'decision', x: 240, y: 240 },
         { id: 'q_feature', text: 'Build\nfeature?', type: 'decision', x: 240, y: 510 },
-        { id: 'q_explore', text: 'Explore\ncodebase?', type: 'decision', x: 240, y: 680 },
-        { id: 'q_git', text: 'Git\nops?', type: 'decision', x: 240, y: 780 },
-        { id: 'q_test', text: 'Run\ntests?', type: 'decision', x: 240, y: 870 },
-        { id: 'q_docs', text: 'Code quality\nor docs?', type: 'decision', x: 240, y: 980 },
-        { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1140 },
+        { id: 'q_explore', text: 'Explore\ncodebase?', type: 'decision', x: 240, y: 730 },
+        { id: 'q_git', text: 'Git\nops?', type: 'decision', x: 240, y: 870 },
+        { id: 'q_test', text: 'Run\ntests?', type: 'decision', x: 240, y: 1010 },
+        { id: 'q_docs', text: 'Code quality\nor docs?', type: 'decision', x: 240, y: 1150 },
+        { id: 'q_help', text: 'Need\nhelp?', type: 'decision', x: 240, y: 1340 },
 
         // New project
         { id: 'c_bootstrap', text: '/ck-bootstrap', type: 'command', x: 480, y: 80, desc: 'Start a new project from scratch' },
@@ -1964,59 +2183,62 @@
 
         // Fix variants
         { id: 'q_fixtype', text: 'Issue\ntype?', type: 'decision', x: 900, y: 200 },
-        { id: 'c_fix_fast', text: '/ck-fix-fast', type: 'command', x: 1120, y: 60, desc: 'Quick fix for small, obvious issues' },
+        { id: 'c_fix_fast', text: '/ck-fix-fast', type: 'command', x: 1120, y: 50, desc: 'Quick fix for small, obvious issues' },
         { id: 'c_fix_hard', text: '/ck-fix-hard', type: 'command', x: 1120, y: 100, desc: 'Complex issues needing systematic approach' },
-        { id: 'c_fix_types', text: '/ck-fix-types', type: 'command', x: 1120, y: 140, desc: 'Fix TypeScript/type errors' },
-        { id: 'c_fix_ui', text: '/ck-fix-ui', type: 'command', x: 1120, y: 180, desc: 'Fix UI/UX visual and layout issues' },
-        { id: 'c_fix_ci', text: '/ck-fix-ci', type: 'command', x: 1120, y: 220, desc: 'Fix CI/CD and GitHub Actions failures' },
-        { id: 'c_fix_test', text: '/ck-fix-test', type: 'command', x: 1120, y: 260, desc: 'Fix failing tests' },
-        { id: 'c_fix_logs', text: '/ck-fix-logs', type: 'command', x: 1120, y: 300, desc: 'Analyze logs and fix issues found' },
+        { id: 'c_fix_types', text: '/ck-fix-types', type: 'command', x: 1120, y: 150, desc: 'Fix TypeScript/type errors' },
+        { id: 'c_fix_ui', text: '/ck-fix-ui', type: 'command', x: 1120, y: 200, desc: 'Fix UI/UX visual and layout issues' },
+        { id: 'c_fix_ci', text: '/ck-fix-ci', type: 'command', x: 1120, y: 250, desc: 'Fix CI/CD and GitHub Actions failures' },
+        { id: 'c_fix_test', text: '/ck-fix-test', type: 'command', x: 1120, y: 300, desc: 'Fix failing tests' },
+        { id: 'c_fix_logs', text: '/ck-fix-logs', type: 'command', x: 1120, y: 350, desc: 'Analyze logs and fix issues found' },
 
-        // Feature branch
-        { id: 'q_formal', text: 'Need formal\nrequirements?', type: 'decision', x: 480, y: 510 },
-        { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 440, desc: 'Collaborative ideation with expert advice' },
+        // Feature branch — decision
+        { id: 'q_formal', text: 'Need format\nrequest?', type: 'decision', x: 480, y: 510 },
 
-        // Plan: ck-plan is the entry point, then routes to fast/hard variants
-        { id: 'c_plan', text: '/ck-plan', type: 'command', x: 700, y: 510, desc: 'Intelligent plan creation — auto-detects complexity' },
-        { id: 'c_plan_fast', text: '/ck-plan-fast', type: 'command', x: 920, y: 460, desc: 'Quick plan, no research needed' },
-        { id: 'c_plan_hard', text: '/ck-plan-hard', type: 'command', x: 920, y: 560, desc: 'Deep research + detailed plan' },
-        { id: 'c_plan_validate', text: '/ck-plan-validate', type: 'command', x: 1120, y: 510, desc: 'Validate any plan with critical questions' },
-        { id: 'c_cook', text: '/ck-cook', type: 'command', x: 1300, y: 510, desc: 'Smart feature implementation from plan or task' },
-        { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1460, y: 510, desc: 'Run tests after implementation' },
+        // Yes → specify → need clarify? → clarify or plan
+        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 560, desc: 'Create formal specification from idea' },
+        { id: 'q_clarify', text: 'Need\nclarify?', type: 'decision', x: 920, y: 560 },
+        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 920, y: 650, desc: 'Clarify requirements with stakeholder Q&A' },
 
-        // Spec-driven flow
-        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 600, desc: 'Create formal specification from idea' },
-        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 880, y: 600, desc: 'Ask clarification questions about spec' },
-        { id: 'c_spec_plan', text: '/ck-spec-plan', type: 'command', x: 1060, y: 600, desc: 'Generate plan from specification' },
-        { id: 'c_spec_tasks', text: '/ck-spec-tasks', type: 'command', x: 1240, y: 600, desc: 'Break plan into executable tasks' },
-        { id: 'c_spec_implement', text: '/ck-spec-implement', type: 'command', x: 1420, y: 600, desc: 'Execute tasks from spec plan' },
+        // No → brainstorm → plan
+        { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 460, desc: 'Collaborative ideation with expert advice' },
 
-        // Spec extras
-        { id: 'c_spec_analyze', text: '/ck-spec-analyze', type: 'command', x: 1060, y: 660, desc: 'Check specification consistency' },
-        { id: 'c_spec_checklist', text: '/ck-spec-checklist', type: 'command', x: 1240, y: 660, desc: 'Validate all requirements covered' },
+        // Shared convergence — both flows meet here
+        { id: 'c_plan', text: '/ck-plan', type: 'command', x: 1120, y: 510, desc: 'Intelligent plan creation — auto-detects complexity' },
+
+        // Plan routes by complexity
+        { id: 'c_plan_fast', text: '/ck-plan-fast', type: 'command', x: 1320, y: 460, desc: 'Quick plan, no research needed' },
+        { id: 'c_plan_hard', text: '/ck-plan-hard', type: 'command', x: 1320, y: 560, desc: 'Deep research + detailed plan' },
+
+        // Optional validation
+        { id: 'q_validate', text: 'Need\nvalidate?', type: 'decision', x: 1520, y: 510 },
+        { id: 'c_plan_validate', text: '/ck-plan-validate', type: 'command', x: 1520, y: 620, desc: 'Validate plan with critical questions' },
+
+        // Implementation
+        { id: 'c_cook', text: '/ck-cook', type: 'command', x: 1720, y: 510, desc: 'Smart feature implementation from plan or task' },
+        { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1920, y: 510, desc: 'Run tests after implementation' },
 
         // Explore
-        { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 680, desc: 'Fast codebase search and exploration' },
-        { id: 'c_watzup', text: '/ck-watzup', type: 'command', x: 650, y: 680, desc: 'Review recent changes in current branch' },
+        { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 730, desc: 'Fast codebase search and exploration' },
+        { id: 'c_watzup', text: '/ck-watzup', type: 'command', x: 720, y: 730, desc: 'Review recent changes in current branch' },
 
         // Git
-        { id: 'c_git', text: '/ck-git', type: 'command', x: 480, y: 780, desc: 'Git operations: commit, push, PR, merge' },
+        { id: 'c_git', text: '/ck-git', type: 'command', x: 480, y: 870, desc: 'Git operations: commit, push, PR, merge' },
 
         // Test (standalone)
-        { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 870, desc: 'Run and analyze tests' },
+        { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 1010, desc: 'Run and analyze tests' },
 
         // Docs/Review/Simplify
-        { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 980 },
-        { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 920, desc: 'Code review and quality check' },
-        { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 960, desc: 'Simplify & refine code for clarity' },
-        { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 1000, desc: 'Generate/update project documentation' },
-        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 1040, desc: 'Preview markdown files and plans visually' },
+        { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 1150 },
+        { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 1080, desc: 'Code review and quality check' },
+        { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 1130, desc: 'Simplify & refine code for clarity' },
+        { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 1180, desc: 'Generate/update project documentation' },
+        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 1230, desc: 'Preview markdown files and plans visually' },
 
         // Help
-        { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1140 },
-        { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 1100, desc: 'Interactive CoKit help and guidance' },
-        { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1140, desc: 'Technical & architectural questions' },
-        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1180, desc: 'Write development journal entries' },
+        { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1340 },
+        { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 1300, desc: 'Interactive CoKit help and guidance' },
+        { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1350, desc: 'Technical & architectural questions' },
+        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1400, desc: 'Write development journal entries' },
       ];
 
       const CF_EDGES = [
@@ -2049,31 +2271,31 @@
         { from: 'q_fixtype', to: 'c_fix_test', label: 'Tests' },
         { from: 'q_fixtype', to: 'c_fix_logs', label: 'Logs' },
 
-        // Feature: need formal spec?
+        // Feature: need format request?
         { from: 'q_feature', to: 'q_formal', label: 'Yes' },
-        { from: 'q_formal', to: 'c_brainstorm', label: 'Unsure' },
 
-        // Plan: ck-plan first, then decides variant
-        { from: 'q_formal', to: 'c_plan', label: 'No' },
+        // Yes → specify → need clarify?
+        { from: 'q_formal', to: 'c_spec_specify', label: 'Yes' },
+        { from: 'c_spec_specify', to: 'q_clarify', label: '' },
+        { from: 'q_clarify', to: 'c_spec_clarify', label: 'Yes' },
+        { from: 'c_spec_clarify', to: 'c_plan', label: '' },
+        { from: 'q_clarify', to: 'c_plan', label: 'No' },
+
+        // No → brainstorm → plan
+        { from: 'q_formal', to: 'c_brainstorm', label: 'No' },
+        { from: 'c_brainstorm', to: 'c_plan', label: '' },
+
+        // Plan routes by complexity → need validate?
         { from: 'c_plan', to: 'c_plan_fast', label: 'Simple' },
         { from: 'c_plan', to: 'c_plan_hard', label: 'Complex' },
-        // fast → cook directly (skip validate)
-        { from: 'c_plan_fast', to: 'c_cook', label: '' },
-        // standard & hard → validate → cook
-        { from: 'c_plan', to: 'c_plan_validate', label: '' },
-        { from: 'c_plan_hard', to: 'c_plan_validate', label: '' },
-        { from: 'c_plan_validate', to: 'c_cook', label: '' },
-        { from: 'c_cook', to: 'c_test_after', label: '' },
+        { from: 'c_plan_fast', to: 'q_validate', label: '' },
+        { from: 'c_plan_hard', to: 'q_validate', label: '' },
 
-        // Spec-driven flow
-        { from: 'q_formal', to: 'c_spec_specify', label: 'Yes' },
-        { from: 'c_spec_specify', to: 'c_spec_clarify', label: '' },
-        { from: 'c_spec_clarify', to: 'c_spec_plan', label: '' },
-        { from: 'c_spec_plan', to: 'c_spec_tasks', label: '' },
-        { from: 'c_spec_tasks', to: 'c_spec_implement', label: 'Spec\nflow' },
-        { from: 'c_spec_tasks', to: 'c_cook', label: 'Quick\nflow' },
-        { from: 'c_spec_plan', to: 'c_spec_analyze', label: '' },
-        { from: 'c_spec_tasks', to: 'c_spec_checklist', label: '' },
+        // Validate decision → cook
+        { from: 'q_validate', to: 'c_plan_validate', label: 'Yes' },
+        { from: 'c_plan_validate', to: 'c_cook', label: '' },
+        { from: 'q_validate', to: 'c_cook', label: 'No' },
+        { from: 'c_cook', to: 'c_test_after', label: '' },
 
         // Explore
         { from: 'q_explore', to: 'c_scout', label: 'Yes' },
@@ -2327,7 +2549,13 @@
           if (p) p.setAttribute('marker-end', 'url(#cf-arrow)');
         });
         document.querySelectorAll('.cf-cmd-btn').forEach(function (b) { b.classList.remove('active'); });
+        // Clear hash if it was a command-finder hash
+        if (window.location.hash.indexOf('#command-finder-') === 0) {
+          history.replaceState(null, '', window.location.pathname + window.location.search + '#flowchart');
+        }
       }
+
+      var cfHashUpdating = false;
 
       function highlightNode(nodeId) {
         if (activeHighlight === nodeId) { clearHighlight(); return; }
@@ -2358,10 +2586,20 @@
         document.querySelectorAll('.cf-cmd-btn').forEach(function (b) {
           b.classList.toggle('active', b.dataset.cmd === nodeId);
         });
+
+        // Update URL hash for command nodes
+        var node = nodeMap[nodeId];
+        if (node && node.type === 'command' && !cfHashUpdating) {
+          var slug = node.text.replace(/^\//, '');
+          cfHashUpdating = true;
+          history.replaceState(null, '', '#command-finder-' + slug);
+          cfHashUpdating = false;
+        }
       }
 
-      // Background click to reset
-      svg.addEventListener('click', clearHighlight);
+      // Background click to reset (skip if just finished dragging)
+      var cfDidDrag = false;
+      svg.addEventListener('click', function () { if (!cfDidDrag) clearHighlight(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') clearHighlight(); });
 
       // ========== COMMAND BUTTONS ==========
@@ -2398,6 +2636,121 @@
       function cfHideTooltip() {
         tooltipEl.classList.remove('show');
       }
+
+      // ========== ZOOM CONTROLS ==========
+      var cfWrap = document.getElementById('cfFlowchartWrap');
+      var cfZoomLevel = document.getElementById('cfZoomLevel');
+      var cfScale = 1;
+      var CF_ZOOM_MIN = 0.4;
+      var CF_ZOOM_MAX = 2.0;
+      var CF_ZOOM_STEP = 0.15;
+
+      function cfSetZoom(scale) {
+        cfScale = Math.max(CF_ZOOM_MIN, Math.min(CF_ZOOM_MAX, scale));
+        svg.style.minWidth = (1200 * cfScale) + 'px';
+        svg.style.transform = '';
+        cfZoomLevel.textContent = Math.round(cfScale * 100) + '%';
+      }
+
+      function cfZoomToFit() {
+        var wrapW = cfWrap.clientWidth - 32;
+        var fit = wrapW / 1980;
+        cfSetZoom(Math.max(CF_ZOOM_MIN, Math.min(1, fit)));
+      }
+
+      document.getElementById('cfZoomIn').addEventListener('click', function () {
+        cfSetZoom(cfScale + CF_ZOOM_STEP);
+      });
+      document.getElementById('cfZoomOut').addEventListener('click', function () {
+        cfSetZoom(cfScale - CF_ZOOM_STEP);
+      });
+      document.getElementById('cfZoomFit').addEventListener('click', cfZoomToFit);
+
+      // Ctrl+Scroll to zoom
+      cfWrap.addEventListener('wheel', function (ev) {
+        if (!ev.ctrlKey) return;
+        ev.preventDefault();
+        var delta = ev.deltaY > 0 ? -CF_ZOOM_STEP : CF_ZOOM_STEP;
+        cfSetZoom(cfScale + delta);
+      }, { passive: false });
+
+      // Drag to pan
+      var cfDragging = false;
+      var cfDragStartX = 0;
+      var cfDragStartY = 0;
+      var cfScrollStartX = 0;
+      var cfScrollStartY = 0;
+
+      cfWrap.addEventListener('mousedown', function (ev) {
+        // Only left button, ignore clicks on interactive elements
+        if (ev.button !== 0 || ev.target.closest('a, button, .cf-node')) return;
+        cfDragging = true;
+        cfDidDrag = false;
+        cfDragStartX = ev.clientX;
+        cfDragStartY = ev.clientY;
+        cfScrollStartX = cfWrap.scrollLeft;
+        cfScrollStartY = cfWrap.scrollTop;
+        cfWrap.classList.add('cf-dragging');
+        ev.preventDefault();
+      });
+
+      document.addEventListener('mousemove', function (ev) {
+        if (!cfDragging) return;
+        var dx = ev.clientX - cfDragStartX;
+        var dy = ev.clientY - cfDragStartY;
+        // Mark as real drag if moved more than 4px
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) cfDidDrag = true;
+        cfWrap.scrollLeft = cfScrollStartX - dx;
+        cfWrap.scrollTop = cfScrollStartY - dy;
+      });
+
+      document.addEventListener('mouseup', function () {
+        if (!cfDragging) return;
+        cfDragging = false;
+        cfWrap.classList.remove('cf-dragging');
+        // Reset didDrag flag after click event fires
+        if (cfDidDrag) setTimeout(function () { cfDidDrag = false; }, 0);
+      });
+
+      // Auto-fit on small screens
+      if (window.innerWidth < 1200) {
+        cfZoomToFit();
+      }
+
+      // ========== HASH NAVIGATION ==========
+      // Supports: #command-finder-{node-id} e.g. #command-finder-ck-cook
+      // Also: #command-finder-{command-text} e.g. #command-finder-ck-cook (matches /ck-cook)
+      function cfHandleHash() {
+        if (cfHashUpdating) return;
+        var hash = window.location.hash;
+        if (!hash) return;
+        var prefix = '#command-finder-';
+        if (hash.indexOf(prefix) !== 0) return;
+
+        var slug = hash.substring(prefix.length);
+        // Try to find node by matching: id (c_cook), or command text (/ck-cook → ck-cook)
+        var targetNode = null;
+        CF_NODES.forEach(function (n) {
+          if (n.type !== 'command') return;
+          // Match by slug: ck-cook → /ck-cook, or c_cook
+          var cmdSlug = n.text.replace(/^\//, '').replace(/-/g, '-');
+          if (cmdSlug === slug || n.id === slug || n.id === 'c_' + slug.replace(/-/g, '_').replace(/^ck_/, '')) {
+            targetNode = n;
+          }
+        });
+
+        if (targetNode) {
+          // Scroll to flowchart section
+          var section = document.getElementById('flowchart');
+          if (section) section.scrollIntoView({ behavior: 'smooth' });
+          // Highlight the command after scroll
+          setTimeout(function () { highlightNode(targetNode.id); }, 400);
+        }
+      }
+
+      // Handle on load and hash change
+      cfHandleHash();
+      window.addEventListener('hashchange', cfHandleHash);
     })();
   </script>
 
@@ -3260,6 +3613,8 @@
         });
       }
 
+      var ddHashUpdating = false;
+
       window.ddSwitchCmd = function (cmdKey) {
         currentCmd = cmdKey;
         var cmd = DD_COMMANDS[cmdKey];
@@ -3278,11 +3633,40 @@
         // Render pipeline
         renderPipeline(cmdKey);
         clearPhase();
+
+        // Update URL hash
+        if (!ddHashUpdating) {
+          ddHashUpdating = true;
+          history.replaceState(null, '', '#deep-dive-ck-' + cmdKey);
+          ddHashUpdating = false;
+        }
       };
 
       // Initial render
       renderPipeline('cook');
       renderModeBar(DD_COMMANDS['cook']);
+
+      // ========== DEEP DIVE HASH NAVIGATION ==========
+      // Supports: #deep-dive-ck-{cmd} e.g. #deep-dive-ck-cook
+      function ddHandleHash() {
+        if (ddHashUpdating) return;
+        var hash = window.location.hash;
+        if (!hash) return;
+        var prefix = '#deep-dive-';
+        if (hash.indexOf(prefix) !== 0) return;
+
+        var slug = hash.substring(prefix.length);
+        // Match: ck-cook → cook, ck-fix → fix, etc.
+        var cmdKey = slug.replace(/^ck-/, '');
+        if (DD_COMMANDS[cmdKey]) {
+          var section = document.getElementById('deepdive');
+          if (section) section.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(function () { ddSwitchCmd(cmdKey); }, 400);
+        }
+      }
+
+      ddHandleHash();
+      window.addEventListener('hashchange', ddHandleHash);
     })();
   </script>
 
@@ -3424,7 +3808,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <p>CoKit v1.2.2 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
+    <p>CoKit v1.2.4 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
       BY-NC 4.0</p>
     <p style="margin-top: 8px;">Made with &#10084;&#65039; for developers who want smarter AI assistance.</p>
   </footer>
@@ -3476,6 +3860,26 @@
           });
         }
       });
+    });
+    // Video intro - click to play
+    function playIntroVideo() {
+      const video = document.getElementById('introVideo');
+      const overlay = document.getElementById('videoOverlay');
+      if (video.paused) {
+        overlay.classList.add('hidden');
+        video.controls = true;
+        video.play();
+      }
+    }
+    document.getElementById('introVideo').addEventListener('pause', function () {
+      if (this.ended || this.currentTime === 0) {
+        document.getElementById('videoOverlay').classList.remove('hidden');
+        this.controls = false;
+      }
+    });
+    document.getElementById('introVideo').addEventListener('ended', function () {
+      document.getElementById('videoOverlay').classList.remove('hidden');
+      this.controls = false;
     });
   </script>
 </body>

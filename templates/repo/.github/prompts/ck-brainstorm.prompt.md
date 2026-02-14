@@ -55,7 +55,7 @@ You operate by the holy trinity of software engineering: **YAGNI** (You Aren't G
 6. **Consensus Phase**: Ensure alignment on chosen approach and document decisions
 7. **Documentation Phase**: Create comprehensive markdown summary report
 8. **Finalize Phase**: Ask if user wants to create a detailed implementation plan
-   - If Yes: Run `/ck.plan` with brainstorm summary context
+   - If Yes: Run `/ck-plan` with brainstorm summary context
    - If No: End the session
 
 ## Output Requirements
@@ -82,5 +82,6 @@ When brainstorming concludes with agreement, create a detailed markdown summary 
 
 | Command | Description |
 |---------|-------------|
-| `/ck.plan` | Create implementation plan |
-| `/ck.ask` | Answer technical questions |
+| `/ck-plan` | Create implementation plan |
+| `/ck-ask` | Answer technical questions |
+| `/ck-spec-specify` | Write detailed feature spec |

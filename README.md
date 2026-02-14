@@ -117,13 +117,13 @@ Otherwise?
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.2.2)
+## What's New (v1.2.4)
 
-Full Copilot format compliance audit and cleanup:
-- Removed all Claude Code-specific references (tool names, agent patterns, API params)
-- Fixed frontmatter fields to match official Copilot specs across all file types
-- Rewrote `ck-preview` execution for Copilot's `execute/runInTerminal`
-- Cleaned up 45 files (agents, prompts, skills)
+Video intro and flowchart UX improvements:
+- Added video intro for landing page
+- Improved flowchart with zoom, drag-to-pan, hash navigation
+- Cross-referenced `ck-*` and `ck-spec-*` in suggested next steps
+- Synced templates with latest source files
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 

@@ -1,7 +1,6 @@
 ---
 name: scout
-description: Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents.
-version: 1.0.0
+description: Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal and external search agents.
 ---
 
 # Scout
@@ -9,7 +8,7 @@ version: 1.0.0
 Fast, token-efficient codebase scouting using parallel agents to find files needed for tasks.
 
 ## Arguments
-- Default: Scout using built-in Explore subagents in parallel (`./references/internal-scouting.md`)
+- Default: Scout using built-in search agents in parallel (`./references/internal-scouting.md`)
 - `ext`: Scout using external Gemini/OpenCode CLI tools in parallel (`./references/external-scouting.md`)
 
 ## When to Use
@@ -37,7 +36,7 @@ Read from `$HOME/.copilot/.ck.json`:
 ### 1. Analyze Task
 - Parse user prompt for search targets
 - Identify key directories, patterns, file types, lines of code
-- Determine optimal SCALE value of subagents to spawn
+- Determine optimal SCALE value of agents to spawn
 
 ### 2. Divide and Conquer
 - Split codebase into logical segments per agent
@@ -46,14 +45,14 @@ Read from `$HOME/.copilot/.ck.json`:
 
 ### 3. Spawn Parallel Agents
 Load appropriate reference based on decision tree:
-- **Internal (Default):** `references/internal-scouting.md` (Explore subagents)
+- **Internal (Default):** `references/internal-scouting.md` (search agents)
 - **External:** `references/external-scouting.md` (Gemini/OpenCode)
 
 **Notes:**
-- Prompt detailed instructions for each subagent with exact directories or files it should read
-- Remember that each subagent has less than 200K tokens of context window
-- Amount of subagents to-be-spawned depends on the current system resources available and amount of files to be scanned
-- Each subagent must return a detailed summary report to a main agent
+- Prompt detailed instructions for each agent with exact directories or files it should read
+- Remember that each agent has less than 200K tokens of context window
+- Amount of agents to-be-spawned depends on the current system resources available and amount of files to be scanned
+- Each agent must return a detailed summary report to a main agent
 
 ### 4. Collect Results
 - Timeout: 3 minutes per agent (skip non-responders)
@@ -75,5 +74,5 @@ Load appropriate reference based on decision tree:
 
 ## References
 
-- `references/internal-scouting.md` - Using Explore subagents
+- `references/internal-scouting.md` - Using search agents
 - `references/external-scouting.md` - Using Gemini/OpenCode CLI

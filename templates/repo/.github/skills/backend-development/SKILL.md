@@ -1,8 +1,6 @@
 ---
 name: backend-development
 description: Build backends with Node.js, Python, Go, C#/.NET (NestJS, FastAPI, Django, ASP.NET Core). Use for REST/GraphQL/gRPC APIs, auth (OAuth, JWT), databases, microservices, security (OWASP), Docker/K8s.
-license: MIT
-version: 1.0.0
 ---
 
 # Backend Development Skill

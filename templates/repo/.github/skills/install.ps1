@@ -1,5 +1,5 @@
-# Skills Installation Script for Windows (PowerShell)
-# Installs all dependencies for Claude Code skills
+# CoKit Skills Installation Script for Windows (PowerShell)
+# Installs all dependencies for skills
 #
 # Exit codes (rustup model):
 #   0 = Success (full or partial)
@@ -1093,13 +1093,13 @@ function Show-Usage {
     Write-Host "  ..copilot\skills\.venv\Scripts\Activate.ps1"
     Write-Host ""
     Write-Host "For more information, see:" -ForegroundColor Blue
-    Write-Host "  .claude\skills\INSTALLATION.md"
+    Write-Host "  .copilot\skills\INSTALLATION.md"
     Write-Host ""
 }
 
 # Show help
 function Show-Help {
-    Write-Host "Claude Code Skills Installation Script for Windows"
+    Write-Host "CoKit Skills Installation Script for Windows"
     Write-Host ""
     Write-Host "Usage:"
     Write-Host "  .\install.ps1 [Options]"
@@ -1146,7 +1146,7 @@ function Main {
     }
 
     Write-Host ""  # Just add spacing, don't clear terminal
-    Write-Header "Claude Code Skills Installation (Windows)"
+    Write-Header "CoKit Skills Installation (Windows)"
     Write-Info "Script directory: $ScriptDir"
 
     # Store preference in script scope for functions to access

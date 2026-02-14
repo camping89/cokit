@@ -26,8 +26,8 @@ type(scope): description
 - Only use `feat`, `fix`, or `perf` prefixes for files in `.copilot` directory (do not use `docs`).
 
 ## NEVER Include AI Attribution
-- ❌ "Generated with Claude"
-- ❌ "Co-Authored-By: Claude"
+- ❌ "Generated with AI"
+- ❌ "Co-Authored-By: AI"
 - ❌ Any AI reference
 
 ## Good Examples

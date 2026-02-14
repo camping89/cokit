@@ -1,12 +1,6 @@
 ---
 agent: 'agent'
 description: 'Create or update the project constitution from principle inputs'
-handoffs:
-  - label: Build Specification
-    agent: ck.spec.specify
-    prompt: >-
-      Implement the feature specification based on the updated constitution. I
-      want to build...
 ---
 
 ## User Input
@@ -47,7 +41,7 @@ Follow this execution flow:
    - Read `spec-kit/templates/plan-template.md` and ensure any "Constitution Check" or rules align with updated principles.
    - Read `spec-kit/templates/spec-template.md` for scope/requirements alignment—update if constitution adds/removes mandatory sections or constraints.
    - Read `spec-kit/templates/tasks-template.md` and ensure task categorization reflects new or removed principle-driven task types (e.g., observability, versioning, testing discipline).
-   - Read each command file in `spec-kit/templates/commands/*.md` (including this one) to verify no outdated references (agent-specific names like CLAUDE only) remain when generic guidance is required.
+   - Read each command file in `spec-kit/templates/commands/*.md` (including this one) to verify no outdated references (agent-specific names only) remain when generic guidance is required.
    - Read any runtime guidance docs (e.g., `README.md`, `docs/quickstart.md`, or agent-specific guidance files if present). Update references to principles changed.
 
 5. Produce a Sync Impact Report (prepend as an HTML comment at top of the constitution file after update):
@@ -90,8 +84,9 @@ The template at `spec-kit/memory/constitution.md` should NOT be modified; always
 
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `/ck.spec.specify` | Create feature spec | Constitution ready, start defining features |
-| `/ck.spec.plan` | Generate implementation plan | Update existing plan with new principles |
-| `/ck.spec.analyze` | Validate consistency | Check if existing artifacts align with constitution |
+| `/ck-spec-specify` | Create feature spec | Constitution ready, start defining features |
+| `/ck-spec-plan` | Generate implementation plan | Update existing plan with new principles |
+| `/ck-spec-analyze` | Validate consistency | Check if existing artifacts align with constitution |
+| `/ck-brainstorm` | Brainstorm project ideas | Early stage, exploring project direction |
 
-**Usage:** Run `/ck.spec.constitution` at project start to establish non-negotiable principles
+**Usage:** Run `/ck-spec-constitution` at project start to establish non-negotiable principles

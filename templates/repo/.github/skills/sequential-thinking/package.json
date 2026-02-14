@@ -13,7 +13,7 @@
     "problem-solving",
     "agent-skill"
   ],
-  "author": "Converted from Anthropic MCP Server",
+  "author": "Converted from MCP Server",
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0"

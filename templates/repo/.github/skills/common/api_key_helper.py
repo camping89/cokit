@@ -59,19 +59,19 @@ def find_api_key(skill_dir: Optional[Path] = None) -> Optional[str]:
             return api_key
 
     # Step 3: Check ./.copilot/.env
-    claude_env = project_dir / '.copilot' / '.env'
-    if claude_env.exists():
-        api_key = load_env_file(claude_env)
+    config_env = project_dir / '.copilot' / '.env'
+    if config_env.exists():
+        api_key = load_env_file(config_env)
         if api_key:
-            print(f"✓ Using API key from {claude_env}", file=sys.stderr)
+            print(f"✓ Using API key from {config_env}", file=sys.stderr)
             return api_key
 
     # Step 4: Check ./.copilot/skills/.env
-    claude_skills_env = project_dir / '.copilot' / 'skills' / '.env'
-    if claude_skills_env.exists():
-        api_key = load_env_file(claude_skills_env)
+    skills_config_env = project_dir / '.copilot' / 'skills' / '.env'
+    if skills_config_env.exists():
+        api_key = load_env_file(skills_config_env)
         if api_key:
-            print(f"✓ Using API key from {claude_skills_env}", file=sys.stderr)
+            print(f"✓ Using API key from {skills_config_env}", file=sys.stderr)
             return api_key
 
     # Step 5: Check skill directory .env

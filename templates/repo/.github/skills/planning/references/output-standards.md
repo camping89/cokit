@@ -98,7 +98,7 @@ List affected files with:
 - Prioritize actionable info
 
 ### Unresolved Questions
-**IMPORTANT:** Use `AskUserQuestion` to ask users for unresolved questions at the end
+**IMPORTANT:** List unresolved questions at the end of your response and ask users directly. Wait for their answers before finalizing.
 - Questions needing clarification
 - Technical decisions requiring input
 - Unknowns impacting implementation

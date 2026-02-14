@@ -1,6 +1,6 @@
 # Skills Installation Guide
 
-This guide explains how to install dependencies for Claude Code skills.
+This guide explains how to install dependencies for skills.
 
 ## Overview
 
@@ -203,7 +203,7 @@ Skills respect environment variable loading priority:
 1. **process.env** (highest priority - runtime environment)
 2. **`$HOME/.copilot/skills/{skill-name}/.env`** (skill-specific config)
 3. **`$HOME/.copilot/skills/.env`** (shared skills config)
-4. **`$HOME/.copilot/.env`** (global Claude config)
+4. **`$HOME/.copilot/.env`** (global config)
 
 Example `.env` files are provided where needed (e.g., `devops/.env.example`).
 
@@ -308,4 +308,4 @@ If dependencies fail to install or scripts don't work:
 2. Verify system tools are installed and in PATH
 3. Check environment variables are set correctly
 4. Review skill's `SKILL.md` for additional setup instructions
-5. Open an issue: https://github.com/anthropics/claude-code/issues
+5. Open an issue on the project repository
