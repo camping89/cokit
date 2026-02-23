@@ -97,16 +97,6 @@ mappings:
     original: watzup
     upstream_file: watzup.md
     description: Review recent changes
-  ck.journal:
-    origin: claudekit
-    original: journal
-    upstream_file: journal.md
-    description: Write journal entries
-  ck.preview:
-    origin: claudekit
-    original: preview
-    upstream_file: preview.md
-    description: Preview markdown files
   ck.help:
     origin: claudekit
     original: ck-help

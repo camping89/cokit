@@ -2,6 +2,16 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.5] - 2026-02-23
+
+### Removed
+- Removed `ck-journal` and `ck-preview` prompts (and templates)
+- Removed flowchart nodes/edges and table entries for journal/preview in landing page
+
+### Changed
+- Updated prompt counts across all docs (27 → 25 prompts)
+- Updated resource-origins.yml mappings (removed ck.journal, ck.preview)
+
 ## [1.2.4] - 2026-02-12
 
 ### Added

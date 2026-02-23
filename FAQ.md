@@ -56,7 +56,7 @@ Your instructions here...
 - `copilot-instructions.md` - Project rules
 - `AGENTS.md` - Agent behavior
 - `agents/*.agent.md` - 9 agent files
-- `prompts/ck-*.prompt.md` - 14 prompt files
+- `prompts/ck-*.prompt.md` - 25 prompt files
 - `skills/ck-*/SKILL.md` - 7 skill directories
 - `instructions/ck-*.instructions.md` - 5 instruction files
 - `collections/*.collection.yml` - 5 collection files

@@ -1192,7 +1192,7 @@
   <!-- ===== HERO ===== -->
   <header class="hero">
     <div class="hero-text">
-      <div class="hero-badge">&#9889; Version 1.2.4</div>
+      <div class="hero-badge">&#9889; Version 1.2.5</div>
       <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
       <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
         your project and works like a real developer.</p>
@@ -1308,7 +1308,7 @@
           prompt is a complete workflow.</p>
         <p><strong>How to use:</strong> Type <code style="color: var(--green);">/ck-fix</code> in Copilot Chat</p>
         <div>
-          <span class="concept-tag">27 prompts</span>
+          <span class="concept-tag">25 prompts</span>
           <span class="concept-tag">You trigger it</span>
         </div>
       </div>
@@ -1594,14 +1594,6 @@
           <tr>
             <td><code>/ck-docs</code></td>
             <td>Create or update documentation</td>
-          </tr>
-          <tr>
-            <td><code>/ck-preview</code></td>
-            <td>Preview markdown files and plans</td>
-          </tr>
-          <tr>
-            <td><code>/ck-journal</code></td>
-            <td>Write dev journal entries</td>
           </tr>
           <tr>
             <td><code>/ck-simplify</code></td>
@@ -2232,13 +2224,11 @@
         { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 1080, desc: 'Code review and quality check' },
         { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 1130, desc: 'Simplify & refine code for clarity' },
         { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 1180, desc: 'Generate/update project documentation' },
-        { id: 'c_preview', text: '/ck-preview', type: 'command', x: 700, y: 1230, desc: 'Preview markdown files and plans visually' },
 
         // Help
         { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1340 },
         { id: 'c_help', text: '/ck-help', type: 'command', x: 700, y: 1300, desc: 'Interactive CoKit help and guidance' },
         { id: 'c_ask', text: '/ck-ask', type: 'command', x: 700, y: 1350, desc: 'Technical & architectural questions' },
-        { id: 'c_journal', text: '/ck-journal', type: 'command', x: 700, y: 1400, desc: 'Write development journal entries' },
       ];
 
       const CF_EDGES = [
@@ -2312,13 +2302,11 @@
         { from: 'q_doctype', to: 'c_review', label: 'Review' },
         { from: 'q_doctype', to: 'c_simplify', label: 'Simplify' },
         { from: 'q_doctype', to: 'c_docs', label: 'Docs' },
-        { from: 'q_doctype', to: 'c_preview', label: 'Preview' },
 
         // Help
         { from: 'q_help', to: 'q_helptype', label: 'Yes' },
         { from: 'q_helptype', to: 'c_help', label: 'CoKit' },
         { from: 'q_helptype', to: 'c_ask', label: 'Tech' },
-        { from: 'q_helptype', to: 'c_journal', label: 'Journal' },
       ];
 
       // ========== NODE DIMENSIONS ==========
@@ -3759,7 +3747,7 @@
         <span class="comment"># Or install for both project + personal</span><br>
         <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -a</span><br><br>
         <span class="output">&#128640; CoKit Setup</span><br>
-        <span class="success">&#10003; 27 prompts installed</span><br>
+        <span class="success">&#10003; 25 prompts installed</span><br>
         <span class="success">&#10003; 12 agents configured</span><br>
         <span class="success">&#10003; 23 skills activated</span><br>
         <span class="success">&#10003; 5 instructions applied</span><br>
@@ -3808,7 +3796,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <p>CoKit v1.2.4 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
+    <p>CoKit v1.2.5 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
       BY-NC 4.0</p>
     <p style="margin-top: 8px;">Made with &#10084;&#65039; for developers who want smarter AI assistance.</p>
   </footer>

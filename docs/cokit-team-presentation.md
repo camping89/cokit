@@ -18,7 +18,7 @@
 - Project-specific context
 
 **Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
-- 27 prompts with unified `ck-*` namespace (ClaudeKit + SpecKit) using `mode: agent`
+- 25 prompts with unified `ck-*` namespace (ClaudeKit + SpecKit) using `mode: agent`
 - 27 skills teaching Copilot best practices (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 specialized agents (including code-simplifier, fullstack-developer, ui-ux-designer)
 - 5 instructions (backend, frontend, testing, development, research)
@@ -79,7 +79,7 @@
 │   ┌─────────────────────────────────────────────────────────┐ │
 │   │ ✓ .github/copilot-instructions.md                       │ │
 │   │ ✓ .github/AGENTS.md                                     │ │
-│   │ ✓ .github/prompts/ck-*.prompt.md (27 prompts)           │ │
+│   │ ✓ .github/prompts/ck-*.prompt.md (25 prompts)           │ │
 │   │ ✓ .github/instructions/ck-*.instructions.md (5 files)   │ │
 │   │ ✓ .github/collections/ck-*.collection.yml (5 bundles)   │ │
 │   │ ✓ .vscode/settings.json                                 │ │
@@ -175,7 +175,7 @@ your-project/
 **SpecKit (ck-spec-*):** Spec-driven workflow commands
 - `/ck-spec-specify`, `/ck-spec-clarify`, `/ck-spec-plan`, `/ck-spec-tasks`, `/ck-spec-implement`, etc.
 
-All 27 prompts unified in single namespace with cross-navigation support.
+All 25 prompts unified in single namespace with cross-navigation support.
 
 ---
 

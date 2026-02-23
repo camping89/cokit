@@ -23,7 +23,7 @@ Complete reference for CoKit GitHub Copilot resource toolkit.
 CoKit transforms GitHub Copilot from basic autocomplete to a structured AI development assistant with:
 
 - **12 Specialized Agents** - Planner, code-reviewer, debugger, tester, researcher, code-simplifier, fullstack-developer, ui-ux-designer, etc.
-- **27 Prompt Templates** - Reusable workflows with `ck-*` and `ck-spec-*` prefixes
+- **25 Prompt Templates** - Reusable workflows with `ck-*` and `ck-spec-*` prefixes
 - **27 Skill Packages** - Deep expertise in debugging, code-review, planning, frontend-design, databases, devops, etc.
 - **5 Instructions** - Coding standards auto-applied by file pattern (backend, frontend, testing, development, research)
 - **5 Collections** - Bundled resource sets for specific workflows (core, development-rules, documentation, git-workflow, orchestration)
@@ -62,7 +62,7 @@ Step-by-step instructions...
 
 **SpecKit (ck-spec-* namespace):** Spec-driven workflows - specify, clarify, constitution, plan, tasks, implement, analyze, checklist, etc.
 
-All 27 prompts are unified in a single namespace for seamless workflow navigation.
+All 25 prompts are unified in a single namespace for seamless workflow navigation.
 
 **Usage Example:**
 ```

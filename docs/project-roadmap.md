@@ -1,7 +1,7 @@
 # CoKit Project Roadmap
 
 **Project:** CoKit - Claude Code to GitHub Copilot Port
-**Version:** 1.2.4
+**Version:** 1.2.5
 **Start Date:** 2026-01-06
 **Last Updated:** 2026-02-12 (video intro + flowchart UX)
 **Current Phase:** 6 of 6 (COMPLETE)
@@ -12,7 +12,7 @@
 CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
 ### Key Features (Current)
-- 27 prompt files with `ck-` and `ck-spec-` prefixes
+- 25 prompt files with `ck-` and `ck-spec-` prefixes
 - 27 specialized skills (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 expert agents (planner, code-reviewer, debugger, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.)
 - 5 instructions (backend, frontend, testing, development, research)
@@ -60,7 +60,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
 **Effort:** 4h
 **Deliverables:**
-- 27 prompt files from ClaudeKit + SpecKit
+- 25 prompt files from ClaudeKit + SpecKit
   - ClaudeKit: `ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.
   - SpecKit: `ck-spec-specify`, `ck-spec-clarify`, `ck-spec-plan`, `ck-spec-tasks`, etc.
 - Unified namespace: `ck-*` for all commands
@@ -314,4 +314,4 @@ None at completion. All functional requirements satisfied.
 
 **Last Updated:** 2026-02-12
 **Project Manager:** project-manager agent
-**Status:** ALL PHASES COMPLETE - v1.2.4 RELEASED
+**Status:** ALL PHASES COMPLETE - v1.2.5 RELEASED

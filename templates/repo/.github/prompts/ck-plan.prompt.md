@@ -69,6 +69,7 @@ If user chooses validation or mode is `auto`: Execute `/ck-plan-validate {plan-p
 | Command | Description |
 |---------|-------------|
 | `/ck-plan-validate` | Validate plan with critical questions |
+| `/ck-spec-tasks` | Break plan into actionable tasks |
 | `/ck-cook` | Implement plan |
 | `/ck-test` | Run tests and analyze results |
 | `/ck-fix` | Analyze and fix issues |

@@ -10,7 +10,7 @@ Make GitHub Copilot smarter in 30 seconds via curated prompts, agents, and workf
 
 ## Solution
 CoKit CLI installs pre-built resources to `~/.copilot/`:
-- **27 prompts**: ClaudeKit (ck-*) + SpecKit (ck-spec-*)
+- **25 prompts**: ClaudeKit (ck-*) + SpecKit (ck-spec-*)
 - **12 agents**: brainstormer, planner, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.
 - **27 skills**: debugging, planning, code-review, frontend-design, databases, devops, etc.
 - **5 collections**: bundled workflows

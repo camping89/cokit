@@ -1,5 +1,5 @@
 ---
-agent: 'code-simplifier'
+agent: 'agent'
 description: 'Simplify and refine code for clarity and maintainability'
 argument-hint: 'Scope: file path, git diff, or "recent changes"'
 ---

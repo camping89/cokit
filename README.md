@@ -109,7 +109,7 @@ Otherwise?
 
 | Resource | Count | Purpose |
 |----------|-------|---------|
-| Prompts | 27 | Commands for Copilot |
+| Prompts | 25 | Commands for Copilot |
 | Agents | 12 | Specialized AI assistants |
 | Skills | 23 | Domain expertise |
 | Instructions | 5 | Context-aware rules |
@@ -117,13 +117,10 @@ Otherwise?
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.2.4)
+## What's New (v1.2.5)
 
-Video intro and flowchart UX improvements:
-- Added video intro for landing page
-- Improved flowchart with zoom, drag-to-pan, hash navigation
-- Cross-referenced `ck-*` and `ck-spec-*` in suggested next steps
-- Synced templates with latest source files
+- Removed `ck-journal` and `ck-preview` prompts (unused)
+- Updated prompt counts across docs (25 prompts)
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 
