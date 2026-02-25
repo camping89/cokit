@@ -92,9 +92,7 @@ All unified in single namespace with cross-navigation.
 
 | Option | Command | Location |
 |--------|---------|----------|
-| **Project** | `npx cokit-cli init` | `.github/` |
-| **Personal** | `npx cokit-cli init -g` | `~/.copilot/` |
-| **Both** | `npx cokit-cli init -a` | Both |
+| **Interactive** | `npx cokit-cli init` | Choose: project, global, or both |
 
 ---
 
@@ -209,4 +207,4 @@ npx cokit-cli init    # Always gets latest version
 
 **Full docs:** `docs/cokit-team-presentation.md`
 
-**Quick start:** `npx cokit-cli init -g`
+**Quick start:** `npx cokit-cli init`

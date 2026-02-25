@@ -3756,10 +3756,8 @@
         <span>Terminal</span>
       </div>
       <div class="install-body">
-        <span class="comment"># Global install (recommended)</span><br>
-        <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -g</span><br><br>
-        <span class="comment"># Or install for both project + personal</span><br>
-        <span class="prompt">$</span> <span class="cmd">npx cokit-cli init -a</span><br><br>
+        <span class="comment"># Install CoKit</span><br>
+        <span class="prompt">$</span> <span class="cmd">npx cokit-cli init</span><br><br>
         <span class="output">&#128640; CoKit Setup</span><br>
         <span class="success">&#10003; 25 prompts installed</span><br>
         <span class="success">&#10003; 12 agents configured</span><br>
@@ -3778,15 +3776,7 @@
         </tr>
         <tr>
           <td><code style="color: var(--green);">npx cokit-cli init</code></td>
-          <td>Interactive setup (asks you questions)</td>
-        </tr>
-        <tr>
-          <td><code style="color: var(--green);">npx cokit-cli init -g</code></td>
-          <td>Global install (no questions)</td>
-        </tr>
-        <tr>
-          <td><code style="color: var(--green);">npx cokit-cli init -a</code></td>
-          <td>Install both global + project</td>
+          <td>Interactive setup (choose project, global, or both)</td>
         </tr>
         <tr>
           <td><code style="color: var(--green);">npx cokit-cli list</code></td>
@@ -3836,7 +3826,7 @@
     }
 
     function copyInstall() {
-      navigator.clipboard.writeText('npx cokit-cli init -g').then(() => {
+      navigator.clipboard.writeText('npx cokit-cli init').then(() => {
         const icon = document.getElementById('copyIcon');
         icon.textContent = '\u2713 copied!';
         icon.style.color = 'var(--green)';

@@ -37,8 +37,6 @@
 │                    CLI (npx cokit-cli)                       │
 ├─────────────────────────────────────────────────────────────┤
 │  bin/cokit.js → src/index.js                                │
-│  ├── init -g    → Install to ~/.copilot/                    │
-│  ├── init -a    → Install global + project                  │
 │  └── init       → Interactive setup                         │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -57,7 +55,7 @@
 
 ### CLI Install
 ```
-1. User runs: npx cokit-cli init -g
+1. User runs: npx cokit-cli init
 2. CLI copies: prompts/, agents/, skills/, instructions/, collections/
 3. Target: ~/.copilot/
 4. User gets: All ck-* commands in Copilot

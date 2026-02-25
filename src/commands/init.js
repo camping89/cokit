@@ -21,8 +21,6 @@ import { mkdirSync, existsSync } from 'fs';
 
 export const initCommand = new Command('init')
   .description('Set up CoKit in your project or globally')
-  .option('-g, --global', 'Install all CoKit resources to ~/.copilot/')
-  .option('-a, --all', 'Install both project templates and global resources')
   .option('-y, --yes', 'Skip confirmation prompts')
   .option('--overwrite', 'Overwrite existing files without prompting')
   .action(async (options) => {
@@ -34,32 +32,25 @@ export const initCommand = new Command('init')
       let installProject = false;
       let installGlobal = false;
 
-      if (options.all) {
-        installProject = true;
-        installGlobal = true;
-      } else if (options.global) {
-        installGlobal = true;
-      } else if (!options.global && !options.all) {
-        const response = await prompts({
-          type: 'select',
-          name: 'mode',
-          message: 'What do you want to set up?',
-          choices: [
-            { title: 'Project templates (.github/)', value: 'project', description: 'For this project only - share via git' },
-            { title: 'Global resources (~/.copilot/)', value: 'global', description: 'Works in all projects' },
-            { title: 'Both', value: 'both', description: 'Recommended for first-time setup' }
-          ],
-          initial: 0
-        });
+      const response = await prompts({
+        type: 'select',
+        name: 'mode',
+        message: 'What do you want to set up?',
+        choices: [
+          { title: 'Project templates (.github/)', value: 'project', description: 'For this project only - share via git' },
+          { title: 'Global resources (~/.copilot/)', value: 'global', description: 'Works in all projects' },
+          { title: 'Both', value: 'both', description: 'Recommended for first-time setup' }
+        ],
+        initial: 0
+      });
 
-        if (!response.mode) {
-          console.log('Setup cancelled.');
-          return;
-        }
-
-        installProject = response.mode === 'project' || response.mode === 'both';
-        installGlobal = response.mode === 'global' || response.mode === 'both';
+      if (!response.mode) {
+        console.log('Setup cancelled.');
+        return;
       }
+
+      installProject = response.mode === 'project' || response.mode === 'both';
+      installGlobal = response.mode === 'global' || response.mode === 'both';
 
       if (!options.yes) {
         const targets = [];

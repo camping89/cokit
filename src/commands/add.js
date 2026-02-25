@@ -18,7 +18,6 @@ export const addCommand = new Command('add')
   .description('Add a specific skill')
   .argument('[skill]', 'Skill name to add')
   .option('-l, --list', 'List available skills')
-  .option('-g, --global', 'Add to ~/.copilot/skills/ (default)')
   .option('--local', 'Add to .github/skills/ in current project')
   .option('--overwrite', 'Overwrite existing files')
   .action(async (skill, options) => {

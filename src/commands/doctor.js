@@ -60,12 +60,12 @@ export const doctorCommand = new Command('doctor')
         warn(`~/.copilot/skills/ has ${skills.length} skills (expected 5)`);
       } else {
         error('~/.copilot/skills/ is empty');
-        hint('Run: npx cokit init --global');
+        hint('Run: npx cokit init');
         hasIssues = true;
       }
     } else {
       error('~/.copilot/skills/ not found');
-      hint('Run: npx cokit init --global');
+      hint('Run: npx cokit init');
       hasIssues = true;
     }
 

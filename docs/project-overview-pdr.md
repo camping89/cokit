@@ -22,7 +22,7 @@ CoKit CLI installs pre-built resources to `~/.copilot/`:
 | Two Workflows | `ck-*` (flexible) vs `ck-spec-*` (spec-driven) |
 | Sync Pipeline | Auto-merge upstream ClaudeKit + SpecKit |
 | Navigation | Cross-command suggestions in all prompts |
-| Global Install | Single `npx cokit-cli init -g` command |
+| Install | Single `npx cokit-cli init` command |
 
 ## Target Users
 - Developers using GitHub Copilot

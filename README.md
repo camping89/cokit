@@ -6,18 +6,10 @@ Check it out at https://camping89.github.io/cokit/index.html
 ## Installation
 
 ```bash
-npx cokit-cli init -g
+npx cokit-cli init
 ```
 
 That's it! All CoKit resources are now available in your Copilot.
-
-### Options
-
-| Command | Description |
-|---------|-------------|
-| `npx cokit-cli init` | Interactive setup |
-| `npx cokit-cli init -g` | Global install (recommended) |
-| `npx cokit-cli init -a` | Global + project install |
 
 ## Usage
 

@@ -15,7 +15,7 @@ export const updateCommand = new Command('update')
     console.log('  npx cokit init --overwrite');
     console.log();
     hint('To update personal skills, run:');
-    console.log('  npx cokit init --global --overwrite');
+    console.log('  npx cokit init --overwrite');
     console.log();
     done('No action needed - npx always fetches latest!');
     console.log();

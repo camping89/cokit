@@ -93,7 +93,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Deliverables:**
 - Removed non-coding resources
 - Consolidated documentation with updated counts
-- Updated all CLI references: `cokit` → `cokit-cli`, `--global` → `-g`, `--all` → `-a`
+- Updated all CLI references: `cokit` → `cokit-cli`, removed `-g`/`--global` flag
 - Updated version references to 1.0.8
 - Fixed broken links (README.FLOW.md, FAQ.md)
 - Added real CoKit examples throughout docs

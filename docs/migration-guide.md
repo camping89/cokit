@@ -102,7 +102,7 @@ After fixing:
 
 1. Install CoKit:
    ```bash
-   npx cokit-cli init -a
+   npx cokit-cli init
    ```
 
 2. Use prompts directly:

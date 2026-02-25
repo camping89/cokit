@@ -158,8 +158,6 @@ your-project/
 | Command | Description |
 |---------|-------------|
 | `npx cokit-cli init` | Interactive setup wizard |
-| `npx cokit-cli init -g` | Install personal skills only |
-| `npx cokit-cli init -a` | Both project + personal |
 | `npx cokit-cli add <skill>` | Add specific skill |
 | `npx cokit-cli list` | Show installed components |
 | `npx cokit-cli doctor` | Diagnose setup issues |

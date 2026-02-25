@@ -32,8 +32,6 @@ CoKit transforms GitHub Copilot from basic autocomplete to a structured AI devel
 
 ```bash
 npx cokit-cli init          # Interactive setup
-npx cokit-cli init -g       # Global resources only
-npx cokit-cli init -a       # Both project and global
 ```
 
 ---
@@ -163,7 +161,7 @@ items:
 
 ```bash
 cd your-project
-npx cokit-cli init -a
+npx cokit-cli init
 ```
 
 You'll be prompted to choose:
@@ -201,8 +199,6 @@ You'll be prompted to choose:
 | Command | Description |
 |---------|-------------|
 | `npx cokit-cli init` | Interactive setup wizard |
-| `npx cokit-cli init -g` | Install personal skills only |
-| `npx cokit-cli init -a` | Install both project and personal |
 | `npx cokit-cli list` | Show installed components |
 | `npx cokit-cli doctor` | Diagnose setup issues |
 | `npx cokit-cli update` | Update to latest version |

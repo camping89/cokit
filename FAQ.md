@@ -84,7 +84,7 @@ rm -rf ~/.copilot/skills
 
 Use sudo (macOS/Linux) or run as admin (Windows):
 ```bash
-sudo npx cokit init --global
+sudo npx cokit init
 ```
 
 ### "Node.js not found"
