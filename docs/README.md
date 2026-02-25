@@ -29,7 +29,8 @@
 |-----|-----------|
 | [cokit-comprehensive-mapping-guide.md](cokit-comprehensive-mapping-guide.md) | Debugging command mappings |
 | [copilot-processing-flow.md](copilot-processing-flow.md) | Understanding prompt processing |
-| [migration-guide.md](migration-guide.md) | Upgrading from older versions |
+| [migration-guide.md](migration-guide.md) | Claude Code users switching to Copilot |
+| [claudekit-porting-rules.md](claudekit-porting-rules.md) | AI/dev rules for porting ClaudeKit → CoKit |
 
 ### Presentations
 | Doc | Use For |
@@ -44,7 +45,7 @@
 ### What's in CoKit?
 | Resource | Count | Location |
 |----------|-------|----------|
-| Prompts | 27 | `prompts/ck-*.prompt.md` |
+| Prompts | 25 | `prompts/ck-*.prompt.md` |
 | Agents | 12 | `agents/*.agent.md` |
 | Skills | 27 | `skills/*/` |
 | Instructions | 5 | `instructions/ck-*.instructions.md` |
