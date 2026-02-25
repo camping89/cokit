@@ -73,7 +73,7 @@ Human review required at these checkpoints (skipped with `--auto`):
 **Always enforced (all modes):**
 - **Testing:** 100% pass required (unless no-test mode)
 - **Code Review:** User approval OR auto-approve (score≥9.5, 0 critical)
-- **Finalize:** project-manager AND docs-manager MUST complete
+- **Finalize:** docs-manager MUST complete
 
 ## Required Agents
 
