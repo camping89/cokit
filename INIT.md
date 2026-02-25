@@ -108,9 +108,9 @@ If Copilot can read and list the files, setup is successful! ✅
    - `#file:ck-code.prompt.md` - Code features
    - `#file:ck-debug.prompt.md` - Debug issues
 4. **Use agents**: Delegate tasks to specialists
-   - `@brainstormer` - Brainstorm ideas
-   - `@planner` - Create plans
-   - `@fullstack-developer` - Full-stack development
+   - `brainstormer` - Brainstorm ideas
+   - `planner` - Create plans
+   - `fullstack-developer` - Full-stack development
 
 ---
 
