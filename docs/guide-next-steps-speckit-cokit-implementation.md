@@ -1,7 +1,7 @@
 # Next Steps Guide: Spec-Kit + Cokit Implementation
 
 **Created:** Feb 3, 2026
-**Status:** COMPLETE (v1.2.0 released with SpecKit integration)
+**Status:** COMPLETE (v1.2.6 released with SpecKit integration)
 
 ---
 

@@ -1,9 +1,9 @@
 # CoKit: Team Presentation
 
-**Date:** February 10, 2026 (v1.2.0)
+**Date:** February 25, 2026 (v1.2.6)
 **Presenter:** [Your Name]
 **Repository:** https://github.com/camping89/cokit
-**Version:** 1.2.0
+**Version:** 1.2.6
 
 ---
 

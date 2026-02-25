@@ -1,9 +1,9 @@
 # CoKit Project Roadmap
 
 **Project:** CoKit - Claude Code to GitHub Copilot Port
-**Version:** 1.2.5
+**Version:** 1.2.6
 **Start Date:** 2026-01-06
-**Last Updated:** 2026-02-12 (video intro + flowchart UX)
+**Last Updated:** 2026-02-25 (agents/prompts/skills Copilot alignment)
 **Current Phase:** 6 of 6 (COMPLETE)
 **Overall Progress:** 100%
 
@@ -312,6 +312,5 @@ None at completion. All functional requirements satisfied.
 
 ---
 
-**Last Updated:** 2026-02-12
-**Project Manager:** project-manager agent
-**Status:** ALL PHASES COMPLETE - v1.2.5 RELEASED
+**Last Updated:** 2026-02-25
+**Status:** ALL PHASES COMPLETE - v1.2.6 RELEASED

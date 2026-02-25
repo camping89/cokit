@@ -396,12 +396,12 @@ For stability, pin SpecKit to a specific tag:
 sources:
   speckit:
     repo: github/spec-kit
-    ref: v1.2.0  # Pin to tag instead of main
+    ref: v1.2.6  # Pin to tag instead of main
 ```
 
 Update `sync:pull` script to use the ref:
 ```bash
-git subtree pull --prefix=upstream/speckit https://github.com/github/spec-kit.git v1.2.0 --squash
+git subtree pull --prefix=upstream/speckit https://github.com/github/spec-kit.git v1.2.6 --squash
 ```
 
 ---

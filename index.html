@@ -1192,7 +1192,7 @@
   <!-- ===== HERO ===== -->
   <header class="hero">
     <div class="hero-text">
-      <div class="hero-badge">&#9889; Version 1.2.5</div>
+      <div class="hero-badge">&#9889; Version 1.2.6</div>
       <h1>Make <span>GitHub Copilot</span><br>smarter in 30 seconds</h1>
       <p class="hero-sub">CoKit gives Copilot ready-made workflows, AI experts, and coding rules &mdash; so it understands
         your project and works like a real developer.</p>
@@ -1508,6 +1508,11 @@
             <td><code>/ck-plan-hard</code></td>
             <td>Deep research + detailed plan</td>
             <td class="desc">Complex features needing research</td>
+          </tr>
+          <tr>
+            <td><code>/ck-plan-red-team</code></td>
+            <td>Adversarial plan review</td>
+            <td class="desc">Find flaws, blind spots, security holes</td>
           </tr>
           <tr>
             <td><code>/ck-brainstorm</code></td>
@@ -2204,6 +2209,7 @@
         // Optional validation
         { id: 'q_validate', text: 'Need\nvalidate?', type: 'decision', x: 1520, y: 510 },
         { id: 'c_plan_validate', text: '/ck-plan-validate', type: 'command', x: 1520, y: 620, desc: 'Validate plan with critical questions' },
+        { id: 'c_plan_red_team', text: '/ck-plan-red-team', type: 'command', x: 1520, y: 730, desc: 'Adversarial review — find flaws and blind spots' },
 
         // Implementation
         { id: 'c_cook', text: '/ck-cook', type: 'command', x: 1720, y: 510, desc: 'Smart feature implementation from plan or task' },
@@ -2283,7 +2289,9 @@
 
         // Validate decision → cook
         { from: 'q_validate', to: 'c_plan_validate', label: 'Yes' },
+        { from: 'c_plan_validate', to: 'c_plan_red_team', label: 'Adversarial?' },
         { from: 'c_plan_validate', to: 'c_cook', label: '' },
+        { from: 'c_plan_red_team', to: 'c_cook', label: '' },
         { from: 'q_validate', to: 'c_cook', label: 'No' },
         { from: 'c_cook', to: 'c_test_after', label: '' },
 
@@ -3216,8 +3224,8 @@
             {
               id: 'route', label: 'Route', x: 280, color: 'var(--accent2)',
               desc: 'Routes to the right planning mode by complexity.',
-              agents: [], skills: [], tools: ['/ck-plan-fast', '/ck-plan-hard', '/ck-plan-validate'],
-              detail: 'Smart routing by task complexity:<br>- <strong>Simple/Quick</strong> (single file, minor, &lt; 2h) → <code>/ck-plan-fast</code><br>- <strong>Complex/Research</strong> (architecture, multi-component, multi-day) → <code>/ck-plan-hard</code><br>- <strong>Validate existing</strong> (review plan, verify assumptions) → <code>/ck-plan-validate</code><br>- <strong>Default/Medium</strong> → Execute standard workflow'
+              agents: [], skills: [], tools: ['/ck-plan-fast', '/ck-plan-hard', '/ck-plan-validate', '/ck-plan-red-team'],
+              detail: 'Smart routing by task complexity:<br>- <strong>Simple/Quick</strong> (single file, minor, &lt; 2h) → <code>/ck-plan-fast</code><br>- <strong>Complex/Research</strong> (architecture, multi-component, multi-day) → <code>/ck-plan-hard</code><br>- <strong>Validate existing</strong> (review plan, verify assumptions) → <code>/ck-plan-validate</code><br>- <strong>Adversarial review</strong> (find flaws, blind spots, security holes) → <code>/ck-plan-red-team</code><br>- <strong>Default/Medium</strong> → Execute standard workflow'
             },
             {
               id: 'research', label: 'Research', x: 460, color: 'var(--accent)',
@@ -3244,7 +3252,13 @@
               detail: 'Optional validation step (recommended for hard plans):<br>- Interviews user with critical questions<br>- Confirms architecture, assumptions, tradeoffs<br>- Updates plan with validation log<br>- <strong>Fast plans skip this step</strong><br>- <strong>Hard plans recommend this step</strong>'
             },
             {
-              id: 'output', label: 'Output', x: 1180, color: 'var(--accent2)',
+              id: 'red-team', label: 'Red\nTeam', x: 1090, color: 'var(--pink)',
+              desc: 'Optional adversarial review to find flaws.',
+              agents: ['code-reviewer'], skills: [], tools: ['/ck-plan-red-team'],
+              detail: 'Optional adversarial review (recommended for critical plans):<br>- Spawns hostile reviewers with different lenses<br>- Finds security holes, false assumptions, failure modes<br>- Deduplicates and adjudicates findings<br>- User reviews and approves changes<br>- <strong>Best after /ck-plan-hard</strong>'
+            },
+            {
+              id: 'output', label: 'Output', x: 1270, color: 'var(--accent2)',
               desc: 'Plan ready for review. Does NOT implement.',
               agents: [], skills: [], tools: [],
               detail: 'Plan is saved and presented to user:<br>- Overview: <code>plan.md</code> (under 80 lines)<br>- Detailed phases: <code>phase-XX-name.md</code><br>- Each phase has: requirements, architecture, steps, TODOs<br><strong>Important:</strong> Does NOT start implementing.<br><strong>Next:</strong> <code>/ck-cook {plan-path}</code> to implement'
@@ -3796,7 +3810,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <p>CoKit v1.2.5 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
+    <p>CoKit v1.2.6 &mdash; <a href="https://github.com/camping89/cokit" target="_blank">GitHub</a> &mdash; License: CC
       BY-NC 4.0</p>
     <p style="margin-top: 8px;">Made with &#10084;&#65039; for developers who want smarter AI assistance.</p>
   </footer>

@@ -117,10 +117,12 @@ Otherwise?
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.2.5)
+## What's New (v1.2.6)
 
-- Removed `ck-journal` and `ck-preview` prompts (unused)
-- Updated prompt counts across docs (25 prompts)
+- Ported `ck-plan-red-team` prompt (adversarial plan review)
+- Fixed `@agent-name` convention across all skills, prompts, templates
+- Updated all 12 agents with Copilot alignment (removed Team Mode, added skill qualifiers)
+- Added "(if installed/available)" qualifiers for external tools (repomix, ai-multimodal, etc.)
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 

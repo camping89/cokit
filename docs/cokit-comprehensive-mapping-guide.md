@@ -2,8 +2,8 @@
 
 Complete reference for CoKit GitHub Copilot resource toolkit.
 
-**Version:** 1.2.0
-**Date:** 2026-02-10
+**Version:** 1.2.6
+**Date:** 2026-02-25
 
 ---
 

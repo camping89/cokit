@@ -2,6 +2,23 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.6] - 2026-02-25
+
+### Added
+- Added `ck-plan-red-team` variant command (adversarial plan review from ClaudeKit)
+
+### Changed
+- Fixed `@agent-name` convention across all skills, prompts, templates, and INIT.md — now uses backtick format (e.g., `` `code-reviewer` agent ``)
+- Updated all 12 agents with ClaudeKit enhancements (skills activation, memory maintenance, hook-injected report naming)
+- Added "(if installed)" qualifier to `repomix` references across 6 agent files and 1 template
+- Added "(if available)" qualifier to `ai-multimodal`, `ui-ux-pro-max`, `media-processing` skill references
+- Fixed `document-skills` → `docs-seeker` in researcher agent (removed duplicate)
+- Fixed prompt references: `SlashCommand(/scout)` → `/ck-scout`, removed stale `SlashCommand` suffixes
+- Replaced `project-manager` agent references (doesn't exist in CoKit) with direct actions
+
+### Removed
+- Removed "Team Mode" sections from all 11 agents (not supported by Copilot subagent model)
+
 ## [1.2.5] - 2026-02-23
 
 ### Removed

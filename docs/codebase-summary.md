@@ -5,10 +5,10 @@
 CoKit is a CLI tool that enhances GitHub Copilot with 25 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck-* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
-**Version:** 1.2.0
+**Version:** 1.2.6
 **License:** CC BY-NC 4.0
 **Node Requirements:** >= 18.0.0
-**Last Updated:** 2026-02-10
+**Last Updated:** 2026-02-25
 
 ## Architecture
 
@@ -249,7 +249,8 @@ Output (ck-*)
 
 ## Version History
 
-- **v1.2.0** (Current) - 25 prompts, 12 agents, 27 skills
+- **v1.2.6** (Current) - 25 prompts, 12 agents, 27 skills
+- **v1.2.0** - Initial Copilot port with full resource set
 - **v1.1.0** - 21 prompts (12 ClaudeKit + 9 SpecKit), SpecKit sync pipeline
 - **v1.0.9** - Comprehensive documentation update
 - **v1.0.8** - Initial release
