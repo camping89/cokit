@@ -56,21 +56,21 @@ Human review required at these checkpoints (skipped with `--auto`):
 **Always enforced (all modes):**
 - **Testing:** 100% pass required (unless no-test mode)
 - **Code Review:** User approval OR auto-approve (score≥9.5, 0 critical)
-- **Finalize:** project-manager AND docs-manager must complete
+- **Finalize:** docs-manager must complete
 
 ## Required Agents
 
 | Phase | Agent |
 |-------|-------|
-| Research | `@researcher` (parallel, optional in fast) |
-| Scout | `@scout` |
-| Plan | `@planner` |
-| UI Work | `@ui-ux-designer` |
-| Implement | `@fullstack-developer` (parallel mode) |
-| Simplify | `@code-simplifier` (post-implement) |
-| Testing | `@tester`, `@debugger` |
-| Review | `@code-reviewer` |
-| Finalize | `project-manager`, `@docs-manager`, `@git-manager` |
+| Research | `researcher` agent (parallel, optional in fast) |
+| Scout | `scout` agent |
+| Plan | `planner` agent |
+| UI Work | `ui-ux-designer` agent |
+| Implement | `fullstack-developer` agent (parallel mode) |
+| Simplify | `code-simplifier` agent (post-implement) |
+| Testing | `tester`, `debugger` agents |
+| Review | `code-reviewer` agent |
+| Finalize | `docs-manager`, `git-manager` agents |
 
 ## Process
 
@@ -78,8 +78,8 @@ Human review required at these checkpoints (skipped with `--auto`):
 2. **Scout**: Use `/ck-scout` to discover relevant files
 3. **Research** (if applicable): Gather technical context
 4. **Plan**: Create or load implementation plan
-5. **Implement**: Execute plan phases (use `@fullstack-developer` in parallel mode)
-6. **Simplify**: `@code-simplifier` refines implemented code for clarity
+5. **Implement**: Execute plan phases (use `fullstack-developer` agent in parallel mode)
+6. **Simplify**: `code-simplifier` agent refines implemented code for clarity
 7. **Test**: Run tests and validate
 8. **Review**: Code review with quality gates
 9. **Finalize**: Update docs, commit changes

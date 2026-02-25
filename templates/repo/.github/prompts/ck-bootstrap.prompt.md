@@ -115,7 +115,7 @@ Follow strictly these following steps:
   * Create/update `./docs/project-overview.-pdr.md` (Product Development Requirements) file.
   * Create/update `./docs/code-standards.md` file.
   * Create/update `./docs/system-architecture.md` file.
-* Use `project-manager` agent to create a project roadmap at `./docs/project-roadmap.md` file & project progress and task status in the given plan file.
+* Create a project roadmap at `./docs/project-roadmap.md` file & update project progress and task status in the given plan file.
 * **IMPORTANT:** Sacrifice grammar for the sake of concision when writing outputs.
 
 ### Onboarding

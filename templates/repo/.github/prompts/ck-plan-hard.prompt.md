@@ -64,7 +64,7 @@ After plan creation, offer validation interview to confirm decisions before impl
 | `off` | Skip validation step entirely |
 
 **If mode is `prompt`:** Present the options above directly in your response and wait for user to choose.
-**If user chooses validation or mode is `auto`:** Execute `/ck-plan-validate {plan-path}` SlashCommand.
+**If user chooses validation or mode is `auto`:** Execute `/ck-plan-validate {plan-path}`.
 
 ## Context Reminder (MANDATORY)
 

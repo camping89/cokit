@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Create polished frontend interfaces from designs/screenshots. Use for web components, replicating UI designs, quick prototypes, avoiding AI slop.
+description: Create polished frontend interfaces from designs/screenshots/videos. Use for web components, replicating UI designs, quick prototypes, 3D experiences, immersive interfaces, avoiding AI slop.
 ---
 
 Create distinctive, production-grade frontend interfaces. Implement real working code with exceptional aesthetic attention.
@@ -12,15 +12,18 @@ Choose workflow based on input type:
 | Input | Workflow | Reference |
 |-------|----------|-----------|
 | Screenshot | Replicate exactly | `./references/workflow-screenshot.md` |
+| Video | Replicate with animations | `./references/workflow-video.md` |
 | Quick task | Rapid implementation | `./references/workflow-quick.md` |
 | Describe only | Document for devs | `./references/workflow-describe.md` |
+| 3D/WebGL request | Three.js immersive | `./references/workflow-3d.md` |
+| Complex/award-quality | Full immersive | `./references/workflow-immersive.md` |
 | From scratch | Design Thinking below | - |
 
 **All workflows**: Activate `ui-styling` skill FIRST for design patterns and component library.
 
 ## Screenshot/Video Replication (Quick Reference)
 
-1. **Analyze** visually - extract colors, fonts, spacing, effects
+1. **Analyze** visually (use `ai-multimodal` skill if available) - extract colors, fonts, spacing, effects
 2. **Plan** with `ui-ux-designer` agent - create phased implementation
 3. **Implement** - match source precisely
 4. **Verify** - compare to original
@@ -45,7 +48,7 @@ Before coding, commit to a BOLD aesthetic direction:
 - **Motion**: CSS-first, anime.js for complex (`./references/animejs.md`). Orchestrated page loads > scattered micro-interactions.
 - **Spatial**: Unexpected layouts. Asymmetry. Overlap. Negative space OR controlled density.
 - **Backgrounds**: Atmosphere over solid colors. Gradients, noise, patterns, shadows, grain.
-- **Assets**: Process with ImageMagick, FFmpeg, RMBG CLI tools
+- **Assets**: Process with ImageMagick, FFmpeg, RMBG CLI tools (or `ai-multimodal`/`media-processing` skills if available)
 
 ## Asset & Analysis References
 

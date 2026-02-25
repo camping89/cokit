@@ -12,6 +12,7 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 - `--auto` - Activate autonomous mode (**default**)
 - `--review` - Activate human-in-the-loop review mode
 - `--quick` - Activate quick mode
+- `--parallel` - Fix 2+ independent issues concurrently using parallel agents
 
 ## Workflow
 
@@ -31,10 +32,10 @@ See `references/mode-selection.md` for question format.
 
 - Activate `debug` skill.
 - Guess all possible root causes.
-- Search in parallel to verify each hypothesis.
+- Spawn multiple parallel search agents to verify each hypothesis.
 - Create report with all findings for the next step.
 
-### Step 3: Complexity Assessment & Fix Implementation
+### Step 3: Complexity Assessment & Task Orchestration
 
 Classify before routing. See `references/complexity-assessment.md`.
 
@@ -45,17 +46,27 @@ Classify before routing. See `references/complexity-assessment.md`.
 | **Complex** | System-wide, architecture impact | `references/workflow-deep.md` |
 | **Parallel** | 2+ independent issues | Parallel `fullstack-developer` agents |
 
-### Step 4: Fix Verification & Prevent Future Issues
+**Task orchestration notes:**
+- **Quick workflow:** Skip task creation — proceed directly to fix.
+- **Moderate+ workflows:** After classifying, create a todo checklist for all phases upfront with dependencies before starting any implementation. Track each phase with checkboxes and note blockers inline.
+
+See `references/task-orchestration.md` for checklist structure and dependency tracking patterns.
+
+### Step 4: Fix Implementation & Verification
 
 - Read and analyze all the implemented changes.
-- Search in parallel to find possible related code for verification.
+- Spawn multiple parallel search agents to verify no regressions in related code.
 - Make sure these fixes don't break other parts of the codebase.
 - Prevent future issues by adding comprehensive validation.
 
 ### Step 5: Finalize
 
-- Report summary to user with confidence level/score, all the changes and related files.
-- Ask to commit via `git-manager` agent and update docs if needed via `docs-manager` agent (in parallel).
+**MANDATORY — always execute all steps:**
+
+1. Report summary to user with confidence score (0–10), all changes, and related files.
+2. Update `./docs` via ``docs-manager`` agent (NON-OPTIONAL — always run even for small fixes).
+3. Mark all checklist tasks complete.
+4. Ask user to commit via ``git-manager`` agent.
 
 ---
 
@@ -65,8 +76,8 @@ See `references/skill-activation-matrix.md` for complete matrix.
 
 **Always activate:** `debug` (all workflows)
 **Conditional:** `problem-solving`, `sequential-thinking`, `brainstorming`, `context-engineering`
-**Agents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`
-**Parallel:** Multiple parallel searches for scouting, terminal commands for verification
+**Agents:** ``debugger``, ``researcher``, ``planner``, ``code-reviewer``, ``tester``
+**Parallel patterns:** Multiple parallel search agents for scouting; parallel terminal commands for verification; parallel ``fullstack-developer`` agents for independent issues (`--parallel` flag)
 
 ## Output Format
 
@@ -85,6 +96,7 @@ Unified step markers:
 Load as needed:
 - `references/mode-selection.md` - Mode selection question format
 - `references/complexity-assessment.md` - Classification criteria
+- `references/task-orchestration.md` - Todo checklist structure and dependency tracking
 - `references/workflow-quick.md` - Quick: debug → fix → review
 - `references/workflow-standard.md` - Standard: full pipeline
 - `references/workflow-deep.md` - Deep: research + brainstorm + plan
