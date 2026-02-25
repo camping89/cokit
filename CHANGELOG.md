@@ -2,6 +2,15 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.2.7] - 2026-02-25
+
+### Removed
+- Removed `-g`/`--global` and `-a`/`--all` flags from `init` command — now always interactive
+- Removed `-g`/`--global` flag from `add` command
+
+### Changed
+- Updated all CLI references across docs, README, FAQ, index.html, and source code
+
 ## [1.2.6] - 2026-02-25
 
 ### Added

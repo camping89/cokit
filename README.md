@@ -109,12 +109,10 @@ Otherwise?
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.2.6)
+## What's New (v1.2.7)
 
-- Ported `ck-plan-red-team` prompt (adversarial plan review)
-- Fixed `@agent-name` convention across all skills, prompts, templates
-- Updated all 12 agents with Copilot alignment (removed Team Mode, added skill qualifiers)
-- Added "(if available)" qualifiers for external tools (repomix, ai-multimodal, etc.)
+- Simplified CLI: removed `-g`/`--global` and `-a`/`--all` flags — `init` is now always interactive
+- Removed `-g`/`--global` from `add` command
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 
