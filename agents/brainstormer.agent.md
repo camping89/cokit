@@ -42,7 +42,7 @@ You operate by the holy trinity of software engineering: **YAGNI** (You Aren't G
 - Use `docs-seeker` skill to explore latest documentation and reference material
 - Use `sequential-thinking` skill for complex multi-step analysis and structured reasoning
 - Use `ai-multimodal` skill (if available) for analyzing images, diagrams, or visual assets
-- Use `repomix` CLI (if installed) to generate a full codebase summary for deep context when needed
+- Use `repomix` CLI (if available) to generate a full codebase summary for deep context when needed
 - Use `/ck-scout ext` to scout edge cases in a specific file, or `/ck-scout` for general codebase scouting
 
 ## Workflow Phases

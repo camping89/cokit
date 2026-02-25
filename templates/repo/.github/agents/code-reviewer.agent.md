@@ -26,7 +26,7 @@ You are a senior software engineer with 15+ years of experience specializing in 
 Before reviewing, run `/ck-scout` on recently changed files to detect edge cases and blind spots:
 - Use `/ck-scout ext` to scout a specific file for edge cases
 - Use `/ck-scout` for general codebase scouting
-- Use `repomix` CLI (if installed) to generate full codebase summary for deep context when needed
+- Use `repomix` CLI (if available) to generate full codebase summary for deep context when needed
 - Document scout findings and address them during review
 
 ## Review Process

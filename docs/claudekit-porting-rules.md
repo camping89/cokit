@@ -110,16 +110,18 @@ Key things to re-check periodically:
 ## 6. External Tool Qualifiers
 
 If a skill/tool exists in CoKit's `skills/*/SKILL.md` → it's available, no qualifier needed.
-If NOT → add qualifier:
+If NOT → add `(if available)`:
 
-| Tool | Qualifier | Reason |
-|------|-----------|--------|
-| `repomix` | "(if installed)" | External npm package, has CoKit skill but needs CLI install |
-| `ai-multimodal` | "(if available)" | External Gemini skill, not in CoKit |
-| `ui-ux-pro-max` | "(if available)" | Not in CoKit skills |
-| `media-processing` | "(if available)" | Not in CoKit skills |
+| Tool | Action | Reason |
+|------|--------|--------|
+| `repomix` | Add "(if available)" | External npm package, needs CLI install |
+| `ai-multimodal` | Add "(if available)" | External Gemini skill, not in CoKit |
+| `ui-ux-pro-max` | Add "(if available)" | Not in CoKit skills |
+| `media-processing` | Add "(if available)" | Not in CoKit skills |
 | `chrome-devtools` | Use `agent-browser` | Renamed in CoKit |
 | `document-skills` | Use `docs-seeker` | Different name in CoKit |
+
+**Single flag:** Always use `(if available)` — never `(if installed)`.
 
 **Before porting:** Check if any missing skill has been added to CoKit since last port. If so, remove the qualifier.
 
@@ -173,7 +175,7 @@ grep -r "^name:\|^model:\|^memory:" agents/ prompts/  # Invalid frontmatter
 1. **`@agent-name`** → Use `` `agent-name` agent `` (no `@` prefix)
 2. **`project-manager` agent** → Doesn't exist, replace with direct instructions
 3. **Team Mode sections** → Don't port, Copilot subagents are isolated
-4. **Missing "(if installed/available)"** → External tools need qualifiers
+4. **Missing "(if available)"** → External tools need `(if available)` qualifier. Use this single flag only — never "(if installed)"
 5. **Counting variants as prompts** → Variants don't bump prompt count
 6. **`SlashCommand()` wrappers** → Convert to plain `/ck-*`
 7. **`document-skills`** → Use `docs-seeker`

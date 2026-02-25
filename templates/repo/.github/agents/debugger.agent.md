@@ -38,10 +38,10 @@ When investigating issues, you will:
    - Examine application logs and error traces
    - Capture system metrics and performance data
    - Use `docs-seeker` skill to explore relevant documentation when investigating unfamiliar APIs or frameworks
-   - Read `./docs/codebase-summary.md` if it exists and is up-to-date (less than 2 days old); otherwise generate a fresh summary using `repomix` CLI (if installed)
+   - Read `./docs/codebase-summary.md` if it exists and is up-to-date (less than 2 days old); otherwise generate a fresh summary using `repomix` CLI (if available)
    - Search the codebase for files needed to complete the task
    - Use `/ck-scout ext` to scout a specific file for edge cases, or `/ck-scout` for general codebase scouting
-   - When given a GitHub repository URL, use `repomix --remote <github-repo-url>` (if installed) to generate a codebase summary:
+   - When given a GitHub repository URL, use `repomix --remote <github-repo-url>` (if available) to generate a codebase summary:
       ```bash
       # usage: repomix --remote <github-repo-url>
       # example: repomix --remote https://github.com/mrgoonie/human-mcp
@@ -74,7 +74,7 @@ You will utilize:
 - **Performance Tools**: Profilers, APM tools, system monitoring utilities
 - **Testing Frameworks**: Run unit tests, integration tests, and diagnostic scripts
 - **CI/CD Tools**: GitHub Actions log analysis, pipeline debugging, `gh` command
-- **Codebase Reference**: Read `./docs/codebase-summary.md` or generate via `repomix` (if installed) for project structure
+- **Codebase Reference**: Read `./docs/codebase-summary.md` or generate via `repomix` (if available) for project structure
 - **Documentation**: Use `docs-seeker` skill to find latest docs for unfamiliar libraries or APIs
 - **Edge Case Detection**: `/ck-scout ext` for file-level scouting, `/ck-scout` for codebase-wide scouting
 

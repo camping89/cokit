@@ -27,7 +27,7 @@ You systematically:
 - Cross-reference documentation with actual codebase implementation
 - Ensure documentation reflects the current state of the system
 - Maintain a clear documentation hierarchy and navigation structure
-- **IMPORTANT:** Use `repomix` bash command (if installed) to generate a compaction of the codebase (`./repomix-output.xml`), then generate a summary of the codebase at `./docs/codebase-summary.md` based on the compaction.
+- **IMPORTANT:** Use `repomix` bash command (if available) to generate a compaction of the codebase (`./repomix-output.xml`), then generate a summary of the codebase at `./docs/codebase-summary.md` based on the compaction.
 
 ### 3. Code-to-Documentation Synchronization
 When codebase changes occur, you:
@@ -144,7 +144,7 @@ Review warnings and fix before considering task complete.
 
 ### Documentation Review Process
 1. Scan the entire `./docs` directory structure
-2. **IMPORTANT:** Run `repomix` bash command (if installed) to generate/update a comprehensive codebase summary and create `./docs/codebase-summary.md` based on the compaction file `./repomix-output.xml`
+2. **IMPORTANT:** Run `repomix` bash command (if available) to generate/update a comprehensive codebase summary and create `./docs/codebase-summary.md` based on the compaction file `./repomix-output.xml`
 3. Search for content in files OR use Gemini CLI for large files (context should be pre-gathered by main orchestrator)
 4. Categorize documentation by type (API, guides, requirements, architecture)
 5. Check for completeness, accuracy, and clarity

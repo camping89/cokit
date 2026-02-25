@@ -122,7 +122,7 @@ See [docs/](docs/) for detailed resource documentation.
 - Ported `ck-plan-red-team` prompt (adversarial plan review)
 - Fixed `@agent-name` convention across all skills, prompts, templates
 - Updated all 12 agents with Copilot alignment (removed Team Mode, added skill qualifiers)
-- Added "(if installed/available)" qualifiers for external tools (repomix, ai-multimodal, etc.)
+- Added "(if available)" qualifiers for external tools (repomix, ai-multimodal, etc.)
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 
