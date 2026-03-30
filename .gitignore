@@ -6,3 +6,7 @@ tmp*
 nul
 
 video/
+
+.claude/session-state/archive/
+
+.claude/session-state/

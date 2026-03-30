@@ -89,7 +89,6 @@ This reminder is **NON-NEGOTIABLE** - always output it after presenting the plan
 
 ## Important Notes
 - **IMPORTANT:** Ensure token consumption efficiency while maintaining high quality.
-- **IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
 - **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
 - **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
 - **IMPORTANT**: **Do not** start implementing.

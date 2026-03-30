@@ -56,7 +56,6 @@ If user chooses validation or mode is `auto`: Execute `/ck-plan-validate {plan-p
 - Hard plans recommend validation
 
 ## Important Notes
-**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
 **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
 **IMPORTANT:** Ensure token efficiency while maintaining high quality.
 **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
