@@ -25,7 +25,6 @@ cokit/
 ├── skills/               # Skill definitions
 ├── instructions/         # Instruction files
 ├── collections/          # Bundled collections
-├── upstream/speckit/     # Git subtree (read-only)
 └── docs/                 # Documentation
 ```
 

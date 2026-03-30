@@ -5,12 +5,11 @@ Make GitHub Copilot smarter in 30 seconds via curated prompts, agents, and workf
 
 ## Problem
 - Copilot lacks structured workflows for complex tasks
-- No spec-driven development support
 - Manual prompt engineering for each project
 
 ## Solution
 CoKit CLI installs pre-built resources to `~/.copilot/`:
-- **25 prompts**: ClaudeKit (ck-*) + SpecKit (ck-spec-*)
+- **17 prompts**: ClaudeKit (ck-*)
 - **12 agents**: brainstormer, planner, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.
 - **27 skills**: debugging, planning, code-review, frontend-design, databases, devops, etc.
 - **5 collections**: bundled workflows
@@ -19,8 +18,8 @@ CoKit CLI installs pre-built resources to `~/.copilot/`:
 
 | Feature | Description |
 |---------|-------------|
-| Two Workflows | `ck-*` (flexible) vs `ck-spec-*` (spec-driven) |
-| Sync Pipeline | Auto-merge upstream ClaudeKit + SpecKit |
+| Unified Workflow | `ck-*` commands for all development tasks |
+| Sync Pipeline | Transform ClaudeKit commands to ck-* namespace |
 | Navigation | Cross-command suggestions in all prompts |
 | Install | Single `npx cokit-cli init` command |
 

@@ -15,9 +15,6 @@
 - [ ] Document which skills to keep vs remove
 
 ### 2. Define unified workflow for cross-prompt suggestions
-- [ ] Current issue: ClaudeKit prompts only suggest ClaudeKit next steps, SpecKit only suggests SpecKit
-- [ ] Design a unified flow that allows cross-workflow suggestions
-- [ ] Example: After `/ck.spec.implement` → suggest `/ck.test` OR `/ck:cook` depending on context
 - [ ] Create flow diagram showing all prompts and their relationships
 - [ ] Update "Suggested Next Steps" sections in all prompts to be context-aware
 

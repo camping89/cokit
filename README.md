@@ -45,16 +45,6 @@ Done. Single command handles analysis and fix.
 /ck-review
 ```
 
-### Complex Feature (multi-day)
-```
-/ck-spec-specify "Multi-tenant SaaS billing system"
-/ck-spec-clarify  (answer questions)
-/ck-spec-plan
-/ck-spec-tasks
-/ck-spec-implement
-/ck-test
-```
-
 ## Command Reference
 
 ### Daily Development (`ck-*`)
@@ -69,18 +59,6 @@ Done. Single command handles analysis and fix.
 | `/ck-review` | Code review |
 | `/ck-bootstrap` | Start new project |
 
-### Spec-Driven (`ck-spec-*`)
-
-For complex features needing formal requirements:
-
-| Command | When to Use |
-|---------|-------------|
-| `/ck-spec-specify` | Create formal specification |
-| `/ck-spec-clarify` | Resolve ambiguities |
-| `/ck-spec-plan` | Generate implementation plan |
-| `/ck-spec-tasks` | Break into tasks |
-| `/ck-spec-implement` | Execute tasks |
-
 ## Which Workflow?
 
 ```
@@ -90,9 +68,6 @@ Is this a bug fix?
 Is this < 2 hours work?
   → /ck-plan-fast
 
-Do you need formal requirements?
-  → /ck-spec-specify (spec-driven flow)
-
 Otherwise?
   → /ck-plan-hard (research + plan)
 ```
@@ -101,7 +76,7 @@ Otherwise?
 
 | Resource | Count | Purpose |
 |----------|-------|---------|
-| Prompts | 25 | Commands for Copilot |
+| Prompts | 17 | Commands for Copilot |
 | Agents | 12 | Specialized AI assistants |
 | Skills | 23 | Domain expertise |
 | Instructions | 5 | Context-aware rules |

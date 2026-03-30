@@ -99,4 +99,3 @@ Search and retrieve up-to-date documentation for libraries, frameworks, and pack
 | `/ck-ask` | Ask technical questions |
 | `/ck-plan` | Create implementation plan |
 | `/ck-cook` | Implement feature |
-| `/ck-spec-specify` | Write detailed feature spec |

@@ -3,11 +3,11 @@
 ## Overview
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        SOURCES                               │
+│                        SOURCE                                │
 ├─────────────────────────────────────────────────────────────┤
-│  ClaudeKit (~/.claude/)      SpecKit (upstream/speckit/)    │
-│  ├── commands/               ├── templates/commands/         │
-│  ├── skills/                 └── (git subtree)               │
+│  ClaudeKit (~/.claude/)                                      │
+│  ├── commands/                                               │
+│  ├── skills/                                                 │
 │  └── (local install)                                         │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -18,7 +18,6 @@
 │  eng/sync.mjs                                                │
 │  ├── Load resource-origins.yml (mappings + ignore list)     │
 │  ├── transform-claudekit.mjs → ck-* namespace               │
-│  ├── transform-speckit.mjs → ck-spec-* namespace            │
 │  ├── patch-navigation.mjs → Add "Suggested Next Steps"      │
 │  └── Write to prompts/                                       │
 └─────────────────────────────────────────────────────────────┘
@@ -28,7 +27,7 @@
 │                       OUTPUT                                 │
 ├─────────────────────────────────────────────────────────────┤
 │  prompts/                                                    │
-│  ├── ck-*.prompt.md (27 total commands)                     │
+│  ├── ck-*.prompt.md (17 commands)                           │
 │  └── agents/, skills/, instructions/, collections/         │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -45,12 +44,11 @@
 
 ### Sync Pipeline
 ```
-1. git subtree pull (SpecKit)
-2. Read ~/.claude/commands/ (ClaudeKit)
-3. Transform: rename, replace $ARGUMENTS, remove model field
-4. Patch: inject navigation footer
-5. Write: prompts/*.prompt.md
-6. Update: resource-origins.yml (timestamps)
+1. Read ~/.claude/commands/ (ClaudeKit)
+2. Transform: rename, replace $ARGUMENTS, remove model field
+3. Patch: inject navigation footer
+4. Write: prompts/*.prompt.md
+5. Update: resource-origins.yml (timestamps)
 ```
 
 ### CLI Install
@@ -67,7 +65,6 @@
 |-----------|------|---------|
 | Orchestrator | eng/sync.mjs | Runs full sync pipeline |
 | ClaudeKit Transform | eng/transform-claudekit.mjs | Transform ~/.claude/ commands |
-| SpecKit Transform | eng/transform-speckit.mjs | Transform upstream/speckit/ |
 | Navigation Patch | eng/patch-navigation.mjs | Add cross-command navigation |
 | Config | eng/resource-origins.yml | Mappings, ignore list, navigation |
 
@@ -76,4 +73,3 @@
 | Prefix | Source | Example |
 |--------|--------|---------|
 | `ck-*` | ClaudeKit | ck-plan, ck-fix, ck-test |
-| `ck-spec-*` | SpecKit | ck-spec-specify, ck-spec-plan |

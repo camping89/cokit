@@ -147,7 +147,6 @@ New variant → update flowchart + Deep Dive in `index.html`, do NOT bump prompt
 - [ ] `docs/cokit-comprehensive-mapping-guide.md`
 - [ ] `docs/cokit-team-presentation.md`
 - [ ] `docs/cokit-sync-and-maintenance-guide.md`
-- [ ] `docs/guide-next-steps-speckit-cokit-implementation.md`
 - [ ] `docs/project-overview-pdr.md`
 
 ### If new commands added

@@ -8,28 +8,18 @@ When to use which command workflow.
 |------|---------|----------|
 | **Quick implementation** | `ck-plan-fast` | ClaudeKit |
 | **Deep research + plan** | `ck-plan-hard` | ClaudeKit |
-| **Formal spec from idea** | `ck-spec-specify` | SpecKit |
 | **Fix a bug** | `ck-fix` | ClaudeKit |
 | **Run tests** | `ck-test` | ClaudeKit |
 
 ---
 
-## Two Workflows
+## Commands
 
-### ClaudeKit (`ck-*`) - Flexible, Fast
-
-Best for: **Day-to-day development**, quick fixes, exploration.
+### ClaudeKit (`ck-*`)
 
 ```
 ck-plan-fast → ck-test → ck-fix
 ```
-
-**When to use:**
-- Fixing bugs
-- Small features (< 1 day)
-- Prototyping
-- Exploratory coding
-- You know what to build
 
 **Commands:**
 | Command | Description |
@@ -42,34 +32,14 @@ ck-plan-fast → ck-test → ck-fix
 | `ck-ask` | Answer questions |
 | `ck-review` | Review codebase |
 | `ck-bootstrap` | Start new project |
-
----
-
-### SpecKit (`ck-spec-*`) - Structured, Rigorous
-
-Best for: **Complex features**, team collaboration, formal requirements.
-
-```
-ck-spec-specify → ck-spec-clarify → ck-spec-plan → ck-spec-tasks → ck-spec-implement
-```
-
-**When to use:**
-- Multi-day features
-- Requirements need formal spec
-- Multiple stakeholders
-- Need traceability
-- Compliance/audit needs
-
-**Commands:**
-| Command | Description |
-|---------|-------------|
-| `ck-spec-specify` | Create formal spec from idea |
-| `ck-spec-clarify` | Ask clarification questions |
-| `ck-spec-plan` | Generate plan from spec |
-| `ck-spec-tasks` | Break plan into tasks |
-| `ck-spec-implement` | Execute tasks |
-| `ck-spec-analyze` | Check consistency |
-| `ck-spec-checklist` | Validate requirements |
+| `ck-brainstorm` | Brainstorm solutions |
+| `ck-cook` | Implement step by step |
+| `ck-scout` | Fast codebase scouting |
+| `ck-git` | Git operations |
+| `ck-debug` | Systematic debugging |
+| `ck-docs` | Search library docs |
+| `ck-watzup` | Review recent changes |
+| `ck-help` | CoKit usage guide |
 
 ---
 
@@ -82,12 +52,12 @@ Is this a bug fix?
 Is this < 4 hours work?
   └─ Yes → ck-plan-fast
 
-Do you need formal requirements?
-  └─ Yes → ck-spec-specify → ck-spec-* flow
-  └─ No  → ck-plan-hard → ck-* flow
+Need deep research?
+  └─ Yes → ck-plan-hard
+  └─ No  → ck-plan-fast
 
 Are you exploring/prototyping?
-  └─ Yes → ck-plan-fast (skip spec)
+  └─ Yes → ck-brainstorm → ck-plan-fast
 ```
 
 ---
@@ -109,30 +79,9 @@ Single command. Done.
 
 ### Scenario 3: Payment Integration (Complex Feature)
 ```
-/ck-spec-specify "Integrate Stripe payments for subscriptions"
-/ck-spec-clarify  (answer questions about tiers, regions, etc.)
-/ck-spec-plan
-/ck-spec-tasks
-/ck-spec-implement
+/ck-brainstorm "Integrate Stripe payments for subscriptions"
+/ck-plan-hard "Stripe payment integration"
+→ implement phase by phase
 /ck-test
+/ck-review
 ```
-
----
-
-## Mixing Workflows
-
-You can mix them:
-- Start with `ck-spec-specify` for formal spec
-- Use `ck-fix` when bugs arise during implementation
-- Use `ck-test` regardless of workflow
-
----
-
-## Summary
-
-| Workflow | Best For | Time | Rigor |
-|----------|----------|------|-------|
-| **ClaudeKit** | Daily dev, fixes | Minutes-Hours | Low-Medium |
-| **SpecKit** | Big features, teams | Days-Weeks | High |
-
-**Rule of thumb:** If you can explain it in one sentence, use ClaudeKit. If you need a doc, use SpecKit.

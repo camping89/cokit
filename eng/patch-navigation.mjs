@@ -37,14 +37,11 @@ ${nextStepsRows}
 function getDefaultSuggestions(commandName, config) {
   const suggestions = [];
   if (commandName.includes('brainstorm')) {
-    suggestions.push(['ck-spec-specify', 'Formalize ideas into specification']);
-    suggestions.push(['ck-plan-fast', 'Quick implementation plan']);
-  } else if (commandName.includes('specify') || commandName.includes('clarify')) {
     suggestions.push(['ck-plan', 'Create implementation plan']);
-    suggestions.push(['ck-brainstorm', 'Explore implementation approaches']);
+    suggestions.push(['ck-plan-fast', 'Quick implementation plan']);
   } else if (commandName.includes('plan')) {
     suggestions.push(['ck-cook', 'Start implementation']);
-    suggestions.push(['ck-spec-tasks', 'Break into actionable tasks']);
+    suggestions.push(['ck-test', 'Run tests']);
   } else if (commandName.includes('cook') || commandName.includes('implement')) {
     suggestions.push(['ck-test', 'Run tests']);
     suggestions.push(['ck-fix', 'Fix issues']);

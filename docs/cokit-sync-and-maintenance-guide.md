@@ -1,21 +1,21 @@
 # CoKit Sync & Maintenance Guide
 
-> **IMPORTANT**: This is the official guide for maintaining CoKit's integration with upstream sources (ClaudeKit + SpecKit). Read this before making any changes to the sync pipeline.
+> **IMPORTANT**: This is the official guide for maintaining CoKit's integration with ClaudeKit. Read this before making any changes to the sync pipeline.
 
 ---
 
 ## Architecture Overview
 
-CoKit merges two upstream sources into a unified `ck-*` command namespace:
+CoKit transforms ClaudeKit commands into a unified `ck-*` command namespace:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        SOURCES                                   │
+│                        SOURCE                                    │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ClaudeKit (pre-installed)        SpecKit (git subtree)         │
-│  ~/.claude/                       upstream/speckit/             │
-│  ├── commands/                    └── templates/commands/       │
+│  ClaudeKit (pre-installed)                                      │
+│  ~/.claude/                                                     │
+│  ├── commands/                                                  │
 │  ├── agents/                                                    │
 │  └── skills/                                                    │
 │                                                                 │
@@ -26,10 +26,9 @@ CoKit merges two upstream sources into a unified `ck-*` command namespace:
 │                    SYNC PIPELINE                                 │
 │                    npm run sync                                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  1. PULL      → git subtree pull speckit                        │
-│  2. TRANSFORM → Rename commands, fix placeholders               │
-│  3. PATCH     → Inject unified navigation                       │
-│  4. GENERATE  → Write to prompts/, agents/, skills/             │
+│  1. TRANSFORM → Rename commands, fix placeholders               │
+│  2. PATCH     → Inject unified navigation                       │
+│  3. GENERATE  → Write to prompts/                               │
 └───────────────────────┬─────────────────────────────────────────┘
                         │
                         ▼
@@ -38,9 +37,8 @@ CoKit merges two upstream sources into a unified `ck-*` command namespace:
 ├─────────────────────────────────────────────────────────────────┤
 │  prompts/           agents/           skills/                   │
 │  ├── ck-brainstorm  ├── planner       ├── ck-planning/          │
-│  ├── ck-specify     ├── debugger      ├── ck-databases/         │
-│  ├── ck-plan        └── ...           └── ...                   │
-│  └── ...                                                        │
+│  ├── ck-plan        ├── debugger      ├── ck-databases/         │
+│  └── ...            └── ...           └── ...                   │
 │                                                                 │
 │  All use unified ck-* namespace                                 │
 │  All have cross-navigation to other ck-* commands               │
@@ -55,7 +53,6 @@ CoKit merges two upstream sources into a unified `ck-*` command namespace:
 |------|---------|
 | `eng/sync.mjs` | Main sync orchestrator |
 | `eng/transform-claudekit.mjs` | ClaudeKit → CoKit transform rules |
-| `eng/transform-speckit.mjs` | SpecKit → CoKit transform rules |
 | `eng/patch-navigation.mjs` | Injects unified navigation footer |
 | `eng/resource-origins.yml` | **CRITICAL** - Maps ck-* commands to upstream sources |
 
@@ -72,59 +69,12 @@ version: "2.0"
 synced_at: "2026-02-03"
 
 sources:
-  speckit:
-    repo: github/spec-kit
-    ref: main
-    last_sync: "2026-02-03"
   claudekit:
     path: ~/.claude
     last_sync: "2026-02-03"
 
 # COMMAND MAPPINGS
-# Format: ck-{name} → source info
 mappings:
-  # ═══════════════════════════════════════════════════════════════
-  # FROM SPECKIT
-  # ═══════════════════════════════════════════════════════════════
-  ck-specify:
-    origin: speckit
-    original: speckit.specify
-    upstream_file: templates/commands/specify.md
-    description: Create feature specification from description
-
-  ck-clarify:
-    origin: speckit
-    original: speckit.clarify
-    upstream_file: templates/commands/clarify.md
-    description: Resolve specification ambiguities
-
-  ck-constitution:
-    origin: speckit
-    original: speckit.constitution
-    upstream_file: templates/commands/constitution.md
-    description: Create/update project constitution
-
-  ck-spec-tasks:
-    origin: speckit
-    original: speckit.tasks
-    upstream_file: templates/commands/tasks.md
-    description: Generate task list from plan
-
-  ck-analyze:
-    origin: speckit
-    original: speckit.analyze
-    upstream_file: templates/commands/analyze.md
-    description: Analyze spec consistency
-
-  ck-checklist:
-    origin: speckit
-    original: speckit.checklist
-    upstream_file: templates/commands/checklist.md
-    description: Quality validation checklist
-
-  # ═══════════════════════════════════════════════════════════════
-  # FROM CLAUDEKIT
-  # ═══════════════════════════════════════════════════════════════
   ck-brainstorm:
     origin: claudekit
     original: brainstorm
@@ -136,36 +86,7 @@ mappings:
     original: plan
     upstream_file: commands/plan.md
     description: Intelligent plan creation
-
-  ck-plan-hard:
-    origin: claudekit
-    original: plan/hard
-    upstream_file: commands/plan/hard.md
-    description: Deep research + comprehensive plan
-
-  ck-plan-fast:
-    origin: claudekit
-    original: plan/fast
-    upstream_file: commands/plan/fast.md
-    description: Quick plan without research
-
-  ck-cook:
-    origin: claudekit
-    original: cook
-    upstream_file: skills/cook/SKILL.md
-    description: Implement feature step by step
-
-  ck-fix:
-    origin: claudekit
-    original: fix
-    upstream_file: skills/fix/SKILL.md
-    description: Analyze and fix issues
-
-  ck-test:
-    origin: claudekit
-    original: test
-    upstream_file: commands/test.md
-    description: Run tests and analyze results
+  # ... more mappings
 
 # New commands discovered during sync (review and add to mappings)
 unknown_commands: []
@@ -175,28 +96,25 @@ unknown_commands: []
 
 ## Sync Workflow
 
-### Regular Sync (Weekly/Monthly)
+### Regular Sync
 
 ```bash
-# 1. Pull latest from SpecKit
-npm run sync:pull
+# 1. Transform and generate
+npm run sync
 
-# 2. Transform and generate
-npm run sync:transform
-
-# 3. Review changes
+# 2. Review changes
 git diff
 
-# 4. Check for unknown commands
+# 3. Check for unknown commands
 cat eng/resource-origins.yml | grep -A5 "unknown_commands"
 
-# 5. If unknown commands found, add them to mappings
+# 4. If unknown commands found, add them to mappings
 # Edit eng/resource-origins.yml, then re-run:
-npm run sync:transform
+npm run sync
 
-# 6. Commit
+# 5. Commit
 git add .
-git commit -m "sync: update from claudekit + speckit $(date +%Y-%m-%d)"
+git commit -m "sync: update from claudekit $(date +%Y-%m-%d)"
 ```
 
 ### When Upstream Adds New Commands
@@ -204,7 +122,7 @@ git commit -m "sync: update from claudekit + speckit $(date +%Y-%m-%d)"
 1. **Sync detects unknown command** → logged to `unknown_commands` in resource-origins.yml
 2. **Review the new command** → check upstream docs
 3. **Add to mappings** with appropriate `ck-*` name
-4. **Re-run transform**
+4. **Re-run sync**
 5. **Test the new command**
 
 ### When Upstream Removes/Renames Commands
@@ -222,18 +140,9 @@ git commit -m "sync: update from claudekit + speckit $(date +%Y-%m-%d)"
 
 | Original | Transformed |
 |----------|-------------|
-| `/speckit.specify` | `/ck-specify` |
-| `/speckit.plan` | `/ck-plan` (conflicts with claudekit, see below) |
 | `/plan` (claudekit) | `/ck-plan` |
 | `/plan:hard` | `/ck-plan-hard` |
 | `/brainstorm` | `/ck-brainstorm` |
-
-### Conflict Resolution
-
-When both sources have same command name (e.g., `plan`):
-- **Default**: ClaudeKit version wins (more mature)
-- **SpecKit version**: Available as `ck-plan.spec` if needed
-- **Document in resource-origins.yml**
 
 ### Placeholder Substitution
 
@@ -246,22 +155,6 @@ When both sources have same command name (e.g., `plan`):
 
 - **Remove entirely** - Let Copilot use its default
 - ClaudeKit's `model: opus/sonnet/haiku` → removed
-
-### Handoffs (SpecKit-specific)
-
-SpecKit commands have `handoffs` in frontmatter:
-```yaml
-handoffs:
-  - label: Build Technical Plan
-    agent: speckit.plan
-```
-
-Transform to:
-```yaml
-handoffs:
-  - label: Build Technical Plan
-    agent: ck-plan
-```
 
 ---
 
@@ -276,13 +169,11 @@ Every prompt gets a navigation footer injected:
 
 | Current | Next Options |
 |---------|--------------|
-| After `ck-brainstorm` | `/ck-specify`, `/ck-plan-fast` |
-| After `ck-specify` | `/ck-clarify`, `/ck-brainstorm`, `/ck-plan` |
-| After `ck-clarify` | `/ck-specify` (update), `/ck-plan` |
-| After `ck-plan` | `/ck-spec-tasks`, `/ck-cook`, `/ck-brainstorm` (rethink) |
+| After `ck-brainstorm` | `/ck-plan`, `/ck-plan-fast` |
+| After `ck-plan` | `/ck-cook`, `/ck-brainstorm` (rethink) |
 | After `ck-cook` | `/ck-test`, `/ck-fix` |
 
-**All commands:** `ck-brainstorm`, `ck-specify`, `ck-clarify`, `ck-constitution`, `ck-plan`, `ck-plan-hard`, `ck-plan-fast`, `ck-spec-tasks`, `ck-cook`, `ck-fix`, `ck-test`
+**All commands:** `ck-brainstorm`, `ck-plan`, `ck-plan-hard`, `ck-plan-fast`, `ck-cook`, `ck-fix`, `ck-test`
 ```
 
 ---
@@ -303,28 +194,13 @@ Every prompt gets a navigation footer injected:
 │         │                                                       │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
-│  │ ck-specify  │ ← Formalize into spec                         │
+│  │ ck-plan     │ ← Create implementation plan                   │
 │  └──────┬──────┘                                                │
-│         │ Has ambiguities?                                      │
+│         │                                                       │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
-│  │ ck-clarify  │ ← Resolve (optional)                          │
+│  │ ck-cook     │ ← Implement step by step                      │
 │  └──────┬──────┘                                                │
-│         │◄────────────────────────┐                             │
-│         ▼                         │                             │
-│  ┌─────────────┐                  │                             │
-│  │ ck-plan     │    Loop back if  │                             │
-│  └──────┬──────┘    approach needs│                             │
-│         │           rethinking    │                             │
-│         ▼                         │                             │
-│  ┌───────────────┐                │                             │
-│  │ck-spec-tasks  │ ← Break into tasks                          │
-│  └───────┬───────┘                │                             │
-│          │                        │                             │
-│          ▼                        │                             │
-│  ┌─────────────┐                  │                             │
-│  │ ck-cook     │──────────────────┘                             │
-│  └──────┬──────┘    (via ck-brainstorm)                         │
 │         │                                                       │
 │         ▼                                                       │
 │  ┌─────────────┐                                                │
@@ -380,29 +256,10 @@ For commands that don't come from upstream:
 ```yaml
 ck-workflow.enterprise:
   origin: cokit-native
-  description: Full enterprise flow (brainstorm → specify → plan → cook)
+  description: Full enterprise flow (brainstorm → plan → cook)
 ```
 
 3. These won't be overwritten by sync
-
----
-
-## Version Pinning (Production)
-
-For stability, pin SpecKit to a specific tag:
-
-```yaml
-# eng/resource-origins.yml
-sources:
-  speckit:
-    repo: github/spec-kit
-    ref: v1.2.6  # Pin to tag instead of main
-```
-
-Update `sync:pull` script to use the ref:
-```bash
-git subtree pull --prefix=upstream/speckit https://github.com/github/spec-kit.git v1.2.6 --squash
-```
 
 ---
 
@@ -410,10 +267,5 @@ git subtree pull --prefix=upstream/speckit https://github.com/github/spec-kit.gi
 
 | Date | Change |
 |------|--------|
+| 2026-03-30 | Removed SpecKit integration |
 | 2026-02-03 | Initial architecture design |
-
----
-
-## Questions?
-
-Check the brainstorm report: `plans/reports/brainstorm-260203-1630-cokit-v2-architecture-refresh.md`

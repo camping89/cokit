@@ -2,7 +2,7 @@
 
 ## Overview
 
-CoKit is a CLI tool that enhances GitHub Copilot with 25 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. The tool unifies two upstream sources (ClaudeKit and SpecKit) into a single ck-* namespace.
+CoKit is a CLI tool that enhances GitHub Copilot with 17 prompts, 12 agents, 5 instructions, 27 skills, and 5 collections. It transforms ClaudeKit commands into a unified ck-* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
 **Version:** 1.2.6
@@ -12,14 +12,12 @@ CoKit is a CLI tool that enhances GitHub Copilot with 25 prompts, 12 agents, 5 i
 
 ## Architecture
 
-CoKit uses a **sync pipeline architecture** that transforms and merges upstream resources:
+CoKit uses a **sync pipeline architecture** that transforms ClaudeKit resources:
 
 ```
-Upstream Sources (ClaudeKit + SpecKit)
+ClaudeKit Source (~/.claude/)
     ↓
-Transform Modules (Transform ClaudeKit & SpecKit)
-    ↓
-Merge Results
+Transform Module (transform-claudekit.mjs)
     ↓
 Patch Navigation (Inject workflow footers)
     ↓
@@ -27,9 +25,8 @@ Output: Unified ck-* Prompts
 ```
 
 ### Sync Pipeline (eng/sync.mjs)
-- **Flow:** Load config → Transform sources → Merge → Patch navigation → Write output
+- **Flow:** Load config → Transform ClaudeKit → Patch navigation → Write output
 - **Configuration:** resource-origins.yml (mappings, navigation, ignore list)
-- **Parallel Processing:** ClaudeKit and SpecKit transformations run concurrently
 - **Dry-run Support:** Preview changes without writing files
 
 ## Source Code Structure
@@ -40,9 +37,8 @@ Output: Unified ck-* Prompts
 |------|------|---------|
 | `src/index.js` | 35 LOC | CLI entry point; registers commands (init, add, list, doctor, update) |
 | `bin/cokit.js` | 4 LOC | Binary wrapper; delegates to src/index.js |
-| `eng/sync.mjs` | 97 LOC | Main sync orchestrator; orchestrates transformation and merging |
+| `eng/sync.mjs` | 85 LOC | Main sync orchestrator; orchestrates transformation |
 | `eng/transform-claudekit.mjs` | 220 LOC | ClaudeKit transformer; resolves files, applies transformations |
-| `eng/transform-speckit.mjs` | 175 LOC | SpecKit transformer; processes upstream/speckit/templates/commands |
 | `eng/patch-navigation.mjs` | 69 LOC | Navigation patcher; injects "Suggested Next Steps" footers |
 
 ### Directory Structure
@@ -64,7 +60,6 @@ cokit/
 ├── eng/
 │   ├── sync.mjs                    # Sync orchestrator
 │   ├── transform-claudekit.mjs      # ClaudeKit transformer
-│   ├── transform-speckit.mjs        # SpecKit transformer
 │   ├── patch-navigation.mjs         # Navigation footer injection
 │   └── resource-origins.yml         # Configuration (mappings, navigation)
 ├── prompts/                        # Output: Transformed prompts (33 files)
@@ -90,20 +85,18 @@ Registers 5 commands using Commander.js:
 ### 2. Sync Pipeline (eng/sync.mjs)
 **Flow:**
 1. Load resource-origins.yml configuration
-2. Transform ClaudeKit and SpecKit sources in parallel
-3. Merge results (total: 25 prompts)
-4. Apply navigation patches to all prompts
-5. Write output files or show dry-run preview
-6. Update sync timestamps
+2. Transform ClaudeKit sources
+3. Apply navigation patches to all prompts
+4. Write output files or show dry-run preview
+5. Update sync timestamps
 
 **Config Structure:**
 ```yaml
 version: '2.0'
 sources:
-  speckit: {repo, ref, path, last_sync}
   claudekit: {path, last_sync}
 ignore: []            # Commands to skip
-mappings: {}          # Command mappings (24 entries)
+mappings: {}          # Command mappings (16 entries)
 unknown_commands: []  # Tracking unknown sources
 navigation: {}        # Workflow navigation rules
 ```
@@ -126,19 +119,6 @@ navigation: {}        # Workflow navigation rules
 - `transformCommandReference()` - Update handoff commands
 - `transformContentReferences()` - Replace content references
 
-#### SpecKit Transformer (transform-speckit.mjs)
-**Input:** upstream/speckit/templates/commands/
-**Transformations:**
-- Rename: `/speckit-*` → `/ck-*`
-- Replace: `$ARGUMENTS` → `${input}`
-- Remove `model` field from frontmatter
-- Update handoff references to ck-* commands
-
-**Functions:**
-- `transformFile()` - Apply transformations
-- `transformCommandReference()` - Update handoffs (speckit-* → ck-*)
-- `transformContentReferences()` - Replace content references
-
 ### 4. Navigation Patcher (patch-navigation.mjs)
 Injects workflow navigation footers into transformed prompts.
 
@@ -149,10 +129,9 @@ Injects workflow navigation footers into transformed prompts.
 - All commands listed at footer
 
 **Default Patterns:**
-- `brainstorm` → suggest: specify, plan.fast
-- `specify/clarify` → suggest: plan, brainstorm
-- `plan` → suggest: cook, tasks
-- `cook/implement` → suggest: test, fix
+- `brainstorm` → suggest: plan, plan.fast
+- `plan` → suggest: cook, test
+- `cook` → suggest: test, fix
 - `test` → suggest: fix, review
 
 ### 5. Configuration (eng/resource-origins.yml)
@@ -161,10 +140,9 @@ Maintains mappings and sync metadata.
 **Key Sections:**
 - `version` - Config format version
 - `synced_at` - Last sync timestamp
-- `sources.speckit` - SpecKit repo location
 - `sources.claudekit` - ClaudeKit local path (~/.claude/commands)
 - `ignore` - Commands to skip
-- `mappings` - 24 command mappings with origins and descriptions
+- `mappings` - 16 command mappings with origins and descriptions
 - `navigation` - Workflow navigation rules
 - `unknown_commands` - Tracking array for unmapped sources
 
@@ -172,9 +150,6 @@ Maintains mappings and sync metadata.
 
 ### ClaudeKit Commands (16)
 16 prompts from ~/.claude/commands/ (plan, plan.hard, plan.fast, fix, test, ask, bootstrap, review, watzup, help, brainstorm, cook, scout, git, debug, docs)
-
-### SpecKit Commands (8)
-8 prompts from upstream/speckit (specify, clarify, constitution, plan, tasks, implement, analyze, checklist)
 
 ## Dependencies
 
@@ -190,9 +165,8 @@ Maintains mappings and sync metadata.
 ## Scripts
 
 ```bash
-npm run sync              # Pull upstream + transform
-npm run sync:pull        # git subtree pull SpecKit
-npm run sync:transform   # Run transformations only
+npm run sync              # Transform and generate prompts
+npm run sync:transform   # Same as sync
 npm run sync:dry-run     # Preview changes without writing
 npm run test             # Run tests
 npm run build            # Update README
@@ -202,11 +176,8 @@ npm run build            # Update README
 
 ### Sync Operation
 1. **Config Load** - Read resource-origins.yml
-2. **Parallel Transform:**
-   - ClaudeKit: Glob ~/.claude/commands → Transform → Output ck-* prompts
-   - SpecKit: Glob upstream/speckit/templates/commands → Transform → Output ck-* prompts
-3. **Merge** - Combine results (21 total)
-4. **Patch Navigation** - Inject workflow footers
+2. **Transform** - ClaudeKit: Glob ~/.claude/commands → Transform → Output ck-* prompts
+3. **Patch Navigation** - Inject workflow footers
 5. **Write Output** - Create prompt files (prompts/ directory)
 6. **Update Config** - Record sync timestamps
 
@@ -231,7 +202,6 @@ Output (ck-*)
 ## Error Handling
 
 - **Missing ClaudeKit:** Warns if ~/.claude/commands not found, continues gracefully
-- **Missing SpecKit:** Warns if upstream/speckit not found, continues gracefully
 - **File Not Found:** Logs warning per missing file, adds to skipped array
 - **Transform Errors:** Logs errors per command, collects in results.errors
 - **Unknown Commands:** Tracks in config.unknown_commands for manual mapping
@@ -242,16 +212,15 @@ Output (ck-*)
 2. **Ignore List:** Skip commands via resource-origins.yml
 3. **Dry-run Mode:** Preview all changes before writing
 4. **Navigation Workflow:** Suggested next steps guide users through prompts
-5. **Parallel Processing:** Concurrent ClaudeKit + SpecKit transforms
-6. **Graceful Degradation:** Continues if sources unavailable
+5. **Graceful Degradation:** Continues if source unavailable
 7. **Frontmatter Management:** Preserves metadata, removes model field
 8. **Content Reference Updates:** Transforms all command references to ck-* namespace
 
 ## Version History
 
-- **v1.2.6** (Current) - 25 prompts, 12 agents, 27 skills
+- **v1.2.6** - 25 prompts (with SpecKit, now removed)
 - **v1.2.0** - Initial Copilot port with full resource set
-- **v1.1.0** - 21 prompts (12 ClaudeKit + 9 SpecKit), SpecKit sync pipeline
+- **v1.1.0** - 21 prompts, SpecKit sync pipeline (now removed)
 - **v1.0.9** - Comprehensive documentation update
 - **v1.0.8** - Initial release
 

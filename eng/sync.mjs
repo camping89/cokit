@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 /**
- * Main sync orchestrator - merges ClaudeKit + SpecKit into unified ck.* namespace
+ * Main sync orchestrator - transforms ClaudeKit into unified ck.* namespace
  * Usage: node eng/sync.mjs [--dry-run]
  */
 
 import { transformClaudekit } from './transform-claudekit.mjs';
-import { transformSpeckit } from './transform-speckit.mjs';
 import { patchAllNavigation } from './patch-navigation.mjs';
 import YAML from 'js-yaml';
 import matter from 'gray-matter';
@@ -22,28 +21,21 @@ async function main() {
   const configPath = 'eng/resource-origins.yml';
   const config = YAML.load(await fs.readFile(configPath, 'utf8'));
 
-  // 2. Transform sources in parallel (respecting ignore list)
+  // 2. Transform sources (respecting ignore list)
   console.log('\n🔧 Transforming sources...');
   const ignoreList = config.ignore || [];
   if (ignoreList.length > 0) {
     console.log(`   Ignoring: ${ignoreList.join(', ')}`);
   }
-  const [claudekitResults, speckitResults] = await Promise.all([
-    transformClaudekit(config, ignoreList),
-    transformSpeckit(config, ignoreList)
-  ]);
+  const claudekitResults = await transformClaudekit(config, ignoreList);
 
-  // 3. Merge results
-  const allPrompts = [...claudekitResults.prompts, ...speckitResults.prompts];
+  // 3. Collect results
+  const allPrompts = [...claudekitResults.prompts];
   console.log(`\n📦 Total prompts: ${allPrompts.length}`);
   console.log(`   - ClaudeKit: ${claudekitResults.prompts.length}`);
-  console.log(`   - SpecKit: ${speckitResults.prompts.length}`);
 
   if (claudekitResults.skipped.length > 0) {
     console.log(`   - ClaudeKit skipped: ${claudekitResults.skipped.length}`);
-  }
-  if (speckitResults.skipped.length > 0) {
-    console.log(`   - SpecKit skipped: ${speckitResults.skipped.length}`);
   }
 
   // 4. Patch navigation
@@ -65,7 +57,6 @@ async function main() {
     // 6. Update config with sync timestamp
     config.synced_at = new Date().toISOString();
     config.sources.claudekit.last_sync = new Date().toISOString();
-    config.sources.speckit.last_sync = new Date().toISOString();
     await fs.writeFile(configPath, YAML.dump(config, { lineWidth: -1 }));
     console.log('\n✓ Updated resource-origins.yml');
   } else {
@@ -80,7 +71,7 @@ async function main() {
   console.log('📊 Sync Summary');
   console.log('─'.repeat(50));
   console.log(`Total commands: ${patched.length}`);
-  console.log(`Errors: ${claudekitResults.errors.length + speckitResults.errors.length}`);
+  console.log(`Errors: ${claudekitResults.errors.length}`);
   console.log(`Unknown commands: ${config.unknown_commands?.length || 0}`);
 
   if (config.unknown_commands?.length > 0) {

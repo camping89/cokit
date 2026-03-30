@@ -61,13 +61,10 @@ npm publish                               Downloads cokit-cli
 
 ## Slide 6: What Users Get
 
-### 25 Prompts (ClaudeKit + SpecKit)
+### 17 Prompts (ClaudeKit)
 
 **Development workflows (ck-*):**
-- `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-bootstrap`, `/ck-brainstorm`, etc.
-
-**Spec-driven workflows (ck-spec-*):**
-- `/ck-spec-specify`, `/ck-spec-clarify`, `/ck-spec-plan`, `/ck-spec-tasks`, `/ck-spec-implement`, etc.
+- `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-bootstrap`, `/ck-brainstorm`, `/ck-scout`, `/ck-git`, `/ck-debug`, `/ck-docs`, etc.
 
 All unified in single namespace with cross-navigation.
 

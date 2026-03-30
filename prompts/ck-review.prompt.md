@@ -55,4 +55,3 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 |---------|-------------|
 | `/ck-fix` | Fix issues found in review |
 | `/ck-git` | Commit changes |
-| `/ck-spec-checklist` | Validate against spec requirements |

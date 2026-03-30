@@ -12,12 +12,12 @@
 CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
 ### Key Features (Current)
-- 25 prompt files with `ck-` and `ck-spec-` prefixes
+- 17 prompt files with `ck-` prefix
 - 27 specialized skills (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 expert agents (planner, code-reviewer, debugger, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.)
 - 5 instructions (backend, frontend, testing, development, research)
 - 5 collections bundling resources by workflow
-- Sync pipeline for upstream ClaudeKit + SpecKit sources
+- Sync pipeline for upstream ClaudeKit sources
 - Repo-level templates (VS Code settings, agent instructions, prompts, collections)
 - Beginner-friendly CLI with zero configuration
 - Cross-platform support (VS Code + JetBrains)
@@ -60,11 +60,9 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
 **Effort:** 4h
 **Deliverables:**
-- 25 prompt files from ClaudeKit + SpecKit
-  - ClaudeKit: `ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.
-  - SpecKit: `ck-spec-specify`, `ck-spec-clarify`, `ck-spec-plan`, `ck-spec-tasks`, etc.
+- 17 prompt files from ClaudeKit (`ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.)
 - Unified namespace: `ck-*` for all commands
-- Sync pipeline combines upstream sources
+- Sync pipeline transforms ClaudeKit sources
 - All prompts follow Copilot format with `mode: agent`
 - 0 critical issues
 

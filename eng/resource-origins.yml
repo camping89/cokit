@@ -1,57 +1,12 @@
 version: '2.0'
 synced_at: '2026-02-03T12:56:52.528Z'
 sources:
-  speckit:
-    repo: https://github.com/github/spec-kit.git
-    ref: main
-    path: upstream/speckit/templates/commands
-    last_sync: '2026-02-03T12:56:52.529Z'
   claudekit:
     path: ~/.claude/commands
     last_sync: '2026-02-03T12:56:52.529Z'
 ignore:
   - ck.kanban
 mappings:
-  ck.spec.specify:
-    origin: speckit
-    original: speckit.specify
-    upstream_file: specify.md
-    description: Create feature specification from natural language
-  ck.spec.clarify:
-    origin: speckit
-    original: speckit.clarify
-    upstream_file: clarify.md
-    description: Ask clarification questions for underspecified areas
-  ck.spec.constitution:
-    origin: speckit
-    original: speckit.constitution
-    upstream_file: constitution.md
-    description: Create/update project constitution and governance
-  ck.spec.plan:
-    origin: speckit
-    original: speckit.plan
-    upstream_file: plan.md
-    description: Generate implementation plan from spec
-  ck.spec.tasks:
-    origin: speckit
-    original: speckit.tasks
-    upstream_file: tasks.md
-    description: Generate tasks from plan
-  ck.spec.implement:
-    origin: speckit
-    original: speckit.implement
-    upstream_file: implement.md
-    description: Execute tasks from plan
-  ck.spec.analyze:
-    origin: speckit
-    original: speckit.analyze
-    upstream_file: analyze.md
-    description: Cross-artifact consistency analysis
-  ck.spec.checklist:
-    origin: speckit
-    original: speckit.checklist
-    upstream_file: checklist.md
-    description: Generate requirements validation checklist
   ck.plan:
     origin: claudekit
     original: plan
@@ -134,26 +89,6 @@ mappings:
     description: Search library/framework documentation
 unknown_commands: []
 navigation:
-  ck.spec.specify:
-    next:
-      - ck.spec.clarify
-      - ck.spec.plan
-  ck.spec.clarify:
-    next:
-      - ck.spec.specify
-      - ck.spec.plan
-  ck.spec.plan:
-    next:
-      - ck.spec.tasks
-      - ck.spec.checklist
-  ck.spec.tasks:
-    next:
-      - ck.spec.implement
-      - ck.spec.analyze
-  ck.spec.implement:
-    next:
-      - ck.test
-      - ck.spec.checklist
   ck.plan:
     next:
       - ck.plan.hard
