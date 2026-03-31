@@ -2,7 +2,7 @@
 
 ## Overview
 
-CoKit is a CLI tool that enhances GitHub Copilot with 31 prompts, 13 agents, 5 instructions, 30 skills, and 5 collections. It transforms ClaudeKit commands into a unified ck-* namespace.
+CoKit is a CLI tool that enhances GitHub Copilot with 31 prompts, 13 agents, 5 instructions, 30 skills, and 5 collections. It transforms upstream commands into a unified ck-* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
 **Version:** 1.3.0
@@ -12,12 +12,12 @@ CoKit is a CLI tool that enhances GitHub Copilot with 31 prompts, 13 agents, 5 i
 
 ## Architecture
 
-CoKit uses a **sync pipeline architecture** that transforms ClaudeKit resources:
+CoKit uses a **sync pipeline architecture** that transforms upstream resources:
 
 ```
-ClaudeKit Source (~/.claude/)
+Upstream Source
     ↓
-Transform Module (transform-claudekit.mjs)
+Transform Module (transform-upstream.mjs)
     ↓
 Patch Navigation (Inject workflow footers)
     ↓
@@ -25,7 +25,7 @@ Output: Unified ck-* Prompts
 ```
 
 ### Sync Pipeline (eng/sync.mjs)
-- **Flow:** Load config → Transform ClaudeKit → Patch navigation → Write output
+- **Flow:** Load config → Transform upstream → Patch navigation → Write output
 - **Configuration:** resource-origins.yml (mappings, navigation, ignore list)
 - **Dry-run Support:** Preview changes without writing files
 
@@ -38,7 +38,7 @@ Output: Unified ck-* Prompts
 | `src/index.js` | 35 LOC | CLI entry point; registers commands (init, add, list, doctor, update) |
 | `bin/cokit.js` | 4 LOC | Binary wrapper; delegates to src/index.js |
 | `eng/sync.mjs` | 85 LOC | Main sync orchestrator; orchestrates transformation |
-| `eng/transform-claudekit.mjs` | 220 LOC | ClaudeKit transformer; resolves files, applies transformations |
+| `eng/transform-upstream.mjs` | 220 LOC | Upstream transformer; resolves files, applies transformations |
 | `eng/patch-navigation.mjs` | 69 LOC | Navigation patcher; injects "Suggested Next Steps" footers |
 
 ### Directory Structure
@@ -59,7 +59,7 @@ cokit/
 │       └── update-checker.js        # Version checking
 ├── eng/
 │   ├── sync.mjs                    # Sync orchestrator
-│   ├── transform-claudekit.mjs      # ClaudeKit transformer
+│   ├── transform-upstream.mjs      # Upstream transformer
 │   ├── patch-navigation.mjs         # Navigation footer injection
 │   └── resource-origins.yml         # Configuration (mappings, navigation)
 ├── prompts/                        # Output: Transformed prompts (33 files)
@@ -85,7 +85,7 @@ Registers 5 commands using Commander.js:
 ### 2. Sync Pipeline (eng/sync.mjs)
 **Flow:**
 1. Load resource-origins.yml configuration
-2. Transform ClaudeKit sources
+2. Transform upstream sources
 3. Apply navigation patches to all prompts
 4. Write output files or show dry-run preview
 5. Update sync timestamps
@@ -94,7 +94,7 @@ Registers 5 commands using Commander.js:
 ```yaml
 version: '2.0'
 sources:
-  claudekit: {path, last_sync}
+  upstream: {path, last_sync}
 ignore: []            # Commands to skip
 mappings: {}          # Command mappings (16 entries)
 unknown_commands: []  # Tracking unknown sources
@@ -103,8 +103,8 @@ navigation: {}        # Workflow navigation rules
 
 ### 3. Transform Modules
 
-#### ClaudeKit Transformer (transform-claudekit.mjs)
-**Input:** ~/.claude/commands/ (user's local ClaudeKit)
+#### Upstream Transformer (transform-upstream.mjs)
+**Input:** Upstream commands source
 **Transformations:**
 - Rename: `/*` → `ck-*` namespace
 - Replace: `$ARGUMENTS` → `${input}`
@@ -113,7 +113,7 @@ navigation: {}        # Workflow navigation rules
 - Transform command references in content
 
 **Functions:**
-- `resolveClaudekitPath()` - Expand ~ paths
+- `resolveUpstreamPath()` - Expand ~ paths
 - `findCommandFile()` - Locate command files (handles variations)
 - `transformFile()` - Apply all transformations
 - `transformCommandReference()` - Update handoff commands
@@ -140,7 +140,7 @@ Maintains mappings and sync metadata.
 **Key Sections:**
 - `version` - Config format version
 - `synced_at` - Last sync timestamp
-- `sources.claudekit` - ClaudeKit local path (~/.claude/commands)
+- `sources.upstream` - Upstream source path
 - `ignore` - Commands to skip
 - `mappings` - 16 command mappings with origins and descriptions
 - `navigation` - Workflow navigation rules
@@ -148,8 +148,8 @@ Maintains mappings and sync metadata.
 
 ## Prompt Inventory
 
-### ClaudeKit Commands (16)
-16 prompts from ~/.claude/commands/ (plan, plan.hard, plan.fast, fix, test, ask, bootstrap, review, watzup, help, brainstorm, cook, scout, git, debug, docs)
+### Upstream Commands (16)
+16 prompts from upstream source (plan, plan.hard, plan.fast, fix, test, ask, bootstrap, review, watzup, help, brainstorm, cook, scout, git, debug, docs)
 
 ## Dependencies
 
@@ -176,14 +176,14 @@ npm run build            # Update README
 
 ### Sync Operation
 1. **Config Load** - Read resource-origins.yml
-2. **Transform** - ClaudeKit: Glob ~/.claude/commands → Transform → Output ck-* prompts
+2. **Transform** - Upstream: Glob source commands → Transform → Output ck-* prompts
 3. **Patch Navigation** - Inject workflow footers
 5. **Write Output** - Create prompt files (prompts/ directory)
 6. **Update Config** - Record sync timestamps
 
 ### File Transformation
 ```
-Input (ClaudeKit)
+Input (Upstream)
 ├── Frontmatter: {name: "plan", ...}
 ├── Content: "Run $ARGUMENTS using /fix command"
 ↓
@@ -201,7 +201,7 @@ Output (ck-*)
 
 ## Error Handling
 
-- **Missing ClaudeKit:** Warns if ~/.claude/commands not found, continues gracefully
+- **Missing Upstream:** Warns if upstream source not found, continues gracefully
 - **File Not Found:** Logs warning per missing file, adds to skipped array
 - **Transform Errors:** Logs errors per command, collects in results.errors
 - **Unknown Commands:** Tracks in config.unknown_commands for manual mapping

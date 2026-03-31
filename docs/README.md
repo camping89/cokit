@@ -29,8 +29,8 @@
 |-----|-----------|
 | [cokit-comprehensive-mapping-guide.md](cokit-comprehensive-mapping-guide.md) | Debugging command mappings |
 | [copilot-processing-flow.md](copilot-processing-flow.md) | Understanding prompt processing |
-| [migration-guide.md](migration-guide.md) | Claude Code users switching to Copilot |
-| [claudekit-porting-rules.md](claudekit-porting-rules.md) | AI/dev rules for porting ClaudeKit → CoKit |
+| [migration-guide.md](migration-guide.md) | Users switching from other AI tools to Copilot |
+| [upstream-porting-rules.md](upstream-porting-rules.md) | AI/dev rules for porting upstream → CoKit |
 
 ### Presentations
 | Doc | Use For |
@@ -54,7 +54,7 @@
 ### Workflow
 | Workflow | Commands | Best For |
 |----------|----------|----------|
-| ClaudeKit | `ck-*` | Daily dev, quick fixes, full pipeline |
+| CoKit | `ck-*` | Daily dev, quick fixes, full pipeline |
 
 ### Key Commands
 ```

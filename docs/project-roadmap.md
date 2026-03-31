@@ -1,6 +1,6 @@
 # CoKit Project Roadmap
 
-**Project:** CoKit - Claude Code to GitHub Copilot Port
+**Project:** CoKit - GitHub Copilot AI Workflow Toolkit
 **Version:** 1.2.6
 **Start Date:** 2026-01-06
 **Last Updated:** 2026-02-25 (agents/prompts/skills Copilot alignment)
@@ -9,7 +9,7 @@
 
 ## Project Overview
 
-CoKit makes it dead-simple for non-technical users to port Claude Code workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
+CoKit makes it dead-simple for non-technical users to add structured AI workflow patterns to GitHub Copilot with a single command: `npx cokit-cli init`.
 
 ### Key Features (Current)
 - 17 prompt files with `ck-` prefix
@@ -17,7 +17,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - 12 expert agents (planner, code-reviewer, debugger, tester, code-simplifier, fullstack-developer, ui-ux-designer, etc.)
 - 5 instructions (backend, frontend, testing, development, research)
 - 5 collections bundling resources by workflow
-- Sync pipeline for upstream ClaudeKit sources
+- Sync pipeline for upstream sources
 - Repo-level templates (VS Code settings, agent instructions, prompts, collections)
 - Beginner-friendly CLI with zero configuration
 - Cross-platform support (VS Code + JetBrains)
@@ -60,9 +60,9 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 **Status:** COMPLETE (2026-01-06, Enhanced 2026-02-10)
 **Effort:** 4h
 **Deliverables:**
-- 17 prompt files from ClaudeKit (`ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.)
+- 17 prompt files from upstream (`ck-fix`, `ck-plan`, `ck-cook`, `ck-test`, `ck-review`, etc.)
 - Unified namespace: `ck-*` for all commands
-- Sync pipeline transforms ClaudeKit sources
+- Sync pipeline transforms upstream sources
 - All prompts follow Copilot format with `mode: agent`
 - 0 critical issues
 
@@ -83,7 +83,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - README.md with quick-start (30 seconds)
 - Comprehensive documentation in `docs/` directory
 - Team presentation slides and guides
-- Migration guide for Claude Code users
+- Migration guide for users switching to Copilot
 
 ### Phase 6: Cleanup & Consolidation (COMPLETE)
 **Status:** COMPLETE (2026-01-20)
@@ -98,7 +98,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - Updated resource counts: 9 agents, 14 prompts, 5 instructions, 7 skills, 5 collections
 - QUICK-START.md one-pager - DONE
 - FAQ.md with troubleshooting - DONE
-- Migration guide for Claude Code users - DONE
+- Migration guide for users switching to Copilot - DONE
 - Visual assets (screenshots, GIFs) - Pending npm publication
   - terminal-init.png (pending)
   - vscode-after.png (pending)
@@ -172,11 +172,11 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - Prompts: 21 → 27 (added SpecKit spec-driven workflow commands)
 - Agents: 9 → 12 (added code-simplifier, fullstack-developer, ui-ux-designer)
 - Skills: 7 → 27 (major expansion including frontend-design, databases, devops, etc.)
-- Sync Pipeline: Unified ClaudeKit + SpecKit sources into single `ck-*` namespace
+- Sync Pipeline: Unified upstream + SpecKit sources into single `ck-*` namespace
 
 **Features Added:**
 - Sync pipeline (eng/sync.mjs) for automated upstream merging
-- Transform modules for both ClaudeKit and SpecKit sources
+- Transform modules for both upstream and SpecKit sources
 - Navigation patcher for cross-command workflow suggestions
 - Configuration-driven resource mappings (resource-origins.yml)
 - Conversion scripts for agents, commands, and skills
@@ -203,7 +203,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 - README.md with beginner-friendly quick-start (30 seconds)
 - QUICK-START.md one-pager for rapid setup
 - FAQ.md with troubleshooting and common issues
-- Migration guide for Claude Code users transitioning to Copilot
+- Migration guide for users switching to Copilot transitioning to Copilot
 - npm and license badges added
 - User testing completed with non-technical users (PASS)
 - 369 lines of documentation delivered
@@ -265,7 +265,7 @@ CoKit makes it dead-simple for non-technical users to port Claude Code workflow 
 
 ### Adoption Goals
 - README comprehensible to non-developers
-- Migration guide helps Claude Code users transition
+- Migration guide helps users transition to Copilot
 - All commands copy-paste ready
 - <5 minutes from discovery to working prompt
 

@@ -1,114 +1,114 @@
 version: '2.0'
 synced_at: '2026-03-30T03:20:00.000Z'
 sources:
-  claudekit:
-    path: ~/.claude/commands
+  upstream:
+    path: upstream/commands
     last_sync: '2026-03-30T03:20:00.000Z'
 ignore:
   - ck.kanban
 mappings:
   ck.plan:
-    origin: claudekit
+    origin: upstream
     original: plan
     upstream_file: plan.md
     description: Intelligent plan creation with prompt enhancement
   ck.plan.hard:
-    origin: claudekit
+    origin: upstream
     original: plan/hard
     upstream_file: plan/hard.md
     description: Deep research + comprehensive plan
   ck.plan.fast:
-    origin: claudekit
+    origin: upstream
     original: plan/fast
     upstream_file: plan/fast.md
     description: Quick plan without research
   ck.fix:
-    origin: claudekit
+    origin: upstream
     original: fix
     upstream_file: ck/fix.md
     description: Analyze and fix issues
   ck.test:
-    origin: claudekit
+    origin: upstream
     original: test
     upstream_file: test.md
     description: Run tests and analyze results
   ck.ask:
-    origin: claudekit
+    origin: upstream
     original: ask
     upstream_file: ask.md
     description: Answer technical questions
   ck.bootstrap:
-    origin: claudekit
+    origin: upstream
     original: bootstrap
     upstream_file: bootstrap.md
     description: Bootstrap a new project
   ck.review:
-    origin: claudekit
+    origin: upstream
     original: review
     upstream_file: review/codebase.md
     description: Scan and analyze codebase
   ck.watzup:
-    origin: claudekit
+    origin: upstream
     original: watzup
     upstream_file: watzup.md
     description: Review recent changes
   ck.help:
-    origin: claudekit
+    origin: upstream
     original: ck-help
     upstream_file: ck-help.md
     description: CoKit usage guide
   ck.brainstorm:
-    origin: claudekit
+    origin: upstream
     original: brainstorm
     upstream_file: skills/brainstorm/SKILL.md
     description: Brainstorm solutions with trade-off analysis
   ck.cook:
-    origin: claudekit
+    origin: upstream
     original: cook
     upstream_file: skills/cook/SKILL.md
     description: Smart feature implementation with workflow detection
   ck.scout:
-    origin: claudekit
+    origin: upstream
     original: scout
     upstream_file: skills/scout/SKILL.md
     description: Fast codebase scouting using parallel agents
   ck.git:
-    origin: claudekit
+    origin: upstream
     original: git
     upstream_file: skills/git/SKILL.md
     description: Git operations with conventional commits
   ck.debug:
-    origin: claudekit
+    origin: upstream
     original: debug
     upstream_file: skills/debug/SKILL.md
     description: Debug systematically with root cause analysis
   ck.docs:
-    origin: claudekit
+    origin: upstream
     original: docs-seeker
     upstream_file: skills/docs-seeker/SKILL.md
     description: Search library/framework documentation
   ck.ship:
-    origin: claudekit
+    origin: upstream
     original: ship
     upstream_file: skills/ship/SKILL.md
     description: Release pipeline - test, review, commit, push, PR
   ck.deploy:
-    origin: claudekit
+    origin: upstream
     original: deploy
     upstream_file: skills/deploy/SKILL.md
     description: Deploy to any platform with auto-detection
   ck.security:
-    origin: claudekit
+    origin: upstream
     original: security
     upstream_file: skills/security/SKILL.md
     description: STRIDE + OWASP security audit
   ck.project:
-    origin: claudekit
+    origin: upstream
     original: project-management
     upstream_file: skills/project-management/SKILL.md
     description: Track progress, manage tasks, generate reports
   ck.frontend:
-    origin: claudekit
+    origin: upstream
     original: frontend-development
     upstream_file: skills/frontend-development/SKILL.md
     description: Build React/TypeScript frontends with modern patterns

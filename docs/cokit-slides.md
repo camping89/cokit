@@ -61,7 +61,7 @@ npm publish                               Downloads cokit-cli
 
 ## Slide 6: What Users Get
 
-### 17 Prompts (ClaudeKit)
+### 17 Prompts (CoKit)
 
 **Development workflows (ck-*):**
 - `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-bootstrap`, `/ck-brainstorm`, `/ck-scout`, `/ck-git`, `/ck-debug`, `/ck-docs`, etc.

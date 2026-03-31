@@ -5,7 +5,7 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                        SOURCE                                │
 ├─────────────────────────────────────────────────────────────┤
-│  ClaudeKit (~/.claude/)                                      │
+│  Upstream Source                                             │
 │  ├── commands/                                               │
 │  ├── skills/                                                 │
 │  └── (local install)                                         │
@@ -17,7 +17,7 @@
 ├─────────────────────────────────────────────────────────────┤
 │  eng/sync.mjs                                                │
 │  ├── Load resource-origins.yml (mappings + ignore list)     │
-│  ├── transform-claudekit.mjs → ck-* namespace               │
+│  ├── transform-upstream.mjs → ck-* namespace                │
 │  ├── patch-navigation.mjs → Add "Suggested Next Steps"      │
 │  └── Write to prompts/                                       │
 └─────────────────────────────────────────────────────────────┘
@@ -44,7 +44,7 @@
 
 ### Sync Pipeline
 ```
-1. Read ~/.claude/commands/ (ClaudeKit)
+1. Read upstream commands source
 2. Transform: rename, replace $ARGUMENTS, remove model field
 3. Patch: inject navigation footer
 4. Write: prompts/*.prompt.md
@@ -64,7 +64,7 @@
 | Component | File | Purpose |
 |-----------|------|---------|
 | Orchestrator | eng/sync.mjs | Runs full sync pipeline |
-| ClaudeKit Transform | eng/transform-claudekit.mjs | Transform ~/.claude/ commands |
+| Upstream Transform | eng/transform-upstream.mjs | Transform upstream commands |
 | Navigation Patch | eng/patch-navigation.mjs | Add cross-command navigation |
 | Config | eng/resource-origins.yml | Mappings, ignore list, navigation |
 
@@ -72,4 +72,4 @@
 
 | Prefix | Source | Example |
 |--------|--------|---------|
-| `ck-*` | ClaudeKit | ck-plan, ck-fix, ck-test |
+| `ck-*` | Upstream | ck-plan, ck-fix, ck-test |

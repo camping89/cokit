@@ -1,25 +1,25 @@
-# Migration Guide: Claude Code to CoKit
+# Migration Guide: Switching to CoKit
 
-This guide helps Claude Code users adapt to GitHub Copilot with CoKit.
+This guide helps users adapt to GitHub Copilot with CoKit.
 
 ## Key Differences
 
-| Feature | Claude Code | CoKit/Copilot |
-|---------|-------------|---------------|
+| Feature | Other AI Tools | CoKit/Copilot |
+|---------|----------------|---------------|
 | Commands | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. |
 | Arguments | `$ARGUMENTS` variable | User provides in chat |
 | Subagents | Task tool delegates to agents | Referenced in prompts |
 | Hooks | Pre/post execution | Not supported |
-| Skills | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` |
-| Prompts | `~/.claude/commands/` | `.github/prompts/ck-*.prompt.md` |
-| Instructions | `.claude/instructions/` | `.github/instructions/ck-*.instructions.md` |
+| Skills | Various locations | `~/.copilot/skills/ck-*/` |
+| Prompts | Various locations | `.github/prompts/ck-*.prompt.md` |
+| Instructions | Various locations | `.github/instructions/ck-*.instructions.md` |
 | Collections | Manual management | `.github/collections/ck-*.collection.yml` |
 
 ## What's Different
 
 ### No Sub-Commands
 
-**Claude Code:**
+**Other AI tools:**
 ```
 /fix:types     # Fix type errors
 /fix:tests     # Fix test failures
@@ -35,7 +35,7 @@ Provide context directly in your message.
 
 ### No $ARGUMENTS Variable
 
-**Claude Code prompt:**
+**Other AI tool prompt:**
 ```markdown
 Fix the issue: $ARGUMENTS
 ```
@@ -49,7 +49,7 @@ Users describe the issue in chat naturally.
 
 ### No Subagent Delegation
 
-**Claude Code:**
+**Other AI tools:**
 ```
 Use Task tool to launch tester agent
 ```
@@ -63,7 +63,7 @@ Copilot handles everything in one agent.
 
 ### No Hooks
 
-Claude Code hooks (pre/post commands) don't exist in Copilot.
+Hooks (pre/post commands) from other AI tools don't exist in Copilot.
 
 **Workaround:** Include instructions in the prompt itself:
 ```markdown
@@ -76,9 +76,9 @@ After fixing:
 2. Verify the fix works
 ```
 
-## Mapping Claude Skills & Agents to CoKit
+## Mapping Skills & Agents to CoKit
 
-| Claude Feature | CoKit Equivalent | Notes |
+| Feature | CoKit Equivalent | Notes |
 |---|---|---|
 | debugging skill | ck-debugging + debugger agent | Same root cause methodology |
 | code-review skill | ck-code-review + code-reviewer agent | Same verification principles |
@@ -117,7 +117,7 @@ After fixing:
    - Agents are referenced by prompts
    - Skills auto-activate based on context
 
-## Tips for Claude Users
+## Tips for New Users
 
 1. **Be descriptive** - Without $ARGUMENTS, include context in chat
 2. **Use specialized prompts** - `/ck-cook` for implementation, `/ck-bootstrap` for setup

@@ -6,16 +6,16 @@ When to use which command workflow.
 
 | Need | Command | Workflow |
 |------|---------|----------|
-| **Quick implementation** | `ck-plan-fast` | ClaudeKit |
-| **Deep research + plan** | `ck-plan-hard` | ClaudeKit |
-| **Fix a bug** | `ck-fix` | ClaudeKit |
-| **Run tests** | `ck-test` | ClaudeKit |
+| **Quick implementation** | `ck-plan-fast` | CoKit |
+| **Deep research + plan** | `ck-plan-hard` | CoKit |
+| **Fix a bug** | `ck-fix` | CoKit |
+| **Run tests** | `ck-test` | CoKit |
 
 ---
 
 ## Commands
 
-### ClaudeKit (`ck-*`)
+### CoKit (`ck-*`)
 
 ```
 ck-plan-fast → ck-test → ck-fix

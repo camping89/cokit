@@ -6,7 +6,7 @@
 - **DRY**: Don't repeat yourself
 
 ## File Naming
-- kebab-case for all files: `transform-claudekit.mjs`
+- kebab-case for all files: `transform-upstream.mjs`
 - Descriptive names that self-document purpose
 - Extensions: `.mjs` for ES modules, `.js` for CommonJS
 

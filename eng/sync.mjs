@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Main sync orchestrator - transforms ClaudeKit into unified ck.* namespace
+ * Main sync orchestrator - transforms upstream into unified ck.* namespace
  * Usage: node eng/sync.mjs [--dry-run]
  */
 
-import { transformClaudekit } from './transform-claudekit.mjs';
+import { transformUpstream } from './transform-upstream.mjs';
 import { patchAllNavigation } from './patch-navigation.mjs';
 import YAML from 'js-yaml';
 import matter from 'gray-matter';
@@ -27,15 +27,15 @@ async function main() {
   if (ignoreList.length > 0) {
     console.log(`   Ignoring: ${ignoreList.join(', ')}`);
   }
-  const claudekitResults = await transformClaudekit(config, ignoreList);
+  const upstreamResults = await transformUpstream(config, ignoreList);
 
   // 3. Collect results
-  const allPrompts = [...claudekitResults.prompts];
+  const allPrompts = [...upstreamResults.prompts];
   console.log(`\n📦 Total prompts: ${allPrompts.length}`);
-  console.log(`   - ClaudeKit: ${claudekitResults.prompts.length}`);
+  console.log(`   - upstream: ${upstreamResults.prompts.length}`);
 
-  if (claudekitResults.skipped.length > 0) {
-    console.log(`   - ClaudeKit skipped: ${claudekitResults.skipped.length}`);
+  if (upstreamResults.skipped.length > 0) {
+    console.log(`   - upstream skipped: ${upstreamResults.skipped.length}`);
   }
 
   // 4. Patch navigation
@@ -56,7 +56,7 @@ async function main() {
 
     // 6. Update config with sync timestamp
     config.synced_at = new Date().toISOString();
-    config.sources.claudekit.last_sync = new Date().toISOString();
+    config.sources.upstream.last_sync = new Date().toISOString();
     await fs.writeFile(configPath, YAML.dump(config, { lineWidth: -1 }));
     console.log('\n✓ Updated resource-origins.yml');
   } else {
@@ -71,7 +71,7 @@ async function main() {
   console.log('📊 Sync Summary');
   console.log('─'.repeat(50));
   console.log(`Total commands: ${patched.length}`);
-  console.log(`Errors: ${claudekitResults.errors.length}`);
+  console.log(`Errors: ${upstreamResults.errors.length}`);
   console.log(`Unknown commands: ${config.unknown_commands?.length || 0}`);
 
   if (config.unknown_commands?.length > 0) {

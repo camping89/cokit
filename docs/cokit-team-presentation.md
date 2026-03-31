@@ -17,7 +17,7 @@
 - Planning frameworks
 - Project-specific context
 
-**Solution:** CoKit ports proven Claude Code workflow patterns to GitHub Copilot via:
+**Solution:** CoKit provides proven AI workflow patterns for GitHub Copilot via:
 - 17 prompts with unified `ck-*` namespace using `mode: agent`
 - 27 skills teaching Copilot best practices (debugging, code-review, planning, frontend-design, databases, devops, etc.)
 - 12 specialized agents (including code-simplifier, fullstack-developer, ui-ux-designer)
@@ -167,7 +167,7 @@ your-project/
 
 ## 5. Prompts Included (27 total)
 
-**ClaudeKit (ck-*):** Development workflow commands
+**CoKit (ck-*):** Development workflow commands
 - `/ck-fix`, `/ck-plan`, `/ck-cook`, `/ck-test`, `/ck-review`, `/ck-debug`, `/ck-ask`, `/ck-brainstorm`, `/ck-scout`, `/ck-git`, `/ck-docs`, etc.
 
 All 17 prompts unified in single namespace with cross-navigation support.
@@ -288,7 +288,7 @@ npx cokit-cli init          # Always fetches latest
 
 ## 11. What's NOT Included (Limitations)
 
-| Claude Code Feature | Status | Reason |
+| Feature | Status | Reason |
 |---------------------|--------|--------|
 | Runtime hooks | ❌ Skip | Copilot has no equivalent |
 | Multi-agent delegation | ❌ Skip | Single agent only |

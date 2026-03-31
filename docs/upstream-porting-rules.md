@@ -1,6 +1,6 @@
-# ClaudeKit → CoKit Porting Rules
+# Upstream → CoKit Porting Rules
 
-**Purpose:** Definitive reference for porting ClaudeKit (Claude Code) content to CoKit (GitHub Copilot).
+**Purpose:** Definitive reference for porting upstream content to CoKit (GitHub Copilot).
 **Audience:** AI agents and developers performing sync/port operations.
 **Last Updated:** 2026-02-25
 
@@ -8,15 +8,15 @@
 
 ## 0. Porting Workflow
 
-**IMPORTANT:** Always follow this order when porting from ClaudeKit.
+**IMPORTANT:** Always follow this order when porting from upstream.
 
 ### Step 1: Inventory CoKit
 Map what CoKit already has — prompts, agents, skills, instructions. This is the source of truth.
 
-### Step 2: Diff against ClaudeKit
-Compare ClaudeKit's commands/agents/skills with CoKit inventory. Identify:
+### Step 2: Diff against upstream
+Compare upstream commands/agents/skills with CoKit inventory. Identify:
 - **Updates** — existing CoKit files that need content sync
-- **New variants** — ClaudeKit has a new sub-command (e.g., `/plan:red-team`) → create as `/ck-plan-red-team` variant
+- **New variants** — upstream has a new sub-command (e.g., `/plan:red-team`) → create as `/ck-plan-red-team` variant
 - **New top-level** — entirely new prompt/agent/skill → create in CoKit
 
 ### Step 3: Verify Copilot compatibility
@@ -40,8 +40,8 @@ Key things to re-check periodically:
 
 ## 1. Syntax Conversions
 
-| ClaudeKit | CoKit | Notes |
-|-----------|-------|-------|
+| Upstream | CoKit | Notes |
+|----------|-------|-------|
 | `$ARGUMENTS` | `${input}` | Copilot prompt variable |
 | `@agent-name` | `` `agent-name` agent `` | No `@` prefix in Copilot |
 | `.claude/` paths | `$HOME/.copilot/` | Global config directory |
@@ -50,7 +50,7 @@ Key things to re-check periodically:
 
 ## 2. Command References
 
-| ClaudeKit | CoKit | Notes |
+| Upstream | CoKit | Notes |
 |-----------|-------|-------|
 | `/fix:types` | `/ck-fix-types` | Colon → hyphen |
 | `/fix:tests` | `/ck-fix-test` | Colon → hyphen |
@@ -59,12 +59,12 @@ Key things to re-check periodically:
 | `/plan --fast` | `/ck-plan-fast` | Flag → separate command |
 | `SlashCommand(/scout)` | `/ck-scout` | Remove `SlashCommand()` wrapper |
 
-**New variant?** If ClaudeKit adds a new sub-command (e.g., `/plan:red-team`), create it as a variant prompt file in CoKit (`ck-plan-red-team.prompt.md`). Variants don't count toward prompt total.
+**New variant?** If upstream adds a new sub-command (e.g., `/plan:red-team`), create it as a variant prompt file in CoKit (`ck-plan-red-team.prompt.md`). Variants don't count toward prompt total.
 
 ## 3. Tool/API Conversions
 
-| ClaudeKit | CoKit | Notes |
-|-----------|-------|-------|
+| Upstream | CoKit | Notes |
+|----------|-------|-------|
 | `AskUserQuestion` | Natural conversation | Just ask the user directly |
 | `Task(subagent_type="X")` | Natural language delegation | Describe what agent should do |
 | `TaskCreate/TaskUpdate/TaskList` | Checklist/todo tracking | No task management API |
@@ -96,8 +96,8 @@ Key things to re-check periodically:
 ### CoKit agents (12)
 `brainstormer`, `code-reviewer`, `code-simplifier`, `debugger`, `docs-manager`, `fullstack-developer`, `git-manager`, `planner`, `researcher`, `scout`, `tester`, `ui-ux-designer`
 
-### ClaudeKit agents that DON'T exist in CoKit
-| ClaudeKit Agent | CoKit Replacement |
+### Upstream agents that DON'T exist in CoKit
+| Upstream Agent | CoKit Replacement |
 |-----------------|-------------------|
 | `project-manager` | Direct action (describe what to do) |
 | `journal-writer` | Remove or convert to manual journaling |
@@ -163,7 +163,7 @@ grep -r "@\w+-\w+" agents/ skills/ prompts/          # @agent-name syntax
 grep -r "project-manager" agents/ skills/ prompts/    # Non-existent agent
 grep -r "subagent" agents/                            # Wrong terminology
 grep -r "\.claude/" agents/ skills/ prompts/          # Wrong path
-grep -r "AskUserQuestion\|SlashCommand" agents/ skills/ prompts/  # Claude Code APIs
+grep -r "AskUserQuestion\|SlashCommand" agents/ skills/ prompts/  # Upstream-only APIs
 grep -r "chrome-devtools" agents/                     # Renamed tool
 grep -r "\$ARGUMENTS" agents/ prompts/                # Wrong variable
 grep -r "^name:\|^model:\|^memory:" agents/ prompts/  # Invalid frontmatter

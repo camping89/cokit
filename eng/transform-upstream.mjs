@@ -1,5 +1,5 @@
 /**
- * Transform ClaudeKit commands from ~/.claude/ to ck.* namespace
+ * Transform upstream commands from upstream  to ck.* namespace
  *
  * Transformations applied:
  * - Rename: /* → /ck.*
@@ -15,9 +15,9 @@ import path from 'path';
 import os from 'os';
 
 /**
- * Resolve ClaudeKit path (handles ~ expansion)
+ * Resolve upstream path (handles ~ expansion)
  */
-function resolveClaudekitPath(configPath) {
+function resolveUpstreamPath(configPath) {
   if (configPath.startsWith('~')) {
     return path.join(os.homedir(), configPath.slice(1));
   }
@@ -25,7 +25,7 @@ function resolveClaudekitPath(configPath) {
 }
 
 /**
- * Transform a single ClaudeKit command file
+ * Transform a single upstream command file
  * @param {string} filePath - Path to source file
  * @param {object} mapping - Mapping config for this command
  * @param {object} config - Full resource-origins config
@@ -70,7 +70,7 @@ async function transformFile(filePath, mapping, config) {
     filename: `${mapping.cokit_name.replace(/\./g, '-')}.prompt.md`,
     frontmatter: newFrontmatter,
     content: newContent,
-    origin: 'claudekit',
+    origin: 'upstream',
     original: mapping.original
   };
 }
@@ -105,7 +105,7 @@ function transformContentReferences(content, config) {
   // Build lookup map of original -> ck name
   const originalToCk = {};
   for (const [ckName, info] of Object.entries(config.mappings)) {
-    if (info.origin === 'claudekit') {
+    if (info.origin === 'upstream') {
       originalToCk[info.original] = ckName;
     }
   }
@@ -136,7 +136,7 @@ function transformContentReferences(content, config) {
 }
 
 /**
- * Find the actual file path for a ClaudeKit command
+ * Find the actual file path for a upstream command
  * Handles various file structures (index.md, direct .md, nested dirs)
  */
 async function findCommandFile(baseDir, upstreamFile) {
@@ -167,27 +167,27 @@ async function findCommandFile(baseDir, upstreamFile) {
 }
 
 /**
- * Transform all ClaudeKit commands
+ * Transform all upstream commands
  * @param {object} config - Resource origins config
  * @param {string[]} ignoreList - Commands to skip
  * @returns {object} Transform results with prompts array
  */
-export async function transformClaudekit(config, ignoreList = []) {
-  const sourceDir = resolveClaudekitPath(config.sources.claudekit.path);
+export async function transformUpstream(config, ignoreList = []) {
+  const sourceDir = resolveUpstreamPath(config.sources.upstream.path);
   const results = { prompts: [], errors: [], skipped: [] };
 
   // Check if source directory exists
   try {
     await fs.access(sourceDir);
   } catch {
-    console.warn(`[claudekit] Source directory not found: ${sourceDir}`);
-    console.warn('[claudekit] Make sure ClaudeKit is installed at ~/.claude/');
+    console.warn(`[upstream] Source directory not found: ${sourceDir}`);
+    console.warn('[upstream] Make sure upstream is installed at upstream ');
     return results;
   }
 
-  // Process each mapping that has claudekit origin
+  // Process each mapping that has upstream origin
   for (const [ckName, info] of Object.entries(config.mappings)) {
-    if (info.origin !== 'claudekit') continue;
+    if (info.origin !== 'upstream') continue;
     if (ignoreList.includes(ckName)) {
       results.skipped.push({ command: ckName, reason: 'In ignore list' });
       continue;
@@ -201,7 +201,7 @@ export async function transformClaudekit(config, ignoreList = []) {
         file: info.upstream_file,
         reason: 'Source file not found'
       });
-      console.warn(`[claudekit] File not found: ${info.upstream_file}`);
+      console.warn(`[upstream] File not found: ${info.upstream_file}`);
       continue;
     }
 
@@ -209,10 +209,10 @@ export async function transformClaudekit(config, ignoreList = []) {
       const mapping = { ...info, cokit_name: ckName };
       const transformed = await transformFile(filePath, mapping, config);
       results.prompts.push(transformed);
-      console.log(`[claudekit] Transformed: ${info.upstream_file} → ${transformed.filename}`);
+      console.log(`[upstream] Transformed: ${info.upstream_file} → ${transformed.filename}`);
     } catch (err) {
       results.errors.push({ command: ckName, file: info.upstream_file, error: err.message });
-      console.error(`[claudekit] Error transforming ${ckName}: ${err.message}`);
+      console.error(`[upstream] Error transforming ${ckName}: ${err.message}`);
     }
   }
 

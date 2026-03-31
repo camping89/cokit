@@ -38,7 +38,7 @@
     "convert:skills": "node eng/convert-skills.mjs",
     "convert:all": "npm run convert:agents && npm run convert:commands && npm run convert:skills && npm run rewrite && npm run clean",
     "rewrite": "node eng/rewrite-single-agent.mjs",
-    "clean": "node eng/clean-claude-references.mjs"
+    "clean": "node eng/clean-references.mjs"
   },
   "keywords": [
     "copilot",

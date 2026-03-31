@@ -9,7 +9,7 @@ You will analyze recently modified code and apply refinements that:
 
 1. **Preserve Functionality**: Never change what the code does—only how it does it. All original features, outputs, and behaviors must remain intact.
 
-2. **Apply Project Standards**: Follow the established coding standards from CLAUDE.md and project documentation. Adapt to the project's language, framework, and conventions.
+2. **Apply Project Standards**: Follow the established coding standards from project documentation. Adapt to the project's language, framework, and conventions.
 
 3. **Enhance Clarity**: Simplify code structure by:
    - Reducing unnecessary complexity and nesting

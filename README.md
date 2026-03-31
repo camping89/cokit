@@ -88,7 +88,7 @@ See [docs/](docs/) for detailed resource documentation.
 
 - 7 new skills: test, ship, deploy, security, bootstrap, frontend-development, project-management
 - 1 new agent: project-manager
-- Synced 23 skills and 11 agents from ClaudeKit (48 days of drift resolved)
+- Synced 23 skills and 11 agents with latest upstream content
 - All skills now have Copilot-compatible frontmatter
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.

@@ -56,7 +56,7 @@ Step-by-step instructions...
 
 **CoKit Prompts (17 total):**
 
-**ClaudeKit (ck-* namespace):** Development workflows - fix, plan, cook, test, review, debug, ask, brainstorm, scout, git, bootstrap, watzup, help, docs, etc.
+**CoKit (ck-* namespace):** Development workflows - fix, plan, cook, test, review, debug, ask, brainstorm, scout, git, bootstrap, watzup, help, docs, etc.
 
 All 17 prompts are unified in a single namespace for seamless workflow navigation.
 
@@ -205,13 +205,13 @@ You'll be prompted to choose:
 
 ## Feature Mapping
 
-### Claude Code → CoKit (Reference)
+### Feature Comparison (Reference)
 
-| Feature | Claude Code | CoKit/Copilot | Notes |
+| Feature | Other AI Tools | CoKit/Copilot | Notes |
 |---------|-------------|---|---|
 | **Commands** | `/fix:types`, `/plan:auto` | `/ck-fix`, `/ck-plan`, `/ck-cook`, etc. | 14 prompts vs sub-commands |
-| **Skills** | `~/.claude/skills/` | `~/.copilot/skills/ck-*/` | Identical structure |
-| **Instructions** | `.claude/instructions/` | `.github/instructions/ck-*.md` | Auto-applied by pattern |
+| **Skills** | Various | `~/.copilot/skills/ck-*/` | Identical structure |
+| **Instructions** | Various | `.github/instructions/ck-*.md` | Auto-applied by pattern |
 | **Agents** | Task delegation | Agent references in prompts | Different invocation model |
 | **Collections** | Not available | `.github/collections/` | NEW: Bundle resources |
 | **Variables** | `$ARGUMENTS`, `$HOME` | User provides context in chat | Manual parameter passing |

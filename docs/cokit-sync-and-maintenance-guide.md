@@ -1,20 +1,20 @@
 # CoKit Sync & Maintenance Guide
 
-> **IMPORTANT**: This is the official guide for maintaining CoKit's integration with ClaudeKit. Read this before making any changes to the sync pipeline.
+> **IMPORTANT**: This is the official guide for maintaining CoKit's integration with its upstream source. Read this before making any changes to the sync pipeline.
 
 ---
 
 ## Architecture Overview
 
-CoKit transforms ClaudeKit commands into a unified `ck-*` command namespace:
+CoKit transforms upstream commands into a unified `ck-*` command namespace:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        SOURCE                                    │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ClaudeKit (pre-installed)                                      │
-│  ~/.claude/                                                     │
+│  Upstream Source (pre-installed)                                 │
+│  (configured path)                                              │
 │  ├── commands/                                                  │
 │  ├── agents/                                                    │
 │  └── skills/                                                    │
@@ -52,7 +52,7 @@ CoKit transforms ClaudeKit commands into a unified `ck-*` command namespace:
 | File | Purpose |
 |------|---------|
 | `eng/sync.mjs` | Main sync orchestrator |
-| `eng/transform-claudekit.mjs` | ClaudeKit → CoKit transform rules |
+| `eng/transform-upstream.mjs` | Upstream → CoKit transform rules |
 | `eng/patch-navigation.mjs` | Injects unified navigation footer |
 | `eng/resource-origins.yml` | **CRITICAL** - Maps ck-* commands to upstream sources |
 
@@ -69,20 +69,20 @@ version: "2.0"
 synced_at: "2026-02-03"
 
 sources:
-  claudekit:
-    path: ~/.claude
+  upstream:
+    path: (configured source)
     last_sync: "2026-02-03"
 
 # COMMAND MAPPINGS
 mappings:
   ck-brainstorm:
-    origin: claudekit
+    origin: upstream
     original: brainstorm
     upstream_file: skills/brainstorm/SKILL.md
     description: Explore solutions with trade-off analysis
 
   ck-plan:
-    origin: claudekit
+    origin: upstream
     original: plan
     upstream_file: commands/plan.md
     description: Intelligent plan creation
@@ -114,7 +114,7 @@ npm run sync
 
 # 5. Commit
 git add .
-git commit -m "sync: update from claudekit $(date +%Y-%m-%d)"
+git commit -m "sync: update from upstream $(date +%Y-%m-%d)"
 ```
 
 ### When Upstream Adds New Commands
@@ -140,7 +140,7 @@ git commit -m "sync: update from claudekit $(date +%Y-%m-%d)"
 
 | Original | Transformed |
 |----------|-------------|
-| `/plan` (claudekit) | `/ck-plan` |
+| `/plan` (upstream) | `/ck-plan` |
 | `/plan:hard` | `/ck-plan-hard` |
 | `/brainstorm` | `/ck-brainstorm` |
 
@@ -154,7 +154,7 @@ git commit -m "sync: update from claudekit $(date +%Y-%m-%d)"
 ### Model Field
 
 - **Remove entirely** - Let Copilot use its default
-- ClaudeKit's `model: opus/sonnet/haiku` → removed
+- Upstream `model: opus/sonnet/haiku` → removed
 
 ---
 
@@ -235,13 +235,13 @@ These are generated. Fix the source:
 2. Check resource-origins.yml for correct mappings
 3. Re-run sync
 
-### ClaudeKit not found
+### Upstream source not found
 
-Ensure ClaudeKit is installed at `~/.claude/`:
+Ensure upstream source is available at the configured path:
 ```bash
-ls ~/.claude/commands/
-ls ~/.claude/agents/
-ls ~/.claude/skills/
+ls <upstream-path>/commands/
+ls <upstream-path>/agents/
+ls <upstream-path>/skills/
 ```
 
 ---

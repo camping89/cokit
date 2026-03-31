@@ -18,7 +18,7 @@ How Copilot processes user input through CoKit resources to produce output.
 
 ### CoKit Examples
 
-**Prompts (31 total):** ClaudeKit (ck-*) namespace with 31 unified commands
+**Prompts (31 total):** CoKit (ck-*) namespace with 31 unified commands
 
 **Agents (13 total):** planner, code-reviewer, debugger, tester, researcher, scout, git-manager, brainstormer, docs-manager, code-simplifier, fullstack-developer, ui-ux-designer, project-manager
 
