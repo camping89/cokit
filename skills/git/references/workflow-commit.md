@@ -1,6 +1,6 @@
 # Commit Workflow
 
-Execute via `git-manager` agent.
+Execute via `git-manager` subagent.
 
 ## Tool 1: Stage + Analyze
 ```bash
@@ -12,7 +12,7 @@ echo "=== GROUPS ===" && \
 git diff --cached --name-only | awk -F'/' '{
   if ($0 ~ /\.(md|txt)$/) print "docs:"$0
   else if ($0 ~ /test|spec/) print "test:"$0
-  else if ($0 ~ /\.copilot/) print "config:"$0
+  else if ($0 ~ /skills|agents/) print "config:"$0
   else if ($0 ~ /package\.json|lock/) print "deps:"$0
   else print "code:"$0
 }'
@@ -24,7 +24,7 @@ git diff --cached --name-only | awk -F'/' '{
 
 NOTE: 
 - Search for related issues on GitHub and add to body.
-- Only use `feat`, `fix`, or `perf` prefixes for files in `.copilot` directory (do not use `docs`).
+- Only use `feat`, `fix`, or `perf` prefixes for files in skills directory (do not use `docs`).
 
 **From groups, decide:**
 

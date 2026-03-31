@@ -10,7 +10,7 @@ export class MCPClientManager {
     config = null;
     clients = new Map();
     transports = new Map();
-    async loadConfig(configPath = '$HOME/.copilot/.mcp.json') {
+    async loadConfig(configPath = '.vscode/mcp.json') {
         const fullPath = resolve(process.cwd(), configPath);
         const content = await readFile(fullPath, 'utf-8');
         const config = JSON.parse(content);

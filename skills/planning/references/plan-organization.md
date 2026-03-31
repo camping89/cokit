@@ -4,10 +4,6 @@
 
 ### Plan Location
 
-**Important:**
-- DO NOT create plans or reports in USER directory.
-- ALWAYS create plans or reports in CURRENT WORKING PROJECT DIRECTORY.
-
 Use `Plan dir:` from `## Naming` section injected by hooks. This is the full computed path.
 
 **Example:** `plans/251101-1505-authentication/` or `ai_docs/feature/MRR-1453/`
@@ -34,34 +30,48 @@ IN CURRENT WORKING PROJECT DIRECTORY:
 └── phase-07-write-tests.md                    # Tests
 ```
 
+### Task Hydration
+
+After creating plan.md and phase files, hydrate tasks (unless `--no-tasks`):
+1. TaskCreate per phase with `addBlockedBy` dependency chain
+2. Add critical step tasks for high-risk items
+3. See `task-management.md` for patterns and cook handoff protocol
+
 ### Active Plan State Tracking
 
-Check the `## Plan Context` section injected by hooks:
-- **"Plan: {path}"** = Active plan - use for reports
-- **"Suggested: {path}"** = Branch-matched, hint only - do NOT auto-use
-- **"Plan: none"** = No active plan
+See SKILL.md "Active Plan State" section for full rules. Key points:
+- Check `## Plan Context` injected by hooks for active/suggested/none state
+- Active plans use plan-specific reports path; suggested plans use default path
 
-**Pre-Creation Check:**
-1. If "Plan:" shows a path → ask "Continue with existing plan? [Y/n]"
-2. If "Suggested:" shows a path → inform user (hint only, do NOT auto-use)
-3. If "Plan: none" → create new plan using naming from `## Naming` section
+## Plan Creation via CLI
 
-**After Creating Plan:**
-```bash
-# Update session state so agents get the new plan context:
-node $HOME/.copilot/scripts/set-active-plan.cjs {plan-dir}
-```
+After determining phases from research/design:
 
-**Report Output Rules:**
-1. Use `Report:` and `Plan dir:` from `## Naming` section
-2. Active plans use plan-specific reports path
-3. Suggested plans use default reports path to prevent old plan pollution
+1. **Scaffold via CLI:**
+   ```bash
+   ck plan create \
+     --title "{plan title}" \
+     --phases "{Phase1},{Phase2},{Phase3}" \
+     --dir {plan-dir} \
+     --priority {P1|P2|P3} \
+     [--issue {N}]
+   ```
+
+2. **Fill content sections** in plan.md via Edit tool:
+   - `## Overview` — brief description
+   - `## Dependencies` — cross-plan dependencies
+
+3. **Fill each phase-XX.md** with:
+   - Architecture, implementation steps, success criteria
+   - Requirements, risk assessment, security considerations
+
+4. **NEVER edit the Phases table directly** — it's CLI-owned.
+   Use `ck plan check/uncheck/add-phase` for structural changes.
+
+**Fallback:** If `ck` CLI is not available (e.g., user hasn't installed),
+write plan.md directly using the canonical 3-column format.
 
 ## File Structure
-
-**Important:**
-- DO NOT create plans or reports in USER directory.
-- ALWAYS create plans or reports in CURRENT WORKING PROJECT DIRECTORY.
 
 ### Overview Plan (plan.md)
 
@@ -78,6 +88,8 @@ effort: 8h
 issue: 123
 branch: kai/feat/oauth-auth
 tags: [auth, backend, security]
+blockedBy: []
+blocks: [260115-0900-user-dashboard]
 created: 2025-12-16
 ---
 
@@ -87,13 +99,23 @@ created: 2025-12-16
 
 Brief description of what this plan accomplishes.
 
+## Cross-Plan Dependencies
+
+| Relationship | Plan | Status |
+|-------------|------|--------|
+| Blocks | [260115-0900-user-dashboard](../260115-0900-user-dashboard/plan.md) | pending |
+
 ## Phases
 
-| # | Phase | Status | Effort | Link |
-|---|-------|--------|--------|------|
-| 1 | Setup | Pending | 2h | [phase-01](./phase-01-setup.md) |
-| 2 | Implementation | Pending | 4h | [phase-02](./phase-02-impl.md) |
-| 3 | Testing | Pending | 2h | [phase-03](./phase-03-test.md) |
+| Phase | Name | Status |
+|-------|------|--------|
+| 1 | [Setup Environment](./phase-01-setup.md) | Pending |
+| 2 | [Core Implementation](./phase-02-impl.md) | Pending |
+| 3 | [Testing & Validation](./phase-03-test.md) | Pending |
+
+<!-- IMPORTANT: Link text MUST be human-readable names (not filenames).
+     Bad:  [phase-01-setup.md](./phase-01-setup.md)
+     Good: [Setup Environment](./phase-01-setup.md) -->
 
 ## Dependencies
 

@@ -1,6 +1,6 @@
 # Runtime Awareness
 
-Monitor usage limits and context window utilization in real-time to optimize AI agent sessions.
+Monitor usage limits and context window utilization in real-time to optimize Copilot sessions.
 
 ## Overview
 
@@ -24,48 +24,6 @@ Runtime awareness provides visibility into two critical metrics:
                        └──────────────────────────┘
 ```
 
-## Usage Limits API
-
-### Endpoint
-
-```
-GET <platform-specific-usage-endpoint>
-```
-
-### Authentication
-
-Requires OAuth Bearer token with platform-specific headers.
-
-### Credential Locations
-
-| Platform | Method | Location |
-|----------|--------|----------|
-| macOS | Keychain | `agent-credentials` |
-| Windows | File | `%USERPROFILE%.copilot\.credentials.json` |
-| Linux | File | `~/.copilot/.credentials.json` |
-
-### Response Structure
-
-```json
-{
-  "five_hour": {
-    "utilization": 45,
-    "resets_at": "2025-01-15T18:00:00Z"
-  },
-  "seven_day": {
-    "utilization": 32,
-    "resets_at": "2025-01-22T00:00:00Z"
-  },
-  "seven_day_sonnet": {
-    "utilization": 11,
-    "resets_at": "2025-01-15T09:00:00Z"
-  }
-}
-```
-
-- `utilization`: Already a percentage (0-100), NOT a decimal
-- `resets_at`: ISO 8601 timestamp when quota resets
-- `seven_day_sonnet`: Model-specific limit (may be null)
 
 ## Context Window Data
 
@@ -157,7 +115,7 @@ Context: 91% [CRITICAL - compaction needed]
 | 5-Hour | Action |
 |--------|--------|
 | < 70% | Normal usage |
-| 70-90% | Reduce parallelization, delegate to agents |
+| 70-90% | Reduce parallelization, delegate to subagents |
 | > 90% | Wait for reset or use lower-tier models |
 
 | 7-Day | Action |
@@ -168,7 +126,7 @@ Context: 91% [CRITICAL - compaction needed]
 
 ## Configuration
 
-### Hook Settings (`$HOME/.copilot/settings.json`)
+### Hook Settings (`.vscode/settings.json`)
 
 ```json
 {
@@ -178,7 +136,7 @@ Context: 91% [CRITICAL - compaction needed]
         "matcher": "*",
         "hooks": [{
           "type": "command",
-          "command": "node $HOME/.copilot/hooks/usage-context-awareness.cjs"
+          "command": "node hooks/usage-context-awareness.cjs"
         }]
       }
     ]
@@ -196,7 +154,7 @@ Context: 91% [CRITICAL - compaction needed]
 
 | Issue | Cause | Solution |
 |-------|-------|----------|
-| No usage limits shown | No OAuth token | Run the agent login command |
+| No usage limits shown | No OAuth token | Check credentials |
 | Stale context data | Statusline not updating | Check statusline config |
 | 401 Unauthorized | Expired token | Re-authenticate |
 | Hook not firing | Settings misconfigured | Verify PostToolUse matcher |

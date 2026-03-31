@@ -1,6 +1,7 @@
 ---
 name: scout
-description: Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal and external search agents.
+description: "Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents."
+argument-hint: "[search-target] [ext]"
 ---
 
 # Scout
@@ -8,7 +9,7 @@ description: Fast codebase scouting using parallel agents. Use for file discover
 Fast, token-efficient codebase scouting using parallel agents to find files needed for tasks.
 
 ## Arguments
-- Default: Scout using built-in search agents in parallel (`./references/internal-scouting.md`)
+- Default: Scout using built-in Explore subagents in parallel (`./references/internal-scouting.md`)
 - `ext`: Scout using external Gemini/OpenCode CLI tools in parallel (`./references/external-scouting.md`)
 
 ## When to Use
@@ -28,7 +29,7 @@ Fast, token-efficient codebase scouting using parallel agents to find files need
 
 ## Configuration
 
-Read from `$HOME/.copilot/.ck.json`:
+Read from `.ck.json`:
 - `gemini.model` - Gemini model (default: `gemini-3-flash-preview`)
 
 ## Workflow
@@ -36,7 +37,7 @@ Read from `$HOME/.copilot/.ck.json`:
 ### 1. Analyze Task
 - Parse user prompt for search targets
 - Identify key directories, patterns, file types, lines of code
-- Determine optimal SCALE value of agents to spawn
+- Determine optimal SCALE value of subagents to spawn
 
 ### 2. Divide and Conquer
 - Split codebase into logical segments per agent
@@ -44,32 +45,31 @@ Read from `$HOME/.copilot/.ck.json`:
 - Ensure no overlap, maximize coverage
 
 ### 3. Register Scout Tasks
-
-**Skip this step if agent count <= 2.**
-
-- Check for existing scout tasks in the current session to avoid duplicates.
-- Create a markdown checklist — one entry per agent — including scope metadata (directories, patterns assigned).
-- Example checklist entry: `- [ ] Agent 1: src/api/*, src/models/* — searching for auth-related files`
-- Reference: `references/task-management-scouting.md` for checklist format and metadata fields.
+- **Skip if:** Agent count ≤ 2 (overhead exceeds benefit)
+- **Skip if:** Task tools unavailable (VSCode extension) — use `TodoWrite` instead
+- `TaskList` first — check for existing scout tasks in session
+- If not found, `TaskCreate` per agent with scope metadata
+- See `references/task-management-scouting.md` for patterns and examples
 
 ### 4. Spawn Parallel Agents
-
 Load appropriate reference based on decision tree:
-- **Internal (Default):** `references/internal-scouting.md` (search agents)
+- **Internal (Default):** `references/internal-scouting.md` (Explore subagents)
 - **External:** `references/external-scouting.md` (Gemini/OpenCode)
 
 **Notes:**
-- Update each task to in_progress before spawning its agent.
-- Prompt detailed instructions for each agent with exact directories or files it should read.
-- Remember that each agent has less than 200K tokens of context window.
-- Amount of agents to-be-spawned depends on the current system resources available and amount of files to be scanned.
-- Each agent must return a detailed summary report to a main agent.
+- `TaskUpdate` each task to `in_progress` before spawning its agent (skip if Task tools unavailable)
+- Prompt detailed instructions for each subagent with exact directories or files it should read
+- Remember that each subagent has less than 200K tokens of context window
+- Amount of subagents to-be-spawned depends on the current system resources available and amount of files to be scanned
+- Each subagent must return a detailed summary report to a main agent
 
 ### 5. Collect Results
-- Timeout: 3 minutes per agent (skip non-responders).
-- Update completed tasks to done; log timed-out agents in the report under "Unresolved Questions".
-- Aggregate findings into single report.
-- List unresolved questions at end.
+**IMPORTANT:** Invoke "/ck-project-organization" skill to organize the outputs.
+
+- Timeout: 3 minutes per agent (skip non-responders)
+- `TaskUpdate` completed tasks; log timed-out agents in report (skip if Task tools unavailable)
+- Aggregate findings into single report
+- List unresolved questions at end
 
 ## Report Format
 
@@ -86,6 +86,6 @@ Load appropriate reference based on decision tree:
 
 ## References
 
-- `references/internal-scouting.md` - Using search agents
+- `references/internal-scouting.md` - Using Explore subagents
 - `references/external-scouting.md` - Using Gemini/OpenCode CLI
-- `references/task-management-scouting.md` - Checklist format and scope metadata for scout tasks
+- `references/task-management-scouting.md` - Task patterns for scout coordination

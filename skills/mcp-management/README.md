@@ -4,7 +4,7 @@ Intelligent management and execution of Model Context Protocol (MCP) servers.
 
 ## Overview
 
-This skill enables the agent to discover, analyze, and execute MCP server capabilities without polluting the main context window. Perfect for context-efficient MCP integration using agent-based architecture.
+This skill enables Copilot to discover, analyze, and execute MCP server capabilities without polluting the main context window. Perfect for context-efficient MCP integration using subagent-based architecture.
 
 ## Features
 
@@ -12,20 +12,20 @@ This skill enables the agent to discover, analyze, and execute MCP server capabi
 - **Intelligent Tool Discovery**: Analyze which tools are relevant for specific tasks
 - **Progressive Disclosure**: Load only necessary tool definitions
 - **Execution Engine**: Call MCP tools with proper parameter handling
-- **Context Efficiency**: Delegate MCP operations to `mcp-manager` agent
+- **Context Efficiency**: Delegate MCP operations to `mcp-manager` subagent
 
 ## Quick Start
 
 ### 1. Install Dependencies
 
 ```bash
-cd $HOME/.copilot/skills/mcp-management/scripts
+cd skills/mcp-management/scripts
 npm install
 ```
 
 ### 2. Configure MCP Servers
 
-Create `$HOME/.copilot/.mcp.json`:
+Create `.vscode/mcp.json`:
 
 ```json
 {
@@ -42,12 +42,12 @@ Create `$HOME/.copilot/.mcp.json`:
 }
 ```
 
-See `$HOME/.copilot/.mcp.json.example` for more examples.
+See `.vscode/mcp.json.example` for more examples.
 
 ### 3. Test Connection
 
 ```bash
-cd $HOME/.copilot/skills/mcp-management/scripts
+cd skills/mcp-management/scripts
 npx ts-node cli.ts list-tools
 ```
 
@@ -71,13 +71,13 @@ The LLM reads `assets/tools.json` and intelligently selects tools. No separate a
 npx ts-node scripts/cli.ts call-tool memory add '{"key":"name","value":"Alice"}'
 ```
 
-### Pattern 4: Use with Agent
+### Pattern 4: Use with Subagent
 
-In main conversation:
+In main Copilot conversation:
 
 ```
 User: "I need to search the web and save results"
-Main Agent: [Spawns mcp-manager agent]
+Main Agent: [Spawns mcp-manager subagent]
 mcp-manager: Discovers brave-search + memory tools, reports back
 Main Agent: Uses recommended tools for implementation
 ```
@@ -85,9 +85,9 @@ Main Agent: Uses recommended tools for implementation
 ## Architecture
 
 ```
-Main Agent
+Main Agent (Copilot)
     ↓ (delegates MCP tasks)
-mcp-manager Agent
+mcp-manager Subagent
     ↓ (uses skill)
 mcp-management Skill
     ↓ (connects via)
@@ -96,7 +96,7 @@ MCP Servers (memory, filesystem, etc.)
 
 **Benefits**:
 - Main agent context stays clean
-- MCP discovery happens in isolated agent context
+- MCP discovery happens in isolated subagent context
 - Only relevant tool definitions loaded when needed
 - Reduced token usage
 
@@ -123,7 +123,7 @@ mcp-management/
 ### mcp-client.ts
 
 Core client manager class:
-- Load config from `$HOME/.copilot/.mcp.json`
+- Load config from `.vscode/mcp.json`
 - Connect to multiple MCP servers
 - List/execute tools, prompts, resources
 - Lifecycle management
@@ -145,9 +145,9 @@ Command-line interface:
 Scripts check for variables in this order:
 
 1. `process.env` (runtime)
-2. `$HOME/.copilot/skills/mcp-management/.env`
-3. `$HOME/.copilot/skills/.env`
-4. `$HOME/.copilot/.env`
+2. `skills/mcp-management/.env`
+3. `skills/.env`
+4. `.env`
 
 ### MCP Config Format
 
@@ -178,7 +178,7 @@ Install with `npx`:
 
 ## Integration with mcp-manager Agent
 
-The `mcp-manager` agent (`$HOME/.copilot/agents/mcp-manager.md`) uses this skill to:
+The `mcp-manager` agent (`agents/mcp-manager.agent.md`) uses this skill to:
 
 1. **Discover**: Connect to MCP servers, list capabilities
 2. **Analyze**: Filter relevant tools for tasks
@@ -191,7 +191,7 @@ This architecture keeps main context clean and enables efficient MCP integration
 
 ### "Config not found"
 
-Ensure `$HOME/.copilot/.mcp.json` exists and is valid JSON.
+Ensure `.vscode/mcp.json` exists and is valid JSON.
 
 ### "Server connection failed"
 

@@ -1,6 +1,8 @@
 ---
 name: research
-description: Research technical solutions, analyze architectures, gather requirements thoroughly. Use for technology evaluation, best practices research, solution design, scalability/security/maintainability analysis.
+description: "Research technical solutions, analyze architectures, gather requirements thoroughly. Use for technology evaluation, best practices research, solution design, scalability/security/maintainability analysis."
+license: MIT
+argument-hint: "[topic]"
 ---
 
 # Research
@@ -23,8 +25,8 @@ First, you will clearly define the research scope by:
 You will employ a multi-source research strategy:
 
 1. **Search Strategy**:
-   - **Gemini Toggle**: Check `$HOME/.copilot/.ck.json` (or `~/.copilot/.ck.json`) for `skills.research.useGemini` (default: `true`). If `false`, skip Gemini and use WebSearch.
-   - **Gemini Model**: Read from `$HOME/.copilot/.ck.json`: `gemini.model` (default: `gemini-3-flash-preview`)
+   - **Gemini Toggle**: Check `.ck.json` (or `.ck.json`) for `skills.research.useGemini` (default: `true`). If `false`, skip Gemini and use WebSearch.
+   - **Gemini Model**: Read from `.ck.json`: `gemini.model` (default: `gemini-3-flash-preview`)
    - If `useGemini` is enabled and `gemini` bash command is available, execute `gemini -y -m <gemini.model> "...your search prompt..."` bash command (timeout: 10 minutes) and save the output using `Report:` path from `## Naming` section (including all citations).
    - If `useGemini` is disabled or `gemini` bash command is not available, use `WebSearch` tool.
    - Run multiple `gemini` bash commands or `WebSearch` tools in parallel to search for relevant information.
@@ -154,6 +156,7 @@ You will ensure all research meets these criteria:
 - Always note deprecation warnings and migration paths for older technologies
 
 ## Output Requirements
+**IMPORTANT:** Invoke "/ck-project-organization" skill to organize the outputs.
 
 Your final report must:
 1. Be saved using the `Report:` path from `## Naming` section with a descriptive filename

@@ -1,6 +1,6 @@
 # Pull Request Workflow
 
-Execute via `git-manager` agent.
+Execute via `git-manager` subagent.
 
 ## Variables
 - TO_BRANCH: target (defaults to `main`)

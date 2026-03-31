@@ -2,7 +2,7 @@
 
 /**
  * Environment variable loader for docs-seeker skill
- * Respects order: process.env > skill/.env > skills/.env > $HOME/.copilot/.env
+ * Respects order: process.env > skill/.env > skills/.env > project/.env
  */
 
 const fs = require('fs');
@@ -41,16 +41,16 @@ function parseEnvFile(content) {
 
 /**
  * Load environment variables from .env files in priority order
- * Priority: process.env > skill/.env > skills/.env > $HOME/.copilot/.env
+ * Priority: process.env > skill/.env > skills/.env > project/.env
  * @returns {Object} Merged environment variables
  */
 function loadEnv() {
   const skillDir = path.resolve(__dirname, '../..');
   const skillsDir = path.resolve(skillDir, '..');
-  const configDir = path.resolve(skillsDir, '..');
+  const projectDir = path.resolve(skillsDir, '..');
 
   const envPaths = [
-    path.join(configDir, '.env'),      // Lowest priority
+    path.join(projectDir, '.env'),      // Lowest priority
     path.join(skillsDir, '.env'),
     path.join(skillDir, '.env'),       // Highest priority (file)
   ];

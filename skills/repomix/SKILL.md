@@ -1,11 +1,12 @@
 ---
 name: repomix
 description: Pack repositories into AI-friendly files with Repomix (XML, Markdown, plain text). Use for codebase snapshots, LLM context preparation, security audits, third-party library analysis.
+argument-hint: "[path] [--style xml|markdown|plain|json]"
 ---
 
 # Repomix Skill
 
-Repomix packs entire repositories into single, AI-friendly files. Perfect for feeding codebases to LLMs like ChatGPT, Gemini, and others.
+Repomix packs entire repositories into single, AI-friendly files. Perfect for feeding codebases to LLMs like Copilot, ChatGPT, and Gemini.
 
 ## When to Use
 
@@ -153,7 +154,7 @@ repomix --init  # creates repomix.config.json
 Repomix automatically counts tokens for individual files, total repository, and per-format output.
 
 Typical LLM context limits:
-- Model (Medium): ~200K tokens
+- Copilot: ~200K tokens
 - GPT-4: ~128K tokens
 - GPT-3.5: ~16K tokens
 

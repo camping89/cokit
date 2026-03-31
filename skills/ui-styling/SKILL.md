@@ -1,6 +1,8 @@
 ---
 name: ui-styling
 description: Style UIs with shadcn/ui components (Radix UI + Tailwind CSS). Use for accessible components, themes, dark mode, responsive layouts, design systems, color customization.
+license: MIT
+argument-hint: "[component or layout]"
 ---
 
 # UI Styling Skill

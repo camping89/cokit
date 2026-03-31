@@ -3,12 +3,13 @@
 Create detailed design documentation from screenshot/video for developer implementation.
 
 ## Prerequisites
-- Activate `ui-styling` skill first for design patterns
+- Activate `ui-ux-pro-max` skill (if available) first
+- Have `ai-multimodal` (if available) skill ready
 
 ## Workflow Steps
 
 ### 1. Comprehensive Visual Analysis
-Analyze and describe exhaustively:
+Use `ai-multimodal` (if available) skill to describe exhaustively:
 
 **Layout & Structure**
 - Element positions (absolute coords or relative)
@@ -50,7 +51,7 @@ Analyze and describe exhaustively:
 **Font Prediction**: Match actual fonts, avoid Inter/Poppins defaults.
 
 ### 2. Create Implementation Plan
-Use `ui-ux-designer` agent:
+Use `ui-ux-designer` subagent:
 - Create plan directory (use `## Naming` pattern)
 - Write `plan.md` overview (<80 lines)
 - Add detailed `phase-XX-name.md` files

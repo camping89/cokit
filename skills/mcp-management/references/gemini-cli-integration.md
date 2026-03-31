@@ -2,7 +2,7 @@
 
 ## Model Configuration
 
-Read model from `$HOME/.copilot/.ck.json`: `gemini.model` (default: `gemini-3.0-flash`)
+Read model from `.ck.json`: `gemini.model` (default: `gemini-3-flash-preview`)
 
 ## ⚠️ CRITICAL: Use Stdin Piping, NOT -p Flag
 
@@ -12,7 +12,7 @@ The `-p` flag is **deprecated** and skips MCP server initialization, causing too
 # ❌ WRONG - Deprecated -p flag skips MCP connections!
 gemini -y -m <gemini.model> -p "Take a screenshot"
 # Also wrong: Using --model instead of -m
-gemini -y -p "Take a screenshot" --model gemini-3.0-flash
+gemini -y -p "Take a screenshot" --model gemini-3-flash-preview
 
 # ✅ CORRECT - This initializes MCP servers
 echo "Take a screenshot" | gemini -y -m <gemini.model>
@@ -39,17 +39,17 @@ gemini --version
 
 ### Symlink Setup
 
-Gemini CLI reads MCP servers from `.gemini/settings.json`. Create a symlink to `$HOME/.copilot/.mcp.json`:
+Gemini CLI reads MCP servers from `.gemini/settings.json`. Create a symlink to `.vscode/mcp.json`:
 
 ```bash
 # Create .gemini directory
 mkdir -p .gemini
 
 # Create symlink (Unix/Linux/macOS)
-ln -sf $HOME/.copilot/.mcp.json .gemini/settings.json
+ln -sf .vscode/mcp.json .gemini/settings.json
 
 # Create symlink (Windows - requires admin or developer mode)
-mklink .gemini\settings.json .copilot\.mcp.json
+mklink .gemini\settings.json .vscode/mcp.json
 ```
 
 ### Security
@@ -74,8 +74,8 @@ echo "<prompt>" | gemini [flags]
 
 - `-y`: Skip confirmation prompts (auto-approve tool execution)
 - `-m <model>`: Model selection
-  - `gemini-3.0-flash` (fast, recommended for MCP)
-  - `gemini-3.0-flash` (balanced)
+  - `gemini-3-flash-preview` (fast, recommended for MCP)
+  - `gemini-3-pro-preview` (balanced)
   - `gemini-pro` (high quality)
 
 ### Examples
@@ -97,7 +97,7 @@ echo "Search for latest Next.js 15 features and summarize the top 3" | gemini -y
 
 **Multi-Tool Orchestration**:
 ```bash
-echo "Search for AI documentation, take a screenshot of the homepage, and save both to memory" | gemini -y -m <gemini.model>
+echo "Search for API documentation, take a screenshot of the homepage, and save both to memory" | gemini -y -m <gemini.model>
 ```
 
 **Browser Automation**:
@@ -107,7 +107,7 @@ echo "Navigate to https://example.com, click the signup button, and take a scree
 
 ## How It Works
 
-1. **Configuration Loading**: Reads `.gemini/settings.json` (symlinked to `$HOME/.copilot/.mcp.json`)
+1. **Configuration Loading**: Reads `.gemini/settings.json` (symlinked to `.vscode/mcp.json`)
 2. **Server Connection**: Connects to all configured MCP servers
 3. **Tool Discovery**: Lists all available tools from servers
 4. **Prompt Analysis**: Gemini model analyzes the prompt
@@ -119,7 +119,7 @@ echo "Navigate to https://example.com, click the signup button, and take a scree
 
 ### Trusted Servers (Skip Confirmations)
 
-Edit `$HOME/.copilot/.mcp.json`:
+Edit `.vscode/mcp.json`:
 
 ```json
 {
@@ -194,7 +194,7 @@ ls -la .gemini/settings.json
 dir .gemini\settings.json
 ```
 
-Should show symlink pointing to `$HOME/.copilot/.mcp.json`.
+Should show symlink pointing to `.vscode/mcp.json`.
 
 ### Debug Mode
 
@@ -212,7 +212,7 @@ Shows detailed MCP communication logs.
 | Direct Scripts | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | Specific tools |
 | mcp-manager | ⭐ | ⭐⭐ | ⭐⭐⭐ | Fallback |
 
-**Recommendation**: Use Gemini CLI as primary method, fallback to scripts/agent when unavailable.
+**Recommendation**: Use Gemini CLI as primary method, fallback to scripts/subagent when unavailable.
 
 ## Resources
 

@@ -2,10 +2,6 @@
 
 ## Plan File Format
 
-**Important:**
-- DO NOT create plans or reports in USER directory.
-- ALWAYS create plans or reports in CURRENT WORKING PROJECT DIRECTORY.
-
 ### YAML Frontmatter (Required for plan.md)
 
 All `plan.md` files MUST include YAML frontmatter at the top:
@@ -20,6 +16,8 @@ effort: 4h       # Estimated total effort
 issue: 74        # GitHub issue number (if applicable)
 branch: kai/feat/feature-name
 tags: [frontend, api]  # Category tags
+blockedBy: []    # Plan dirs this plan waits on (e.g., [260301-1200-auth-system])
+blocks: []       # Plan dirs this plan blocks (e.g., [260228-0900-user-dashboard])
 created: 2025-12-16
 ---
 ```
@@ -35,6 +33,8 @@ When creating plans, auto-populate these fields:
 - **issue**: Parse from branch name or context
 - **branch**: Current git branch (`git branch --show-current`)
 - **tags**: Infer from task keywords (e.g., frontend, backend, api, auth)
+- **blockedBy**: Detected during pre-creation scan (empty `[]` if none)
+- **blocks**: Detected during pre-creation scan (empty `[]` if none)
 - **created**: Today's date in YYYY-MM-DD format
 
 ### Tag Vocabulary (Recommended)
@@ -43,6 +43,18 @@ Use these predefined tags for consistency:
 - **Type**: `feature`, `bugfix`, `refactor`, `docs`, `infra`
 - **Domain**: `frontend`, `backend`, `database`, `api`, `auth`
 - **Scope**: `critical`, `tech-debt`, `experimental`
+
+### Task Naming Conventions
+
+**subject** (imperative): Action verb + deliverable, <60 chars
+  Examples: "Setup database migrations", "Implement OAuth2 flow"
+
+**activeForm** (continuous): Present participle of subject
+  Examples: "Setting up database", "Implementing OAuth2"
+
+**description**: 1-2 sentences, concrete deliverables, reference phase file
+
+See `task-management.md` for full TaskCreate patterns and metadata.
 
 ## Task Breakdown
 
@@ -54,10 +66,6 @@ Use these predefined tags for consistency:
 - Provide clear acceptance criteria per task
 
 ### File Management
-
-**Important:**
-- DO NOT create plans or reports in USER directory.
-- ALWAYS create plans or reports in CURRENT WORKING PROJECT DIRECTORY.
 
 List affected files with:
 - Full paths (not relative)
@@ -77,10 +85,6 @@ List affected files with:
 
 ## Output Requirements
 
-**Important:**
-- DO NOT create plans or reports in USER directory.
-- ALWAYS create plans or reports in CURRENT WORKING PROJECT DIRECTORY.
-
 ### What Planners Do
 - Create plans ONLY (no implementation)
 - Provide plan file path and summary
@@ -98,7 +102,7 @@ List affected files with:
 - Prioritize actionable info
 
 ### Unresolved Questions
-**IMPORTANT:** List unresolved questions at the end of your response and ask users directly. Wait for their answers before finalizing.
+**IMPORTANT:** Use asking the user to ask users for unresolved questions at the end
 - Questions needing clarification
 - Technical decisions requiring input
 - Unknowns impacting implementation

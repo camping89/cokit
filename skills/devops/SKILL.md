@@ -1,6 +1,8 @@
 ---
 name: devops
-description: Deploy to Cloudflare (Workers, R2, D1), Docker, GCP (Cloud Run, GKE), Azure (App Service, AKS), Kubernetes (kubectl, Helm). Use for serverless, containers, CI/CD, GitOps, security audit.
+description: Deploy to Cloudflare (Workers, R2, D1), Docker, GCP (Cloud Run, GKE), Kubernetes (kubectl, Helm). Use for serverless, containers, CI/CD, GitOps, security audit.
+license: MIT
+argument-hint: "[platform] [task]"
 ---
 
 # DevOps Skill
@@ -24,10 +26,9 @@ Deploy and manage cloud infrastructure across Cloudflare, Docker, Google Cloud, 
 | Sub-50ms latency globally | Cloudflare Workers |
 | Large file storage (zero egress) | Cloudflare R2 |
 | SQL database (global reads) | Cloudflare D1 |
-| Containerized workloads | Docker + Cloud Run/GKE/Azure Container Apps |
-| Enterprise Kubernetes | GKE / AKS |
-| Managed relational DB | Cloud SQL / Azure SQL |
-| .NET workloads | Azure App Service / Container Apps |
+| Containerized workloads | Docker + Cloud Run/GKE |
+| Enterprise Kubernetes | GKE |
+| Managed relational DB | Cloud SQL |
 | Static site + API | Cloudflare Pages |
 | Container orchestration | Kubernetes |
 | Package management for K8s | Helm |
@@ -43,12 +44,6 @@ docker build -t myapp . && docker run -p 3000:3000 myapp
 
 # GCP Cloud Run
 gcloud run deploy my-service --image gcr.io/project/image --region us-central1
-
-# Azure App Service (.NET)
-az webapp up --name myapp --resource-group mygroup --runtime "DOTNET:8.0"
-
-# Azure Container Apps
-az containerapp up --name myapp --resource-group mygroup --image myregistry.azurecr.io/myapp:latest
 
 # Kubernetes
 kubectl apply -f manifests/ && kubectl get pods
@@ -97,6 +92,5 @@ kubectl apply -f manifests/ && kubectl get pods
 - Cloudflare: https://developers.cloudflare.com
 - Docker: https://docs.docker.com
 - GCP: https://cloud.google.com/docs
-- Azure: https://learn.microsoft.com/azure/
 - Kubernetes: https://kubernetes.io/docs
 - Helm: https://helm.sh/docs

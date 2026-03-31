@@ -144,9 +144,9 @@ repomix --include "$(cat staged-files.txt | tr '\n' ',')" -o .context/latest.xml
 {"version": "2.0.0", "tasks": [{"label": "Package for AI", "type": "shell", "command": "repomix --include 'src/**' --remove-comments --copy"}]}
 ```
 
-### AI Coding Agent
+### Copilot
 ```bash
-repomix --style markdown --copy  # Then paste into the AI agent
+repomix --style markdown --copy  # Then paste into Copilot chat
 ```
 
 ## Language-Specific Patterns

@@ -4,15 +4,15 @@ End-to-end feature implementation with smart intent detection.
 
 ## Installation
 
-Copy the `cook/` folder to your skills directory:
+Install via CoKit CLI:
 ```bash
-cp -r cook ~/.copilot/skills/
+# Install via: npx cokit-cli init
 ```
 
 ## Usage
 
 ```bash
-/cook <natural language task OR plan path>
+/ck-cook <natural language task OR plan path>
 ```
 
 The skill automatically detects your intent and routes to the appropriate workflow.
@@ -21,25 +21,25 @@ The skill automatically detects your intent and routes to the appropriate workfl
 
 ```bash
 # Interactive mode (default)
-/cook implement user authentication
+/ck-cook implement user authentication
 
 # Execute existing plan
-/cook plans/260120-auth
+/ck-cook plans/260120-auth
 
 # Fast mode (skip research)
-/cook quick fix for login bug
-/cook implement feature --fast
+/ck-cook quick fix for login bug
+/ck-cook implement feature --fast
 
 # Auto mode (trust me bro)
-/cook implement dashboard trust me
-/cook implement feature --auto
+/ck-cook implement dashboard trust me
+/ck-cook implement feature --auto
 
 # Parallel mode (multi-agent)
-/cook implement auth, payments, notifications
-/cook implement feature --parallel
+/ck-cook implement auth, payments, notifications
+/ck-cook implement feature --parallel
 
 # No-test mode
-/cook implement feature --no-test
+/ck-cook implement feature --no-test
 ```
 
 ## Modes
@@ -77,7 +77,7 @@ cook/
     ├── intent-detection.md            # Detection rules
     ├── workflow-steps.md              # Step definitions
     ├── review-cycle.md                # Review process
-    └── agent-patterns.md               # Agent usage
+    └── subagent-patterns.md           # Subagent usage
 ```
 
 ## Version

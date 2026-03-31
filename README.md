@@ -76,18 +76,20 @@ Otherwise?
 
 | Resource | Count | Purpose |
 |----------|-------|---------|
-| Prompts | 17 | Commands for Copilot |
-| Agents | 12 | Specialized AI assistants |
-| Skills | 23 | Domain expertise |
+| Prompts | 31 | Commands for Copilot |
+| Agents | 13 | Specialized AI assistants |
+| Skills | 30 | Domain expertise |
 | Instructions | 5 | Context-aware rules |
 | Collections | 5 | Bundled workflows |
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.2.7)
+## What's New (v1.3.0)
 
-- Simplified CLI: removed `-g`/`--global` and `-a`/`--all` flags — `init` is now always interactive
-- Removed `-g`/`--global` from `add` command
+- 7 new skills: test, ship, deploy, security, bootstrap, frontend-development, project-management
+- 1 new agent: project-manager
+- Synced 23 skills and 11 agents from ClaudeKit (48 days of drift resolved)
+- All skills now have Copilot-compatible frontmatter
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 

@@ -1,17 +1,31 @@
 ---
 name: git
-description: Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets.
+description: "Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets."
+argument-hint: "cm|cp|pr|merge [args]"
 ---
 
 # Git Operations
 
-Execute git workflows via `git-manager` agent to isolate verbose output.
+## Default (No Arguments)
+
+If invoked without arguments, ask the user to present available git operations:
+
+| Operation | Description |
+|-----------|-------------|
+| `cm` | Stage files & create commits |
+| `cp` | Stage files, create commits and push |
+| `pr` | Create Pull Request |
+| `merge` | Merge branches |
+
+Present as options by asking the user with header "Git Operation", question "What would you like to do?".
+
+Execute git workflows via `git-manager` subagent to isolate verbose output.
 Activate `context-engineering` skill.
 
 **IMPORTANT:**
 - Sacrifice grammar for the sake of concision.
 - Ensure token efficiency while maintaining high quality.
-- Pass these rules to agents.
+- Pass these rules to subagents.
 
 ## Arguments
 - `cm`: Stage files & create commits
@@ -54,7 +68,7 @@ git diff --cached | grep -iE "(api[_-]?key|token|password|secret|credential)"
 
 **NOTE:**
 - Search for related issues on GitHub and add to body.
-- Only use `feat`, `fix`, or `perf` prefixes for files in `.copilot` directory (do not use `docs`).
+- Only use `feat`, `fix`, or `perf` prefixes for files in skills directory (do not use `docs`).
 
 **Split commits if:**
 - Different types mixed (feat + fix, code + docs)

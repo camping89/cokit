@@ -7,9 +7,7 @@ Supports both Google AI Studio and Vertex AI endpoints.
 API Key Detection Order:
 1. Process environment variable
 2. Project root .env file
-3. ./.copilot/.env
-4. ./.copilot/skills/.env
-5. Skill directory .env file
+3. Skill directory .env file
 
 Vertex AI Configuration:
 - GEMINI_USE_VERTEX: Set to "true" to use Vertex AI endpoint
@@ -26,12 +24,10 @@ from typing import Optional, Dict, Any, List
 
 def find_api_key(skill_dir: Optional[Path] = None) -> Optional[str]:
     """
-    Find GEMINI_API_KEY using 5-step lookup:
+    Find GEMINI_API_KEY using 3-step lookup:
     1. Process environment
     2. Project root .env
-    3. ./.copilot/.env
-    4. ./.copilot/skills/.env
-    5. Skill directory .env
+    3. Skill directory .env
 
     Args:
         skill_dir: Path to skill directory (optional, auto-detected if None)
@@ -58,23 +54,7 @@ def find_api_key(skill_dir: Optional[Path] = None) -> Optional[str]:
             print(f"✓ Using API key from {project_env}", file=sys.stderr)
             return api_key
 
-    # Step 3: Check ./.copilot/.env
-    config_env = project_dir / '.copilot' / '.env'
-    if config_env.exists():
-        api_key = load_env_file(config_env)
-        if api_key:
-            print(f"✓ Using API key from {config_env}", file=sys.stderr)
-            return api_key
-
-    # Step 4: Check ./.copilot/skills/.env
-    skills_config_env = project_dir / '.copilot' / 'skills' / '.env'
-    if skills_config_env.exists():
-        api_key = load_env_file(skills_config_env)
-        if api_key:
-            print(f"✓ Using API key from {skills_config_env}", file=sys.stderr)
-            return api_key
-
-    # Step 5: Check skill directory .env
+    # Step 3: Check skill directory .env
     skill_env = skill_dir / '.env'
     if skill_env.exists():
         api_key = load_env_file(skill_env)
@@ -139,7 +119,7 @@ def load_env_var(env_path: Path, var_name: str) -> Optional[str]:
 
 def find_env_var(var_name: str, skill_dir: Optional[Path] = None) -> Optional[str]:
     """
-    Find environment variable using 5-step lookup (same as API key)
+    Find environment variable using 3-step lookup (same as API key)
 
     Args:
         var_name: Name of environment variable
@@ -158,11 +138,9 @@ def find_env_var(var_name: str, skill_dir: Optional[Path] = None) -> Optional[st
         skill_dir = Path(__file__).parent.parent
     project_dir = skill_dir.parent.parent.parent
 
-    # Step 2-5: Check .env files in order
+    # Step 2-3: Check .env files in order
     env_files = [
         project_dir / '.env',
-        project_dir / '.copilot' / '.env',
-        project_dir / '.copilot' / 'skills' / '.env',
         skill_dir / '.env'
     ]
 
@@ -202,8 +180,6 @@ def find_all_api_keys(skill_dir: Optional[Path] = None) -> List[str]:
     # Collect all .env file paths in priority order
     env_files = [
         project_dir / '.env',
-        project_dir / '.copilot' / '.env',
-        project_dir / '.copilot' / 'skills' / '.env',
         skill_dir / '.env'
     ]
 
@@ -338,13 +314,7 @@ def get_api_key_or_exit(skill_dir: Optional[Path] = None) -> str:
         print("\n2️⃣  Project root .env file:", file=sys.stderr)
         print(f"   echo 'GEMINI_API_KEY=your-api-key' > {project_dir}/.env", file=sys.stderr)
 
-        print("\n3️⃣  .copilot/.env file:", file=sys.stderr)
-        print(f"   echo 'GEMINI_API_KEY=your-api-key' > {project_dir}/.copilot/.env", file=sys.stderr)
-
-        print("\n4️⃣  .copilot/skills/.env file (shared across all Gemini skills):", file=sys.stderr)
-        print(f"   echo 'GEMINI_API_KEY=your-api-key' > {project_dir}/.copilot/skills/.env", file=sys.stderr)
-
-        print("\n5️⃣  Skill directory .env file:", file=sys.stderr)
+        print("\n3️⃣  Skill directory .env file:", file=sys.stderr)
         print(f"   echo 'GEMINI_API_KEY=your-api-key' > {skill_dir}/.env", file=sys.stderr)
 
         print("\n🔑 Get your API key at: https://aistudio.google.com/apikey", file=sys.stderr)
