@@ -612,10 +612,6 @@
       background: var(--gradient-2);
     }
 
-    .workflow-card.spec::before {
-      background: var(--gradient-3);
-    }
-
     .workflow-label {
       display: inline-block;
       font-size: 11px;
@@ -630,11 +626,6 @@
     .workflow-label.fast {
       background: rgba(52, 211, 153, 0.15);
       color: var(--green);
-    }
-
-    .workflow-label.spec {
-      background: rgba(244, 114, 182, 0.15);
-      color: var(--pink);
     }
 
     .workflow-card h3 {
@@ -1446,7 +1437,6 @@
       <div class="tab-header">
         <button class="tab-btn active" onclick="switchTab(event, 'tab-daily')">&#128736; Daily Use</button>
         <button class="tab-btn" onclick="switchTab(event, 'tab-plan')">&#128203; Planning</button>
-        <button class="tab-btn" onclick="switchTab(event, 'tab-spec')">&#128196; Spec-Driven</button>
         <button class="tab-btn" onclick="switchTab(event, 'tab-util')">&#128295; Utilities</button>
       </div>
 
@@ -1528,56 +1518,6 @@
             <td><code>/ck-bootstrap</code></td>
             <td>Start a new project</td>
             <td class="desc">Create project from scratch</td>
-          </tr>
-        </table>
-      </div>
-
-      <!-- Spec-Driven -->
-      <div class="tab-content" id="tab-spec">
-        <div class="warning-box" style="margin-bottom: 16px;">
-          <strong>&#128204; Note:</strong> Spec-Driven is for complex features (multi-day). It needs clear requirements.
-          Use in order: specify &rarr; clarify &rarr; plan &rarr; tasks &rarr; implement.
-        </div>
-        <table class="cmd-table">
-          <tr>
-            <th>Command</th>
-            <th>What it does</th>
-            <th>Step</th>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-specify</code></td>
-            <td>Write spec from an idea</td>
-            <td class="desc">Step 1 &mdash; Create requirements</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-clarify</code></td>
-            <td>Ask questions to clear up unknowns</td>
-            <td class="desc">Step 2 &mdash; Confirm details</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-plan</code></td>
-            <td>Create plan from spec</td>
-            <td class="desc">Step 3 &mdash; Make the plan</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-tasks</code></td>
-            <td>Break plan into small tasks</td>
-            <td class="desc">Step 4 &mdash; Split into pieces</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-implement</code></td>
-            <td>Execute the tasks</td>
-            <td class="desc">Step 5 &mdash; Write the code</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-analyze</code></td>
-            <td>Check spec consistency</td>
-            <td class="desc">Optional</td>
-          </tr>
-          <tr>
-            <td><code>/ck-spec-checklist</code></td>
-            <td>Validate all requirements</td>
-            <td class="desc">Optional</td>
           </tr>
         </table>
       </div>
@@ -1679,41 +1619,10 @@
         </div>
       </div>
 
-      <!-- Spec-driven workflow (ck-spec-*) -->
-      <div class="workflow-card spec">
-        <div class="workflow-label spec">SPEC-DRIVEN &mdash; ck-spec-*</div>
-        <h3>Rigorous, for big features</h3>
-        <div class="when">Use for: complex features, clear specs needed, team collaboration</div>
-        <div class="workflow-steps">
-          <div class="workflow-step-item">
-            <code>/ck-spec-specify</code> <span class="arrow-right">&rarr;</span> Write detailed requirements
-          </div>
-          <div class="workflow-step-item">
-            <code>/ck-spec-clarify</code> <span class="arrow-right">&rarr;</span> Clear up unknowns
-          </div>
-          <div class="workflow-step-item">
-            <code>/ck-spec-plan</code> <span class="arrow-right">&rarr;</span> Create plan from spec
-          </div>
-          <div class="workflow-step-item">
-            <code>/ck-spec-tasks</code> <span class="arrow-right">&rarr;</span> Split into small tasks
-          </div>
-          <div class="workflow-step-item">
-            <code>/ck-spec-implement</code> <span class="arrow-right">&rarr;</span> Build each task
-          </div>
-          <div class="workflow-step-item">
-            <code>/ck-test</code> <span class="arrow-right">&rarr;</span> Test everything
-          </div>
-        </div>
-        <div class="tip-box" style="margin-top: 16px;">
-          <strong>&#9201; Time:</strong> Days to weeks
-        </div>
-      </div>
     </div>
 
     <div class="tip-box" style="margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
-      <strong>&#128161; Rule of thumb:</strong> If you can explain it in one sentence &rarr; use <strong>Quick
-        workflow</strong> (<code>ck-*</code>). If you need a document &rarr; use <strong>Spec-Driven</strong>
-      (<code>ck-spec-*</code>).
+      <strong>&#128161; Rule of thumb:</strong> If you can explain it in one sentence &rarr; use <code>/ck-fix</code> or <code>/ck-plan-fast</code>. For complex features &rarr; use <code>/ck-plan-hard</code> then <code>/ck-cook</code>.
     </div>
   </section>
 
@@ -1765,22 +1674,6 @@
           <span class="comment"># Implement phase by phase...</span><br>
           /ck-test<br>
           /ck-review
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-header">
-          <span class="scenario-time">Multi-day</span>
-          <h4>&#127959; Complex feature</h4>
-        </div>
-        <div class="scenario-desc">Multi-tenant SaaS billing system</div>
-        <div class="scenario-cmd">
-          /ck-spec-specify "Multi-tenant billing"<br>
-          /ck-spec-clarify<br>
-          /ck-spec-plan<br>
-          /ck-spec-tasks<br>
-          /ck-spec-implement<br>
-          /ck-test
         </div>
       </div>
 
@@ -1850,15 +1743,6 @@
       </div>
 
       <div class="decision-node" onclick="toggleDecision(this)">
-        <div class="decision-q"><span class="q-icon">&#10067;</span> Complex feature, need clear requirements?</div>
-        <div class="decision-toggle">&#9660;</div>
-      </div>
-      <div class="decision-answer">
-        <div>&#8594; Use <code>/ck-spec-specify</code> &mdash; start the Spec-Driven workflow</div>
-        <div class="answer-desc">Good for: new systems, multi-day features, needs documentation</div>
-      </div>
-
-      <div class="decision-node" onclick="toggleDecision(this)">
         <div class="decision-q"><span class="q-icon">&#10067;</span> Not sure what to build, need ideas?</div>
         <div class="decision-toggle">&#9660;</div>
       </div>
@@ -1873,7 +1757,7 @@
       </div>
       <div class="decision-answer">
         <div>&#8594; Use <code>/ck-test</code> &mdash; runs tests and explains results</div>
-        <div class="answer-desc">Works with both workflows (Quick and Spec-Driven)</div>
+        <div class="answer-desc">Runs tests and explains results</div>
       </div>
 
       <div class="decision-node" onclick="toggleDecision(this)">
@@ -2175,7 +2059,7 @@
       // Flow logic:
       //   New project? → bootstrap
       //   Fix bug? → know cause? Yes→fix→variants, No→debug→fix→variants
-      //   Build feature? → need format request? Yes→specify→plan, No→brainstorm→plan → cook→test
+      //   Build feature? → brainstorm → plan → cook → test
       //   Explore? → scout→watzup
       //   Git? → git
       //   Test? → test→fix (if fail)
@@ -2214,15 +2098,7 @@
         { id: 'c_fix_test', text: '/ck-fix-test', type: 'command', x: 1120, y: 300, desc: 'Fix failing tests' },
         { id: 'c_fix_logs', text: '/ck-fix-logs', type: 'command', x: 1120, y: 350, desc: 'Analyze logs and fix issues found' },
 
-        // Feature branch — decision
-        { id: 'q_formal', text: 'Need format\nrequest?', type: 'decision', x: 480, y: 510 },
-
-        // Yes → specify → need clarify? → clarify or plan
-        { id: 'c_spec_specify', text: '/ck-spec-specify', type: 'command', x: 700, y: 560, desc: 'Create formal specification from idea' },
-        { id: 'q_clarify', text: 'Need\nclarify?', type: 'decision', x: 920, y: 560 },
-        { id: 'c_spec_clarify', text: '/ck-spec-clarify', type: 'command', x: 920, y: 650, desc: 'Clarify requirements with stakeholder Q&A' },
-
-        // No → brainstorm → plan
+        // Feature branch — brainstorm or plan directly
         { id: 'c_brainstorm', text: '/ck-brainstorm', type: 'command', x: 700, y: 460, desc: 'Collaborative ideation with expert advice' },
 
         // Shared convergence — both flows meet here
@@ -2293,18 +2169,8 @@
         { from: 'q_fixtype', to: 'c_fix_test', label: 'Tests' },
         { from: 'q_fixtype', to: 'c_fix_logs', label: 'Logs' },
 
-        // Feature: need format request?
-        { from: 'q_feature', to: 'q_formal', label: 'Yes' },
-
-        // Yes → specify → need clarify?
-        { from: 'q_formal', to: 'c_spec_specify', label: 'Yes' },
-        { from: 'c_spec_specify', to: 'q_clarify', label: '' },
-        { from: 'q_clarify', to: 'c_spec_clarify', label: 'Yes' },
-        { from: 'c_spec_clarify', to: 'c_plan', label: '' },
-        { from: 'q_clarify', to: 'c_plan', label: 'No' },
-
-        // No → brainstorm → plan
-        { from: 'q_formal', to: 'c_brainstorm', label: 'No' },
+        // Feature: brainstorm → plan
+        { from: 'q_feature', to: 'c_brainstorm', label: 'Yes' },
         { from: 'c_brainstorm', to: 'c_plan', label: '' },
 
         // Plan routes by complexity → need validate?
