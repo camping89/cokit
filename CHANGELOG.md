@@ -2,6 +2,20 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.3.0] - 2026-03-30
+
+### Added
+- 7 new skills: test, ship, deploy, security, bootstrap, frontend-development, project-management
+- 1 new agent: project-manager
+- 5 new prompts: ck-ship, ck-deploy, ck-security, ck-project, ck-frontend
+- New resource-origins mappings and navigation entries for new commands
+
+### Updated
+- Synced 23 existing skills and 12 existing agents with latest upstream content
+- All skills now have Copilot-compatible frontmatter (ck: prefix, license, argument-hint, metadata)
+- Ensured Copilot compatibility across all agents, skills, and prompts
+- External tools marked `(if available)` for optional dependencies
+
 ## [1.2.7] - 2026-02-25
 
 ### Removed

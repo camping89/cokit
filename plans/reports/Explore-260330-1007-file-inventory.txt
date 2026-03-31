@@ -1,0 +1,193 @@
+COMPLETE FILE INVENTORY: ClaudeKit vs CoKit
+=============================================
+
+AGENTS
+======
+
+ClaudeKit (14 agents):
+/c/Users/admin/.claude/agents/brainstormer.md
+/c/Users/admin/.claude/agents/code-reviewer.md
+/c/Users/admin/.claude/agents/code-simplifier.md
+/c/Users/admin/.claude/agents/debugger.md
+/c/Users/admin/.claude/agents/docs-manager.md
+/c/Users/admin/.claude/agents/fullstack-developer.md
+/c/Users/admin/.claude/agents/git-manager.md
+/c/Users/admin/.claude/agents/journal-writer.md                 [MISSING in CoKit]
+/c/Users/admin/.claude/agents/mcp-manager.md                    [MISSING in CoKit]
+/c/Users/admin/.claude/agents/planner.md
+/c/Users/admin/.claude/agents/project-manager.md                [MISSING in CoKit]
+/c/Users/admin/.claude/agents/researcher.md
+/c/Users/admin/.claude/agents/tester.md
+/c/Users/admin/.claude/agents/ui-ux-designer.md
+
+CoKit (12 agents + 1 extra):
+/c/w/_me/cokit/agents/brainstormer.agent.md                    [updated Feb 25]
+/c/w/_me/cokit/agents/code-reviewer.agent.md                   [updated Feb 25]
+/c/w/_me/cokit/agents/code-simplifier.agent.md                 [updated Feb 25]
+/c/w/_me/cokit/agents/debugger.agent.md                        [updated Feb 25]
+/c/w/_me/cokit/agents/docs-manager.agent.md                    [updated Feb 25]
+/c/w/_me/cokit/agents/fullstack-developer.agent.md             [updated Feb 25]
+/c/w/_me/cokit/agents/git-manager.agent.md                     [updated Feb 25]
+/c/w/_me/cokit/agents/planner.agent.md                         [updated Feb 25]
+/c/w/_me/cokit/agents/researcher.agent.md                      [updated Feb 25]
+/c/w/_me/cokit/agents/scout.agent.md                           [extra, Feb 11]
+/c/w/_me/cokit/agents/tester.agent.md                          [updated Feb 25]
+/c/w/_me/cokit/agents/ui-ux-designer.agent.md                  [updated Feb 25]
+
+SKILLS - SHARED (23 directories in both)
+=========================================
+
+Both exist (needs update):
+- agent-browser (47 days behind)
+- backend-development (47 days behind)
+- brainstorm (33 days behind)
+- code-review (33 days behind)
+- common (47 days behind)
+- context-engineering (47 days behind)
+- cook (33 days behind)
+- databases (47 days behind)
+- devops (47 days behind)
+- docs-seeker (47 days behind)
+- fix (33 days behind)
+- frontend-design (33 days behind)
+- git (47 days behind)
+- mcp-management (47 days behind)
+- mermaidjs-v11 (54 days behind)
+- problem-solving (47 days behind)
+- repomix (47 days behind)
+- research (33 days behind)
+- scout (33 days behind)
+- sequential-thinking (47 days behind)
+- ui-styling (47 days behind)
+- web-testing (33 days behind)
+- debug/ck-debug (mapping from ck-debug source)
+
+SKILLS - MISSING FROM COKIT (46 total)
+======================================
+
+_shared (utilities)
+ai-artist
+ai-multimodal
+ask
+backend-development
+better-auth
+bootstrap
+chrome-devtools
+ck-autoresearch
+ck-debug (renamed to 'debug' in CoKit, but source is ck-debug)
+ck-loop
+ck-plan
+ck-predict
+ck-scenario
+ck-security
+coding-level
+copywriting
+deploy
+design
+document-skills
+find-skills
+frontend-development
+gkg
+google-adk-python
+journal
+kanban
+llms
+markdown-novel-viewer
+mcp-builder
+media-processing
+mintlify
+mobile-development
+payment-integration
+plans-kanban
+preview
+project-management
+project-organization
+react-best-practices
+remotion
+retro
+security-scan
+shader
+ship
+shopify
+skill-creator
+stitch
+tanstack
+team
+template-skill
+test
+threejs
+ui-ux-pro-max
+use-mcp
+watzup
+web-design-guidelines
+web-frameworks
+worktree
+
+Total: 56 missing (but 'debug' is mapped from ck-debug)
+
+PROMPTS - IN COKIT (27 files)
+=============================
+/c/w/_me/cokit/prompts/ck-ask.prompt.md
+/c/w/_me/cokit/prompts/ck-bootstrap.prompt.md
+/c/w/_me/cokit/prompts/ck-brainstorm.prompt.md
+/c/w/_me/cokit/prompts/ck-cook.prompt.md
+/c/w/_me/cokit/prompts/ck-debug.prompt.md
+/c/w/_me/cokit/prompts/ck-docs.prompt.md
+/c/w/_me/cokit/prompts/ck-fix.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-ci.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-fast.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-hard.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-logs.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-test.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-types.prompt.md
+/c/w/_me/cokit/prompts/ck-fix-ui.prompt.md
+/c/w/_me/cokit/prompts/ck-git.prompt.md
+/c/w/_me/cokit/prompts/ck-help.prompt.md
+/c/w/_me/cokit/prompts/ck-plan.prompt.md
+/c/w/_me/cokit/prompts/ck-plan-fast.prompt.md
+/c/w/_me/cokit/prompts/ck-plan-hard.prompt.md
+/c/w/_me/cokit/prompts/ck-plan-red-team.prompt.md
+/c/w/_me/cokit/prompts/ck-plan-validate.prompt.md
+/c/w/_me/cokit/prompts/ck-review.prompt.md
+/c/w/_me/cokit/prompts/ck-scout.prompt.md
+/c/w/_me/cokit/prompts/ck-simplify.prompt.md
+/c/w/_me/cokit/prompts/ck-test.prompt.md
+/c/w/_me/cokit/prompts/ck-watzup.prompt.md
+
+MAPPING METADATA
+================
+/c/w/_me/cokit/eng/resource-origins.yml
+- Last updated: 2026-02-03 12:56:52Z (48 days old)
+- Source path: ~/.claude/commands (doesn't exist in current structure)
+- Mappings: 16 entries
+- Ignored: ck.kanban
+
+STATISTICS SUMMARY
+==================
+
+ClaudeKit Source Inventory:
+- Agent files: 14
+- Skill directories: 76
+- Utility files: 4 (README.md, INSTALLATION.md, THIRD_PARTY_NOTICES.md, agent_skills_spec.md)
+- Total skill-related: 80
+- Estimated commands/prompts: 35+
+
+CoKit Current Inventory:
+- Agent files: 12 (+ 1 extra scout)
+- Skill directories: 24
+- Prompt files: 27
+- Mapping file: 1
+
+Gaps:
+- Missing agents: 3 (journal-writer, mcp-manager, project-manager)
+- Missing skill directories: 52 (out of 76)
+- Outdated shared skills: 23 (all)
+- Outdated agents: 12 (all)
+- Days of drift: 48 (last sync Feb 3)
+
+Age Analysis (CoKit vs Mar 30 source):
+- 54 days old: 1 skill (mermaidjs-v11)
+- 47 days old: 13 skills
+- 33 days old: 8 agents + 8 skills
+- 0 days old: 0 files
+

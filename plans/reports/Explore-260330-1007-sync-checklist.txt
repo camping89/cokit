@@ -1,0 +1,176 @@
+CLAUDEKIT vs COKIT SYNC CHECKLIST
+=================================
+Date: 2026-03-30
+Report: /c/w/_me/cokit/plans/reports/Explore-260330-1007-claudekit-vs-cokit.md
+
+IMMEDIATE ACTION ITEMS (Update Drift)
+=====================================
+
+UPDATE SKILLS (23 files - ALL outdated)
+--------------------------------------
+These need immediate update from Mar 30 ClaudeKit source:
+
+CRITICAL (54 days old):
+- [ ] mermaidjs-v11 (Feb 4 -> Mar 30)
+
+CRITICAL (47 days old - 13 skills):
+- [ ] agent-browser
+- [ ] backend-development
+- [ ] context-engineering
+- [ ] databases
+- [ ] devops
+- [ ] docs-seeker
+- [ ] git
+- [ ] mcp-management
+- [ ] problem-solving
+- [ ] repomix
+- [ ] sequential-thinking
+- [ ] ui-styling
+- [ ] common (shared utility)
+
+MODERATE (33 days old - 8 skills):
+- [ ] brainstorm
+- [ ] code-review
+- [ ] cook
+- [ ] fix
+- [ ] frontend-design
+- [ ] research
+- [ ] scout
+- [ ] web-testing
+
+UPDATE AGENTS (12 files - ALL outdated)
+---------------------------------------
+All last modified Feb 25 (33 days old), need Mar 30 updates:
+- [ ] brainstormer
+- [ ] code-reviewer
+- [ ] code-simplifier
+- [ ] debugger
+- [ ] docs-manager
+- [ ] fullstack-developer
+- [ ] git-manager
+- [ ] planner
+- [ ] researcher
+- [ ] tester
+- [ ] ui-ux-designer
+- [ ] scout (extra in CoKit, update from Feb 11)
+
+UPDATE MAPPINGS
+---------------
+- [ ] Regenerate /c/w/_me/cokit/eng/resource-origins.yml
+  (Last updated 2026-02-03, now 48 days old)
+
+PORT MISSING AGENTS (3)
+=======================
+- [ ] journal-writer
+- [ ] mcp-manager
+- [ ] project-manager
+
+PORT HIGH-PRIORITY SKILLS (7)
+=============================
+Core planning & analysis functionality:
+- [ ] ck-plan (9.4KB)
+- [ ] ask (Q&A)
+- [ ] ck-loop (autonomous iteration)
+- [ ] ck-autoresearch (metrics-driven)
+- [ ] ck-predict (expert debate)
+- [ ] ck-scenario (edge cases)
+- [ ] ck-security (STRIDE+OWASP)
+
+PORT MEDIUM-PRIORITY SKILLS (13)
+=================================
+Development tools:
+- [ ] bootstrap
+- [ ] design (12KB)
+- [ ] frontend-development (11KB)
+- [ ] deploy
+- [ ] test
+- [ ] ship
+- [ ] project-management
+- [ ] team (16KB)
+- [ ] docs
+- [ ] coding-level
+- [ ] find-skills
+- [ ] skill-creator
+- [ ] chrome-devtools
+
+OPTIONAL: PORT SPECIALIZED SKILLS (26)
+======================================
+AI/ML (5):
+- [ ] ai-artist
+- [ ] ai-multimodal
+- [ ] google-adk-python
+- [ ] llms
+- [ ] media-processing
+
+Web/Design (7):
+- [ ] web-frameworks
+- [ ] web-design-guidelines
+- [ ] stitch
+- [ ] threejs
+- [ ] react-best-practices
+- [ ] ui-ux-pro-max
+- [ ] shader
+
+Mobile & Backend (5):
+- [ ] mobile-development
+- [ ] better-auth
+- [ ] payment-integration
+- [ ] shopify
+- [ ] tanstack
+
+DevOps (4):
+- [ ] gkg
+- [ ] mcp-builder
+- [ ] use-mcp
+- [ ] mintlify
+
+Media (2):
+- [ ] markdown-novel-viewer
+- [ ] remotion
+
+Workspace (5):
+- [ ] journal
+- [ ] kanban
+- [ ] plans-kanban
+- [ ] retro
+- [ ] project-organization
+
+Utilities (6):
+- [ ] copywriting
+- [ ] security-scan
+- [ ] worktree
+- [ ] template-skill
+- [ ] _shared (shared utilities)
+- [ ] document-skills
+
+SUMMARY STATISTICS
+==================
+ClaudeKit Source:
+- Skills: 76 directories + 4 utility files = 80 total
+- Agents: 14
+- Prompts/Commands: ~35+
+
+CoKit Current:
+- Skills: 24 directories (missing 52)
+- Agents: 12 (missing 3)
+- Prompts: 27 files
+
+Drift:
+- Days behind: 48 (last synced Feb 3)
+- Shared skills needing update: 23
+- Shared agents needing update: 12
+- Skills to port: 46
+- Agents to port: 3
+
+FILE PATHS
+==========
+ClaudeKit source:
+~/.claude/agents/*.md                          (14 agents)
+~/.claude/skills/*/ directory structure        (76 skill dirs)
+
+CoKit current:
+/c/w/_me/cokit/agents/*.agent.md              (12 agents)
+/c/w/_me/cokit/skills/*/ directory structure  (24 skill dirs)
+/c/w/_me/cokit/prompts/*.prompt.md            (27 prompts)
+/c/w/_me/cokit/eng/resource-origins.yml       (mapping metadata)
+

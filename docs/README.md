@@ -1,6 +1,6 @@
 # CoKit Documentation Index
 
-**Version:** 1.2.6 | **Updated:** 2026-02-25
+**Version:** 1.3.0 | **Updated:** 2026-03-30
 
 ## Reading Order by Role
 
@@ -45,17 +45,16 @@
 ### What's in CoKit?
 | Resource | Count | Location |
 |----------|-------|----------|
-| Prompts | 25 | `prompts/ck-*.prompt.md` |
-| Agents | 12 | `agents/*.agent.md` |
-| Skills | 27 | `skills/*/` |
+| Prompts | 31 | `prompts/ck-*.prompt.md` |
+| Agents | 13 | `agents/*.agent.md` |
+| Skills | 30 | `skills/*/` |
 | Instructions | 5 | `instructions/ck-*.instructions.md` |
 | Collections | 5 | `collections/ck-*.collection.yml` |
 
-### Two Workflows
+### Workflow
 | Workflow | Commands | Best For |
 |----------|----------|----------|
-| ClaudeKit | `ck-*` | Daily dev, quick fixes |
-| SpecKit | `ck-spec-*` | Complex features, formal specs |
+| ClaudeKit | `ck-*` | Daily dev, quick fixes, full pipeline |
 
 ### Key Commands
 ```

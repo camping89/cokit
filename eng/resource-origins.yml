@@ -1,9 +1,9 @@
 version: '2.0'
-synced_at: '2026-02-03T12:56:52.528Z'
+synced_at: '2026-03-30T03:20:00.000Z'
 sources:
   claudekit:
     path: ~/.claude/commands
-    last_sync: '2026-02-03T12:56:52.529Z'
+    last_sync: '2026-03-30T03:20:00.000Z'
 ignore:
   - ck.kanban
 mappings:
@@ -87,6 +87,31 @@ mappings:
     original: docs-seeker
     upstream_file: skills/docs-seeker/SKILL.md
     description: Search library/framework documentation
+  ck.ship:
+    origin: claudekit
+    original: ship
+    upstream_file: skills/ship/SKILL.md
+    description: Release pipeline - test, review, commit, push, PR
+  ck.deploy:
+    origin: claudekit
+    original: deploy
+    upstream_file: skills/deploy/SKILL.md
+    description: Deploy to any platform with auto-detection
+  ck.security:
+    origin: claudekit
+    original: security
+    upstream_file: skills/security/SKILL.md
+    description: STRIDE + OWASP security audit
+  ck.project:
+    origin: claudekit
+    original: project-management
+    upstream_file: skills/project-management/SKILL.md
+    description: Track progress, manage tasks, generate reports
+  ck.frontend:
+    origin: claudekit
+    original: frontend-development
+    upstream_file: skills/frontend-development/SKILL.md
+    description: Build React/TypeScript frontends with modern patterns
 unknown_commands: []
 navigation:
   ck.plan:
@@ -137,3 +162,23 @@ navigation:
       - ck.ask
       - ck.plan
       - ck.cook
+  ck.ship:
+    next:
+      - ck.test
+      - ck.review
+  ck.deploy:
+    next:
+      - ck.test
+      - ck.fix
+  ck.security:
+    next:
+      - ck.fix
+      - ck.review
+  ck.project:
+    next:
+      - ck.plan
+      - ck.cook
+  ck.frontend:
+    next:
+      - ck.test
+      - ck.review

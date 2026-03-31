@@ -40,6 +40,11 @@ ck-plan-fast → ck-test → ck-fix
 | `ck-docs` | Search library docs |
 | `ck-watzup` | Review recent changes |
 | `ck-help` | CoKit usage guide |
+| `ck-ship` | Release pipeline: test→review→commit→push→PR |
+| `ck-deploy` | Deploy to any platform |
+| `ck-security` | STRIDE + OWASP security audit |
+| `ck-project` | Track progress, manage tasks |
+| `ck-frontend` | Build React/TS frontends |
 
 ---
 
