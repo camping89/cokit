@@ -2113,9 +2113,11 @@
         { id: 'c_plan_validate', text: '/ck-plan-validate', type: 'command', x: 1520, y: 620, desc: 'Validate plan with critical questions' },
         { id: 'c_plan_red_team', text: '/ck-plan-red-team', type: 'command', x: 1520, y: 730, desc: 'Adversarial review — find flaws and blind spots' },
 
-        // Implementation
+        // Implementation → Ship → Deploy
         { id: 'c_cook', text: '/ck-cook', type: 'command', x: 1720, y: 510, desc: 'Smart feature implementation from plan or task' },
         { id: 'c_test_after', text: '/ck-test', type: 'command', x: 1920, y: 510, desc: 'Run tests after implementation' },
+        { id: 'c_ship', text: '/ck-ship', type: 'command', x: 2120, y: 510, desc: 'Release pipeline: test → review → commit → push → PR' },
+        { id: 'c_deploy', text: '/ck-deploy', type: 'command', x: 2320, y: 510, desc: 'Deploy to any platform with auto-detection' },
 
         // Explore
         { id: 'c_scout', text: '/ck-scout', type: 'command', x: 480, y: 730, desc: 'Fast codebase search and exploration' },
@@ -2127,11 +2129,12 @@
         // Test (standalone)
         { id: 'c_test', text: '/ck-test', type: 'command', x: 480, y: 1010, desc: 'Run and analyze tests' },
 
-        // Docs/Review/Simplify
+        // Docs/Review/Simplify/Security
         { id: 'q_doctype', text: 'What\ntype?', type: 'decision', x: 480, y: 1150 },
         { id: 'c_review', text: '/ck-review', type: 'command', x: 700, y: 1080, desc: 'Code review and quality check' },
         { id: 'c_simplify', text: '/ck-simplify', type: 'command', x: 700, y: 1130, desc: 'Simplify & refine code for clarity' },
         { id: 'c_docs', text: '/ck-docs', type: 'command', x: 700, y: 1180, desc: 'Generate/update project documentation' },
+        { id: 'c_security', text: '/ck-security', type: 'command', x: 700, y: 1230, desc: 'STRIDE + OWASP security audit' },
 
         // Help
         { id: 'q_helptype', text: 'What\nkind?', type: 'decision', x: 480, y: 1340 },
@@ -2186,6 +2189,8 @@
         { from: 'c_plan_red_team', to: 'c_cook', label: '' },
         { from: 'q_validate', to: 'c_cook', label: 'No' },
         { from: 'c_cook', to: 'c_test_after', label: '' },
+        { from: 'c_test_after', to: 'c_ship', label: 'Ship' },
+        { from: 'c_ship', to: 'c_deploy', label: 'Deploy?' },
 
         // Explore
         { from: 'q_explore', to: 'c_scout', label: 'Yes' },
@@ -2202,6 +2207,7 @@
         { from: 'q_doctype', to: 'c_review', label: 'Review' },
         { from: 'q_doctype', to: 'c_simplify', label: 'Simplify' },
         { from: 'q_doctype', to: 'c_docs', label: 'Docs' },
+        { from: 'q_doctype', to: 'c_security', label: 'Security' },
 
         // Help
         { from: 'q_help', to: 'q_helptype', label: 'Yes' },
