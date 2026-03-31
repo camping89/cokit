@@ -3,18 +3,16 @@
 Rapid design creation with minimal planning overhead.
 
 ## Prerequisites
-- Activate `ui-styling` skill first for design patterns
+- Activate `ui-ux-pro-max` skill (if available) first
 
 ## Initial Research
-Quick reference from `ui-styling` skill:
-- shadcn/ui components for rapid development
-- Tailwind CSS utility classes
-- Color and typography defaults
+```bash
+```
 
 ## Workflow Steps
 
 ### 1. Start Design Process
-Use `ui-ux-designer` agent directly:
+Use `ui-ux-designer` subagent directly:
 - Skip extensive planning
 - Move to implementation quickly
 - Make design decisions on-the-fly
@@ -24,11 +22,11 @@ Use `ui-ux-designer` agent directly:
 - Focus on core functionality
 - Maintain quality despite speed
 
-### 3. Process Assets
-Use CLI tools:
-- Process images with ImageMagick
-- Optimize assets for web
-- Quick adjustments as needed
+### 3. Generate Assets
+Use `ai-multimodal` (if available) skill:
+- Generate required visuals
+- Verify quality quickly
+- Use `media-processing` for adjustments
 
 ### 4. Report & Approve
 - Summarize changes briefly
@@ -50,5 +48,5 @@ While moving fast, maintain:
 - Clean code structure
 
 ## Related
-- `workflow-screenshot.md` - For exact replication
+- `workflow-immersive.md` - For comprehensive designs
 - `technical-overview.md` - Quick reference

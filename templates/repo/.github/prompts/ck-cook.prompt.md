@@ -93,4 +93,3 @@ Human review required at these checkpoints (skipped with `--auto`):
 | `/ck-test` | Run tests |
 | `/ck-review` | Code review |
 | `/ck-git` | Commit changes |
-| `/ck-spec-implement` | Spec-driven implementation instead |

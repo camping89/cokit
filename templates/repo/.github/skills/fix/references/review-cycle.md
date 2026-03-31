@@ -20,9 +20,9 @@ LOOP:
      → cycle++, GOTO LOOP
 
   4. ELSE IF cycle >= 3:
-     → ESCALATE to user directly in response
+     → ESCALATE to user via asking the user
      → Display findings
-     → Ask: "Fix manually" / "Approve anyway" / "Abort" — wait for response
+     → Options: "Fix manually" / "Approve anyway" / "Abort"
 
   5. ELSE (score < 9.5, no critical):
      → Output: "✓ Review [score]/10 - Approved with [N] warnings"
@@ -44,7 +44,7 @@ ALWAYS:
      │ Suggestions ([N]): [list]           │
      └─────────────────────────────────────┘
 
-  3. Ask user directly in response, then wait for answer:
+  3. Use asking the user:
      IF critical_count > 0:
        - "Fix critical issues"
        - "Fix all issues"

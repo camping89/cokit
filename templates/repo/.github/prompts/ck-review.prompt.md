@@ -19,8 +19,6 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 
 ## Workflow:
 
-**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
-
 ### Research
 
 * Use 2 `researcher` agents in parallel to search up to max 5 sources for the user's request, idea validation, best practices, challenges, and find the best possible solutions.
@@ -55,4 +53,3 @@ Think harder to scan the codebase and analyze it follow the Orchestration Protoc
 |---------|-------------|
 | `/ck-fix` | Fix issues found in review |
 | `/ck-git` | Commit changes |
-| `/ck-spec-checklist` | Validate against spec requirements |

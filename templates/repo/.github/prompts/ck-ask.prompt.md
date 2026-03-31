@@ -64,4 +64,3 @@ This command focuses on architectural consultation and strategic guidance. Do no
 |---------|-------------|
 | `/ck-brainstorm` | Explore ideas |
 | `/ck-plan` | Create plan |
-| `/ck-spec-specify` | Write detailed feature spec |

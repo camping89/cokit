@@ -36,19 +36,9 @@ The helper checks for `GEMINI_API_KEY` in this order:
    echo 'GEMINI_API_KEY=your-api-key' > .env
    ```
 
-3. **.copilot/.env file**
+3. **Skill directory `.env` file**
    ```bash
-   echo 'GEMINI_API_KEY=your-api-key' > $HOME/.copilot/.env
-   ```
-
-4. **.copilot/skills/.env file** (shared across all Gemini skills)
-   ```bash
-   echo 'GEMINI_API_KEY=your-api-key' > $HOME/.copilot/skills/.env
-   ```
-
-5. **Skill directory `.env` file**
-   ```bash
-   echo 'GEMINI_API_KEY=your-api-key' > $HOME/.copilot/skills/your-skill/.env
+   echo 'GEMINI_API_KEY=your-api-key' > skills/your-skill/.env
    ```
 
 ### Vertex AI Support

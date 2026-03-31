@@ -36,7 +36,7 @@ class EnvLoader:
         """
         Load environment variables from .env files in order of precedence.
 
-        Order: process.env > skill/.env > skills/.env > .copilot/.env
+        Order: process.env > skill/.env > skills/.env > project .env
 
         Returns:
             Dictionary of environment variables
@@ -46,7 +46,7 @@ class EnvLoader:
 
         # Define search paths in reverse order (lowest to highest priority)
         search_paths = [
-            script_dir.parent.parent.parent / ".env",  # .copilot/.env
+            script_dir.parent.parent.parent / ".env",  # project .env
             script_dir.parent.parent / ".env",          # skills/.env
             script_dir.parent / ".env",                 # skill/.env (repomix/.env)
         ]

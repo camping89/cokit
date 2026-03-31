@@ -77,6 +77,7 @@ node scripts/analyze-llms-txt.js < llms.txt
 - Astro: `withastro/astro`
 - Remix: `remix-run/remix`
 - shadcn/ui: `shadcn-ui/ui`
+- Better Auth: `better-auth/better-auth`
 
 ## Fallback
 

@@ -1,6 +1,8 @@
 ---
 name: agent-browser
 description: AI-optimized browser automation CLI with context-efficient snapshots. Use for long autonomous sessions, self-verifying workflows, video recording, and cloud browser testing (Browserbase).
+license: Apache-2.0
+argument-hint: "[url or task]"
 ---
 
 # agent-browser Skill
@@ -43,15 +45,16 @@ agent-browser click @e1
 agent-browser snapshot -i
 ```
 
-## When to Use
+## When to Use (vs chrome-devtools)
 
-Best for:
-- Long autonomous AI sessions (context-efficient snapshots)
-- Self-verifying workflows and build loops
-- Video recording for debugging
-- Cloud browsers (Browserbase) for CI/CD
-- Multi-tab handling
-- Form automation and testing
+| Use agent-browser | Use chrome-devtools |
+|-------------------|---------------------|
+| Long autonomous AI sessions | Quick one-off screenshots |
+| Context-constrained workflows | Custom Puppeteer scripts needed |
+| Video recording for debugging | WebSocket full frame debugging |
+| Cloud browsers (Browserbase) | Existing workflow integration |
+| Multi-tab handling | Need Sharp auto-compression |
+| Self-verifying build loops | Session with auth injection |
 
 **Token efficiency:** ~280 chars/snapshot vs 8K+ for Playwright MCP.
 

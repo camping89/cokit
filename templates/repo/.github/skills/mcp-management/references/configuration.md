@@ -2,7 +2,7 @@
 
 ## Configuration File Structure
 
-MCP servers are configured in `$HOME/.copilot/.mcp.json`:
+MCP servers are configured in `.vscode/mcp.json`:
 
 ```json
 {
@@ -101,9 +101,9 @@ Reference env vars with `${VAR_NAME}` syntax:
 Scripts check for config in this order:
 
 1. `process.env` (runtime environment)
-2. `$HOME/.copilot/skills/mcp-management/.env`
-3. `$HOME/.copilot/skills/.env`
-4. `$HOME/.copilot/.env`
+2. `skills/mcp-management/.env`
+3. `skills/.env`
+4. `.env`
 
 ## Validation
 

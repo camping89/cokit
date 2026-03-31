@@ -115,7 +115,6 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
 - For each phase, create `{plan-dir}/phase-XX-phase-name-here.md` containing the following sections in order: Context links (reference parent plan, dependencies, docs), Overview (date, description, priority, implementation status, review status), Key Insights, Requirements, Architecture, Related code files, Implementation Steps, Todo list, Success Criteria, Risk Assessment, Security Considerations, Next steps.
 
 ## Important Notes
-**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
 **IMPORTANT:** Ensure token efficiency while maintaining high quality.
 **IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
 **IMPORTANT:** In reports, list any unresolved questions at the end, if any.
@@ -127,8 +126,6 @@ This reminder is **NON-NEGOTIABLE** when validation is skipped.
 
 | Command | Description |
 |---------|-------------|
-| `/ck-spec-tasks` | Break plan into actionable tasks |
 | `/ck-cook` | Implement plan |
 | `/ck-test` | Run tests and analyze results |
 | `/ck-fix` | Analyze and fix issues |
-| `/ck-spec-specify` | Need formal spec? Switch to spec-driven flow |

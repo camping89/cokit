@@ -23,7 +23,7 @@ type(scope): description
 - **No period at end**
 - **Scope optional but recommended**
 - **Focus on WHAT, not HOW**
-- Only use `feat`, `fix`, or `perf` prefixes for files in `.copilot` directory (do not use `docs`).
+- Only use `feat`, `fix`, or `perf` prefixes for files in skills directory (do not use `docs`).
 
 ## NEVER Include AI Attribution
 - ❌ "Generated with AI"
@@ -42,5 +42,5 @@ type(scope): description
 - ❌ `Fix bug` (not specific)
 
 ## Special Cases
-- `$HOME/.copilot/` skill updates: `perf(skill): improve token efficiency`
-- `$HOME/.copilot/` new skills: `feat(skill): add database-optimizer`
+- skill updates: `perf(skill): improve token efficiency`
+- new skills: `feat(skill): add database-optimizer`
