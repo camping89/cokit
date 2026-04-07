@@ -2,6 +2,17 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.4.0] - 2026-04-07
+
+### Changed
+- Standardized `ck-` prefix across all skills (32 dirs) and agents (13 files)
+- Templates synced with prefixed resource names
+- Updated all cross-references in prompts, skills, agents, and docs
+
+### Fixed
+- Deleted stale template dirs (markdown-novel-viewer, plans-kanban)
+- Synced chrome-devtools template with Copilot-compatible paths
+
 ## [1.3.1] - 2026-04-07
 
 ### Added

@@ -78,7 +78,7 @@ mappings:
   ck-brainstorm:
     origin: upstream
     original: brainstorm
-    upstream_file: skills/brainstorm/SKILL.md
+    upstream_file: skills/ck-brainstorm/SKILL.md
     description: Explore solutions with trade-off analysis
 
   ck-plan:

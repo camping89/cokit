@@ -1,6 +1,6 @@
 # CoKit Documentation Index
 
-**Version:** 1.3.1 | **Updated:** 2026-04-07
+**Version:** 1.4.0 | **Updated:** 2026-04-07
 
 ## Reading Order by Role
 

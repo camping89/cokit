@@ -47,6 +47,7 @@ Key things to re-check periodically:
 | `.claude/` paths | `$HOME/.copilot/` | Global config directory |
 | `~/.claude/` | `$HOME/.copilot/` | Same as above |
 | `subagent` | `agent` | Copilot terminology |
+| Unprefixed skill/agent name | `ck-` prefixed | Namespace consistency |
 
 ## 2. Command References
 
@@ -94,12 +95,12 @@ Key things to re-check periodically:
 ## 5. Agent-Specific Rules
 
 ### CoKit agents (12)
-`brainstormer`, `code-reviewer`, `code-simplifier`, `debugger`, `docs-manager`, `fullstack-developer`, `git-manager`, `planner`, `researcher`, `scout`, `tester`, `ui-ux-designer`
+`ck-brainstormer`, `ck-code-reviewer`, `ck-code-simplifier`, `ck-debugger`, `ck-docs-manager`, `ck-fullstack-developer`, `ck-git-manager`, `ck-planner`, `ck-researcher`, `ck-scout`, `ck-tester`, `ck-ui-ux-designer`
 
 ### Upstream agents that DON'T exist in CoKit
 | Upstream Agent | CoKit Replacement |
 |-----------------|-------------------|
-| `project-manager` | Direct action (describe what to do) |
+| `ck-project-manager` | Direct action (describe what to do) |
 | `journal-writer` | Remove or convert to manual journaling |
 | `mcp-manager` | Remove or use `mcp-management` skill |
 
@@ -172,7 +173,7 @@ grep -r "^name:\|^model:\|^memory:" agents/ prompts/  # Invalid frontmatter
 ## 10. Common Mistakes
 
 1. **`@agent-name`** → Use `` `agent-name` agent `` (no `@` prefix)
-2. **`project-manager` agent** → Doesn't exist, replace with direct instructions
+2. **`ck-project-manager` agent** → Doesn't exist, replace with direct instructions
 3. **Team Mode sections** → Don't port, Copilot subagents are isolated
 4. **Missing "(if available)"** → External tools need `(if available)` qualifier. Use this single flag only — never "(if installed)"
 5. **Counting variants as prompts** → Variants don't bump prompt count

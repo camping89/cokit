@@ -82,18 +82,18 @@ You are a research-first planner...
 ```
 
 **CoKit Agents (12 total):**
-- `planner` - Creates implementation plans
-- `code-reviewer` - Provides comprehensive code review
-- `debugger` - Investigates and diagnoses issues
-- `tester` - Writes and validates tests
-- `researcher` - Finds and synthesizes documentation
-- `scout` - Locates files in codebase
-- `git-manager` - Handles commits and workflows
-- `brainstormer` - Ideates solutions
-- `docs-manager` - Creates and updates documentation
-- `code-simplifier` - Refactors and simplifies code
-- `fullstack-developer` - Full-stack implementation
-- `ui-ux-designer` - UI/UX design and implementation
+- `ck-planner` - Creates implementation plans
+- `ck-code-reviewer` - Provides comprehensive code review
+- `ck-debugger` - Investigates and diagnoses issues
+- `ck-tester` - Writes and validates tests
+- `ck-researcher` - Finds and synthesizes documentation
+- `ck-scout` - Locates files in codebase
+- `ck-git-manager` - Handles commits and workflows
+- `ck-brainstormer` - Ideates solutions
+- `ck-docs-manager` - Creates and updates documentation
+- `ck-code-simplifier` - Refactors and simplifies code
+- `ck-fullstack-developer` - Full-stack implementation
+- `ck-ui-ux-designer` - UI/UX design and implementation
 
 **When to use:** Referenced by prompts to specialize execution
 
@@ -164,8 +164,8 @@ id: ck-core
 name: CoKit Core Workflows
 description: Essential agents, prompts, and skills
 items:
-  - path: agents/planner.agent.md
-  - path: agents/code-reviewer.agent.md
+  - path: agents/ck-planner.agent.md
+  - path: agents/ck-code-reviewer.agent.md
   - path: prompts/ck-plan.prompt.md
   - path: prompts/ck-code.prompt.md
   - path: skills/ck-planning/
@@ -212,4 +212,4 @@ Output: Systematic debugging solution
 
 ## One-liner
 
-> User calls **Prompt** (e.g., `/ck-fix`) → Prompt references **Agent** (e.g., `debugger`) → Agent auto-receives **Instructions** by file pattern → Agent activates **Skills** when needed → All can be bundled in **Collection** (e.g., `ck-core`).
+> User calls **Prompt** (e.g., `/ck-fix`) → Prompt references **Agent** (e.g., `ck-debugger`) → Agent auto-receives **Instructions** by file pattern → Agent activates **Skills** when needed → All can be bundled in **Collection** (e.g., `ck-core`).

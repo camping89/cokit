@@ -84,12 +84,12 @@ Otherwise?
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.3.1)
+## What's New (v1.4.0)
 
-- Ported chrome-devtools skill from upstream
-- Removed broken skills (markdown-novel-viewer, plans-kanban)
-- Cleaned up 6 stale documentation files
-- Fixed resource counts and version references
+- All skills and agents now use `ck-` prefix for namespace consistency
+- Templates synced with latest prefixed resource names
+- Deleted stale template dirs (markdown-novel-viewer, plans-kanban)
+- Synced chrome-devtools template with Copilot-compatible paths
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 
