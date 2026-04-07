@@ -23,7 +23,7 @@ T9 = TaskCreate(subject="Finalize & docs",               activeForm="Finalizing"
 ### Step 1: Scout Codebase (parallel with Steps 2+3)
 `TaskUpdate(T1, status="in_progress")`
 
-**Mandatory:** Activate `scout` skill or launch 2-3 `Explore` subagents in parallel:
+**Mandatory:** Activate `ck-scout` skill or launch 2-3 `Explore` subagents in parallel:
 ```
 Task("Explore", "Find error origin and affected components", "Trace error")
 Task("Explore", "Find module boundaries and dependencies", "Map deps")
@@ -42,10 +42,10 @@ See `references/parallel-exploration.md` for patterns.
 
 **Mandatory skill chain:**
 1. **Capture pre-fix state:** Record ALL error messages, failing tests, stack traces, logs.
-2. Activate `debug` skill (systematic-debugging + root-cause-tracing).
-3. Activate `sequential-thinking` — structured hypothesis formation.
+2. Activate `ck-debug` skill (systematic-debugging + root-cause-tracing).
+3. Activate `ck-sequential-thinking` — structured hypothesis formation.
 4. Spawn parallel `Explore` subagents to test each hypothesis.
-5. If 2+ hypotheses fail → auto-activate `problem-solving`.
+5. If 2+ hypotheses fail → auto-activate `ck-problem-solving`.
 6. Trace backward through call chain to ROOT CAUSE origin.
 
 See `references/diagnosis-protocol.md` for full methodology.
@@ -55,7 +55,7 @@ See `references/diagnosis-protocol.md` for full methodology.
 
 ### Step 3: Research (parallel with Steps 1+2)
 `TaskUpdate(T3, status="in_progress")`
-Use `researcher` subagent for external knowledge.
+Use `ck-researcher` subagent for external knowledge.
 
 - Search latest docs, best practices
 - Find similar issues/solutions
@@ -77,7 +77,7 @@ Activate `brainstorm` skill.
 
 ### Step 5: Plan
 `TaskUpdate(T5, status="in_progress")`
-Use `planner` subagent to create implementation plan.
+Use `ck-planner` subagent to create implementation plan.
 
 - Break down into phases
 - Identify dependencies
@@ -89,7 +89,7 @@ Use `planner` subagent to create implementation plan.
 
 ### Step 6: Implement
 `TaskUpdate(T6, status="in_progress")`
-Implement per plan. Use `context-engineering`, `sequential-thinking`, `problem-solving`.
+Implement per plan. Use `ck-context-engineering`, `ck-sequential-thinking`, `ck-problem-solving`.
 
 - Fix ROOT CAUSE per diagnosis — not symptoms
 - Follow plan phases
@@ -117,7 +117,7 @@ See `references/prevention-gate.md` for prevention requirements.
 
 ### Step 8: Code Review
 `TaskUpdate(T8, status="in_progress")`
-Use `code-reviewer` subagent.
+Use `ck-code-reviewer` subagent.
 
 See `references/review-cycle.md` for mode-specific handling.
 
@@ -128,8 +128,8 @@ See `references/review-cycle.md` for mode-specific handling.
 `TaskUpdate(T9, status="in_progress")`
 - Report summary: root cause, evidence chain, changes, prevention measures, confidence score
 - Activate `project-management` for task sync-back, plan status updates, and progress tracking
-- Use `docs-manager` subagent for documentation
-- Use `git-manager` subagent for commit
+- Use `ck-docs-manager` subagent for documentation
+- Use `ck-git-manager` subagent for commit
 - Run `/ck-journal`
 
 `TaskUpdate(T9, status="completed")`
@@ -139,15 +139,15 @@ See `references/review-cycle.md` for mode-specific handling.
 
 | Step | Skills/Subagents |
 |------|------------------|
-| 1 | `scout` OR parallel `Explore` subagents |
-| 2 | `debug`, `sequential-thinking`, parallel `Explore`, (`problem-solving` auto) |
-| 3 | `researcher` (runs parallel with steps 1+2) |
+| 1 | `ck-scout` OR parallel `Explore` subagents |
+| 2 | `ck-debug`, `ck-sequential-thinking`, parallel `Explore`, (`ck-problem-solving` auto) |
+| 3 | `ck-researcher` (runs parallel with steps 1+2) |
 | 4 | `brainstorm` |
-| 5 | `planner` |
-| 6 | `problem-solving`, `sequential-thinking`, `context-engineering` |
-| 7 | `tester`, parallel `Bash` verification |
-| 8 | `code-reviewer` |
-| 9 | `project-management`, `docs-manager`, `git-manager` |
+| 5 | `ck-planner` |
+| 6 | `ck-problem-solving`, `ck-sequential-thinking`, `ck-context-engineering` |
+| 7 | `ck-tester`, parallel `Bash` verification |
+| 8 | `ck-code-reviewer` |
+| 9 | `project-management`, `ck-docs-manager`, `ck-git-manager` |
 
 **Rules:** Don't skip steps. Validate before proceeding. One phase at a time.
 **Frontend:** Use `chrome`, `chrome-devtools` (if available) or any relevant skills/tools to verify.

@@ -5,7 +5,7 @@
 
 ## Step 1: Research
 
-Spawn max 2 `researcher` agents in parallel:
+Spawn max 2 `ck-researcher` agents in parallel:
 - Explore requirements, validation, challenges, solutions
 - Keep reports ≤150 lines
 
@@ -13,18 +13,18 @@ No user gate — proceed automatically.
 
 ## Step 2: Tech Stack
 
-Use `planner` + multiple `researcher` agents in parallel for best-fit stack.
+Use `ck-planner` + multiple `ck-researcher` agents in parallel for best-fit stack.
 Write to `./docs` directory (≤150 lines).
 
 No user gate — proceed automatically.
 
 ## Step 3: Wireframe & Design
 
-1. Use `ui-ux-designer` + `researcher` agents in parallel:
+1. Use `ck-ui-ux-designer` + `ck-researcher` agents in parallel:
    - Research style, trends, fonts, colors, spacing, positions
    - Predict Google Fonts name (NOT just Inter/Poppins)
    - Describe assets for `ai-multimodal` (if available) generation
-2. `ui-ux-designer` creates:
+2. `ck-ui-ux-designer` creates:
    - Design guidelines at `./docs/design-guidelines.md`
    - Wireframes in HTML at `./docs/wireframe/`
 3. If no logo: generate with `ai-multimodal` (if available) skill
@@ -50,9 +50,9 @@ Load `references/shared-phases.md` for remaining phases.
 
 Activate **cook** skill: `/ck-cook --parallel <plan-path>`
 - Read `plan.md` for dependency graph and execution strategy
-- Launch multiple `fullstack-developer` agents in PARALLEL for concurrent phases
+- Launch multiple `ck-fullstack-developer` agents in PARALLEL for concurrent phases
   - Pass: phase file path, environment info
-- Use `ui-ux-designer` for frontend (generate/analyze assets with `ai-multimodal` (if available), edit with `imagemagick`)
+- Use `ck-ui-ux-designer` for frontend (generate/analyze assets with `ai-multimodal` (if available), edit with `imagemagick`)
 - Respect file ownership boundaries
 - Run type checking after implementation
 

@@ -28,7 +28,7 @@ If user chooses "Switch to /ck-fix", run `/ck-fix ${input}` immediately — do N
 <issues>${input}</issues>
 
 ## Workflow
-1. Activate `debug` and `problem-solving` skills to find the root cause.
+1. Activate `ck-debug` and `ck-problem-solving` skills to find the root cause.
 2. Implement the fix.
 3. Test the fix and make sure it works.
 4. If there are issues or failed tests, repeat from step 1.

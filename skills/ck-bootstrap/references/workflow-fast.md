@@ -8,9 +8,9 @@
 All research happens in parallel, then feeds into planning:
 
 **Parallel research batch** (spawn these simultaneously):
-- 2 `researcher` subagents (max 5 sources each): explore request, validate idea, find solutions
-- 2 `researcher` subagents (max 5 sources each): find best-fit tech stack
-- 2 `researcher` subagents (max 5 sources each): research design style, trends, fonts, colors, spacing, positions
+- 2 `ck-researcher` subagents (max 5 sources each): explore request, validate idea, find solutions
+- 2 `ck-researcher` subagents (max 5 sources each): find best-fit tech stack
+- 2 `ck-researcher` subagents (max 5 sources each): research design style, trends, fonts, colors, spacing, positions
   - Predict Google Fonts name (NOT just Inter/Poppins)
   - Describe assets for `ai-multimodal` (if available) generation
 
@@ -18,7 +18,7 @@ Keep all reports ≤150 lines.
 
 ## Step 2: Design
 
-1. `ui-ux-designer` subagent analyzes research, creates:
+1. `ck-ui-ux-designer` subagent analyzes research, creates:
    - Design guidelines at `./docs/design-guidelines.md`
    - Wireframes in HTML at `./docs/wireframe/`
 2. If no logo provided: generate with `ai-multimodal` (if available) skill
@@ -47,4 +47,4 @@ Activate **cook** skill: `/ck-cook --auto <plan-path>`
 - Auto-approves if score≥9.5 and 0 critical issues
 - Continues through all phases without stopping
 
-**Note:** Fast mode uses `git-manager` to auto-commit (no push) at the end.
+**Note:** Fast mode uses `ck-git-manager` to auto-commit (no push) at the end.

@@ -5,12 +5,12 @@
 ## Core Activities
 
 ### Parallel Researcher Agents
-- Spawn multiple `researcher` agents in parallel to investigate different approaches
+- Spawn multiple `ck-researcher` agents in parallel to investigate different approaches
 - Wait for all researcher agents to report back before proceeding
 - Each researcher investigates a specific aspect or approach
 
 ### Sequential Thinking
-- Use `sequential-thinking` skill for dynamic and reflective problem-solving
+- Use `ck-sequential-thinking` skill for dynamic and reflective problem-solving
 - Structured thinking process for complex analysis
 - Enables multi-step reasoning with revision capability
 
@@ -36,7 +36,7 @@ repomix --remote https://github.com/mrgoonie/human-mcp
 ```
 
 ### Debugger Delegation
-- Delegate to `debugger` agent for root cause analysis
+- Delegate to `ck-debugger` agent for root cause analysis
 - Use when investigating complex issues or bugs
 - Debugger agent specializes in diagnostic tasks
 

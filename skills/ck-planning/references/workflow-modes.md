@@ -28,7 +28,7 @@ Scope challenge is skipped when `--fast` is explicitly set or task is trivial.
 No research. Analyze → Plan → Hydrate Tasks.
 
 1. Read codebase docs (`codebase-summary.md`, `code-standards.md`, `system-architecture.md`)
-2. Use `planner` subagent to create plan
+2. Use `ck-planner` subagent to create plan
 3. Hydrate tasks (unless `--no-tasks`)
 4. **Context reminder:** `/ck-cook --auto {absolute-plan-path}/plan.md`
 
@@ -38,9 +38,9 @@ No research. Analyze → Plan → Hydrate Tasks.
 
 Research → Scout → Plan → Red Team → Validate → Hydrate Tasks.
 
-1. Spawn max 2 `researcher` agents in parallel (different aspects, max 5 calls each)
+1. Spawn max 2 `ck-researcher` agents in parallel (different aspects, max 5 calls each)
 2. Read codebase docs; if stale/missing: run `/ck-scout` to search codebase
-3. Gather research + scout report filepaths → pass to `planner` subagent
+3. Gather research + scout report filepaths → pass to `ck-planner` subagent
 4. Post-plan red team review (see Red Team Review section below)
 5. Post-plan validation (see Validation section below)
 6. Hydrate tasks (unless `--no-tasks`)

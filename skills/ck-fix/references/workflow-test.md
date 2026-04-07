@@ -17,7 +17,7 @@ T6 = TaskCreate(subject="Code review",                 activeForm="Reviewing cod
 
 ### Step 1: Compile & Collect Failures
 `TaskUpdate(T1, status="in_progress")`
-Use `tester` agent. Fix all syntax errors before running tests.
+Use `ck-tester` agent. Fix all syntax errors before running tests.
 
 - Run full test suite, collect all failures
 - Group failures by module/area
@@ -26,7 +26,7 @@ Use `tester` agent. Fix all syntax errors before running tests.
 
 ### Step 2: Debug
 `TaskUpdate(T2, status="in_progress")`
-Use `debugger` agent for root cause analysis.
+Use `ck-debugger` agent for root cause analysis.
 
 - Analyze each failure group
 - Identify shared root causes across failures
@@ -35,7 +35,7 @@ Use `debugger` agent for root cause analysis.
 
 ### Step 3: Plan
 `TaskUpdate(T3, status="in_progress")`
-Use `planner` agent for fix strategy.
+Use `ck-planner` agent for fix strategy.
 
 - Prioritize fixes (shared root causes first)
 - Identify dependencies between fixes
@@ -50,13 +50,13 @@ Implement fixes step by step per plan.
 
 ### Step 5: Re-test
 `TaskUpdate(T5, status="in_progress")`
-Use `tester` agent. If tests still fail → keep T5 `in_progress`, loop back to Step 2.
+Use `ck-tester` agent. If tests still fail → keep T5 `in_progress`, loop back to Step 2.
 
 `TaskUpdate(T5, status="completed")`
 
 ### Step 6: Review
 `TaskUpdate(T6, status="in_progress")`
-Use `code-reviewer` agent.
+Use `ck-code-reviewer` agent.
 
 `TaskUpdate(T6, status="completed")`
 

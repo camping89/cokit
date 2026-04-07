@@ -1,6 +1,6 @@
 # Parallel Review Workflow
 
-**Ultrathink** to exhaustively list ALL potential edge cases, then dispatch parallel `code-reviewer` agents to verify: <scope>$ARGUMENTS</scope>
+**Ultrathink** to exhaustively list ALL potential edge cases, then dispatch parallel `ck-code-reviewer` agents to verify: <scope>$ARGUMENTS</scope>
 
 **IMPORTANT:** Activate needed skills. Ensure token efficiency. Sacrifice grammar for concision.
 
@@ -32,13 +32,13 @@ Main agent deeply analyzes the scope to LIST all potential edge cases FIRST:
 ### 2. Categorize & Assign
 
 Group edge cases by similar scope for parallel verification:
-- Each category → one `code-reviewer` agent
+- Each category → one `ck-code-reviewer` agent
 - Max 6 categories (merge small ones)
 - Each reviewer gets specific edge cases to VERIFY, not discover
 
 ### 3. Parallel Verification
 
-Launch N `code-reviewer` subagents simultaneously:
+Launch N `ck-code-reviewer` subagents simultaneously:
 - Pass: category name, list of edge cases, relevant files
 - Task: **VERIFY** if each edge case is properly handled in code
 - Report: which edge cases are handled vs unhandled
@@ -73,4 +73,4 @@ After aggregation, spawn adversarial reviewer (see `adversarial-review.md`) on t
 
 ### 7. Final Report
 - Summary of verification
-- Ask: "Commit? [Y/n]" → use `git-manager`
+- Ask: "Commit? [Y/n]" → use `ck-git-manager`

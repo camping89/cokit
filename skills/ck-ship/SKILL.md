@@ -75,7 +75,7 @@ Step 12: Create PR        → gh pr create with structured body + linked issues
 
 ## Token Efficiency Rules
 
-- Steps 4 (tests) and 5 (review): delegate to `tester` and `code-reviewer` subagents — don't inline
+- Steps 4 (tests) and 5 (review): delegate to `ck-tester` and `ck-code-reviewer` subagents — don't inline
 - Steps 8 (journal) and 9 (docs): run in **background** — don't block pipeline
 - Step 2 (issues): use single `gh` command batch — avoid multiple API calls
 - Skip steps early via flags to save tokens on unnecessary work
@@ -112,5 +112,5 @@ User says `/ck-ship official` → ship to main with full docs + journal.
 - **Never ask for confirmation** except for critical review issues and major/minor version bumps.
 - **Auto-detect everything.** Test runner, version file, changelog format, target branch — detect from project files.
 - **Framework-agnostic.** Works for Node, Python, Rust, Go, Ruby, Java, or any project with a test command.
-- **Subagent delegation.** Use `tester` for tests, `code-reviewer` for review, `journal-writer` for journal, `docs-manager` for docs. Don't inline.
+- **Subagent delegation.** Use `ck-tester` for tests, `ck-code-reviewer` for review, `journal-writer` for journal, `ck-docs-manager` for docs. Don't inline.
 - **Background tasks.** Journal and docs run in background to not block the pipeline.

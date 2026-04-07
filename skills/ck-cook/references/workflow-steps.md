@@ -16,8 +16,8 @@ All modes share core steps with mode-specific variations.
 ## Step 1: Research (skip if fast/code mode)
 
 **Interactive/Auto:**
-- Spawn multiple `researcher` agents in parallel
-- Use `/ck-scout ext` or `scout` agent for codebase search
+- Spawn multiple `ck-researcher` agents in parallel
+- Use `/ck-scout ext` or `ck-scout` agent for codebase search
 - Keep reports ≤150 lines
 
 **Parallel:**
@@ -33,7 +33,7 @@ All modes share core steps with mode-specific variations.
 ## Step 2: Planning
 
 **Interactive/Auto/No-test:**
-- Use `planner` agent with research context
+- Use `ck-planner` agent with research context
 - Create `plan.md` + `phase-XX-*.md` files
 
 **Fast:**
@@ -69,13 +69,13 @@ All modes share core steps with mode-specific variations.
 **All modes:**
 - Use `TaskUpdate` to mark tasks as `in_progress` immediately.
 - Execute phase tasks sequentially (Step 3.1, 3.2, etc.)
-- Use `ui-ux-designer` for frontend
+- Use `ck-ui-ux-designer` for frontend
 - Use `ai-multimodal` (if available) for image assets
 - Run type checking after each file
 
 **Parallel mode:**
 - Utilize all tools of Tasks: `TaskCreate`, `TaskUpdate`, `TaskGet` and `TaskList`
-- Launch multiple `fullstack-developer` agents
+- Launch multiple `ck-fullstack-developer` agents
 - When agents pick up a task, use `TaskUpdate` to assign task to agent and mark tasks as `in_progress` immediately.
 - Respect file ownership boundaries
 - Wait for parallel group before next
@@ -91,8 +91,8 @@ All modes share core steps with mode-specific variations.
 
 **All modes (except no-test):**
 - Write tests: happy path, edge cases, errors
-- **MUST** spawn `tester` subagent: `Task(subagent_type="tester", prompt="Run test suite", description="Run tests")`
-- If failures: **MUST** spawn `debugger` subagent → fix → repeat
+- **MUST** spawn `ck-tester` subagent: `Task(subagent_type="tester", prompt="Run test suite", description="Run tests")`
+- If failures: **MUST** spawn `ck-debugger` subagent → fix → repeat
 - **Forbidden:** fake mocks, commented tests, changed assertions, skipping subagent delegation
 
 **Output:** `✓ Step 4: Tests [X/X passed] - tester subagent invoked`
@@ -105,7 +105,7 @@ All modes share core steps with mode-specific variations.
 ## Step 5: Code Review
 
 **All modes - MANDATORY subagent:**
-- **MUST** spawn `code-reviewer` subagent: `Task(subagent_type="code-reviewer", prompt="Review changes. Return score, critical issues, warnings.", description="Code review")`
+- **MUST** spawn `ck-code-reviewer` subagent: `Task(subagent_type="code-reviewer", prompt="Review changes. Return score, critical issues, warnings.", description="Code review")`
 - **DO NOT** review code yourself - delegate to subagent
 
 **Interactive/Parallel/Code/No-test:**
@@ -182,9 +182,9 @@ code:        0 → skip → skip → 3 → [R] → 4 → [R] → 5(user) → 6
 
 - Never skip steps without mode justification
 - **MANDATORY SUBAGENT DELEGATION:** Steps 4, 5, 6 MUST spawn subagents via Task tool. DO NOT implement directly.
-  - Step 4: `tester` (and `debugger` if failures)
-  - Step 5: `code-reviewer`
-  - Step 6: `project-manager`, `docs-manager`, `git-manager`
+  - Step 4: `ck-tester` (and `ck-debugger` if failures)
+  - Step 5: `ck-code-reviewer`
+  - Step 6: `ck-project-manager`, `ck-docs-manager`, `ck-git-manager`
 - Use `TaskCreate` to create Tasks for each unchecked item with priority order and dependencies (or `TodoWrite` if Task tools unavailable).
 - Use `TaskUpdate` to mark Tasks `in_progress` when picking up a task (skip if Task tools unavailable).
 - Use `TaskUpdate` to mark Tasks `complete` immediately after finalizing the task (skip if Task tools unavailable).

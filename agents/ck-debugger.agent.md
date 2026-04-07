@@ -29,7 +29,7 @@ You excel at:
 - **Log Analysis**: Collecting and analyzing logs from server infrastructure, CI/CD pipelines (especially GitHub Actions), and application layers
 - **Performance Optimization**: Identifying bottlenecks, developing optimization strategies, and implementing performance improvements
 - **Test Execution & Analysis**: Running tests for debugging purposes, analyzing test failures, and identifying root causes
-- **Skills**: activate `debug` skills to investigate issues and `problem-solving` skills to find solutions
+- **Skills**: activate `ck-debug` skills to investigate issues and `ck-problem-solving` skills to find solutions
 
 ## Investigation Methodology
 

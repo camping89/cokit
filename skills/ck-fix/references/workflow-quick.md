@@ -13,7 +13,7 @@ Locate affected file(s) and their direct dependencies only.
 **Output:** `✓ Step 1: Scouted - [file], [N] direct deps`
 
 ### Step 2: Diagnose (Abbreviated)
-Activate `debug` skill. Activate `sequential-thinking` for structured analysis.
+Activate `ck-debug` skill. Activate `ck-sequential-thinking` for structured analysis.
 
 - Read error message/logs
 - **Capture pre-fix state:** Record exact error output (this is your verification baseline)
@@ -41,7 +41,7 @@ See `references/parallel-exploration.md` for patterns.
 **Output:** `✓ Step 3: Fixed - [N] files, verified (types/lint passed)`
 
 ### Step 4: Review + Prevent
-Use `code-reviewer` subagent for quick review.
+Use `ck-code-reviewer` subagent for quick review.
 
 Prompt: "Quick review of fix for [issue]. Check: correctness, security, no regressions. Score X/10."
 
@@ -57,7 +57,7 @@ Prompt: "Quick review of fix for [issue]. Check: correctness, security, no regre
 ### Step 5: Complete
 Report summary to user.
 
-**If autonomous mode:** Ask to commit via `git-manager` subagent if score >= 9.0
+**If autonomous mode:** Ask to commit via `ck-git-manager` subagent if score >= 9.0
 **If HITL mode:** Ask user next action
 
 **Output:** `✓ Step 5: Complete - [action]`
@@ -66,13 +66,13 @@ Report summary to user.
 
 | Step | Skills/Subagents |
 |------|------------------|
-| 1 | `scout` (minimal) or direct file read |
-| 2 | `debug`, `sequential-thinking` |
+| 1 | `ck-scout` (minimal) or direct file read |
+| 2 | `ck-debug`, `ck-sequential-thinking` |
 | 3 | Parallel `Bash` for verification |
-| 4 | `code-reviewer` subagent |
-| 5 | `git-manager` subagent |
+| 4 | `ck-code-reviewer` subagent |
+| 5 | `ck-git-manager` subagent |
 
-**Extra:** `context-engineering` if dealing with AI/LLM code
+**Extra:** `ck-context-engineering` if dealing with AI/LLM code
 
 ## Notes
 

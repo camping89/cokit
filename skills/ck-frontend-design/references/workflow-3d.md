@@ -14,14 +14,14 @@ Create immersive interactive 3D designs with Three.js.
 ## Workflow Steps
 
 ### 1. Create Implementation Plan
-Use `ui-ux-designer` + `researcher` subagents:
+Use `ck-ui-ux-designer` + `ck-researcher` subagents:
 - Create plan directory (use `## Naming` pattern)
 - Write `plan.md` (<80 lines overview)
 - Add `phase-XX-name.md` files
 - Keep research reports under 150 lines
 
 ### 2. Implement with Three.js
-Use `ui-ux-designer` subagent to build:
+Use `ck-ui-ux-designer` subagent to build:
 - Three.js scene setup
 - Custom GLSL shaders
 - GPU particle systems

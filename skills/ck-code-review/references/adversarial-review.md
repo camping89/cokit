@@ -83,7 +83,7 @@ This is NOT a standard code review. Standard reviews check if code meets require
 
 ### 1. Spawn Adversarial Reviewer
 
-Dispatch `code-reviewer` subagent with adversarial prompt:
+Dispatch `ck-code-reviewer` subagent with adversarial prompt:
 
 ```
 You are an adversarial code reviewer. Your ONLY job is to find ways this code

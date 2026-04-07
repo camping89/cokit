@@ -13,7 +13,7 @@ Use asking the user to probe user's request, constraints, true objectives.
 
 ## Step 2: Research
 
-Spawn multiple `researcher` subagents in parallel:
+Spawn multiple `ck-researcher` subagents in parallel:
 - Explore request validity, challenges, best solutions
 - Keep every report ≤150 lines
 
@@ -22,7 +22,7 @@ Spawn multiple `researcher` subagents in parallel:
 ## Step 3: Tech Stack
 
 1. Ask user for preferred tech stack. If provided, skip to step 4.
-2. Use `planner` + multiple `researcher` subagents in parallel to find best-fit stack
+2. Use `ck-planner` + multiple `ck-researcher` subagents in parallel to find best-fit stack
 3. Present 2-3 options with pros/cons by asking the user
 4. Write approved tech stack to `./docs` directory
 
@@ -31,10 +31,10 @@ Spawn multiple `researcher` subagents in parallel:
 ## Step 4: Wireframe & Design
 
 1. Ask user if they want wireframes/design. If no → skip to Step 5.
-2. Use `ui-ux-designer` + `researcher` subagents in parallel:
+2. Use `ck-ui-ux-designer` + `ck-researcher` subagents in parallel:
    - Research style, trends, fonts (predict Google Fonts name, NOT just Inter/Poppins), colors, spacing, positions
    - Describe assets for `ai-multimodal` (if available) skill generation
-3. `ui-ux-designer` creates:
+3. `ck-ui-ux-designer` creates:
    - Design guidelines at `./docs/design-guidelines.md`
    - Wireframes in HTML at `./docs/wireframe/`
 4. If no logo provided: generate with `ai-multimodal` (if available) skill

@@ -13,7 +13,7 @@ Unified skill for fixing issues of any complexity with intelligent routing.
 - `--auto` - Activate autonomous mode (**default**)
 - `--review` - Activate human-in-the-loop review mode
 - `--quick` - Activate quick mode
-- `--parallel` - Activate parallel mode: route to parallel `fullstack-developer` agents per issue
+- `--parallel` - Activate parallel mode: route to parallel `ck-fullstack-developer` agents per issue
 
 <HARD-GATE>
 Do NOT propose or implement fixes before completing Steps 1-2 (Scout + Diagnose).
@@ -80,7 +80,7 @@ See `references/mode-selection.md` for asking the user format.
 **Purpose:** Understand the affected codebase BEFORE forming any hypotheses.
 
 **Mandatory skill chain:**
-1. Activate `scout` skill OR launch 2-3 parallel `Explore` subagents
+1. Activate `ck-scout` skill OR launch 2-3 parallel `Explore` subagents
 2. Discover: affected files, dependencies, related tests, recent changes (`git log`)
 3. Read `./docs` for project context if unfamiliar
 
@@ -95,10 +95,10 @@ See `references/mode-selection.md` for asking the user format.
 
 **Mandatory skill chain:**
 1. **Capture pre-fix state:** Record exact error messages, failing test output, stack traces, log snippets. This becomes the baseline for Step 5 verification.
-2. Activate `debug` skill (systematic-debugging + root-cause-tracing techniques).
-3. Activate `sequential-thinking` skill — form hypotheses through structured reasoning, NOT guessing.
+2. Activate `ck-debug` skill (systematic-debugging + root-cause-tracing techniques).
+3. Activate `ck-sequential-thinking` skill — form hypotheses through structured reasoning, NOT guessing.
 4. Spawn parallel `Explore` subagents to test each hypothesis against codebase evidence.
-5. If 2+ hypotheses fail → auto-activate `problem-solving` skill for alternative approaches.
+5. If 2+ hypotheses fail → auto-activate `ck-problem-solving` skill for alternative approaches.
 6. Create diagnosis report: confirmed root cause, evidence chain, affected scope.
 
 See `references/diagnosis-protocol.md` for full methodology.
@@ -114,7 +114,7 @@ Classify before routing. See `references/complexity-assessment.md`.
 | **Simple** | Single file, clear error, type/lint | `references/workflow-quick.md` |
 | **Moderate** | Multi-file, root cause unclear | `references/workflow-standard.md` |
 | **Complex** | System-wide, architecture impact | `references/workflow-deep.md` |
-| **Parallel** | 2+ independent issues OR `--parallel` flag | Parallel `fullstack-developer` agents |
+| **Parallel** | 2+ independent issues OR `--parallel` flag | Parallel `ck-fullstack-developer` agents |
 
 **Task Orchestration (Moderate+ only):** After classifying, create native Tasks for all phases upfront with dependencies. See `references/task-orchestration.md`.
 - Skip for Quick workflow (< 3 steps, overhead exceeds benefit)
@@ -148,9 +148,9 @@ See `references/prevention-gate.md` for prevention requirements.
 ### Step 6: Finalize (MANDATORY — never skip)
 
 1. Report summary: confidence score, root cause, changes, files, prevention measures
-2. `docs-manager` subagent → update `./docs` if changes warrant (NON-OPTIONAL)
+2. `ck-docs-manager` subagent → update `./docs` if changes warrant (NON-OPTIONAL)
 3. `TaskUpdate` → mark ALL Tasks `completed` (skip if Task tools unavailable)
-4. Ask user if they want to commit via `git-manager` subagent
+4. Ask user if they want to commit via `ck-git-manager` subagent
 5. Run `/ck-journal` to write a concise technical journal entry upon completion
 
 ---
@@ -160,17 +160,17 @@ See `references/prevention-gate.md` for prevention requirements.
 See `references/skill-activation-matrix.md` for complete matrix.
 
 **Always activate (ALL workflows):**
-- `scout` (Step 1) — understand before diagnosing
-- `debug` (Step 2) — systematic root cause investigation
-- `sequential-thinking` (Step 2) — structured hypothesis formation
+- `ck-scout` (Step 1) — understand before diagnosing
+- `ck-debug` (Step 2) — systematic root cause investigation
+- `ck-sequential-thinking` (Step 2) — structured hypothesis formation
 
 **Conditional:**
-- `problem-solving` — auto-triggers when 2+ hypotheses fail in Step 2
+- `ck-problem-solving` — auto-triggers when 2+ hypotheses fail in Step 2
 - `brainstorm` — multiple valid approaches, architecture decision (Deep only)
-- `context-engineering` — fixing AI/LLM/agent code
+- `ck-context-engineering` — fixing AI/LLM/agent code
 - `project-management` — moderate+ for task hydration/sync-back
 
-**Subagents:** `debugger`, `researcher`, `planner`, `code-reviewer`, `tester`, `Bash`
+**Subagents:** `ck-debugger`, `ck-researcher`, `ck-planner`, `ck-code-reviewer`, `ck-tester`, `Bash`
 **Parallel:** Multiple `Explore` agents for scouting, `Bash` agents for verification
 
 ## Output Format

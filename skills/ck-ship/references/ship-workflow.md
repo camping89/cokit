@@ -100,7 +100,7 @@ git fetch origin <target> && git merge origin/<target> --no-edit
 **Skip if:** `--skip-tests` flag.
 
 1. Auto-detect test command (see `auto-detect.md`)
-2. Delegate to `tester` subagent — don't inline test execution
+2. Delegate to `ck-tester` subagent — don't inline test execution
 3. Check pass/fail from agent result
 
 - **If any test fails:** Show failures and **STOP**. Do not proceed.
@@ -112,7 +112,7 @@ git fetch origin <target> && git merge origin/<target> --no-edit
 **Skip if:** `--skip-review` flag.
 
 1. Run `git diff origin/<target>` to get the full diff
-2. Delegate to `code-reviewer` subagent with the diff
+2. Delegate to `ck-code-reviewer` subagent with the diff
 3. Two-pass model:
    - **Pass 1 (CRITICAL):** Security, injection, race conditions, auth bypass
    - **Pass 2 (INFORMATIONAL):** Dead code, magic numbers, test gaps, style
@@ -173,7 +173,7 @@ Write a technical journal entry capturing this ship session. Run as **background
 
 Update project documentation for official releases. Run as **background task**.
 
-1. Invoke `/ck-docs update` skill via `docs-manager` subagent in background:
+1. Invoke `/ck-docs update` skill via `ck-docs-manager` subagent in background:
    - Analyzes code changes since last release
    - Updates relevant docs in `./docs/` directory
 2. Don't wait for completion — continue to next step immediately.

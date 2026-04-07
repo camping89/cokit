@@ -8,7 +8,7 @@ For GitHub Actions failures and CI/CD pipeline issues.
 
 ## Workflow
 
-1. **Fetch logs** with `debugger` agent:
+1. **Fetch logs** with `ck-debugger` agent:
    ```bash
    gh run view <run-id> --log-failed
    gh run view <run-id> --log
@@ -18,7 +18,7 @@ For GitHub Actions failures and CI/CD pipeline issues.
 
 3. **Implement fix** based on analysis
 
-4. **Test locally** with `tester` agent before pushing
+4. **Test locally** with `ck-tester` agent before pushing
 
 5. **Iterate** if tests fail, repeat from step 3
 

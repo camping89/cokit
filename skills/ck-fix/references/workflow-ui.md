@@ -35,7 +35,7 @@ Analyze screenshots/videos with `ai-multimodal` (if available) skill.
 
 ### Step 2: Implement
 `TaskUpdate(T2, status="in_progress")`
-Use `ui-ux-designer` agent.
+Use `ck-ui-ux-designer` agent.
 
 `TaskUpdate(T2, status="completed")`
 
@@ -57,7 +57,7 @@ Use `chrome-devtools` (if available) skill.
 
 ### Step 5: Test
 `TaskUpdate(T5, status="in_progress")`
-Use `tester` agent for compilation check.
+Use `ck-tester` agent for compilation check.
 
 `TaskUpdate(T5, status="completed")`
 

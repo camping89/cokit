@@ -23,7 +23,7 @@ Use `ai-multimodal` (if available) skill to extract:
 **Font Prediction**: Avoid defaulting to Inter/Poppins. Match actual fonts visible.
 
 ### 2. Create Implementation Plan
-Use `ui-ux-designer` subagent:
+Use `ck-ui-ux-designer` subagent:
 - Create plan directory (use `## Naming` pattern from hooks)
 - Write `plan.md` (<80 lines, generic overview)
 - Add `phase-XX-name.md` files with:

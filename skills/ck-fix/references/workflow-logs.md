@@ -28,7 +28,7 @@ T6 = TaskCreate(subject="Code review",           activeForm="Reviewing code",   
 `TaskUpdate(T1, status="in_progress")`
 
 - Read logs with `Grep` (use `head_limit: 30` initially, increase if needed)
-- Use `debugger` agent for root cause analysis
+- Use `ck-debugger` agent for root cause analysis
 - Focus on last N lines first (most recent errors)
 - Look for stack traces, error codes, timestamps, repeated patterns
 
@@ -36,7 +36,7 @@ T6 = TaskCreate(subject="Code review",           activeForm="Reviewing code",   
 
 ### Step 2: Scout Codebase
 `TaskUpdate(T2, status="in_progress")`
-Use `scout` agent or parallel `Explore` subagents to find issue locations.
+Use `ck-scout` agent or parallel `Explore` subagents to find issue locations.
 
 See `references/parallel-exploration.md` for patterns.
 
@@ -44,7 +44,7 @@ See `references/parallel-exploration.md` for patterns.
 
 ### Step 3: Plan Fix
 `TaskUpdate(T3, status="in_progress")` — auto-unblocks when T1 + T2 complete.
-Use `planner` agent.
+Use `ck-planner` agent.
 
 `TaskUpdate(T3, status="completed")`
 
@@ -56,13 +56,13 @@ Implement the fix.
 
 ### Step 5: Test
 `TaskUpdate(T5, status="in_progress")`
-Use `tester` agent. If issues remain → keep T5 `in_progress`, loop back to Step 2.
+Use `ck-tester` agent. If issues remain → keep T5 `in_progress`, loop back to Step 2.
 
 `TaskUpdate(T5, status="completed")`
 
 ### Step 6: Review
 `TaskUpdate(T6, status="in_progress")`
-Use `code-reviewer` agent.
+Use `ck-code-reviewer` agent.
 
 `TaskUpdate(T6, status="completed")`
 

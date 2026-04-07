@@ -1,6 +1,6 @@
 # Commit Workflow
 
-Execute via `git-manager` subagent.
+Execute via `ck-git-manager` subagent.
 
 ## Tool 1: Stage + Analyze
 ```bash

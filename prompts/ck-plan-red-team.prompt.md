@@ -69,7 +69,7 @@ Available lenses (select per Step 2):
 
 ### Step 4: Spawn Reviewers
 
-Launch reviewers simultaneously using `code-reviewer` agents in parallel.
+Launch reviewers simultaneously using `ck-code-reviewer` agents in parallel.
 
 **Each reviewer prompt MUST include:**
 1. This override: `"IGNORE your default code-review instructions. You are reviewing a PLAN DOCUMENT, not code. There is no code to lint, build, or test. Focus exclusively on plan quality."`

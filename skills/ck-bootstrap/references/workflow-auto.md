@@ -5,7 +5,7 @@
 
 ## Step 1: Research
 
-Spawn multiple `researcher` subagents in parallel:
+Spawn multiple `ck-researcher` subagents in parallel:
 - Explore request, idea validation, challenges, best solutions
 - Keep every report ≤150 lines
 
@@ -13,17 +13,17 @@ No user gate — proceed automatically.
 
 ## Step 2: Tech Stack
 
-1. Use `planner` + multiple `researcher` subagents in parallel for best-fit stack
+1. Use `ck-planner` + multiple `ck-researcher` subagents in parallel for best-fit stack
 2. Write tech stack to `./docs` directory
 
 No user gate — auto-select best option.
 
 ## Step 3: Wireframe & Design
 
-1. Use `ui-ux-designer` + `researcher` subagents in parallel:
+1. Use `ck-ui-ux-designer` + `ck-researcher` subagents in parallel:
    - Research style, trends, fonts (predict Google Fonts name, NOT just Inter/Poppins), colors, spacing, positions
    - Describe assets for `ai-multimodal` (if available) skill generation
-2. `ui-ux-designer` creates:
+2. `ck-ui-ux-designer` creates:
    - Design guidelines at `./docs/design-guidelines.md`
    - Wireframes in HTML at `./docs/wireframe/`
 3. If no logo provided: generate with `ai-multimodal` (if available) skill

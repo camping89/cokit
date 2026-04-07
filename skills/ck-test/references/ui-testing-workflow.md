@@ -51,7 +51,7 @@ node screenshot.js --url https://example.com/profile --output profile.png
 - All screenshots saved in the same report directory
 - Browse URL, discover all pages, components, endpoints
 - Create test plan based on discovered structure
-- Use multiple `tester` subagents in parallel for: pages, forms, navigation, user flows, accessibility, responsive layouts, performance, security, seo
+- Use multiple `ck-tester` subagents in parallel for: pages, forms, navigation, user flows, accessibility, responsive layouts, performance, security, seo
 - Use `ai-multimodal` (if available) to analyze all screenshots
 - Generate comprehensive Markdown report
 - Ask user if they want to preview with `/ck-preview`

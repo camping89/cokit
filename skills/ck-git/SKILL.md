@@ -19,8 +19,8 @@ If invoked without arguments, ask the user to present available git operations:
 
 Present as options by asking the user with header "Git Operation", question "What would you like to do?".
 
-Execute git workflows via `git-manager` subagent to isolate verbose output.
-Activate `context-engineering` skill.
+Execute git workflows via `ck-git-manager` subagent to isolate verbose output.
+Activate `ck-context-engineering` skill.
 
 **IMPORTANT:**
 - Sacrifice grammar for the sake of concision.

@@ -12,7 +12,7 @@ Create award-quality designs with storytelling, 3D experiences, and micro-intera
 ## Workflow Steps
 
 ### 1. Research Phase
-Use `researcher` subagent to investigate:
+Use `ck-researcher` subagent to investigate:
 - Design style and current trends
 - Font combinations and typography
 - Color theory for the context
@@ -21,7 +21,7 @@ Use `researcher` subagent to investigate:
 - Animation and interaction patterns
 
 ### 2. Design Implementation
-Use `ui-ux-designer` subagent:
+Use `ck-ui-ux-designer` subagent:
 - Build step by step from research
 - Create plan with `## Naming` pattern
 - Default to HTML/CSS/JS if unspecified

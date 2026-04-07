@@ -47,7 +47,7 @@ MUST update project documentation in `./docs` when:
 
 ## Delegation Pattern
 
-Use `docs-manager` subagent for documentation updates:
+Use `ck-docs-manager` subagent for documentation updates:
 
 ```
 Task(

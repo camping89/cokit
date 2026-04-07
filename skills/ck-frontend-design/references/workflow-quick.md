@@ -12,7 +12,7 @@ Rapid design creation with minimal planning overhead.
 ## Workflow Steps
 
 ### 1. Start Design Process
-Use `ui-ux-designer` subagent directly:
+Use `ck-ui-ux-designer` subagent directly:
 - Skip extensive planning
 - Move to implementation quickly
 - Make design decisions on-the-fly

@@ -28,7 +28,7 @@ Choose workflow based on input type:
 ## Screenshot/Video Replication (Quick Reference)
 
 1. **Analyze** with `ai-multimodal` (if available) skill - extract colors, fonts, spacing, effects
-2. **Plan** with `ui-ux-designer` subagent - create phased implementation
+2. **Plan** with `ck-ui-ux-designer` subagent - create phased implementation
 3. **Implement** - match source precisely
 4. **Verify** - compare to original
 5. **Document** - update `./docs/design-guidelines.md` if approved

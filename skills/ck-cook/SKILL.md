@@ -123,23 +123,23 @@ Human review required at these checkpoints (skipped with `--auto`):
 - **Testing:** 100% pass required (unless no-test mode)
 - **Code Review:** User approval OR auto-approve (score≥9.5, 0 critical)
 - **Finalize (MANDATORY - never skip):**
-  1. `project-manager` subagent → run full plan sync-back (all completed tasks/steps across all `phase-XX-*.md`, not only current phase), then update `plan.md` status/progress
-  2. `docs-manager` subagent → update `./docs` if changes warrant
+  1. `ck-project-manager` subagent → run full plan sync-back (all completed tasks/steps across all `phase-XX-*.md`, not only current phase), then update `plan.md` status/progress
+  2. `ck-docs-manager` subagent → update `./docs` if changes warrant
   3. `TaskUpdate` → mark all Tasks complete after sync-back verification (skip if Task tools unavailable)
-  4. Ask user if they want to commit via `git-manager` subagent
+  4. Ask user if they want to commit via `ck-git-manager` subagent
   5. Run `/ck-journal` to write a concise technical journal entry upon completion
 
 ## Required Subagents (MANDATORY)
 
 | Phase | Subagent | Requirement |
 |-------|----------|-------------|
-| Research | `researcher` | Optional in fast/code |
-| Scout | `scout` | Optional in code |
-| Plan | `planner` | Optional in code |
-| UI Work | `ui-ux-designer` | If frontend work |
-| Testing | `tester`, `debugger` | **MUST** spawn |
-| Review | `code-reviewer` | **MUST** spawn |
-| Finalize | `project-manager`, `docs-manager`, `git-manager` | **MUST** spawn all 3 |
+| Research | `ck-researcher` | Optional in fast/code |
+| Scout | `ck-scout` | Optional in code |
+| Plan | `ck-planner` | Optional in code |
+| UI Work | `ck-ui-ux-designer` | If frontend work |
+| Testing | `ck-tester`, `ck-debugger` | **MUST** spawn |
+| Review | `ck-code-reviewer` | **MUST** spawn |
+| Finalize | `ck-project-manager`, `ck-docs-manager`, `ck-git-manager` | **MUST** spawn all 3 |
 
 **CRITICAL ENFORCEMENT:**
 - Steps 4, 5, 6 **MUST** use Task tool to spawn subagents

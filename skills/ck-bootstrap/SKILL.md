@@ -55,8 +55,8 @@ All modes share: Load `references/shared-phases.md` for implementation through f
 ## Step 0: Git Init (ALL modes)
 
 Check if Git initialized. If not:
-- `--full`: Ask user if they want to init → `git-manager` subagent (`main` branch)
-- Others: Auto-init via `git-manager` subagent (`main` branch)
+- `--full`: Ask user if they want to init → `ck-git-manager` subagent (`main` branch)
+- Others: Auto-init via `ck-git-manager` subagent (`main` branch)
 
 ## Skill Triggers (MANDATORY)
 

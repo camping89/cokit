@@ -116,7 +116,7 @@ Use `addBlocks` when creating parent first ("X blocks these children").
 ### Sync-Back (cook Step 6)
 
 1. `TaskUpdate` marks all session tasks complete.
-2. `project-manager` subagent runs full-plan sync-back:
+2. `ck-project-manager` subagent runs full-plan sync-back:
    - Sweep all `phase-XX-*.md` files.
    - Reconcile completed tasks by metadata (`phase`, `phaseFile`).
    - Backfill stale completed checkboxes `[ ]` → `[x]` across all phases (not only current phase).

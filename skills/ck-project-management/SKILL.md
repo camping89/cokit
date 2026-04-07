@@ -68,7 +68,7 @@ Trigger `./docs` updates when:
 - API contracts change, architecture decisions made
 - Security patches applied, breaking changes occur
 
-Delegate to `docs-manager` subagent for actual updates.
+Delegate to `ck-docs-manager` subagent for actual updates.
 
 ### 5. Status Reporting
 Load: `references/reporting-patterns.md`
@@ -129,5 +129,5 @@ Update `status` when plan state changes.
 ## Related Skills
 
 - `plan` — Creates implementation plans (planning phase)
-- `cook` — Implements plans (execution phase, invokes project-manager at finalize)
+- `ck-cook` — Implements plans (execution phase, invokes project-manager at finalize)
 - `plans-kanban` — Visual dashboard for plan viewing
