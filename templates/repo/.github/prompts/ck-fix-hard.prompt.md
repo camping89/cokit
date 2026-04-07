@@ -36,8 +36,8 @@ If user chooses "Switch to /ck-fix", run  immediately — do NOT ask user to re-
 
 ### Fix the issue
 
-Use `sequential-thinking` skill to break complex problems into sequential thought steps.
-Use `problem-solving` skills to tackle the issues.
+Use `ck-sequential-thinking` skill to break complex problems into sequential thought steps.
+Use `ck-problem-solving` skills to tackle the issues.
 
 1. Investigate and find the root cause of the issues.
 2. Research about the root causes on the internet (if needed).
