@@ -78,18 +78,18 @@ Otherwise?
 |----------|-------|---------|
 | Prompts | 31 | Commands for Copilot |
 | Agents | 13 | Specialized AI assistants |
-| Skills | 30 | Domain expertise |
+| Skills | 31 | Domain expertise |
 | Instructions | 5 | Context-aware rules |
 | Collections | 5 | Bundled workflows |
 
 See [docs/](docs/) for detailed resource documentation.
 
-## What's New (v1.3.0)
+## What's New (v1.3.1)
 
-- 7 new skills: test, ship, deploy, security, bootstrap, frontend-development, project-management
-- 1 new agent: project-manager
-- Synced 23 skills and 11 agents with latest upstream content
-- All skills now have Copilot-compatible frontmatter
+- Ported chrome-devtools skill from upstream
+- Removed broken skills (markdown-novel-viewer, plans-kanban)
+- Cleaned up 6 stale documentation files
+- Fixed resource counts and version references
 
 See [CHANGELOG.md](CHANGELOG.md) for full history.
 

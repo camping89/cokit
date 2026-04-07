@@ -2,6 +2,26 @@
 
 All notable changes to CoKit are documented in this file.
 
+## [1.3.1] - 2026-04-07
+
+### Added
+- chrome-devtools skill (ported from upstream with SKILL.md, references, scripts)
+
+### Removed
+- markdown-novel-viewer skill (incomplete — only contained node_modules)
+- plans-kanban skill (incomplete — only contained node_modules)
+- 6 stale documentation files (team-presentation, slides, comprehensive-mapping-guide, orchestration-layer vi/en, FAQ)
+
+### Fixed
+- Skill count 30 → 31 across README, index.html, and docs
+- Version references in docs still showing 1.3.0
+
+### Updated
+- Landing page flowchart with ship, deploy, security commands
+- Landing page command table with 5 new commands
+- Project-manager added to agents list in index.html
+- Templates refreshed with v1.3.0 resources
+
 ## [1.3.0] - 2026-03-30
 
 ### Added

@@ -1,6 +1,6 @@
 # CoKit Documentation Index
 
-**Version:** 1.3.0 | **Updated:** 2026-03-30
+**Version:** 1.3.1 | **Updated:** 2026-04-07
 
 ## Reading Order by Role
 
@@ -27,16 +27,9 @@
 ### Reference (As Needed)
 | Doc | Read When |
 |-----|-----------|
-| [cokit-comprehensive-mapping-guide.md](cokit-comprehensive-mapping-guide.md) | Debugging command mappings |
 | [copilot-processing-flow.md](copilot-processing-flow.md) | Understanding prompt processing |
 | [migration-guide.md](migration-guide.md) | Users switching from other AI tools to Copilot |
 | [upstream-porting-rules.md](upstream-porting-rules.md) | AI/dev rules for porting upstream → CoKit |
-
-### Presentations
-| Doc | Use For |
-|-----|---------|
-| [cokit-team-presentation.md](cokit-team-presentation.md) | Team onboarding |
-| [cokit-slides.md](cokit-slides.md) | Quick demos |
 
 ---
 
@@ -47,7 +40,7 @@
 |----------|-------|----------|
 | Prompts | 31 | `prompts/ck-*.prompt.md` |
 | Agents | 13 | `agents/*.agent.md` |
-| Skills | 30 | `skills/*/` |
+| Skills | 31 | `skills/*/` |
 | Instructions | 5 | `instructions/ck-*.instructions.md` |
 | Collections | 5 | `collections/ck-*.collection.yml` |
 

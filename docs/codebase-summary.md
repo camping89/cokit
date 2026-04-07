@@ -2,13 +2,13 @@
 
 ## Overview
 
-CoKit is a CLI tool that enhances GitHub Copilot with 31 prompts, 13 agents, 5 instructions, 30 skills, and 5 collections. It transforms upstream commands into a unified ck-* namespace.
+CoKit is a CLI tool that enhances GitHub Copilot with 31 prompts, 13 agents, 5 instructions, 31 skills, and 5 collections. It transforms upstream commands into a unified ck-* namespace.
 
 **Repository:** https://github.com/camping89/cokit.git
-**Version:** 1.3.0
+**Version:** 1.3.1
 **License:** CC BY-NC 4.0
 **Node Requirements:** >= 18.0.0
-**Last Updated:** 2026-03-30
+**Last Updated:** 2026-04-07
 
 ## Architecture
 
