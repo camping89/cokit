@@ -8,11 +8,16 @@ All notable changes to CoKit are documented in this file.
 - chrome-devtools skill (ported from upstream with SKILL.md, references, scripts)
 
 ### Removed
+- SpecKit workflow from landing page (removed from index.html)
 - markdown-novel-viewer skill (incomplete — only contained node_modules)
 - plans-kanban skill (incomplete — only contained node_modules)
 - 6 stale documentation files (team-presentation, slides, comprehensive-mapping-guide, orchestration-layer vi/en, FAQ)
 
 ### Fixed
+- chrome-devtools: renamed `ck:chrome-devtools` → `chrome-devtools` (consistent with all other skills)
+- chrome-devtools: replaced all `.claude/` paths with `.copilot/` for Copilot compatibility
+- chrome-devtools: fixed broken skill location detection (project-scope `.github/` + user-scope `~/.copilot/`)
+- chrome-devtools: fixed `author: claudekit` → `author: cokit`
 - Skill count 30 → 31 across README, index.html, and docs
 - Version references in docs still showing 1.3.0
 
